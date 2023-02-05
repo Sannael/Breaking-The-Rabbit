@@ -41,5 +41,15 @@ public class EnemyStatus : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         canTakeDmg = true;
         
-    } 
+    }
+
+    private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)
+    {
+        GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies += 1;
+    }
+
+    private void OnDestroy()
+    {
+        GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies -= 1;
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - PlayerCapsule
   - Enemy
   - EnemyAtk
+  - Roots
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2117157071
+    locked: 0
+  - name: UI
+    uniqueID: 2749305469
     locked: 0
