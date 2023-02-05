@@ -65,11 +65,11 @@ public class FireGunScript : MonoBehaviour
             StartCoroutine(Reload()); //Chama a corotina de reload (corotina é tipo uma função, mas funciona com um ou + timers)
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && reloading == false) //Recarregar de maneira manual apertando "R"
+        /*if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && reloading == false)
         {
-            reloading = true;                   
+            reloading = true;                   //ta dando uns B.O corrijo depois
             StartCoroutine(Reload());
-        }
+        }*/
 
     }
 

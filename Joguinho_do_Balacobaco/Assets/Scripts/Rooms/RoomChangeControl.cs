@@ -9,6 +9,11 @@ public class RoomChangeControl : MonoBehaviour
 {
     public string direction; //Determina a dire��o da troca de sala
 
+    private void Awake()
+    {
+        gameObject.GetComponent<Renderer>().enabled = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) //Checa se a collisão foi com o player
     {
         if(other.gameObject.name == "Player") //Para cada direção, chama o método de movimento de câmera no script "CameraController"
