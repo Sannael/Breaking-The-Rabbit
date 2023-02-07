@@ -18,21 +18,26 @@ public class SlimeRanged : MonoBehaviour
 
     void Update()
     {
-        //float distance = Vector2.Distance(transform.position,player.transform.position); //Verifica o valor da distância entre o inimigo e o player
-        //Debug.Log(distance);
+        if(this.gameObject.GetComponent<EnemyStatus>().isAlive)
+        {
 
-        if(player == null)
-        {
-            player = GameObject.Find("Player");
-        }
-        
-        if (isVisible && player != null && player.GetComponent<PlayerScript>().isAlive == true)
-        {
-            timer += Time.deltaTime; //Gera um temporizador em segundos
-            if (timer > 1) //A cada x segundos
+            
+            //float distance = Vector2.Distance(transform.position,player.transform.position); //Verifica o valor da distância entre o inimigo e o player
+            //Debug.Log(distance);
+
+            if(player == null)
             {
-                timer = 0; //Reseta o Timer
-                shoot(); //Chama o método de atirar o projétil
+                player = GameObject.Find("Player");
+            }
+            
+            if (isVisible && player != null && player.GetComponent<PlayerScript>().isAlive == true)
+            {
+                timer += Time.deltaTime; //Gera um temporizador em segundos
+                if (timer > 1) //A cada x segundos
+                {
+                    timer = 0; //Reseta o Timer
+                    shoot(); //Chama o método de atirar o projétil
+                }
             }
         }
     }
