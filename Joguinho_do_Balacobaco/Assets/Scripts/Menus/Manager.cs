@@ -8,7 +8,6 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,7 +23,7 @@ public class Manager : MonoBehaviour
 
     }
 
-    void LoadScene(int scene)
+    public void LoadScene(int scene)
     {
         SceneManager.LoadScene(scene); //metodo que troca de cena (sem transição)
         /*

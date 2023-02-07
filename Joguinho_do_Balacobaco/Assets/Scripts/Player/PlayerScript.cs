@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject sceneManager; 
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
     private bool direita; //checha a direção no eixo X
@@ -34,7 +35,7 @@ public class PlayerScript : MonoBehaviour
             StartCoroutine(Death()); //Cahama a corotina de morte (animação + destroy)
             
         }
-        else //Se n tiver zerada pode fazer a farra
+        else if(isAlive == true) //Se n tiver zerada pode fazer a farra
         {
             direcao = Input.GetAxis("Horizontal"); 
 
@@ -76,8 +77,9 @@ public class PlayerScript : MonoBehaviour
         isAlive = false; //Seta pra morto (Evita bugs e q inimigos continuem te atacando)
         yield return new WaitForSeconds(0.1f); //Cooldownzin pra evitar bugs, corotina da dessas
         playerAnim.SetTrigger("Death"); //Seta gatilho pra animação de Death
-        yield return new WaitForSeconds(4.5f); //Tempo da animação de death
+        yield return new WaitForSeconds(4f); //Tempo da animação de death
         Destroy(gameObject);//Destroy o player
+        sceneManager.GetComponent<Manager>().LoadScene(0);
     }
 
     void Move()
@@ -100,6 +102,7 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator Roll()
     {
+        canTakeDamage = false;
         gunCase.SetActive(false);
         rollCdr = 10; //Cdrzin aleatorio, só ignora (pra n correr risco de duplicar animação)
         canRoll = false;
@@ -133,6 +136,7 @@ public class PlayerScript : MonoBehaviour
         canMove = true;
         rollCdr = rollCdrInitial; //Reseta o valor de Cdr do Roll
         gunCase.SetActive(true);
+        canTakeDamage = true;
     }
 
     public void OnTriggerEnter2D(Collider2D other) 

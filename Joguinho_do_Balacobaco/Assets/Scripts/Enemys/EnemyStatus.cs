@@ -18,13 +18,17 @@ public class EnemyStatus : MonoBehaviour
     }
     void Update()
     {
-        if(health <= 0)
+        if(health <= 0 && isAlive == true)
         {
-            slimeAnimator.SetTrigger("Death");
+            Destroy(gameObject);
+            //slimeAnimator.Rebind();
+            //isAlive = false;
+            //slimeAnimator.SetTrigger("Death");
+            
         }
         if(isAlive == false)
         {
-            Destroy();
+            Destroy(gameObject);
         }
 
         if(canTakeDmg == false)
@@ -34,10 +38,6 @@ public class EnemyStatus : MonoBehaviour
         }
     }
 
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
 
     public void OnTriggerEnter2D (Collider2D other) 
     {
@@ -62,6 +62,6 @@ public class EnemyStatus : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies -= 1;
+        GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies += -1;
     }
 }

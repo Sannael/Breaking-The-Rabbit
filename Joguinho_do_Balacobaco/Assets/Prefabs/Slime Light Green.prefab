@@ -184,8 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f9b1a23c3236c47b2947af1883fe87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 20
   canTakeDmg: 0
+  isAlive: 1
+  slimeAnimator: {fileID: 0}
 --- !u!61 &6144269369811156327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -224,5 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6722d27567b834592806c82b8e8391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-
+  damage: 1
