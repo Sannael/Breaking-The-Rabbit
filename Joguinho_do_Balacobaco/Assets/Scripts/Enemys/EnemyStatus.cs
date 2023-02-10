@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     public int health;
-    public bool canTakeDmg = true;
-    public bool isAlive;
+    public bool canTakeDmg = true; //Checa se pode tomar dano; pra tempo de invenc/ evitar dano duplicado
+    public bool isAlive; //Checa se ta vivo; ajuda pra ajeitar animação
     public Animator slimeAnimator;
 
 
@@ -18,7 +18,7 @@ public class EnemyStatus : MonoBehaviour
     }
     void Update()
     {
-        if(health <= 0 && isAlive == true)
+        if(health <= 0 && isAlive == true) //Se a vida chegar a 0 é chamada a função de morte
         {
             Destroy(gameObject);
             //slimeAnimator.Rebind();
@@ -39,12 +39,12 @@ public class EnemyStatus : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter2D (Collider2D other) 
+    public void OnTriggerEnter2D (Collider2D other) //Função de colisão
     {
-        if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true)
+        if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
             canTakeDmg = false;
-            health = health - other.gameObject.GetComponent<DamageScript>().damage;
+            health = health - other.gameObject.GetComponent<DamageScript>().damage;//Pega o script de dano sa
         }
     }
 
