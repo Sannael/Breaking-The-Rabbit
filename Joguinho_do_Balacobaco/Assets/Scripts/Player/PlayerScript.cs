@@ -20,8 +20,10 @@ public class PlayerScript : MonoBehaviour
     public GameObject gunCase; //Estojo de arma, é meio q a mão do player pra arma de fogo (talvez arma num geral (?) n pensei nisso) 
     public bool canTakeDamage; //Checa se o player pode tomar dano
     public bool isAlive; //Checa se ta vivo ou n //Evitar bugs
+    public int armor; //Armadura do Cuelho
     void Start()
     {
+        armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
@@ -31,9 +33,9 @@ public class PlayerScript : MonoBehaviour
     {
         if(health <= 0 && isAlive == true) //se a vida zerar ele merre
         {
-            playerAnim.Rebind(); //Reseta todas os parametros do animator para o valor inical (false)
-            StartCoroutine(Death()); //Cahama a corotina de morte (animação + destroy)
-            
+            DisbleAll(); //Função de desativar todos os itenbs do player
+            isAlive = false; //Murreu :(
+            Animations("Death"); //Animação de Death
         }
         else if(isAlive == true) //Se n tiver zerada pode fazer a farra
         {
@@ -71,15 +73,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public IEnumerator Death() //Animação de morte
+    public void Animations(string animation) //Chama a animação que é passsada como parametro
     {
-        gunCase.SetActive(false); //Desativa arma
-        isAlive = false; //Seta pra morto (Evita bugs e q inimigos continuem te atacando)
-        yield return new WaitForSeconds(0.1f); //Cooldownzin pra evitar bugs, corotina da dessas
-        playerAnim.SetTrigger("Death"); //Seta gatilho pra animação de Death
-        yield return new WaitForSeconds(4f); //Tempo da animação de death
-        Destroy(gameObject);//Destroy o player
-        sceneManager.GetComponent<Manager>().LoadScene(0);
+        playerAnim.Rebind();
+        playerAnim.SetTrigger(animation);
+    }
+    
+    public void DisbleAll() //Desativa todos os itens do player
+    {
+        gunCase.SetActive(false); //Desativa o coldre de arma, logo a arma
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
+        sceneManager.GetComponent<Manager>().LoadScene(0); //Ir para o Menu
     }
 
     void Move()
@@ -150,7 +158,7 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator CanTakeDamage(int damageTaken) //Função de invencibilidade 
     {
-        if(canTakeDamage == true) //Se estiver fora do tempo de invencibilidade
+        if(canTakeDamage == true && damageTaken > 0) //Se estiver fora do tempo de invencibilidade
         {
             canTakeDamage = false; //Seta pra ivulneravel
             TakeDamage(damageTaken); //Chama a função que diminui a vida (Faz pouca coisa agora mas depois vai ter armor e os karalho)
@@ -172,7 +180,7 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        health -= damageTaken;
+        health =  health - (damageTaken - armor);
     }
 
 }
