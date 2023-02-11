@@ -153,18 +153,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bb4e60c6ac5f54fa367f9bb9c9cb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneManager: {fileID: 0}
   speed: 4
   playerAnim: {fileID: 2142031774450265614}
   rollCdr: 0.5
   rb: {fileID: 2142031774450265612}
   canRoll: 0
   canMove: 0
-  health: 5
+  health: 10
   rbVelocity: {x: 0, y: 0}
   gunCase: {fileID: 2142031773990134896}
   canTakeDamage: 1
   isAlive: 1
+  armor: 0
+  dmgCollider: {fileID: 2142031774450265601}
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4
@@ -178,7 +179,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

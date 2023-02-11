@@ -13,7 +13,7 @@ public class SlimeRanged : MonoBehaviour
     public float atkSpeedMin, atkSpeedMax; //ataque speed do inimigo, minimo e maximo, pra n atirar todos ao mesmo tempo;
     private float atkSpeed; //Velocidade de ataque do slime 
     public bool isAlive; //Checa se o slime ta vivo
-    private bool direita;
+    private bool direita; //Checa se ta a direita do alvo
     
     
     void Start()

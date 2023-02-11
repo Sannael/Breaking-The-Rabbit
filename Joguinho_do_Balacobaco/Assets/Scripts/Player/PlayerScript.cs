@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject sceneManager; 
+    private GameObject sceneManager; 
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
     private bool direita; //checha a direção no eixo X
@@ -21,8 +21,10 @@ public class PlayerScript : MonoBehaviour
     public bool canTakeDamage; //Checa se o player pode tomar dano
     public bool isAlive; //Checa se ta vivo ou n //Evitar bugs
     public int armor; //Armadura do Cuelho
+    public BoxCollider2D dmgCollider; //Box collider de gatilho pra tomar dano
     void Start()
     {
+        sceneManager = GameObject.Find("SceneManager");
         armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
@@ -40,7 +42,16 @@ public class PlayerScript : MonoBehaviour
         else if(isAlive == true) //Se n tiver zerada pode fazer a farra
         {
             direcao = Input.GetAxis("Horizontal"); 
-
+            
+            if(canTakeDamage == true) //Se o playerpoder tomar dano
+            {
+                dmgCollider.enabled = true; //ativa o collider de dano
+            }
+            else
+            {
+                dmgCollider.enabled = false; //desativa o collider de dano
+            }
+        
             if((direcao >0 && direita == true) || (direcao <0 && direita == false)) //Checa se a necessidade de espelhar(Coelho olhar pra um lado e andar pro outro)
             {
                 direita = !direita; //inverte o valor da direita (true pra false / false pra true)
@@ -134,7 +145,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            vel[1] = 0f; //Sem empurrão pra cima ou baico; empurrão reto na horizontal
+            vel[1] = 0f; //Sem empurrão pra cima ou baixo; empurrão reto na horizontal
         }
         rb.velocity = vel; //Altera o valor da velocity do rigidibody (tipo a força do empurro) aqui que a mágica acontece
 

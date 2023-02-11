@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 775959212935607862}
   - component: {fileID: 775959212935607861}
   - component: {fileID: 775959212935607858}
-  - component: {fileID: 775959212935607857}
   - component: {fileID: 775959212935607856}
   - component: {fileID: 6870886489378839058}
-  - component: {fileID: -2433381532274004509}
+  - component: {fileID: 1167735802530496067}
+  - component: {fileID: 2252924511193440020}
   m_Layer: 0
   m_Name: Slime Red
   m_TagString: Enemy
@@ -131,32 +131,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &775959212935607857
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775959212935607860}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.56}
-    newSize: {x: 0.68, y: 0.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.56}
-  m_EdgeRadius: 0
 --- !u!114 &775959212935607856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,10 +163,25 @@ MonoBehaviour:
   health: 20
   canTakeDmg: 0
   isAlive: 1
-  slimeAnimator: {fileID: 0}
   armor: 0
---- !u!61 &-2433381532274004509
-BoxCollider2D:
+--- !u!70 &1167735802530496067
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775959212935607860}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.64, y: 0.56}
+  m_Direction: 1
+--- !u!70 &2252924511193440020
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,15 +194,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.56}
-    newSize: {x: 0.68, y: 0.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.6}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.64, y: 0.56}
+  m_Direction: 1

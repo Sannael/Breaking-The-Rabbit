@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class SlimeMelee : MonoBehaviour
 {
-private GameObject player; //Var que vai receber o Player
+    private GameObject player; //Var que vai receber o Player
     public float speed; //Determina a velocidade com que o inimigo irá se mover
     public bool isVisible; //checa se esta visivel em alguma camera
     public EnemyStatus enemyStastus; //Script de status do inimigo
     public bool isAlive; //Checa se o alvo ainda ta vivo; se pode realizar as tarefas normalmente 
     public DamageScript dmgScript; //Script de dano; pra caso precisar alterar
-    public int initialDmg; //Armazena dano inicial; depois do buff/debuff precisa boltar ao valor normal
     
     void Start()
     {
         player = GameObject.Find("Player"); //Recebe o Player
         enemyStastus = this.GetComponent<EnemyStatus>(); //Puxa o status do inimigo; vida, armadura e etc
         dmgScript = this.GetComponent<DamageScript>(); //Puxa o script de dano
-        initialDmg = dmgScript.damage; //Armazena o valor iniclial do dano
     }
 
     void Update()
     {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
         isAlive = enemyStastus.isAlive;
         if(isAlive == true)
         {
