@@ -20,8 +20,19 @@ public class SlimeDash : MonoBehaviour
     private Vector2 rbVelocity; //Impulso do dash
     public float force; //Força do dash do slime
     private bool canMove; //Checa s epode mover
+    [Tooltip("Distancia que o player tem que chegar pro slime dar o dash, calculada em quadrados, ou escale /2")]
+    public float distaceInSquares; //Distancia dpo dash em quadrados (metade da scale) 
+    private StunScript stunScript; //Script de Stun
     void Start()
     {
+        if(this.GetComponent<StunScript>() != null) //Se o Slime tiver script de stun armazena ele 
+        {
+            stunScript = this.GetComponent<StunScript>();
+        }
+        if(this.GetComponent<DamageScript>() != null) //Se o Slime tiver script de dano armazena ele 
+        {
+            dmgScript = this.GetComponent<DamageScript>(); //Puxa o script de dano
+        }
         atkSpeedCurrent = atkSpeed; //Primeiro ataque não tem cooldown
         rb = this.GetComponent<Rigidbody2D>(); //Pega o Rigidbody do objeto
         rbVelocity = rb.velocity; //Armazena o valor inicial do velocity do rigidbody 
@@ -29,8 +40,6 @@ public class SlimeDash : MonoBehaviour
         direita = true; //Ele começa sempre olhando pra direita, mesmo se estiver a esquerda, ele se aejita solo
         player = GameObject.Find("Player"); //Recebe o Player
         enemyStastus = this.GetComponent<EnemyStatus>(); //Puxa o status do inimigo; vida, armadura e etc
-        dmgScript = this.GetComponent<DamageScript>(); //Puxa o script de dano
-
         canMove = true;
         canAtk = true;
     }
@@ -67,7 +76,7 @@ public class SlimeDash : MonoBehaviour
                 }
                 
 
-                if(Vector3.Distance(transform.position, player.transform.position) <= 3) //Checa se o player ta dentro da distancia de dash do slime
+                if(Vector3.Distance(transform.position, player.transform.position) <= distaceInSquares) //Checa se o player ta dentro da distancia de dash do slime
                 {
                     playerAtkDistance = player.transform.position; //Armazena a posição do player
                     if(canAtk == true)
@@ -75,7 +84,6 @@ public class SlimeDash : MonoBehaviour
                         atkSpeedCurrent = 0; //Reseta o cooldown
                         animations("Dash");
                     }
-                    
                 }
             }
             else
@@ -93,7 +101,14 @@ public class SlimeDash : MonoBehaviour
         }
         else
         {
-            dmgScript.damage = 0; //Se morrer n da dano
+            if(dmgScript != null)
+            {
+                dmgScript.enabled = false; //Se morrer n da dano
+            }
+            if(stunScript != null)
+            {
+                stunScript.enabled = false; //Se morrer n stuna (né não?)
+            }
         }
     }
 
@@ -104,36 +119,36 @@ public class SlimeDash : MonoBehaviour
     }
     public void Dash()
     {
+        if(stunScript != null) 
+        {
+            stunScript.enabled = true; //Habilita o stun  durante o dash
+        }
         playerAtkDistance = player.transform.position; //Armazena a posição do player antes do dash
-        float distanceX = transform.position[0] - playerAtkDistance[0]; 
-        float distanceY = transform.position[1] - playerAtkDistance[1]; //Calcula a distancia (eixo Y) do slime até o inimigo; <0 player acima; >0 player abaixo
+        float distanceX = transform.position[0] - playerAtkDistance[0]; //Calcula a distancia (eixo X) do slime até o player; entre -0,35 e 0,35 player bem em cima ou baixo
+        float distanceY = transform.position[1] - playerAtkDistance[1]; //Calcula a distancia (eixo Y) do slime até o player; <0.4 player acima; >0.4 player abaixo
         Vector2 vel = transform.position; //Valor random, se n taca algo buga ent ignoraaaaaaaa
-        vel[0] = transform.right[0] * force; //Força de impulso pra direita
         
-        /*if(distanceX < -0.35f)  
+        if((distanceX > -0.35 && distanceX < 0.35)) //Eixo X dentro dessa distancia quer dizer que o player e o slime estão na mesma reta na horizontal
         {
-            vel[0] = transform.right[0] * (force -2); 
+            force += 1; //Aplica mais força pra cima/baixo caso tiver em linha reta
+            vel[0] = 0f; //Sem força pra direita  
         }
-        else if(distanceY > 0.35f) 
+        else
         {
-            vel[0] = transform.right[0] * (- (force -2)); 
+            vel[0] = transform.right[0] * force; //Em qualquer outra dsitancia, a força do dash é normal
         }
-        else 
-        {
-            vel[0] = force; 
-        }*/
 
-        if(distanceY <-1) //se etrar aqui o Player ta acima do slime, logo dash pra diagonal-cima 
+        if(distanceY <-0.4f) //se etrar aqui o Player ta acima do slime, logo dash pra diagonal-cima 
         {
             vel[1] = transform.up[1] * (force -2); //Calculo de impulso pra cima
         }
-        else if(distanceY >1) //se etrar aqui o Player ta abaixo do slime, logo dash pra diagonal-baixo
+        else if(distanceY >0.4f) //se etrar aqui o Player ta abaixo do slime, logo dash pra diagonal-baixo
         {
             vel[1] = transform.up[1] * (- (force -2)); //Mesmo calculo de impulso, sóq pra baixo :v
         }
         else 
         {
-            vel[1] = 0f; //Se a disntacia do eixo Y for proxima de 0 ele da dash pra frente e n diagonal
+            vel[1] = 0f; //Se a distancia do eixo Y for proxima de 0 ele da dash pra frente e n diagonal
         }
         rb.velocity = vel; //Aqui que o impulso acontece, ai rola o dash
         atkSpeedCurrent = 0; //Reseta o tempo de ataque
@@ -152,6 +167,10 @@ public class SlimeDash : MonoBehaviour
 
     private void EndOfDash() //Funçãozinha pro fim do dash
     {
+        if(stunScript != null) 
+        {
+            stunScript.enabled = false; //Desabilita o stun quando acabar o dash
+        }   
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
     }
     

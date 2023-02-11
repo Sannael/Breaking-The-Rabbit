@@ -166,6 +166,7 @@ MonoBehaviour:
   isAlive: 1
   armor: 0
   dmgCollider: {fileID: 2142031774450265601}
+  force: 8
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4
@@ -180,7 +181,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 2
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

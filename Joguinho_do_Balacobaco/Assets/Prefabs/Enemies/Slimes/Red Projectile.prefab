@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1345258249324868040}
   - component: {fileID: 418583197248892923}
   - component: {fileID: 8367363152707261774}
-  - component: {fileID: 1496048298087718459}
+  - component: {fileID: 7665283060945047237}
   m_Layer: 0
   m_Name: Red Projectile
   m_TagString: EnemyAtk
@@ -139,7 +139,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12
---- !u!114 &1496048298087718459
+--- !u!114 &7665283060945047237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
