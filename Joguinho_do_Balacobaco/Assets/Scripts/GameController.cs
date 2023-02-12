@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
     private bool roomState;
     public GameObject roots;
     public int numberOfEnemies;
-    // Start is called before the first frame update
+    public  bool isPaused; //Pause do game
+    public GameObject pnlPause; //Painel de pause
+    public Manager sceneManager;
     private void Awake()
     {
         numberOfEnemies = 0;
@@ -17,15 +19,23 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+        sceneManager = GameObject.Find("SceneManager").GetComponent<Manager>();
+        isPaused = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
-        
-
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(isPaused == true)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
         if (numberOfEnemies <= 0)
         {
             try
@@ -34,9 +44,7 @@ public class GameController : MonoBehaviour
             }
 
             catch { Debug.Log("cath"); }
-
         }
-
     }
 
     public void RoomChange()
@@ -57,5 +65,22 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = 0f;
+        pnlPause.SetActive(true);
+    }
+    public void Resume()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = 1f;
+        pnlPause.SetActive(false);
+    }
+    
+    public void BackToMainMenu()
+    {
+        sceneManager.LoadScene(0);
+    }
 
 }

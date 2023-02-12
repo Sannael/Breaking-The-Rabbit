@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JogoGameJam.unity
     guid: a3c3f420d44f5444ab50990f17656834
+  - enabled: 1
+    path: Assets/Scenes/CenaGuima.unity
+    guid: 0bbbd06116a15684bba25be8711ec930
+  - enabled: 1
+    path: Assets/Scenes/CenaBruno.unity
+    guid: 3e4e876a7504c9146afb772a43e0f8a1
   m_configObjects: {}

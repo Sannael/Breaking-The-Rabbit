@@ -28,9 +28,9 @@ public class GunStatus : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-         if(gunRateCurrent >0) //Verifica a cadencia de desparo (Cooldown)
+        if(gunRateCurrent >0) //Verifica a cadencia de desparo (Cooldown)
         {
             canShoot = false; 
             gunRateCurrent -= Time.deltaTime; //Vai retirando o Cooldown de uma forma fluido

@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(health <= 0 && isAlive == true) //se a vida zerar ele merre
         {
