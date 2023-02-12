@@ -8,6 +8,10 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     // Update is called once per frame
@@ -27,10 +31,12 @@ public class Manager : MonoBehaviour
     {
         SceneManager.LoadScene(scene); //metodo que troca de cena (sem transição)
         /*
-        Scenes (Seguindo a sequencia que tem na Build Settings)
+        Scenes (Seguindo a sequencia que tem na Build Settings, parte de scenes in build)
         0 = Main Menu
         1 = Credits
-        2 = Stage1
+        2 = JogoGameJam
+        3 = CenaGuima
+        4 = CenaBruno
 
         */
     }

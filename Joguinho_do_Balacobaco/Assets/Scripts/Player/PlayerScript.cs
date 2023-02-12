@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject sceneManager; 
+    private GameObject sceneManager; 
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
     private bool direita; //checha a direção no eixo X
-    private float direcao; //direção em float (<0 = esqerda; >0 = direita; 0 = parado)
+    private float direcao; //direção em float (<0 = esquerda; >0 = direita; 0 = parado)
     private bool walking, idle, roll; //actions
     public float rollCdr; //cooldown do rolamento
     private float rollCdrInitial; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
@@ -20,25 +20,41 @@ public class PlayerScript : MonoBehaviour
     public GameObject gunCase; //Estojo de arma, é meio q a mão do player pra arma de fogo (talvez arma num geral (?) n pensei nisso) 
     public bool canTakeDamage; //Checa se o player pode tomar dano
     public bool isAlive; //Checa se ta vivo ou n //Evitar bugs
+    public int armor; //Armadura do Cuelho
+    public BoxCollider2D dmgCollider; //Box collider de gatilho pra tomar dano
+    public float force; //Força gravitacional que é aplicada no momento do rolamento
+    private bool stuned; //Checa se o player ta stunado
     void Start()
     {
+        stuned = false;
+        sceneManager = GameObject.Find("SceneManager");
+        armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(health <= 0 && isAlive == true) //se a vida zerar ele merre
         {
-            playerAnim.Rebind(); //Reseta todas os parametros do animator para o valor inical (false)
-            StartCoroutine(Death()); //Cahama a corotina de morte (animação + destroy)
-            
+            DisbleAll(); //Função de desativar todos os itenbs do player
+            isAlive = false; //Murreu :(
+            Animations("Death"); //Animação de Death
         }
-        else if(isAlive == true) //Se n tiver zerada pode fazer a farra
+        else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
         {
             direcao = Input.GetAxis("Horizontal"); 
-
+            
+            if(canTakeDamage == true) //Se o playerpoder tomar dano
+            {
+                dmgCollider.enabled = true; //ativa o collider de dano
+            }
+            else
+            {
+                dmgCollider.enabled = false; //desativa o collider de dano
+            }
+        
             if((direcao >0 && direita == true) || (direcao <0 && direita == false)) //Checa se a necessidade de espelhar(Coelho olhar pra um lado e andar pro outro)
             {
                 direita = !direita; //inverte o valor da direita (true pra false / false pra true)
@@ -71,15 +87,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public IEnumerator Death() //Animação de morte
+    public void Animations(string animation) //Chama a animação que é passsada como parametro
     {
-        gunCase.SetActive(false); //Desativa arma
-        isAlive = false; //Seta pra morto (Evita bugs e q inimigos continuem te atacando)
-        yield return new WaitForSeconds(0.1f); //Cooldownzin pra evitar bugs, corotina da dessas
-        playerAnim.SetTrigger("Death"); //Seta gatilho pra animação de Death
-        yield return new WaitForSeconds(4f); //Tempo da animação de death
-        Destroy(gameObject);//Destroy o player
-        sceneManager.GetComponent<Manager>().LoadScene(0);
+        playerAnim.Rebind();
+        playerAnim.SetTrigger(animation);
+    }
+    
+    public void DisbleAll() //Desativa todos os itens do player
+    {
+        gunCase.SetActive(false); //Desativa o coldre de arma, logo a arma
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
+        sceneManager.GetComponent<Manager>().LoadScene(0); //Ir para o Menu
     }
 
     void Move()
@@ -112,7 +134,7 @@ public class PlayerScript : MonoBehaviour
         playerAnim.SetBool("Walking", false);
         playerAnim.SetBool("Idle", false);
 
-        float force = 5f; //Força gravitacional que é aplicada no momento do rolamento
+        
         Vector2 vel = transform.right; //Valor aleatório só ignora tbm, pra n dar B.O depois aaaaaaaaaaaa :v (a var vel é usada pra força usada pro roll)
         vel[0] = transform.right[0] *  force; //Calculo da força no "Empurrao" pra acontecer o roll (Horizontal)
 
@@ -126,7 +148,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            vel[1] = 0f; //Sem empurrão pra cima ou baico; empurrão reto na horizontal
+            vel[1] = 0f; //Sem empurrão pra cima ou baixo; empurrão reto na horizontal
         }
         rb.velocity = vel; //Altera o valor da velocity do rigidibody (tipo a força do empurro) aqui que a mágica acontece
 
@@ -141,16 +163,24 @@ public class PlayerScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyAtk")
-        {            
-            int damageTaken = other.gameObject.GetComponent<DamageScript>().damage;
-            StartCoroutine(CanTakeDamage(damageTaken)); 
+        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyAtk") //Se for atingido por um inimigo ou um atk dele (projetil, aremessavel e os karalho)
+        {
+            if(other.GetComponent<DamageScript>() != null) //Se o que trombar no player der dano, preciso saber quanto
+            {      
+                int damageTaken = other.gameObject.GetComponent<DamageScript>().damage;
+                StartCoroutine(CanTakeDamage(damageTaken)); //Chamo função de tomar dano/ ficar invulneravel 
+            }
+            if(other.GetComponent<StunScript>() != null && other.GetComponent<StunScript>().isActiveAndEnabled) //Checa se oq trombou com o player tem stun e se ta ativo no momento da trombada
+            {
+                float time = other.GetComponent<StunScript>().stunTime;
+                StartCoroutine(Stun(time)); //Funçãozinha de tomar stun
+            }
         }
     }
 
     public IEnumerator CanTakeDamage(int damageTaken) //Função de invencibilidade 
     {
-        if(canTakeDamage == true) //Se estiver fora do tempo de invencibilidade
+        if(canTakeDamage == true && damageTaken > 0) //Se estiver fora do tempo de invencibilidade
         {
             canTakeDamage = false; //Seta pra ivulneravel
             TakeDamage(damageTaken); //Chama a função que diminui a vida (Faz pouca coisa agora mas depois vai ter armor e os karalho)
@@ -172,7 +202,15 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        health -= damageTaken;
+        health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
     }
 
+    private IEnumerator Stun(float stunTime)
+    {
+        stuned = true;
+        gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
+        yield return new WaitForSeconds(stunTime); //Stuna durante o tempo certin
+        gunCase.SetActive(true); //Ativa a arma
+        stuned = false;
+    }
 }

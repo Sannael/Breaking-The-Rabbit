@@ -12,7 +12,7 @@ public class BarrelGunScript : MonoBehaviour
     {
     }
 
-    void Update()
+    void FixedUpdate()
     {
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position; //Armazena a direção do mouse 
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * (Mathf.Rad2Deg); //Calculo maluco de angulo, não faço ideia dde como funciona, só aceito
