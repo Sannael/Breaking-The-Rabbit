@@ -56,7 +56,7 @@ public class GunStatus : MonoBehaviour
         }
         if(ammo == 0 && reloading == false && playerAmmo >0) //Se tiver sem munição na arma, n tiver recarregando e player ainda tiver bala guardada
         {
-            if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shootgun)
+            if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shotgun)
             {
                 Animations("FirstReload");
             }
@@ -71,7 +71,7 @@ public class GunStatus : MonoBehaviour
             reloading = true;
             if(gunManualReload == true)
             {
-                Animations("FirstReload"); //Arma de Reload Manual (Revolver, Shootgun)
+                Animations("FirstReload"); //Arma de Reload Manual (Revolver, Shotgun)
             }
             else
             {
