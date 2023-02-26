@@ -167,6 +167,7 @@ MonoBehaviour:
   armor: 0
   dmgCollider: {fileID: 2142031774450265601}
   force: 8
+  coinCount: 50
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4
