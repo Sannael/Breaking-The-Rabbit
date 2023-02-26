@@ -27,6 +27,10 @@ public class EnemyStatus : MonoBehaviour
 
         if(canTakeDmg == false)
         {
+            if(health >0)
+            {
+                StartCoroutine(Blink());
+            }
             canTakeDmg = true;
             //StartCoroutine(ResetTakeDmg()); //caso o inimigo tenha um tempo de invencibilidade pós ataque
         }
@@ -46,16 +50,29 @@ public class EnemyStatus : MonoBehaviour
     {
         if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
-            canTakeDmg = false;
             health = health - (other.gameObject.GetComponent<DamageScript>().damage - armor);//Pega o script de dano sa
+            canTakeDmg = false;
         }
     }
 
+    public IEnumerator Blink()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100); 
+        yield return new WaitForSeconds(0.30f);
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+        /*yield return new WaitForSeconds(0.30f);
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100);
+            yield return new WaitForSeconds(0.15f);
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+            yield return new WaitForSeconds(0.15f);
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100);
+            yield return new WaitForSeconds(0.15f);
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);*/
+    }
     public IEnumerator ResetTakeDmg()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.10f);
         canTakeDmg = true;
-        
     }
 
     private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)
@@ -65,6 +82,9 @@ public class EnemyStatus : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies += -1;
+        if(GameObject.Find("GameController") != null)
+        {
+            GameObject.Find("GameController").GetComponent<GameController>().numberOfEnemies += -1;
+        }
     }
 }
