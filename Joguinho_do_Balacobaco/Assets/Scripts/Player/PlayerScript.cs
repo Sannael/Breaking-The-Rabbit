@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     public BoxCollider2D dmgCollider; //Box collider de gatilho pra tomar dano
     public float force; //Força gravitacional que é aplicada no momento do rolamento
     private bool stuned; //Checa se o player ta stunado
+    public int coinCount; //Quantia de monys
     void Start()
     {
         stuned = false;
@@ -175,6 +176,12 @@ public class PlayerScript : MonoBehaviour
                 float time = other.GetComponent<StunScript>().stunTime;
                 StartCoroutine(Stun(time)); //Funçãozinha de tomar stun
             }
+        }
+
+        if(other.gameObject.tag == "Coin")
+        {
+            coinCount += other.gameObject.GetComponent<CoinScript>().value; //Pega o valor da moeda
+            Destroy(other.gameObject); //Destroy as moeda padrão
         }
     }
 

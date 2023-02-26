@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1996042053298280339}
   - component: {fileID: 1996042053298280332}
-  - component: {fileID: 1996042053298280338}
   - component: {fileID: -2356305342048718811}
-  - component: {fileID: -3000559488553740555}
+  - component: {fileID: -8916328209917740547}
+  - component: {fileID: 2508300557537381694}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Coin
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1996042053298280333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.7, y: 0.87, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 2117157071
   m_SortingLayer: 2
   m_SortingOrder: 30
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c1e6ce46354c0e42b32394a6b0e437a, type: 3}
   m_Color: {r: 1, g: 0.80423534, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1996042053298280338
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996042053298280333}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &-2356305342048718811
 Rigidbody2D:
   serializedVersion: 4
@@ -124,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3000559488553740555
+--- !u!114 &-8916328209917740547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,4 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d35aecb7c48c2479fd4cc6c5986da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
+  value: 1
+--- !u!70 &2508300557537381694
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996042053298280333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07276337, y: 0}
+  m_Size: {x: 2.8000014, y: 3.2896044}
+  m_Direction: 0

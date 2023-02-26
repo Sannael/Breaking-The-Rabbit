@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
+    public int value; //Valor de cada "coin"
     void Start()
     {
         StartCoroutine(StopFalling());
