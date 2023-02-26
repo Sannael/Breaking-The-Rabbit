@@ -20,64 +20,73 @@ public class GunStatus : MonoBehaviour
     public bool reloading = false; //Checa se ta recarregando, evita bugs
     [Tooltip("Marcar como verdadeiro somente armas que recaregam de maneira manual como: Revolveres e Espingardas")] //Dicazinha sobre a variavel abixo pro inspetro
     public bool gunManualReload; //Armas que carregam de maneira manual
+    private GameController gameController;
+    private bool isPaused;
+    public string ammoType; //Tipo de munição usada na arma
     
     void Start()
     {
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(gunRateCurrent >0) //Verifica a cadencia de desparo (Cooldown)
+        isPaused = gameController.isPaused;
+        if(isPaused == false)
         {
-            canShoot = false; 
-            gunRateCurrent -= Time.deltaTime; //Vai retirando o Cooldown de uma forma fluido
-        }
-        else if(ammo >0) //Se tiver munição na arma pode atirar
-        {
-            canShoot = true;
-        }
+            if(gunRateCurrent >0) //Verifica a cadencia de desparo (Cooldown)
+            {
+                canShoot = false; 
+                gunRateCurrent -= Time.deltaTime; //Vai retirando o Cooldown de uma forma fluido
+            }
+            else if(ammo >0) //Se tiver munição na arma pode atirar
+            {
+                canShoot = true;
+            }
 
-        if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
-        {
-            
-            if(reloading == true) //Checa se ta recarregando
+            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
             {
-                reloading = false; //Cancela o reloading (Somente em armas de reload manual)
-                Animations("Shoot"); //Chama alguma animação, passando nome do "Trigger" da animação como parametro
+                
+                if(reloading == true) //Checa se ta recarregando
+                {
+                    reloading = false; //Cancela o reloading (Somente em armas de reload manual)
+                    Animations("Shoot"); //Chama alguma animação, passando nome do "Trigger" da animação como parametro
+                }
+                else
+                {
+                    Animations("Shoot"); //Chama alguma animação, passando nome do "Trigger" da animação como parametro
+                }
+                
             }
-            else
+            if(ammo == 0 && reloading == false && playerAmmo >0) //Se tiver sem munição na arma, n tiver recarregando e player ainda tiver bala guardada
             {
-                Animations("Shoot"); //Chama alguma animação, passando nome do "Trigger" da animação como parametro
+                if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shotgun)
+                {
+                    Animations("FirstReload");
+                }
+                else //Arma de reload Automatico (Troca pente todo)
+                {
+                    Animations("AutoReload");
+                }
+                reloading = true;
             }
-            
+            if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && playerAmmo >0 && reloading == false) //Usar R pra reload
+            {
+                reloading = true;
+                if(gunManualReload == true)
+                {
+                    Animations("FirstReload"); //Arma de Reload Manual (Revolver, Shotgun)
+                }
+                else
+                {
+                    Animations("AutoReload"); //Arma de reload Automatico (Troca pente todo)
+                }
+            }        
         }
-        if(ammo == 0 && reloading == false && playerAmmo >0) //Se tiver sem munição na arma, n tiver recarregando e player ainda tiver bala guardada
-        {
-            if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shotgun)
-            {
-                Animations("FirstReload");
-            }
-            else //Arma de reload Automatico (Troca pente todo)
-            {
-                Animations("AutoReload");
-            }
-            reloading = true;
-        }
-        if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && playerAmmo >0 && reloading == false) //Usar R pra reload
-        {
-            reloading = true;
-            if(gunManualReload == true)
-            {
-                Animations("FirstReload"); //Arma de Reload Manual (Revolver, Shotgun)
-            }
-            else
-            {
-                Animations("AutoReload"); //Arma de reload Automatico (Troca pente todo)
-            }
-        }        
     }
 
     public void idle() //Evitar bug de animação de Reload infinito

@@ -24,22 +24,22 @@ public class SlimeMelee : MonoBehaviour
         isAlive = enemyStastus.isAlive;
         if(isAlive == true)
         {
-        if(isVisible == true && player != null && player.GetComponent<PlayerScript>().isAlive == true) //Se tiver visivel ele segue o player
-        {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); //Move o inimigo em direção ao player 
-        }
-        else
-        {
-            transform.position = transform.position; //para de se movimentar 
-        }
+            if(isVisible == true && player != null && player.GetComponent<PlayerScript>().isAlive == true) //Se tiver visivel ele segue o player
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); //Move o inimigo em direção ao player 
+            }
+            else
+            {
+                transform.position = transform.position; //para de se movimentar 
+            }
         
-        if(player == null)
-        {
-            player = GameObject.FindWithTag("Player");
-        }
+            if(player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+            }
         
-        //Usar caso o inimigo só for perseguir quando estiver a uma certa distância do jogador:
-        //float distance = Vector2.Distance(transform.position, player.transform.position); //Verifica o valor da distância entre o inimigo e o player
+            //Usar caso o inimigo só for perseguir quando estiver a uma certa distância do jogador:
+            //float distance = Vector2.Distance(transform.position, player.transform.position); //Verifica o valor da distância entre o inimigo e o player
         }
         else
         {
