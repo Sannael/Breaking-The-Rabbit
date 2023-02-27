@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eb16cb5d5980df44aba7b5658de1919
+guid: 588e4cdc40cec084e9f50c0750ce10b1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,68 +101,80 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gun_attack (1)_0
+      name: stunned_0
       rect:
         serializedVersion: 2
-        x: 110
-        y: 410
-        width: 30
-        height: 16
-      alignment: 9
-      pivot: {x: 0.8138117, y: 0.8526211}
+        x: 112
+        y: 366
+        width: 44
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a2178b0c991e684791dea0fc2a4a20d
-      internalID: 1317839881
+      spriteID: 97328107e4bbae345a7b5dfc9243d7e7
+      internalID: 754242411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gun_attack (1)_1
+      name: stunned_2
       rect:
         serializedVersion: 2
-        x: 366
-        y: 410
-        width: 50
-        height: 24
-      alignment: 9
-      pivot: {x: 0.49471802, y: 0.57744217}
+        x: 369
+        y: 366
+        width: 44
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e61cf461bc6209b4dbc9c65b58b360c9
-      internalID: 865923633
+      spriteID: e6c869c186e2a3446b76a362cff5762c
+      internalID: -42244628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gun_attack (1)_2
+      name: stunned_4
       rect:
         serializedVersion: 2
-        x: 109
-        y: 154
-        width: 38
-        height: 34
-      alignment: 9
-      pivot: {x: 0.6627924, y: 0.23606648}
+        x: 112
+        y: 110
+        width: 44
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e327a73833b72942a22efcab3038d92
-      internalID: 2030682106
+      spriteID: b8529071f1ce6c148b4dea1701fc2cf3
+      internalID: -1645527592
       vertices: []
       indices: 
       edges: []
@@ -178,10 +190,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gun_attack (1)_3: -1625253030
-      gun_attack (1)_2: 2030682106
-      gun_attack (1)_0: 1317839881
-      gun_attack (1)_1: 865923633
+      stunned_0: 754242411
+      stunned_2: -42244628
+      stunned_4: -1645527592
+      stunned_3: -1119623890
+      stunned_1: -1920016264
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
