@@ -25,7 +25,7 @@ public class ProjectileController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player") //Checa se a collisão foi com o player
+        if (other.gameObject.name == "Player" || other.CompareTag("PlayerWeapon")) //Checa se a collisão foi com o player
         {
             Destroy(gameObject); //Destroy o projétil
         }

@@ -12,6 +12,7 @@ TagManager:
   - Roots
   - Coin
   - Wall
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

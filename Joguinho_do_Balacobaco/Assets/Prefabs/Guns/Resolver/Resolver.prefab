@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1223213082062700350}
   - component: {fileID: 1223213082062700349}
   m_Layer: 0
-  m_Name: Revolver
+  m_Name: Resolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,10 +244,11 @@ MonoBehaviour:
   capsuleSpeed: 2.5
   ammo: 0
   totalAmmo: 6
-  playerAmmo: 20
+  playerAmmo: 100
   canShoot: 0
   reloading: 0
   gunManualReload: 1
+  ammoType: 
 --- !u!1 &1223213083134857073
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223213083134857073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008, y: 0.064, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -294,3 +295,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1223213082539041363}
+  zValueToMirror: 0.7

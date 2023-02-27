@@ -216,7 +216,9 @@ public class PlayerScript : MonoBehaviour
     {
         stuned = true;
         gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
+        playerAnim.SetBool("Stun", true);
         yield return new WaitForSeconds(stunTime); //Stuna durante o tempo certin
+        playerAnim.SetBool("Stun", false);
         gunCase.SetActive(true); //Ativa a arma
         stuned = false;
     }

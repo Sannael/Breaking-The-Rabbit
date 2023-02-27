@@ -29,10 +29,7 @@ public class GunStatus : MonoBehaviour
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
-        
     }
-
-    // Update is called once per frame
     void Update()
     {
         isPaused = gameController.isPaused;
