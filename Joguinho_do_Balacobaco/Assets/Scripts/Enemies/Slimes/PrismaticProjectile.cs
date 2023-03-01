@@ -8,7 +8,7 @@ public class PrismaticProjectile : MonoBehaviour
     private Rigidbody2D rb; //Var que vai receber o o Rigid Body do projétil
     public float force; //Determina a força com que o projétil será lançado na direção do Player
     public float timer; //Temporizador para destruir o projétil
-    private Color32[] colors = new Color32[15];
+    private Color32[] colors = new Color32[7];
     
     void Start()
     {
@@ -64,18 +64,29 @@ public class PrismaticProjectile : MonoBehaviour
 
     private IEnumerator Prisma()
     {
-        int randColor = Random.Range(0, colors.Length); //Escolhe um número aleatório que sera o numero da nova cor do slime 
+        /*int randColor = Random.Range(0, colors.Length); //Escolhe um número aleatório que sera o numero da nova cor do slime 
         Color32 col = this.gameObject.GetComponent<SpriteRenderer>().color; //Armazena a cor atual do slime
         for(float i = 0; i < 1; i += 0.2f) //Loop que se repete 10 vezes, aumentando o Tom da cor
         {
             yield return new WaitForSeconds(0.05f);
             this.gameObject.GetComponent<SpriteRenderer>().color = Color32.Lerp(col, colors[randColor], i); //Efeitinho pra mudar entre a cor atural e a nova cor de uma maneira mais "natural"
         }
+        StartCoroutine(Prisma()); //Chamar o Coroutine denovo (Loop eterno)*/
+
+        for(int color = 0; color < colors.Length; color ++)
+        {
+            Color32 col = this.gameObject.GetComponent<SpriteRenderer>().color; //Armazena a cor atual do slime
+            for(float i = 0; i < 1; i += 0.01f) //Loop que se repete 10 vezes, aumentando o Tom da cor
+            {
+                yield return null;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color32.Lerp(col, colors[color], i); //Efeitinho pra mudar entre a cor atural e a nova cor de uma maneira mais "natural"
+            } 
+        }
         StartCoroutine(Prisma()); //Chamar o Coroutine denovo (Loop eterno)
     }  
     private void SetColor() //somente armazena as cores possiveis em posições dos vetores
     {
-        colors[0] = new Color32(138, 43, 226, 255); //Violeta
+        /*colors[0] = new Color32(138, 43, 226, 255); //Violeta
         colors[1] = new Color32(0, 0, 139, 255); //Azul
         colors[2] = new Color32(0, 128, 0, 255); //Verde
         colors[3] = new Color32(255, 255, 0, 255); //Amarelo
@@ -89,7 +100,15 @@ public class PrismaticProjectile : MonoBehaviour
         colors[11] = new Color32(40, 114, 51, 255); //Verde esmeralda
         colors[12] = new Color32(0, 127, 255, 255); //azul bebe
         colors[13] = new Color32(252, 15, 192, 255); //rosa shock
-        colors[14] = new Color32(184, 134, 11, 255); //dourado
+        colors[14] = new Color32(184, 134, 11, 255); //dourado*/
+
+        colors[0] = new Color32(255, 0, 0, 255);  //Vermelho
+        colors[1] = new Color32(255, 117, 24, 255); //Laranja
+        colors[2] = new Color32(255, 255, 0, 255); //Amarelo
+        colors[3] = new Color32(50, 205, 50, 255); //Verde
+        colors[4] = new Color32(0, 255, 255, 255); //Azul claro
+        colors[5] = new Color32(65, 105, 255, 255); //Royal blue 
+        colors[6] = new Color32(75, 0 , 130, 255); //Indigo
 
         StartCoroutine(Prisma());
     }

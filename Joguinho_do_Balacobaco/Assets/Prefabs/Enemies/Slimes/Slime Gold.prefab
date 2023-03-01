@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5685213849442540921}
   - component: {fileID: 5685213849442540923}
   - component: {fileID: 5685213849442540927}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Slime Gold
   m_TagString: Enemy
   m_Icon: {fileID: 0}

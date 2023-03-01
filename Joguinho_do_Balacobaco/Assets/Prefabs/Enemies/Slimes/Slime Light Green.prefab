@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4528805683270723413}
   - component: {fileID: 7855910360742819654}
   - component: {fileID: 2937336340102173943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime Light Green
   m_TagString: Enemy
   m_Icon: {fileID: 0}

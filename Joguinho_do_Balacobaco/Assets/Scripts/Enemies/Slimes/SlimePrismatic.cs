@@ -27,9 +27,10 @@ public class SlimePrismatic : MonoBehaviour
     public Transform projectilePos; //Recebe o objeto que tem a posição do ponto de Spawnn
     public float atkSpeedMin, atkSpeedMax; //ataque speed do inimigo, minimo e maximo, pra n atirar todos ao mesmo tempo
     private bool canShoot;
-    private Color32[] colors = new Color32[15]; //Possibilidades de cores que o slime pode se transformar
+    private Color32[] colors = new Color32[7]; //Possibilidades de cores que o slime pode se transformar
     private bool effect; //Checa se tem algum efeito ativado
     public GameObject[] slimes;
+    private int health;
     void Start()
     {
         stunScript = this.GetComponent<StunScript>();
@@ -41,12 +42,13 @@ public class SlimePrismatic : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>(); //Pega o Rigidbody do objeto
         rbVelocity = rb.velocity; //Armazena o valor inicial do velocity do rigidbody 
         slimeAnim = this.GetComponent<Animator>();
-        direita = true; //Ele começa sempre olhando pra direita, mesmo se estiver a esquerda, ele se aejita solo
+        direita = true; //Ele começa sempre olhando pra direita, mesmo se estiver a esquerda, ele se ajeita solo
         player = GameObject.Find("Player"); //Recebe o Player
         enemyStastus = this.GetComponent<EnemyStatus>(); //Puxa o status do inimigo; vida, armadura e etc
         canMove = true;
         canAtk = true;
         canShoot = true;
+        health = enemyStastus.health;
 
         SetColor(); //Função que atribui as cores ao Vetor das cores k
     }
@@ -132,7 +134,7 @@ public class SlimePrismatic : MonoBehaviour
 
     private void OnDestroy() 
     {
-        for(int i =0; i <5; i ++)
+        for(int i =0; i <5; i ++) //Quando morre spawna slimes
         {
             SpawnSlimes();
         }
@@ -218,19 +220,36 @@ public class SlimePrismatic : MonoBehaviour
     }
 
     private IEnumerator Prisma()
-    {
+    {/*
         int randColor = Random.Range(0, colors.Length); //Escolhe um número aleatório que sera o numero da nova cor do slime 
         Color32 col = this.gameObject.GetComponent<SpriteRenderer>().color; //Armazena a cor atual do slime
-        for(float i = 0; i < 1; i += 0.2f) //Loop que se repete 10 vezes, aumentando o Tom da cor
+        for(float i = 0; i < 1; i += 0.01f) //Loop que se repete 10 vezes, aumentando o Tom da cor
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
             this.gameObject.GetComponent<SpriteRenderer>().color = Color32.Lerp(col, colors[randColor], i); //Efeitinho pra mudar entre a cor atural e a nova cor de uma maneira mais "natural"
+        }
+        StartCoroutine(Prisma()); //Chamar o Coroutine denovo (Loop eterno)*/
+
+        for(int color = 0; color < colors.Length; color ++)
+        {
+            Color32 col = this.gameObject.GetComponent<SpriteRenderer>().color; //Armazena a cor atual do slime
+            for(float i = 0; i < 1; i += 0.01f) //Loop que se repete 10 vezes, aumentando o Tom da cor
+            {
+                if(health != enemyStastus.health) //Se tomar dano, para o Coroutine pra ele podes piscar sem bugar a cor
+                {
+                    StartCoroutine(enemyStastus.Blink()); //Chama o coroutine de piscar e depois volta ao normal
+                    yield return new WaitForSeconds(0.30f);
+                    health = enemyStastus.health; //Reseta o valor da vida 
+                }
+                yield return null;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color32.Lerp(col, colors[color], i); //Efeitinho pra mudar entre a cor atural e a nova cor de uma maneira mais "natural"
+            } 
         }
         StartCoroutine(Prisma()); //Chamar o Coroutine denovo (Loop eterno)
     }  
     private void SetColor() //somente armazena as cores possiveis em posições dos vetores
     {
-        colors[0] = new Color32(138, 43, 226, 255); //Violeta
+        /*colors[0] = new Color32(138, 43, 226, 255); //Violeta
         colors[1] = new Color32(0, 0, 139, 255); //Azul
         colors[2] = new Color32(0, 128, 0, 255); //Verde
         colors[3] = new Color32(255, 255, 0, 255); //Amarelo
@@ -244,8 +263,17 @@ public class SlimePrismatic : MonoBehaviour
         colors[11] = new Color32(40, 114, 51, 255); //Verde esmeralda
         colors[12] = new Color32(0, 127, 255, 255); //azul bebe
         colors[13] = new Color32(252, 15, 192, 255); //rosa shock
-        colors[14] = new Color32(184, 134, 11, 255); //dourado
+        colors[14] = new Color32(184, 134, 11, 255); //dourado*/
 
+        colors[0] = new Color32(255, 0, 0, 255);  //Vermelho
+        colors[1] = new Color32(255, 117, 24, 255); //Laranja
+        colors[2] = new Color32(255, 255, 0, 255); //Amarelo
+        colors[3] = new Color32(50, 205, 50, 255); //Verde
+        colors[4] = new Color32(0, 255, 255, 255); //Azul claro
+        colors[5] = new Color32(65, 105, 255, 255); //Royal blue 
+        colors[6] = new Color32(75, 0 , 130, 255); //Indigo
+
+        
         StartCoroutine(Prisma());
     }
 
