@@ -74,8 +74,7 @@ public class SlimeRanged : MonoBehaviour
     {
         Instantiate(projectile, projectilePos.position, Quaternion.identity); //Cria um projétil, conforme seu prefab
         timer = 0; //Reseta o Timer
-        atkSpeed = Random.Range(atkSpeedMin, atkSpeedMax); //"Aleatoriza" a valocidade de ataque após cada tiro
-                    
+        atkSpeed = Random.Range(atkSpeedMin, atkSpeedMax); //"Aleatoriza" a valocidade de ataque após cada tiro         
     }
 
     private void OnBecameVisible() //Checa se está visivel em alguma camera

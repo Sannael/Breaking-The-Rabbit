@@ -57,22 +57,16 @@ public class EnemyStatus : MonoBehaviour
         {
             health = health - (other.gameObject.GetComponent<DamageScript>().damage - armor);//Pega o script de dano sa
             canTakeDmg = false;
+            Destroy(other.gameObject);
         }
     }
 
     public IEnumerator Blink()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100); 
+        Color32 colorNow = this.gameObject.GetComponent<SpriteRenderer>().color; //Armazenar a cor do Inimigo,pra quando piscar n fica branco ou outra cor random
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(colorNow[0] ,colorNow[1], colorNow[2], 100); 
         yield return new WaitForSeconds(0.30f);
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
-        /*yield return new WaitForSeconds(0.30f);
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100);
-            yield return new WaitForSeconds(0.15f);
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
-            yield return new WaitForSeconds(0.15f);
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100);
-            yield return new WaitForSeconds(0.15f);
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);*/
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(colorNow[0] ,colorNow[1], colorNow[2], 255);
     }
     public IEnumerator ResetTakeDmg()
     {

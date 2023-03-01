@@ -13,6 +13,8 @@ TagManager:
   - Coin
   - Wall
   - PlayerWeapon
+  - BossStage
+  - BossStageAtk
   layers:
   - Default
   - TransparentFX
