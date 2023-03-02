@@ -164,9 +164,9 @@ public class PlayerScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyAtk") //Se for atingido por um inimigo ou um atk dele (projetil, aremessavel e os karalho)
+        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyAtk" || other.gameObject.tag == "BossStage" || other.gameObject.tag == "BossStageAtk") //Se for atingido por um inimigo ou um atk dele (projetil, aremessavel e os karalho)
         {
-            if(other.GetComponent<DamageScript>() != null) //Se o que trombar no player der dano, preciso saber quanto
+            if(other.GetComponent<DamageScript>() != null && other.GetComponent<DamageScript>().isActiveAndEnabled) //Se o que trombar no player der dano, preciso saber quanto
             {      
                 int damageTaken = other.gameObject.GetComponent<DamageScript>().damage;
                 StartCoroutine(CanTakeDamage(damageTaken)); //Chamo função de tomar dano/ ficar invulneravel 

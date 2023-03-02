@@ -49,11 +49,6 @@ public class SlimeGold : MonoBehaviour
             FindExits();
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ChooseOneExit();
-        }
-
         if(health != enemyStatus.health)
         {
             DropCoin(); //Dropar moedas ao tomar dano
@@ -125,7 +120,7 @@ public class SlimeGold : MonoBehaviour
         }
         
         int exit = Random.Range(0 ,4); //Escolhe umam saida aleatoria
-        Debug.Log(exit);
+
         if(exits[exit] > 0) //Checa se a saida escolhida existe, se existir vai até ela
         {
             switch(exit)

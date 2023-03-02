@@ -17,22 +17,27 @@ public class ProjectileController : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position; //Determina a direção em que o projétil será lançado
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force; //Determina a velocidade do projétil, baseada na direção e na força
     }
-
-    // Update is called once per frame
     void Update()
     {
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player" || other.CompareTag("PlayerWeapon")) //Checa se a collisão foi com o player
+        if (other.gameObject.name == "Player") //Checa se a collisão foi com o player
         {
-            Destroy(gameObject); //Destroy o projétil
+            //Destroy(gameObject); //Destroy o projétil
+            StartCoroutine(WaitToDestroy()); //Delay pro projetil destruir; evita que bug e n de dano no player antes de destruir
         }
     }
 
     private void OnBecameInvisible() //Destrói o projetil quando sair da visao da camera (Sair da cena) 
     {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator WaitToDestroy()
+    {
+        yield return new WaitForSeconds(0.01f);
         Destroy(gameObject);
     }
 }
