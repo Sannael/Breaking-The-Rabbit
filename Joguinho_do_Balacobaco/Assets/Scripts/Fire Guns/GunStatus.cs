@@ -22,13 +22,24 @@ public class GunStatus : MonoBehaviour
     public bool gunManualReload; //Armas que carregam de maneira manual
     private GameController gameController;
     private bool isPaused;
-    public string ammoType; //Tipo de munição usada na arma
+    [Tooltip("Tipo de munição da arma, seguindo o padrão: Pistol, Revolver, Shotgun, SMG, Assault Rifle, Magnum")]
+    public string ammoType; //Tipo de munição 
+    private PlayerScript ps;
+    private GameObject starFruit; //Carambola arremessavel
+    private GameObject player;
+    [Tooltip("A cadencia da arma é automatica?")]
+    public bool automatic; //Cadencia automatica?
     
     void Start()
     {
+        playerAmmo = 0;
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
+        player = GameObject.Find("Player");
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        ps = player.GetComponent<PlayerScript>();
+        starFruit = ps.starFruit;
+        //SetAmmo();
     }
     void Update()
     {
@@ -45,7 +56,7 @@ public class GunStatus : MonoBehaviour
                 canShoot = true;
             }
 
-            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
+            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0 && automatic == false) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
             {
                 
                 if(reloading == true) //Checa se ta recarregando
@@ -57,8 +68,22 @@ public class GunStatus : MonoBehaviour
                 {
                     Animations("Shoot"); //Chama alguma animação, passando nome do "Trigger" da animação como parametro
                 }
-                
             }
+            
+            if(Input.GetMouseButton(1) && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
+            {
+                if(reloading == true)
+                {
+                    reloading = false;
+                }
+                gunAnimator.SetBool("AutoShooting", true);
+            }
+
+            if(Input.GetMouseButtonUp(1) && automatic == true) //Parar de atirar com arma que é automatica
+            {
+                gunAnimator.SetBool("AutoShooting", false);
+            }
+
             if(ammo == 0 && reloading == false && playerAmmo >0) //Se tiver sem munição na arma, n tiver recarregando e player ainda tiver bala guardada
             {
                 if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shotgun)
@@ -82,7 +107,68 @@ public class GunStatus : MonoBehaviour
                 {
                     Animations("AutoReload"); //Arma de reload Automatico (Troca pente todo)
                 }
-            }        
+            }   
+
+            if(Input.GetKeyDown(KeyCode.Space) && ps.starFruitCount >0)
+            {
+                GameObject starFruitTrhow = Instantiate(starFruit, barrelTip.position, barrelTip.rotation);
+                ps.starFruitCount --;
+            } 
+            SetAmmo();    
+        }
+    }
+
+    private void SetAmmo() //Setar a Quantidade de munição de cada arma
+    {
+        switch(ammoType) //isso armazena a munição e toda vez que houver alteração ele armazena de novo
+        {
+            case "Pistol":
+            if(ps.pistolAmmo >0)
+            {
+                playerAmmo += ps.pistolAmmo;
+                ps.pistolAmmo = 0;
+            }
+            break;
+
+            case "Revolver":
+            if(ps.revolverAmmo >0)
+            {
+                playerAmmo += ps.revolverAmmo;
+                ps.revolverAmmo = 0;
+            }
+            break;
+
+            case "Shotgun":
+            if(ps.shotgunAmmo >0)
+            {
+                playerAmmo += ps.shotgunAmmo;
+                ps.shotgunAmmo = 0;
+            }
+            break;
+
+            case "Assault Rifle":
+            if(ps.assaultRifleAmmo >0)
+            {
+                playerAmmo += ps.assaultRifleAmmo;
+                ps.assaultRifleAmmo = 0;
+            }
+            break;
+
+            case "SMG":
+            if(ps.smgAmmo >0)
+            {
+                playerAmmo += ps.smgAmmo;
+                ps.smgAmmo = 0;   
+            }
+            break;
+
+            case "Magnum":
+            if(ps.magnumAmmo > 0)
+            {
+                playerAmmo += ps.magnumAmmo;
+                ps.magnumAmmo = 0;
+            }
+            break;
         }
     }
 
@@ -94,6 +180,7 @@ public class GunStatus : MonoBehaviour
     {
         gunAnimator.Rebind(); //Reseta todos parametros do animator
         gunAnimator.SetTrigger(animation); //Chama a animação
+        
     }
 
     public void Shoot()
@@ -125,3 +212,4 @@ public class GunStatus : MonoBehaviour
                     //Ainda vou mexer nisso só ignora
     }
 }
+

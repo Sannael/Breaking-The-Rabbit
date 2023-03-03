@@ -15,6 +15,7 @@ TagManager:
   - PlayerWeapon
   - BossStage
   - BossStageAtk
+  - StarFruit
   layers:
   - Default
   - TransparentFX
@@ -27,9 +28,9 @@ TagManager:
   - Enemy
   - Coin
   - EnemyCoin
-  - 
-  - 
-  - 
+  - StarFruit
+  - EnemyAtk
+  - Ammo
   - 
   - 
   - 

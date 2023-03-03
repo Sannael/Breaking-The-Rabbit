@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4386281567175378115}
   - component: {fileID: -171959179942327683}
   - component: {fileID: 2449466517000974736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Dark Green Projectile
   m_TagString: EnemyAtk
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  trueDamage: 0
 --- !u!114 &4386281567175378115
 MonoBehaviour:
   m_ObjectHideFlags: 0

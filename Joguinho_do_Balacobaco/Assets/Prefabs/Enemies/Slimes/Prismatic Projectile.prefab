@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7570961735234037532}
   - component: {fileID: -3671728040532925540}
   - component: {fileID: 8337326780041353373}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Prismatic Projectile
   m_TagString: BossStageAtk
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  trueDamage: 0
 --- !u!114 &-3671728040532925540
 MonoBehaviour:
   m_ObjectHideFlags: 0
