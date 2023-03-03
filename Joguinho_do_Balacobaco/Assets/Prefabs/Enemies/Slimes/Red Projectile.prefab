@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 418583197248892923}
   - component: {fileID: 8367363152707261774}
   - component: {fileID: 7665283060945047237}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Red Projectile
   m_TagString: EnemyAtk
   m_Icon: {fileID: 0}
@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  trueDamage: 0

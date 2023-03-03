@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     public int health; //Vida do Cueio
     public Vector2 rbVelocity; //velocidade do rigidibody
     public GameObject gunCase; //Estojo de arma, é meio q a mão do player pra arma de fogo (talvez arma num geral (?) n pensei nisso) 
+    public GameObject melee;
     public bool canTakeDamage; //Checa se o player pode tomar dano
     public bool isAlive; //Checa se ta vivo ou n //Evitar bugs
     public int armor; //Armadura do Cuelho
@@ -25,6 +26,9 @@ public class PlayerScript : MonoBehaviour
     public float force; //Força gravitacional que é aplicada no momento do rolamento
     private bool stuned; //Checa se o player ta stunado
     public int coinCount; //Quantia de monys
+    public int revolverAmmo, shotgunAmmo, pistolAmmo, assaultRifleAmmo, smgAmmo, magnumAmmo; //Tipos de munição que o player tem
+    public GameObject starFruit;
+    public int starFruitCount; //Contagem de carambolas
     void Start()
     {
         stuned = false;
@@ -85,7 +89,14 @@ public class PlayerScript : MonoBehaviour
             {
                 StartCoroutine(Roll());
             }
+
+            UpdateAmmo();
         }
+    }
+
+    private void UpdateAmmo()
+    {
+        
     }
 
     public void Animations(string animation) //Chama a animação que é passsada como parametro
@@ -97,6 +108,7 @@ public class PlayerScript : MonoBehaviour
     public void DisbleAll() //Desativa todos os itens do player
     {
         gunCase.SetActive(false); //Desativa o coldre de arma, logo a arma
+        melee.SetActive(false);
     }
 
     public void Death()
@@ -168,8 +180,9 @@ public class PlayerScript : MonoBehaviour
         {
             if(other.GetComponent<DamageScript>() != null && other.GetComponent<DamageScript>().isActiveAndEnabled) //Se o que trombar no player der dano, preciso saber quanto
             {      
-                int damageTaken = other.gameObject.GetComponent<DamageScript>().damage;
-                StartCoroutine(CanTakeDamage(damageTaken)); //Chamo função de tomar dano/ ficar invulneravel 
+                int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
+                int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
+                StartCoroutine(CanTakeDamage(damageTaken, trueDamage)); //Chamo função de tomar dano/ ficar invulneravel 
             }
             if(other.GetComponent<StunScript>() != null && other.GetComponent<StunScript>().isActiveAndEnabled) //Checa se oq trombou com o player tem stun e se ta ativo no momento da trombada
             {
@@ -185,12 +198,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public IEnumerator CanTakeDamage(int damageTaken) //Função de invencibilidade 
+    public IEnumerator CanTakeDamage(int damageTaken, int trueDamage) //Função de invencibilidade 
     {
-        if(canTakeDamage == true && damageTaken > 0) //Se estiver fora do tempo de invencibilidade
+        if(canTakeDamage == true) //Se estiver fora do tempo de invencibilidade
         {
             canTakeDamage = false; //Seta pra ivulneravel
-            TakeDamage(damageTaken); //Chama a função que diminui a vida (Faz pouca coisa agora mas depois vai ter armor e os karalho)
+            TakeDamage(damageTaken, trueDamage); //Chama a função que diminui a vida (Faz pouca coisa agora mas depois vai ter armor e os karalho)
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,100); //Daqui pra baixo é pra ele piscar, basicamente deixo ele opaco e volto ao normal
             yield return new WaitForSeconds(0.15f);
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
@@ -207,9 +220,13 @@ public class PlayerScript : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken, int trueDamage)
     {
-        health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+        if((damageTaken - armor) > 0)
+        {
+            health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+        }
+        health =  health - trueDamage;
     }
 
     private IEnumerator Stun(float stunTime)
@@ -221,5 +238,34 @@ public class PlayerScript : MonoBehaviour
         playerAnim.SetBool("Stun", false);
         gunCase.SetActive(true); //Ativa a arma
         stuned = false;
+    }
+     public void TakeAmmo(string ammoType, int ammoCount)
+    {
+        switch(ammoType)
+        {
+            case "Pistol":
+            pistolAmmo += ammoCount;
+            break;
+
+            case "Revolver":
+            revolverAmmo += ammoCount;
+            break;
+
+            case "Shotgun":
+            shotgunAmmo += ammoCount;
+            break;
+
+            case "Assault Rifle":
+            assaultRifleAmmo += ammoCount;
+            break;
+
+            case "SMG":
+            smgAmmo += ammoCount;
+            break;
+
+            case "Magnum":
+            magnumAmmo += ammoCount;
+            break;
+        }
     }
 }

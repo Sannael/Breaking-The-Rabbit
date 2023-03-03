@@ -63,7 +63,7 @@ public class SlimeGold : MonoBehaviour
         for(int i = 0; i < drop; i ++)
         {
             GameObject dropCoin = Instantiate(coin, transform.position, Quaternion.identity); //Criar um clone da moedinha
-            dropCoin.GetComponent<Rigidbody2D>().velocity = transform.up * 2f; //Efeitinho da moedinha
+            dropCoin.GetComponent<Rigidbody2D>().velocity = transform.up * 3f; //Efeitinho da moedinha
         }
     }
     private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)

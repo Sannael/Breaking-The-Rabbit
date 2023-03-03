@@ -50,15 +50,35 @@ public class EnemyStatus : MonoBehaviour
     {
         if(other.gameObject.tag == "PlayerWeapon" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
-            health = health - (other.gameObject.GetComponent<DamageScript>().damage - armor);//Pega o script de dano sa
+            int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
+            int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
+            TakeDamage(damageTaken, trueDamage);
             canTakeDmg = false;
         }
         if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
-            health = health - (other.gameObject.GetComponent<DamageScript>().damage - armor);//Pega o script de dano sa
+            int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
+            int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
             canTakeDmg = false;
+            TakeDamage(damageTaken, trueDamage);
             Destroy(other.gameObject);
         }
+        if(other.gameObject.tag == "StarFruit" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
+        {
+            int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
+            int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
+            canTakeDmg = false;
+            TakeDamage(damageTaken, trueDamage);
+        }
+    }
+
+    private void TakeDamage(int damageTaken, int trueDamage)
+    {
+        if((damageTaken - armor) > 0)
+        {
+            health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+        }
+        health =  health - trueDamage;
     }
 
     public IEnumerator Blink()

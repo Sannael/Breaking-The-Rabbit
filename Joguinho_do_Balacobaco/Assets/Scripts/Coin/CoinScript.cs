@@ -15,7 +15,7 @@ public class CoinScript : MonoBehaviour
         Vector2 pos = transform.position; //Valor random, pra n bugar samerda
         pos[0] = 0;
         pos[1] = 0;
-        yield return new WaitForSeconds(0.2f); 
+        yield return new WaitForSeconds(0.5f); 
         this.GetComponent<Rigidbody2D>().velocity = pos; //Parar a quada da moeda
         this.GetComponent<Rigidbody2D>().gravityScale = 0; //Tirar a gravidade da moeda
         

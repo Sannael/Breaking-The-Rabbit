@@ -163,12 +163,21 @@ MonoBehaviour:
   health: 10
   rbVelocity: {x: 0, y: 0}
   gunCase: {fileID: 2142031773990134896}
+  melee: {fileID: 7059088866902653647}
   canTakeDamage: 1
   isAlive: 1
   armor: 0
   dmgCollider: {fileID: 2142031774450265601}
   force: 8
   coinCount: 50
+  revolverAmmo: 20
+  shotgunAmmo: 12
+  pistolAmmo: 20
+  assaultRifleAmmo: 25
+  smgAmmo: 35
+  magnumAmmo: 7
+  starFruit: {fileID: 2960570674585553945, guid: 96a5c81b0a85e9948bbfd3f3a0a6ca07, type: 3}
+  starFruitCount: 1
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4
