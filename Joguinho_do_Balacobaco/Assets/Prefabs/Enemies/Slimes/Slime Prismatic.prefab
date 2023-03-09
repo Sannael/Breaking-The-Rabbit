@@ -207,12 +207,12 @@ MonoBehaviour:
   atkSpeedMax: 2.5
   slimes:
   - {fileID: 7737822459803715730, guid: 037524b0ab8648c44b76c1bebfe8b301, type: 3}
-  - {fileID: 5685213849442540915, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
   - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
   - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
   - {fileID: 4456085485986702330, guid: bf752b9054a025b499b0dbfdf7179f3c, type: 3}
   - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
   - {fileID: 1212614059620878466, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
+  slimeGold: {fileID: 5685213849442540915, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
 --- !u!114 &4655877326597296218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +239,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  trueDamage: 0
