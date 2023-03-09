@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7737822459803715740}
   - component: {fileID: 7737822459803715736}
   - component: {fileID: 7737822459803715743}
-  - component: {fileID: 7737822459803715742}
   - component: {fileID: -1451519154837009466}
   - component: {fileID: 2515615725415484517}
   - component: {fileID: 1147386148231664759}
@@ -144,19 +143,6 @@ MonoBehaviour:
   atkSpeedMin: 2.8
   atkSpeedMax: 3.5
   isAlive: 0
---- !u!114 &7737822459803715742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7737822459803715730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6722d27567b834592806c82b8e8391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!50 &-1451519154837009466
 Rigidbody2D:
   serializedVersion: 4

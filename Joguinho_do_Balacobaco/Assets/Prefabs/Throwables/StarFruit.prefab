@@ -125,6 +125,7 @@ MonoBehaviour:
   speed: 9
   travel: 1
   ammo: {fileID: 804907040599786485, guid: 62ee9422b81937f41abb61118df2bf7a, type: 3}
+  rigidCol: {fileID: 6967078028092675366}
 --- !u!50 &2339553412760600330
 Rigidbody2D:
   serializedVersion: 4

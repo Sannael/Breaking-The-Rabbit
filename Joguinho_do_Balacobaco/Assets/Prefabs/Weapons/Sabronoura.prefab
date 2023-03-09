@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3948151176358817612}
   - component: {fileID: 3948151176358817613}
   - component: {fileID: 1379726172342126427}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
@@ -217,6 +217,7 @@ MonoBehaviour:
   - {fileID: 3948151176358817615}
   - {fileID: 3948151176358817609}
   meleeAnim: {fileID: 3948151176358817608}
+  gunCase: {fileID: 0}
 --- !u!114 &3948151176358817613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  trueDamage: 0
 --- !u!50 &1379726172342126427
 Rigidbody2D:
   serializedVersion: 4
@@ -398,3 +400,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkSpeed: 1
   weapon: {fileID: 3948151176358817652}
+  gunCase: {fileID: 0}

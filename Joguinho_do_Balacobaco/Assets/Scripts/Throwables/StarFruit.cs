@@ -12,13 +12,18 @@ public class StarFruit : MonoBehaviour
     public GameObject ammo;
     private AmmoDrop ammoDropScript;
     private DamageScript dmgScript;
+    private GameObject player;
+    public CircleCollider2D rigidCol;
+    private bool isVisible;
     void Start()
     {
+        isVisible = true;
         count = 1;
         ammoDropCount = 1;
         anim = this.GetComponent<Animator>();
         dmgScript = this.GetComponent<DamageScript>();
         ammoDropScript = ammo.GetComponent<AmmoDrop>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -32,29 +37,31 @@ public class StarFruit : MonoBehaviour
         else
         {
             anim.SetBool("Throw", false);
-            dmgScript.enabled = false; //Desabilita o script de dano
+            this.GetComponent<DamageScript>().enabled = false; //Desabilita o script de dano
+        }
+        if(isVisible == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.05f);//Carambola ir pro player aos poucos 
+            transform.Rotate(0, 0, 20); //Carambola vai girandinho
         }
     }
-
-
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.tag != "Player" && other.tag != "PlayerBullet") //Se colidir com outro objeto, para o arremesso
         {
             travel = false;
+            rigidCol.enabled = false;
             DropAmmo(other.gameObject);
         }
         if(other.tag == "Player" && travel == false && count >0) //Se tiver parado para o arremesso
         {
-            other.GetComponent<PlayerScript>().starFruitCount ++;
-            count --;
-            Destroy(gameObject);
+            PlayerTakeStarFruit();
         }
     }
 
     public void DropAmmo(GameObject other)
     {
-        if(other.gameObject.GetComponent<EnemyStatus>() != null)
+        if(other.gameObject.GetComponent<EnemyStatus>() != null && other.gameObject.GetComponent<EnemyStatus>().health >0)
         {
             if(other.gameObject.GetComponent<EnemyStatus>().health > dmgScript.trueDamage && ammoDropCount > 0) //Se a starfruit n matar o alvo
             {
@@ -71,5 +78,21 @@ public class StarFruit : MonoBehaviour
                 ammoDrop.GetComponent<Rigidbody2D>().velocity = transform.up * 3f; //Efeitinho da munição
             }
         }
+    }
+
+    private void OnBecameInvisible() 
+    {
+        if(count > 0)
+        {
+            isVisible = false;
+        }
+        
+    }
+
+    private void PlayerTakeStarFruit()
+    {
+        count --;
+        Destroy(gameObject);
+        player.GetComponent<PlayerScript>().starFruitCount ++;
     }
 }

@@ -43,7 +43,7 @@ public class SlimeMelee : MonoBehaviour
         }
         else
         {
-            dmgScript.damage = 0;
+            this.GetComponent<DamageScript>().enabled = false;
         }
     }
     
