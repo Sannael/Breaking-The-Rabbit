@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20d1b7503b5f9c64d88a7a42814cd012
+guid: c44a3355ee509cb40aa4552b697c1228
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime_dourado_0
+      name: slime_gold_attack_0
       rect:
         serializedVersion: 2
         x: 20
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 396a8188e4a38794d868c5401e588801
-      internalID: 1335473577
+      spriteID: 433a55cdb31a3d148b5b2ff091759ddb
+      internalID: 1152325814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_1
+      name: slime_gold_attack_1
       rect:
         serializedVersion: 2
-        x: 148
+        x: 140
         y: 172
-        width: 68
-        height: 56
+        width: 72
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77130b1449ed9b646b5d97a6b63fec6b
-      internalID: 1150202506
+      spriteID: 60a5fc050b305ce42818b9401907f6c2
+      internalID: 206187397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_2
+      name: slime_gold_attack_2
       rect:
         serializedVersion: 2
-        x: 24
+        x: 12
         y: 44
-        width: 64
-        height: 56
+        width: 72
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9544ae32b36711e4bb22108d17ca12f7
-      internalID: 1687746824
+      spriteID: a123a8a947d1da24c848b0d895a81292
+      internalID: 216061603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_attack_3
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 44
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc4737890668d8f498e4ba7f3f37b153
+      internalID: -1311514561
       vertices: []
       indices: 
       edges: []
@@ -190,9 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      slime_dourado_0: 1335473577
-      slime_dourado_1: 1150202506
-      slime_dourado_2: 1687746824
+      slime_gold_attack_1: 206187397
+      slime_gold_attack_2: 216061603
+      slime_gold_attack_3: -1311514561
+      slime_gold_attack_0: 1152325814
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -9,10 +9,10 @@ public class EnemyStatus : MonoBehaviour
     public bool isAlive; //Checa se ta vivo; ajuda pra ajeitar animação
     private Animator slimeAnimator;
     public int armor; //armadura do inimigo
-
-
+    private bool sword; //Checa se tomou dano por uma arma melee, evita bugs de dano dobrado
     void Start()
     {
+        sword = false;
         canTakeDmg = true;
         isAlive = true;
         slimeAnimator = this.gameObject.GetComponent<Animator>();
@@ -31,7 +31,7 @@ public class EnemyStatus : MonoBehaviour
             {
                 StartCoroutine(Blink());
             }
-            canTakeDmg = true;
+            //canTakeDmg = true;
             //StartCoroutine(ResetTakeDmg()); //caso o inimigo tenha um tempo de invencibilidade pós ataque
         }
     }
@@ -48,12 +48,13 @@ public class EnemyStatus : MonoBehaviour
 
     public void OnTriggerEnter2D (Collider2D other) //Função de colisão
     {
-        if(other.gameObject.tag == "PlayerWeapon" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
+        if(other.gameObject.tag == "PlayerWeapon" && canTakeDmg == true && sword == false) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
+            sword = true;
+            canTakeDmg = false;
             int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
             int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
             TakeDamage(damageTaken, trueDamage);
-            canTakeDmg = false;
         }
         if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
@@ -82,6 +83,8 @@ public class EnemyStatus : MonoBehaviour
             health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
         }
         health =  health - trueDamage;
+
+        StartCoroutine(ResetTakeDmg());
     }
 
     public IEnumerator Blink()
@@ -93,7 +96,15 @@ public class EnemyStatus : MonoBehaviour
     }
     public IEnumerator ResetTakeDmg()
     {
-        yield return new WaitForSeconds(0.10f);
+        if(sword == true) //Dano pra espada demora um tequin pra poder tomar dano dde novo, evita tomar o dano 2 vezes ou mais no mesmo ataque, hitbox é foda
+        {
+            yield return new WaitForSeconds(0.4f);
+            sword = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         canTakeDmg = true;
     }
 

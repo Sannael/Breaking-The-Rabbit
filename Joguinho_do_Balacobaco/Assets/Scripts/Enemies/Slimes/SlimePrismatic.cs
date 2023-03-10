@@ -160,6 +160,7 @@ public class SlimePrismatic : MonoBehaviour
     }
     public void Dash()
     {
+        rb.mass = 100;
         playerAtkDistance = player.transform.position; //Armazena a posição do player antes do dash
         float distanceX = transform.position[0] - playerAtkDistance[0]; //Calcula a distancia (eixo X) do slime até o player; entre -0,35 e 0,35 player bem em cima ou baixo
         float distanceY = transform.position[1] - playerAtkDistance[1]; //Calcula a distancia (eixo Y) do slime até o player; <0.4 player acima; >0.4 player abaixo
@@ -208,6 +209,7 @@ public class SlimePrismatic : MonoBehaviour
             stunScript.enabled = false; //Desabilita o stun quando acabar o dash
         }   
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
+        rb.mass = 500;
     }
     
     private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)

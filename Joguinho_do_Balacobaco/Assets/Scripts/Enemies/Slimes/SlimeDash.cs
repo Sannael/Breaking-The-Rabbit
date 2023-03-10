@@ -119,6 +119,7 @@ public class SlimeDash : MonoBehaviour
     }
     public void Dash()
     {
+        rb.mass = 100;
         if(stunScript != null) 
         {
             stunScript.enabled = true; //Habilita o stun  durante o dash
@@ -172,6 +173,7 @@ public class SlimeDash : MonoBehaviour
             stunScript.enabled = false; //Desabilita o stun quando acabar o dash
         }   
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
+        rb.mass = 500;
     }
     
     private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)

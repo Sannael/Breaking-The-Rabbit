@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72bc25ea7498b3945aa263da13445ec3
+guid: 85a82cec9225b084ea219c49eaebcb4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,9 +45,9 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  alignment: 9
+  spritePivot: {x: 0.6487399, y: 0.6099018}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,211 +117,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime_dourado_death_0
+      name: sabronoura melee attack_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 214
-        width: 34
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9859e92d6b88c724085adaac90a34147
-      internalID: 638708274
+      spriteID: a09db20f5a5cc474bb23b49275ec54cc
+      internalID: 1199920791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_death_1
+      name: sabronoura melee attack_1
       rect:
         serializedVersion: 2
-        x: 74
-        y: 214
-        width: 34
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 267b26cc822652544a5c49b604016268
-      internalID: -1681619466
+      spriteID: fa990738b9eaeff4488f9cef9e8e1ed2
+      internalID: -2079029883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_death_2
+      name: sabronoura melee attack_2
       rect:
         serializedVersion: 2
-        x: 138
-        y: 214
-        width: 34
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c059c8fcf806a8b4d9131bbe411604d5
-      internalID: -1315964170
+      spriteID: 168c8dc3dcc78104ba2b3ee363230e7c
+      internalID: 891127225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_death_3
+      name: sabronoura melee attack_3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 150
-        width: 34
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d2cb359770c948438e177ac7f943013
-      internalID: -196383344
+      spriteID: 4a09c7aa9de406a4db21a65f0bf8a005
+      internalID: -562116428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_death_4
+      name: sabronoura melee attack_4
       rect:
         serializedVersion: 2
-        x: 76
-        y: 150
-        width: 30
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a17be3d6694893944a3bc4506f63741e
-      internalID: -960477210
+      spriteID: 0efeec8333a02bf408a07341906938dd
+      internalID: -976945854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_death_5
+      name: sabronoura melee attack_5
       rect:
         serializedVersion: 2
-        x: 140
-        y: 150
-        width: 30
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6410704, y: 0.6083629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9bbf375de6092148badbcdfb5ae6772
-      internalID: 1189900829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_death_6
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 86
-        width: 25
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eece2611b8e74d04294b14c13a974ade
-      internalID: 1190382540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_death_7
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 86
-        width: 19
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1973addec7e708b4e99f72c4ba4070ab
-      internalID: -1338416452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_death_9
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 87
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac9ce33a3c34c1f4286a4331003ff31a
-      internalID: -538158141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_death_10
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 23
-        width: 9
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4170751fdffc6a94198307f8bf6ec808
-      internalID: 1518747871
+      spriteID: f588f3c68da4abd4d957005d5cdba9f3
+      internalID: -1444186833
       vertices: []
       indices: 
       edges: []
@@ -330,24 +246,20 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      slime_dourado_death_2: -1315964170
-      slime_dourado_death_6: 1190382540
-      slime_dourado_death_1: -1681619466
-      slime_dourado_death_8: 1889982003
-      slime_dourado_death_10: 1518747871
-      slime_dourado_death_3: -196383344
-      slime_dourado_death_4: -960477210
-      slime_dourado_death_9: -538158141
-      slime_dourado_death_0: 638708274
-      slime_dourado_death_7: -1338416452
-      slime_dourado_death_5: 1189900829
+      sabronoura melee attack_6: 1039146219
+      sabronoura melee attack_4: -976945854
+      sabronoura melee attack_0: 1199920791
+      sabronoura melee attack_1: -2079029883
+      sabronoura melee attack_2: 891127225
+      sabronoura melee attack_3: -562116428
+      sabronoura melee attack_5: -1444186833
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

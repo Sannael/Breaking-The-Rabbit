@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 907590864546dca48b8707e0157cffed
+guid: bf20fe063f7653b4d9317650beb2b419
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,12 +117,180 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime_dourado_attack_0
+      name: slime_gold_death_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 86
-        width: 34
+        x: 20
+        y: 428
+        width: 68
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90566cb813a7e84a949df11cc44675d
+      internalID: 2042461639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 428
+        width: 68
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70e479e8141ddb4e9461c2665e8f10f
+      internalID: -1606128434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 428
+        width: 68
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dabb5cc87fc6db4eb41a7bffdb4b906
+      internalID: 1539263180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 300
+        width: 68
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e868334984ef7d46af5c27b106da6b8
+      internalID: 1666646866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 300
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe34f2878e3ed7469c08847ae37c077
+      internalID: 1509220572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_5
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 300
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8569fef07e1bf341a72f6684de401c0
+      internalID: -284816275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_6
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 172
+        width: 50
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d73a242e3d8aa4095fa9218c1a6e33
+      internalID: 1437598577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 172
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964899168d44a1140903b8ac65981b11
+      internalID: -2145837645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_gold_death_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 174
+        width: 28
         height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8267df0beea045641b13b053a9759578
-      internalID: 1185869961
+      spriteID: 89e9b88e8da22fb468dd5bc025d16e90
+      internalID: 524986748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_dourado_attack_1
+      name: slime_gold_death_10
       rect:
         serializedVersion: 2
-        x: 70
-        y: 86
-        width: 36
-        height: 31
+        x: 36
+        y: 46
+        width: 18
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,50 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aae4ab3a6b45e5c4ab836d1a89fd3849
-      internalID: 2130910526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_attack_2
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 22
-        width: 36
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d45766631977cc04391c212710601110
-      internalID: -756302578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime_dourado_attack_3
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 22
-        width: 31
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2eefefbbf6aaafa4f9c77239e307de75
-      internalID: -385833080
+      spriteID: c2f9dbd95348b7042834e38efcf7e8d3
+      internalID: -1830130620
       vertices: []
       indices: 
       edges: []
@@ -211,10 +337,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      slime_dourado_attack_2: -756302578
-      slime_dourado_attack_0: 1185869961
-      slime_dourado_attack_1: 2130910526
-      slime_dourado_attack_3: -385833080
+      slime_gold_death_10: -1830130620
+      slime_gold_death_3: 1666646866
+      slime_gold_death_7: -2145837645
+      slime_gold_death_4: 1509220572
+      slime_gold_death_6: 1437598577
+      slime_gold_death_1: -1606128434
+      slime_gold_death_9: 524986748
+      slime_gold_death_2: 1539263180
+      slime_gold_death_8: -2019149679
+      slime_gold_death_0: 2042461639
+      slime_gold_death_5: -284816275
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

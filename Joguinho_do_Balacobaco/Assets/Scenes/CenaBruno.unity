@@ -9360,6 +9360,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733225055}
     m_Modifications:
+    - target: {fileID: 775959212935607858, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
       propertyPath: m_Name
       value: Slime Red
@@ -16088,16 +16092,20 @@ PrefabInstance:
       value: Slime Gold
       objectReference: {fileID: 0}
     - target: {fileID: 5685213849442540925, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -537583179, guid: 65eab1f8b8ab80541a045f46a2db26f9, type: 3}
+    - target: {fileID: 5685213849442540925, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685213849442540925, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685213849442540925, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
       propertyPath: m_Color.g
-      value: 0.952381
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685213849442540925, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
       propertyPath: m_Color.r
@@ -27513,6 +27521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733225055}
     m_Modifications:
+    - target: {fileID: 775959212935607858, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
       propertyPath: m_Name
       value: Slime Red (1)
@@ -28841,6 +28853,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733225055}
     m_Modifications:
+    - target: {fileID: 775959212935607858, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
       propertyPath: m_Name
       value: Slime Red (2)
@@ -37550,6 +37566,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2020277383}
     m_Modifications:
+    - target: {fileID: 576731135091703629, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 576731135091703629, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195355324834609286, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195355324834609286, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195355324834609286, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691461438093454334, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691461438093454334, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691461438093454334, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817608, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817609, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817609, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817610, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1199920791, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - target: {fileID: 3948151176358817615, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817615, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948151176358817615, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
+      objectReference: {fileID: 0}
     - target: {fileID: 3948151176358817652, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -37605,6 +37681,18 @@ PrefabInstance:
     - target: {fileID: 3948151176593312221, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
       propertyPath: m_Name
       value: Sabronoura
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661405054822773461, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661405054822773461, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.6410704
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661405054822773461, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.6083629
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e46346c8aa378f4bbdeff5aed5e16b7, type: 3}
@@ -44816,6 +44904,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733225055}
     m_Modifications:
+    - target: {fileID: 775959212935607858, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
       propertyPath: m_Name
       value: Slime Red (1)
@@ -44878,6 +44970,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733225055}
     m_Modifications:
+    - target: {fileID: 775959212935607858, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
       propertyPath: m_Name
       value: Slime Red (3)
@@ -46498,6 +46594,10 @@ PrefabInstance:
     - target: {fileID: 1212614059620878466, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
       propertyPath: m_Name
       value: Slime Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212614059620878525, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1212614059620878526, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
       propertyPath: m_RootOrder
