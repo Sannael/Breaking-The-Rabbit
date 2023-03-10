@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9978a18ff7dc19e4fa901f9a59863ccc
+guid: fe0af3141974ca24c9852debfb2673f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,64 +117,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: melee_attack_0
+      name: sabronoura_melee_attack _0
       rect:
         serializedVersion: 2
-        x: 158
-        y: 391
-        width: 54
-        height: 58
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 0.2, y: 0.27}
+      pivot: {x: 0.6487399, y: 0.6099018}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7ff58222ecf4b4e9d3556643f7ee4f
-      internalID: 1740351176
+      spriteID: a99fda67d63ab9d4b88876d16703452c
+      internalID: -1780064978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_attack_1
+      name: sabronoura_melee_attack _1
       rect:
         serializedVersion: 2
-        x: 404
-        y: 379
-        width: 54
-        height: 58
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 0.2, y: 0.27}
+      pivot: {x: 0.6487399, y: 0.6099018}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8688dfc29f6a4de44abae42e7078aa19
-      internalID: 157061506
+      spriteID: 233e43b03f61a1d48904f7fd74deecec
+      internalID: 1562428126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_attack_2
+      name: sabronoura_melee_attack _2
       rect:
         serializedVersion: 2
-        x: 136
-        y: 97
-        width: 54
-        height: 58
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 0.20000006, y: 0.6143594}
+      pivot: {x: 0.6487399, y: 0.6099018}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1a311246a3b2a240898d3b42b17dc43
-      internalID: 1283754856
+      spriteID: 2d9ec89dfcf135c4d84c4efa1f724a9c
+      internalID: 1203908301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sabronoura_melee_attack _3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6487399, y: 0.6099018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56e4fc7fd8837a45bbbf7377e46b4a5
+      internalID: 962790301
       vertices: []
       indices: 
       edges: []
@@ -190,10 +211,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      melee_attack_3: -1346364049
-      melee_attack_0: 1740351176
-      melee_attack_1: 157061506
-      melee_attack_2: 1283754856
+      sabronoura_melee_attack _0: -1780064978
+      sabronoura_melee_attack _2: 1203908301
+      sabronoura_melee_attack _4: -713047615
+      sabronoura_melee_attack _3: 962790301
+      sabronoura_melee_attack _1: 1562428126
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -20,11 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1740351176, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
+      value: {fileID: 1199920791, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - time: 0.06666667
+      value: {fileID: -2079029883, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
     - time: 0.13333334
-      value: {fileID: 1283754856, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
-    - time: 0.25
-      value: {fileID: 1740351176, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
+      value: {fileID: 891127225, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - time: 0.2
+      value: {fileID: -562116428, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - time: 0.26666668
+      value: {fileID: -976945854, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1444186833, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,15 +50,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1740351176, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
-    - {fileID: 1283754856, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
-    - {fileID: 1740351176, guid: 9978a18ff7dc19e4fa901f9a59863ccc, type: 3}
+    - {fileID: 1199920791, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - {fileID: -2079029883, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - {fileID: 891127225, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - {fileID: -562116428, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - {fileID: -976945854, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
+    - {fileID: -1444186833, guid: 85a82cec9225b084ea219c49eaebcb4e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.26666668
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,28 +88,56 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.13333334
+  - time: 0.06666667
     functionName: DisableCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.13333334
+  - time: 0.06666667
     functionName: EnableCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.25
+  - time: 0.13333334
+    functionName: EnableCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 0.13333334
     functionName: DisableCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.26666668
+  - time: 0.2
+    functionName: EnableCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
+  - time: 0.2
+    functionName: DisableCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: DisableCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
+  - time: 0.33333334
     functionName: EndOfAtk
     data: 
     objectReferenceParameter: {fileID: 0}
