@@ -152,6 +152,7 @@ MonoBehaviour:
   atkSpeed: 4
   force: 5
   distaceInSquares: 3
+  capColl: {fileID: 4456085485986702284}
 --- !u!114 &4456085485986702275
 MonoBehaviour:
   m_ObjectHideFlags: 0
