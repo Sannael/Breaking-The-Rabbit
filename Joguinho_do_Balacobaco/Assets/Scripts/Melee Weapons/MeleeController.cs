@@ -9,10 +9,12 @@ public class MeleeController : MonoBehaviour
     private float currentAtkSpeed;
     public GameObject weapon; //Arma corpo a corpo
     public GameObject gunCase;
+    private GameController gameControllerScript;
     void Start()
     {
         currentAtkSpeed = 0f;
         gunCase = GameObject.Find("Player/GunCase");
+        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class MeleeController : MonoBehaviour
         {
             canAtk = true;
         }
-        if(Input.GetMouseButtonDown(0) && canAtk == true)
+        if(Input.GetMouseButtonDown(0) && canAtk == true && gameControllerScript.isPaused == false)
         {
             currentAtkSpeed = atkSpeed;
             weapon.SetActive(true);

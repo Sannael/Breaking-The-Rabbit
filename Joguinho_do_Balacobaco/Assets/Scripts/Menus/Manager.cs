@@ -5,12 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Texture2D[] cursorTexture; //Arte do cursor
+    public Vector2[] cursorHotspot; //HotSpot X e Y do cursor
+    public GameController gameControllerScript;
+    
     void Start()
     {
-        if(SceneManager.GetActiveScene().name == "Main Menu")
+        if(SceneManager.GetActiveScene().name == "Main Menu") 
         {
             Time.timeScale = 1f;
+        }
+         
+        try //Testando try catch (Nunca aprendi isso direito) 
+        {
+            gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+        }
+        catch
+        {
+
         }
     }
 
@@ -25,6 +37,21 @@ public class Manager : MonoBehaviour
             }
         }
 
+        if(SceneManager.GetActiveScene().name == "Credits" || SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            ChangeCursor(1);
+        }
+        if(SceneManager.GetActiveScene().name == "CenaBruno" ||SceneManager.GetActiveScene().name == "CenaGuima" || SceneManager.GetActiveScene().name == "CenaPaula")
+        {
+            if(gameControllerScript.isPaused == true)
+            {
+                ChangeCursor(1);
+            }
+            else
+            {
+                ChangeCursor(0);
+            }
+        }
     }
 
     public void LoadScene(int scene)
@@ -39,6 +66,11 @@ public class Manager : MonoBehaviour
         4 = CenaBruno
 
         */
+    }
+
+    public void ChangeCursor(int cursorID)
+    {
+        Cursor.SetCursor(cursorTexture[cursorID], cursorHotspot[cursorID], CursorMode.Auto); //Muda a arte e seta o hotspot do cursor
     }
     public void ClickStart()
     {
