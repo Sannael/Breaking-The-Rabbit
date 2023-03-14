@@ -178,6 +178,7 @@ MonoBehaviour:
   magnumAmmo: 7
   starFruit: {fileID: 2960570674585553945, guid: 96a5c81b0a85e9948bbfd3f3a0a6ca07, type: 3}
   starFruitCount: 1
+  maxHealth: 10
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4

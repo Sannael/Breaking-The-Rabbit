@@ -6,18 +6,19 @@ using UnityEngine;
 public class HUDController : MonoBehaviour
 {
     public GameObject[] hearts; //Lista com as imagens das cenouras
-
-
-    // Start is called before the first frame update
+    public int playerHealth;
+    public int count;
+    public GameObject[] heart;
     void Start()
     {
-
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerScript>().health;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (GameObject.Find("Player").GetComponent<PlayerScript>().health)
+        /*switch (GameObject.Find("Player").GetComponent<PlayerScript>().health)
         {
             case 0:
                 hearts[0].SetActive(false);
@@ -82,8 +83,18 @@ public class HUDController : MonoBehaviour
                 hearts[4].GetComponent<CarrotSpriteControl>().TrocaSprite(1);
                 break;
 
-        }
-        
+        }*/
     }
 
+    public void CreateHearths()
+    {
+        for(int i = 2; i > count && i < (playerHealth/2); i += 2)
+        {
+            Vector3 pos = heart[i -2].transform.position;
+            pos[0] += 40;
+            heart[i-1] = Instantiate(heart[0], pos, Quaternion.identity);
+            
+        }
+        count = heart.Length;
+    }
 }

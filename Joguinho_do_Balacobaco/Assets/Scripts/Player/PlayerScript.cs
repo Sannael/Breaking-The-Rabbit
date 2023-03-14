@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public bool canRoll; //verifica se pode rolar 
     public bool canMove; //verifica se pode se movimentar (Guima: deixei publico para acessar do script da câmera)
     public int health; //Vida do Cueio
+    public int maxHealth;
     public Vector2 rbVelocity; //velocidade do rigidibody
     public GameObject gunCase; //Estojo de arma, é meio q a mão do player pra arma de fogo (talvez arma num geral (?) n pensei nisso) 
     public GameObject melee;
@@ -29,68 +30,73 @@ public class PlayerScript : MonoBehaviour
     public int revolverAmmo, shotgunAmmo, pistolAmmo, assaultRifleAmmo, smgAmmo, magnumAmmo; //Tipos de munição que o player tem
     public GameObject starFruit;
     public int starFruitCount; //Contagem de carambolas
+    private GameController gameControllerScript;
     void Start()
     {
         stuned = false;
         sceneManager = GameObject.Find("SceneManager");
+        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
         armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if(health <= 0 && isAlive == true) //se a vida zerar ele merre
+        if(gameControllerScript.isPaused == false)
         {
-            DisbleAll(); //Função de desativar todos os itenbs do player
-            isAlive = false; //Murreu :(
-            Animations("Death"); //Animação de Death
-        }
-        else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
-        {
-            direcao = Input.GetAxis("Horizontal"); 
+            if(health <= 0 && isAlive == true) //se a vida zerar ele merre
+            {
+                DisbleAll(); //Função de desativar todos os itenbs do player
+                isAlive = false; //Murreu :(
+                Animations("Death"); //Animação de Death
+            }
+            else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
+            {
+                direcao = Input.GetAxis("Horizontal"); 
+                
+                if(canTakeDamage == true) //Se o playerpoder tomar dano
+                {
+                    dmgCollider.enabled = true; //ativa o collider de dano
+                }
+                else
+                {
+                    dmgCollider.enabled = false; //desativa o collider de dano
+                }
             
-            if(canTakeDamage == true) //Se o playerpoder tomar dano
-            {
-                dmgCollider.enabled = true; //ativa o collider de dano
-            }
-            else
-            {
-                dmgCollider.enabled = false; //desativa o collider de dano
-            }
-        
-            if((direcao >0 && direita == true) || (direcao <0 && direita == false)) //Checa se a necessidade de espelhar(Coelho olhar pra um lado e andar pro outro)
-            {
-                direita = !direita; //inverte o valor da direita (true pra false / false pra true)
-                transform.Rotate(0f ,180 ,0f); //espelha a imagem
-            }
+                if((direcao >0 && direita == true) || (direcao <0 && direita == false)) //Checa se a necessidade de espelhar(Coelho olhar pra um lado e andar pro outro)
+                {
+                    direita = !direita; //inverte o valor da direita (true pra false / false pra true)
+                    transform.Rotate(0f ,180 ,0f); //espelha a imagem
+                }
 
-            if(rollCdr >0) //Roll em cooldown
-            {
-                canRoll = false;
-                rollCdr -= Time.deltaTime; //Diminui aos poucos o cdr da esquiva
-            }
-            else
-            {
-                canRoll = true; //Roll fora do cooldown
-            }
+                if(rollCdr >0) //Roll em cooldown
+                {
+                    canRoll = false;
+                    rollCdr -= Time.deltaTime; //Diminui aos poucos o cdr da esquiva
+                }
+                else
+                {
+                    canRoll = true; //Roll fora do cooldown
+                }
 
-            if(canMove == true)
-            {
-                Move();
-            }
-        
-            walking = playerAnim.GetBool("Walking"); //Todo frame puxa valor igual o valor armazenado nos parametros do animator
-            idle = playerAnim.GetBool("Idle");
-            roll = playerAnim.GetBool("Roll");
+                if(canMove == true)
+                {
+                    Move();
+                }
+            
+                walking = playerAnim.GetBool("Walking"); //Todo frame puxa valor igual o valor armazenado nos parametros do animator
+                idle = playerAnim.GetBool("Idle");
+                roll = playerAnim.GetBool("Roll");
 
-            if(Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true)  
-            {
-                StartCoroutine(Roll());
-            }
+                if(Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true)  
+                {
+                    StartCoroutine(Roll());
+                }
 
-            UpdateAmmo();
+                UpdateAmmo();
+            }
         }
     }
 
