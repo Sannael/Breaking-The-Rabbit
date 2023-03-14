@@ -114,7 +114,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212614059620878466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -164,6 +164,7 @@ MonoBehaviour:
   atkSpeed: 4
   force: 5
   distaceInSquares: 3.3
+  capColl: {fileID: 1212614059620878467}
 --- !u!114 &1212614059620878523
 MonoBehaviour:
   m_ObjectHideFlags: 0

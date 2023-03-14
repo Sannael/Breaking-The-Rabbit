@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlimeDash : MonoBehaviour
 {
-   private GameObject player; //Var que vai receber o Player
+    private GameObject player; //Var que vai receber o Player
     public float speed; //Determina a velocidade com que o inimigo irá se mover
     public bool isVisible; //checa se esta visivel em alguma camera
     public EnemyStatus enemyStastus; //Script de status do inimigo
@@ -23,6 +23,7 @@ public class SlimeDash : MonoBehaviour
     [Tooltip("Distancia que o player tem que chegar pro slime dar o dash, calculada em quadrados, ou escale /2")]
     public float distaceInSquares; //Distancia dpo dash em quadrados (metade da scale) 
     private StunScript stunScript; //Script de Stun
+    public CapsuleCollider2D capColl; //Colisor de stun; ativa só no dash se n pode bugar, colisor sempre da dor de cabeça ;-;
     void Start()
     {
         if(this.GetComponent<StunScript>() != null) //Se o Slime tiver script de stun armazena ele 
@@ -124,6 +125,7 @@ public class SlimeDash : MonoBehaviour
         {
             stunScript.enabled = true; //Habilita o stun  durante o dash
         }
+        capColl.enabled = true;
         playerAtkDistance = player.transform.position; //Armazena a posição do player antes do dash
         float distanceX = transform.position[0] - playerAtkDistance[0]; //Calcula a distancia (eixo X) do slime até o player; entre -0,35 e 0,35 player bem em cima ou baixo
         float distanceY = transform.position[1] - playerAtkDistance[1]; //Calcula a distancia (eixo Y) do slime até o player; <0.4 player acima; >0.4 player abaixo
@@ -174,6 +176,7 @@ public class SlimeDash : MonoBehaviour
         }   
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
         rb.mass = 500;
+        capColl.enabled = false;
     }
     
     private void OnBecameVisible() //Quando o objeto se tornar visivel em qualquer camera do jogo (A do scene conta)
