@@ -7,11 +7,12 @@ public class BarrelGunScript : MonoBehaviour
     private Vector2 lookDirection; //Direção do mouse em relação a arma
     private float lookAngle; //Angulo do mouse em relação a arma
     public GameObject gun; //Gameobject da arma
-    private bool direita = true; //Sentido da arma, pra espelhar a arte da arma
+    public bool direita = true; //Sentido da arma, pra espelhar a arte da arma
     [Tooltip("Pra arma não ficar estranha quando espelha tem q ter um valor do eixo Z que fiquei mais certinho na hora de espelhar. Só ir testtando pelo barrel até achar um bom valor")]
     public float zValueToMirror; //Valor que o eixo de rotação Z tem q ta pra não espelhar de maneira bugada
     void Start()
     {
+        direita = true;
     }
 
     void FixedUpdate()

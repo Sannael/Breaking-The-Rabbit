@@ -9,10 +9,8 @@ public class EnemyStatus : MonoBehaviour
     public bool isAlive; //Checa se ta vivo; ajuda pra ajeitar animação
     private Animator slimeAnimator;
     public int armor; //armadura do inimigo
-    private bool sword; //Checa se tomou dano por uma arma melee, evita bugs de dano dobrado
     void Start()
     {
-        sword = false;
         canTakeDmg = true;
         isAlive = true;
         slimeAnimator = this.gameObject.GetComponent<Animator>();
@@ -23,16 +21,6 @@ public class EnemyStatus : MonoBehaviour
         {
             Animations("Death");
             isAlive = false;  
-        }
-
-        if(canTakeDmg == false)
-        {
-            if(health >0)
-            {
-                StartCoroutine(Blink());
-            }
-            //canTakeDmg = true;
-            //StartCoroutine(ResetTakeDmg()); //caso o inimigo tenha um tempo de invencibilidade pós ataque
         }
     }
 
@@ -48,20 +36,20 @@ public class EnemyStatus : MonoBehaviour
 
     public void OnTriggerEnter2D (Collider2D other) //Função de colisão
     {
-        if(other.gameObject.tag == "PlayerWeapon" && canTakeDmg == true && sword == false) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
+        if(other.gameObject.tag == "PlayerWeapon" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
-            sword = true;
             canTakeDmg = false;
             int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
             int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
-            TakeDamage(damageTaken, trueDamage);
+            float dmgCooldown = 0.4f;
+            TakeDamage(damageTaken, trueDamage, dmgCooldown);
         }
         if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
             int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
             int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
-            canTakeDmg = false;
-            TakeDamage(damageTaken, trueDamage);
+            float dmgCooldown = 0;
+            TakeDamage(damageTaken, trueDamage, dmgCooldown);
             Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "StarFruit" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
@@ -70,21 +58,22 @@ public class EnemyStatus : MonoBehaviour
             {
                 int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
                 int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
-                canTakeDmg = false;
-                TakeDamage(damageTaken, trueDamage);
+                float dmgCooldown = 0;
+                TakeDamage(damageTaken, trueDamage, dmgCooldown);
             }
         }
     }
 
-    private void TakeDamage(int damageTaken, int trueDamage)
+    private void TakeDamage(int damageTaken, int trueDamage, float dmgCooldown)
     {
         if((damageTaken - armor) > 0)
         {
             health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
         }
         health =  health - trueDamage;
+        StartCoroutine(Blink());
 
-        StartCoroutine(ResetTakeDmg());
+        StartCoroutine(ResetTakeDmg(dmgCooldown));
     }
 
     public IEnumerator Blink()
@@ -94,17 +83,9 @@ public class EnemyStatus : MonoBehaviour
         yield return new WaitForSeconds(0.30f);
         this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(colorNow[0] ,colorNow[1], colorNow[2], 255);
     }
-    public IEnumerator ResetTakeDmg()
+    public IEnumerator ResetTakeDmg(float dmgCooldown)
     {
-        if(sword == true) //Dano pra espada demora um tequin pra poder tomar dano dde novo, evita tomar o dano 2 vezes ou mais no mesmo ataque, hitbox é foda
-        {
-            yield return new WaitForSeconds(0.4f);
-            sword = false;
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
+        yield return new WaitForSeconds(dmgCooldown);
         canTakeDmg = true;
     }
 
