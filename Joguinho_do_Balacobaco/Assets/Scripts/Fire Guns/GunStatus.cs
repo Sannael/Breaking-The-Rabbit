@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunStatus : MonoBehaviour
 {
     public Transform barrelTip; //Cano da arma, pra sair o projetil
+     public Transform capsuleLocate; //Saida da capsula, pra armas que a capsula precisa sair de um lugar diferente do cano da arma
     public GameObject bullet, capsule; //Projétil e capsula da arma
     private Animator gunAnimator; //Animator da arma 
     public float gunRate; //cadencia da arma 
@@ -29,7 +30,15 @@ public class GunStatus : MonoBehaviour
     private GameObject player;
     [Tooltip("A cadencia da arma é automatica?")]
     public bool automatic; //Cadencia automatica?
-    
+    public ParticleSystem gunMag; //pente da arma; caso tiver
+    [Tooltip("Rotação do pente da arma (se houver), isso é pra animação de reload poder jogar o ponte fora de maneira mais natural possivel")]
+    public Vector3 magRotation; //Rotaçãpo do pente da arma (Animação de reload) pra armas que dropam o pente todo
+    [Tooltip("Isso aqui usa pra armas que tem o engatilhar fora da animação de recarregar")] 
+    public bool cockingGun; //pra armas que tem o engatilhar fora da animação de recarregar 
+    [Tooltip("Usdo somente para armas que precisam ter uma dispersão no tiro(exemplo uma shotgun), se precisar é só colocar aqui a quantidade de balas que não fazer essa dispersão, se não precisar deixa 0")]
+    public int bulletSpread; //Pra armas que o tiro precisa ter uma dispersão
+    [Tooltip("Distancia minima e maxima da dispersao, se n houver deixa 0")]
+    public int bulletSpreadMin, bulletSpreadMax; //Distancia minima e maxima da dispersão
     void Start()
     {
         playerAmmo = 0;
@@ -39,7 +48,7 @@ public class GunStatus : MonoBehaviour
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         ps = player.GetComponent<PlayerScript>();
         starFruit = ps.starFruit;
-        //SetAmmo();
+        reloading = false;
     }
     void Update()
     {
@@ -70,22 +79,24 @@ public class GunStatus : MonoBehaviour
                 }
             }
             
-            if(Input.GetMouseButton(1) && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
+            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
             {
                 if(reloading == true)
                 {
                     reloading = false;
+                    Animations("Idle");
                 }
                 gunAnimator.SetBool("AutoShooting", true);
             }
 
-            if(Input.GetMouseButtonUp(1) && automatic == true) //Parar de atirar com arma que é automatica
+            if(Input.GetMouseButtonUp(1) && automatic == true || automatic == true && ammo <= 0) //Parar de atirar com arma que é automatica
             {
                 gunAnimator.SetBool("AutoShooting", false);
             }
 
             if(ammo == 0 && reloading == false && playerAmmo >0) //Se tiver sem munição na arma, n tiver recarregando e player ainda tiver bala guardada
             {
+                reloading = true;
                 if(gunManualReload == true) //Arma de Reload Manual (Revolver, Shotgun)
                 {
                     Animations("FirstReload");
@@ -94,7 +105,7 @@ public class GunStatus : MonoBehaviour
                 {
                     Animations("AutoReload");
                 }
-                reloading = true;
+                
             }
             if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && playerAmmo >0 && reloading == false) //Usar R pra reload
             {
@@ -178,20 +189,55 @@ public class GunStatus : MonoBehaviour
     }
     public void Animations(string animation) //animações da arma, recebe o trigger da animação como parametro 
     {
-        gunAnimator.Rebind(); //Reseta todos parametros do animator
-        gunAnimator.SetTrigger(animation); //Chama a animação
-        
+        if(gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting") && animation == "FirstReload") //N bugar animação de quando ta atirando e vai reccarregar(ele cancelava uma e só fazia a outra)
+        {
+            StartCoroutine(WaitAnimation(animation));
+        }
+        else
+        {
+            gunAnimator.Rebind(); //Reseta todos parametros do animator
+            gunAnimator.SetTrigger(animation); //Chama a animação
+        }
+    }
+
+    public IEnumerator WaitAnimation(string animation)
+    {
+        float animationTime = gunAnimator.GetCurrentAnimatorClipInfo(0).Length; //Pega o tamanho da animação que ta rodando
+        yield return new WaitForSeconds(animationTime); //Espera a animação acabar e chama a outra animação
+        Animations(animation);
     }
 
     public void Shoot()
     {
-        GameObject firedCapsule = Instantiate(capsule, barrelTip.position, barrelTip.rotation); //"Cria" um clone da bala no cano da arma
-        firedCapsule.GetComponent<Rigidbody2D>().velocity = barrelTip.up * capsuleSpeed; //Calculo da velocidade do disparo disparo
-
-        GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da capsula no cano da arma
+        if(bulletSpread >0)
+        {
+            for(int i = bulletSpread; i >0; i --)
+            {
+                GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
+                firedBullet.transform.Rotate(0, 0, Random.Range(bulletSpreadMin, bulletSpreadMax)); //Cria o efeito de dispersão
+            }
+        }
+        else
+        {
+            GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
+        }
+        
         canShoot = false;
         gunRateCurrent = gunRate; //reseta o cooldown de tiro (cadencia)
         ammo --; //Perde um de munição
+    }
+    public void Capsule()
+    {
+        if(capsuleLocate != null) //Verifica se tem um lugar diferente pra capsula sair 
+        {
+            GameObject firedCapsule = Instantiate(capsule, capsuleLocate.position, capsuleLocate.rotation); //"Cria" um clone da capsula no cano da arma
+            firedCapsule.GetComponent<Rigidbody2D>().velocity = capsuleLocate.up * capsuleSpeed; //Calculo da velocidade da capsula
+        }
+        else
+        {
+            GameObject firedCapsule = Instantiate(capsule, barrelTip.position, barrelTip.rotation); //"Cria" um clone da bala no cano da arma
+            firedCapsule.GetComponent<Rigidbody2D>().velocity = barrelTip.up * capsuleSpeed; //Calculo da velocidade da capsula
+        }
     }
 
     public void ManualReload() //Armas que tem reload manual
@@ -205,11 +251,37 @@ public class GunStatus : MonoBehaviour
         {
             Animations("ManualReload"); //Colocar bala por bala até atingir munição maxima/ cancelar a animação
         }
+        if(cockingGun == true)
+        {
+            if(ammo == totalAmmo || playerAmmo == 0) //pra armas que precisam engatilhar em uma animação separada 
+            {
+                Animations("CockingGun");
+            }
+        }
+        reloading = false;
     }
 
     public void AutoReload() //Reload de armas com reload automatico
     {
-                    //Ainda vou mexer nisso só ignora
+        for(int i = playerAmmo; i >0; i --) //Pega os valores que o player tem de munição total
+        {
+            if(i <= (totalAmmo - ammo)) //Verifica se cabe na arma
+            {
+                ammo += i;
+                playerAmmo -= i;
+                break;
+            }
+        }
+        reloading = false;   
+    }
+
+    public void DropMag() //Efeito de joagr o pente fora, pra armas que troca o pente
+    {
+        ParticleSystem magazine = Instantiate (gunMag, transform.position,Quaternion.identity); //Instancia o pente de munição
+        if(GetComponentInParent<BarrelGunScript>().direita == false) //Espelhar o pente caso necessario
+        {
+            magazine.transform.Rotate(magRotation); //Espelha 100% pra n caga o efeitinho
+        }
     }
 }
 

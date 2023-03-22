@@ -6,7 +6,6 @@ public class BulletScript : MonoBehaviour
 {
     public float duration, bulletSpeed; //Duração da bala até ser destruida / Velocidade da bala
     private bool travel = true; //Pra checar se a bala ta em moviento
-    public int damage; //Dano da bala
 
     void Start()
     {   

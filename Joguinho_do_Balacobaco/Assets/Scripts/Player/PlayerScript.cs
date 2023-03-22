@@ -176,6 +176,7 @@ public class PlayerScript : MonoBehaviour
         rb.velocity = rbVelocity; //Reseta o valor da velocity do rigidibody
         canMove = true;
         rollCdr = rollCdrInitial; //Reseta o valor de Cdr do Roll
+        gunCase.GetComponentInChildren<GunStatus>().reloading = false; //Se n fizer isso, caso usar o rolamento recarregando da pau
         gunCase.SetActive(true);
         canTakeDamage = true;
     }
