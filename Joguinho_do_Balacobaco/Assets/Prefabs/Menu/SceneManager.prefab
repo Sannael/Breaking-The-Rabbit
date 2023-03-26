@@ -52,6 +52,7 @@ MonoBehaviour:
   - {x: 150, y: 110}
   - {x: 2, y: 12}
   gameControllerScript: {fileID: 0}
+  pnl: {fileID: 6705450463921095584, guid: 92e9228277663d84fb27833b1280c05e, type: 3}
 --- !u!114 &1600927414306657556
 MonoBehaviour:
   m_ObjectHideFlags: 0

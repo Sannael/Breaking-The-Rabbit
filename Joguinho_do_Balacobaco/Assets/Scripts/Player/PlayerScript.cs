@@ -125,6 +125,7 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
+        
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0); //Eixos da movimentação (X, Y, Z)
         
         transform.position = transform.position + speed * move * Time.deltaTime; //Movimentação com mais fluidez do deltatime
