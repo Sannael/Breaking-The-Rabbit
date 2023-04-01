@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bca25c7d2211fb47a019cdf8a2e998d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esc: {fileID: 2272401444669932970, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   cursorTexture:
   - {fileID: 2800000, guid: 9b4b1778241e0db43a4ae965051d1d77, type: 3}
   - {fileID: 2800000, guid: 584698239cdec1744ac3f1e5d5524df7, type: 3}
@@ -52,7 +53,6 @@ MonoBehaviour:
   - {x: 150, y: 110}
   - {x: 2, y: 12}
   gameControllerScript: {fileID: 0}
-  pnl: {fileID: 6705450463921095584, guid: 92e9228277663d84fb27833b1280c05e, type: 3}
 --- !u!114 &1600927414306657556
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference movement, mousePosition, meleeAtk, shoot, reload, dash, pause, openInventary, skipDialogue, starFruitAction, interaction;
+    [SerializeField]
+    private InputActionReference[] hotbar = new InputActionReference[6];
+    public PlayerInput playerInput;
     private GameObject sceneManager; 
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
+    [SerializeField]
     private bool direita; //checha a direção no eixo X
     private float direcao; //direção em float (<0 = esquerda; >0 = direita; 0 = parado)
     private bool walking, idle, roll; //actions
@@ -31,6 +38,11 @@ public class PlayerScript : MonoBehaviour
     public GameObject starFruit;
     public int starFruitCount; //Contagem de carambolas
     private GameController gameControllerScript;
+    public GameObject pnlControls;
+    void Awake()
+    {
+        pnlControls.GetComponent<ControlSettings>().Awake();
+    }
     void Start()
     {
         stuned = false;
@@ -54,8 +66,6 @@ public class PlayerScript : MonoBehaviour
             }
             else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
             {
-                direcao = Input.GetAxis("Horizontal"); 
-                
                 if(canTakeDamage == true) //Se o playerpoder tomar dano
                 {
                     dmgCollider.enabled = true; //ativa o collider de dano
@@ -90,7 +100,7 @@ public class PlayerScript : MonoBehaviour
                 idle = playerAnim.GetBool("Idle");
                 roll = playerAnim.GetBool("Roll");
 
-                if(Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true)  
+                if(dash.action.IsPressed()  && canRoll == true)  
                 {
                     StartCoroutine(Roll());
                 }
@@ -125,9 +135,10 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
-        
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0); //Eixos da movimentação (X, Y, Z)
-        
+        Vector3 move = movement.action.ReadValue<Vector3>();
+        Vector2 dirMouse = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>());
+        direcao = dirMouse[0] - transform.position[0];
+
         transform.position = transform.position + speed * move * Time.deltaTime; //Movimentação com mais fluidez do deltatime
 
         if(move[0] != 0 || move[1] !=0) //checa se o cueio ta em movimento
@@ -156,13 +167,26 @@ public class PlayerScript : MonoBehaviour
 
         
         Vector2 vel = transform.right; //Valor aleatório só ignora tbm, pra n dar B.O depois aaaaaaaaaaaa :v (a var vel é usada pra força usada pro roll)
-        vel[0] = transform.right[0] *  force; //Calculo da força no "Empurrao" pra acontecer o roll (Horizontal)
+        Vector3 move = movement.action.ReadValue<Vector3>();
+        bool rotate = false;
 
-        if(Input.GetAxis("Vertical") > 0) //Checa se o player ta indo diagonal pra cima ou pra baixo 
+        if(move[0] >0 && direita == true) //Checa a direção que o player ta olhando e a direção que ta andando, pra ver se precisa espelhar
+        { //Player na direita (olhando pra esquerda) e andando pra direita (andando de costas); precisa espelhar
+            transform.Rotate(0, 180,0);
+            rotate = true;
+        }
+        if(move[0] <0 && direita == false)
+        {//Player na esquerda (olhando pra direita) e andando pra esquerda (andando de costas); precisa espelhar
+            transform.Rotate(0, 180,0);
+            rotate = true;
+        }
+        vel[0] = transform.right[0] *  force;//Calculo da força no "Empurrao" pra acontecer o roll (Horizontal)
+
+        if(move[1] > 0) //Checa se o player ta indo diagonal pra cima ou pra baixo 
         {
             vel[1] = transform.up[1] *  force; //Calculo da força no "Empurrao" pra acontecer o roll (Vertical) pra cima
         }
-        else if(Input.GetAxis("Vertical") < 0) //Checa se o player ta indo diagonal pra cima ou pra baixo
+        else if(move[1] < 0) //Checa se o player ta indo diagonal pra cima ou pra baixo
         {
             vel[1] = transform.up[1] * (- force); //Calculo da força no "Empurrao" pra acontecer o roll (Vertical) pra baixo
         }
@@ -180,6 +204,11 @@ public class PlayerScript : MonoBehaviour
         gunCase.GetComponentInChildren<GunStatus>().reloading = false; //Se n fizer isso, caso usar o rolamento recarregando da pau
         gunCase.SetActive(true);
         canTakeDamage = true;
+        
+        if(rotate == true) //Se espelhou quando acabar o roll tem q espelhar dnovo pra voltar ao normal
+        {
+            transform.Rotate(0,-180,0);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other) 

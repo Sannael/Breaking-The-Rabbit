@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Manager : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference esc;
     public Texture2D[] cursorTexture; //Arte do cursor
     public Vector2[] cursorHotspot; //HotSpot X e Y do cursor
     public GameController gameControllerScript;
@@ -29,7 +32,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-        if(Input.GetKeyDown(KeyCode.Escape)) //pressionando a tecla ESC
+        if(esc.action.IsPressed()) //pressionando a tecla ESC
         {
             if(SceneManager.GetActiveScene().name == "Credits") //checa se ta na tela de credits,
             {
