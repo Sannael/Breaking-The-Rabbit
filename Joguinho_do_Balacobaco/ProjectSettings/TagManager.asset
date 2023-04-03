@@ -16,6 +16,8 @@ TagManager:
   - BossStage
   - BossStageAtk
   - StarFruit
+  - Rooms
+  - RoomSpawner
   layers:
   - Default
   - TransparentFX
