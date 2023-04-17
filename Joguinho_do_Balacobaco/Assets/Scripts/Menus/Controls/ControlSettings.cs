@@ -13,6 +13,7 @@ public class ControlSettings : MonoBehaviour
     public Image[] keys;
     public Sprite[] allKeys; //Armazena o sprite de todas as letras (se for alterar a arte do teclado, cortar tecla por tecla e manter o padrão de nome, (nome da tecla em minuculo), Exemplo de tecla "especial": esc = "escape")
     public Sprite[] allPressedKeys; //armazena o sprite de todas as letras pressionadas (mesma ordem do vetor de cima ^, padrao de nome: nome da tecla + p, exemplo: e = "ep", esc = "escapep")
+    public GameObject[] keysWarning = new GameObject[19];
     [SerializeField]
     private string[] playerActions = new string[19];
     public PlayerInput playerInput;
@@ -20,10 +21,12 @@ public class ControlSettings : MonoBehaviour
     private int keyId; 
     public TMP_Text changeKeytxt;
     private bool changingColortxt;
-    public GameObject pnlChangeKey;
+    public GameObject pnlChangeKey, pnlChangeKeytxt;
     public TMP_InputField newKey;
     [SerializeField]
     private bool savedControl; //checa se todas alterações nos controles foram salvas
+    [SerializeField]
+    private bool sameKey = false;
     public GameObject pnlSureRestoring, pnlBackNoSaving;
     public Button btnSalvar;
     public InputActionReference esc, tab, leftShift, leftAlt, enter, rightButton, leftButton;
@@ -61,9 +64,9 @@ public class ControlSettings : MonoBehaviour
                 playerControls[i] = LoadKeys(i);
             }
         }
-        SaveChanges();
+        SaveChanges(); //Salva mudanças
         ChangeAllImages(); //Troca todas as imagens das teclas pra novas teclas, toda vez q mudar de scene isso tem q acontecer
-        LoadBindings();
+        LoadBindings(); //Carrega as mudanças (garantias)
     }
 
     private void ControlInitialValues()
@@ -88,14 +91,14 @@ public class ControlSettings : MonoBehaviour
         playerControls[17] = "5";
         playerControls[18] = "6";
     }
-    private void SaveResetValuesKey()
+    private void SaveResetValuesKey() //Salva os valores qnd abrir a sala de controles mas antes de salvar, caso precise resetar até iultimo dado salvo
     {
         for(int i =0; i < playerControls.Length; i ++)
         {
             keysBeforaSaving[i] = playerControls[i];
         }
     }
-    private void ParcialResetKeys()
+    private void ParcialResetKeys() //Reseta pros mesmo salvos da ultima vez
     {
         for(int i =0; i < playerControls.Length; i ++)
         {
@@ -104,13 +107,13 @@ public class ControlSettings : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(ChangeColorKey());
+        StartCoroutine(ChangeColorKey()); //Chama a animação de engayzamento do texto de trocar as teclas
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(changeKeytxt.isActiveAndEnabled == true )
+        if(changeKeytxt.isActiveAndEnabled == true) //Verifica se o texto de mudar teclas ta habilitado
         {
             if(changingColortxt == false)
             {
@@ -122,87 +125,82 @@ public class ControlSettings : MonoBehaviour
             changingColortxt = false;
         }
 
-        if(savedControl == true)
+        if(savedControl == true || sameKey == true) //verifica se houve mudanças nos controles e/ou se tem teclas repetidas
         {
-            btnSalvar.interactable = false;
+            btnSalvar.interactable = false; //Desbilita o botao de salvar controles
         }
         else
         {
-            btnSalvar.interactable = true;
+            btnSalvar.interactable = true; //Abilita o botao de salvar controles
         }
 
-        if(keyId != playerActions.Length)
+        if(keyId != playerActions.Length) //Trata exceção (teclas especiais e Mouse) qnd for trocar as teclas
         {
             if(esc.action.IsPressed())
             {
-                Debug.Log("escape");
                 SelectKey("escape");
             }
             if(tab.action.IsPressed())
             {
-                Debug.Log("tab");
                 SelectKey("tab");
             }
             if(leftShift.action.IsPressed())
             {
-                Debug.Log("leftShift");
                 SelectKey("leftShift");
             }
             if(leftAlt.action.IsPressed())
             {
-                Debug.Log("leftAlt");
                 SelectKey("leftAlt");
             }
             if(enter.action.IsPressed())
             {
-                Debug.Log("enter");
                 SelectKey("enter");
             }
             if(rightButton.action.IsPressed())
             {
-                Debug.Log("rightButton");
                 SelectKey("rightButton");
             }
             if(leftButton.action.IsPressed())
             {
-                Debug.Log("leftButton");
                 SelectKey("leftButton");
             }
         }
     }
 
-    public void OpenClosePnlChangeKey()
+    public void OpenClosePnlChangeKey() //Se o texto tiver ativado habilita a tela de troca tecla, se n tiver desabilitas
     {
         if(changingColortxt == false)
         {
             pnlChangeKey.SetActive(true);
+            pnlChangeKeytxt.SetActive(true);
         }
         else
         {
+            pnlChangeKeytxt.SetActive(false);
             pnlChangeKey.SetActive(false);
         }
     } 
     
-    public void SureRestoringKeys()
+    public void SureRestoringKeys() //Promp de certeza que vai resetar as teclas
     {
         pnlSureRestoring.SetActive(true);
     } 
-    public void CloseSureRestoringKeys()
+    public void CloseSureRestoringKeys() //Fechar o prompt ^
     {
         pnlSureRestoring.SetActive(false);
     } 
-    public void Back()
+    public void Back() //Botao de voltar
     {
-        if(savedControl == true)
+        if(savedControl == true) //Se tiver salvado as teclas, fecha a tela de botoes
         {
             this.GetComponent<Pause>().ClosePanelControls();
         }
-        else
+        else //se n vem o prompt de certeza que n quer salvar
         {
             pnlBackNoSaving.SetActive(true);
         }
     }
-    public void BackNoSavingYes()
+    public void BackNoSavingYes() //Confirmando que não quer salvar os botoes qnd fechar
     {
         ParcialResetKeys();
         ChangeAllImages();
@@ -210,12 +208,12 @@ public class ControlSettings : MonoBehaviour
         pnlBackNoSaving.SetActive(false);
         this.GetComponent<Pause>().ClosePanelControls();
     }
-    public void BackNoSavingNo()
+    public void BackNoSavingNo() //Não sair sem salvar (não sai praticamente)
     {
         pnlBackNoSaving.SetActive(false);
     }
     
-    public void ChooseKey(int keyCode)
+    public void ChooseKey(int keyCode) //Quando clickar em alguma tecla pra ser alterada, muda arte dela pra ela soq pressionada
     {
         for(int i = 0; i < allPressedKeys.Length; i ++)
         {
@@ -261,6 +259,35 @@ public class ControlSettings : MonoBehaviour
                 }
             }
             newKey.text = "";
+        }
+        KeyRepeat(); //Verifica se tem repetições
+    }
+
+    public void KeyRepeat() //Verifica se alguma tecla se repete em duas ou mais ações (exceto pular dialogo);
+    { //aproveitei a função pra resolver um B.O do pause não poder ser com o click, mais pratico :v
+        sameKey = false;
+        for(int i =0; i < playerControls.Length; i ++)
+        {
+            keysWarning[i].SetActive(false);
+            for(int j =0; j < playerControls.Length; j ++)
+            {
+                if(i != j)
+                {
+                    if(i != 10 && j != 10)
+                    {
+                        if(playerControls[i] == playerControls[j])
+                        {
+                            keysWarning[i].SetActive(true);
+                            sameKey = true;
+                        }
+                    }
+                }
+            }
+        }
+        if(playerControls[8] == "leftButton")
+        {
+            keysWarning[8].SetActive(true);
+            sameKey = true;
         }
     }
     
@@ -388,286 +415,5 @@ public class ControlSettings : MonoBehaviour
         ret = PlayerPrefs.GetString(keyCode.ToString());
         Debug.Log("Loading Keys: " + keyCode + "  " + ret);
         return ret;
-    }
-
-    //Daqui pra baixo por hora é sucata, caso precise de alguma lógica, se n depois apaga a poha toda-------------------------------- 
-    /*public void GetId(int controlId)
-    {
-        keyId = controlId;
-    }
-    public void ChangeControl(int controlId, string key)
-    {
-        keyRepeat = false;
-        for (int i = 0; i < playerControls.Length; i ++)
-        {
-            if(i != controlId && key == playerControls[i])
-            {
-                playerControls[i] = PlayerPrefs.GetString(controlId.ToString());
-                playerControls[controlId] = PlayerPrefs.GetString(i.ToString());
-                SaveControl(controlId,playerControls[controlId]);
-                SaveControl(i, playerControls[i]);
-                keyRepeat = true;
-                break;
-            }
-        }
-        if(keyRepeat == false)
-        {
-            PlayerPrefs.SetString(controlId.ToString(), key);
-            PlayerPrefs.Save();
-            SaveControl(controlId, key);
-            LoadControls(controlId, key);
-        }
-    }
-
-    public void SaveControl(int controlId, string key)
-    {
-        switch(key)
-        {
-            case "Escape":
-            keyControls[controlId] = KeyCode.Escape;
-            break;
-
-            case "Quote":
-            keyControls[controlId] = KeyCode.Quote;
-            break;
-
-            case "Alpha1":
-            keyControls[controlId] = KeyCode.Alpha1;
-            break;
-
-            case "Alpha2":
-            keyControls[controlId] = KeyCode.Alpha2;
-            break;
-
-            case "Alpha3":
-            keyControls[controlId] = KeyCode.Alpha3;
-            break;
-
-            case "Alpha4":
-            keyControls[controlId] = KeyCode.Alpha4;
-            break;
-
-            case "Alpha5":
-            keyControls[controlId] = KeyCode.Alpha5;
-            break;
-
-            case "Alpha6":
-            keyControls[controlId] = KeyCode.Alpha6;
-            break;
-
-            case "Alpha7":
-            keyControls[controlId] = KeyCode.Alpha7;
-            break;
-
-            case "Alpha8":
-            keyControls[controlId] = KeyCode.Alpha8;
-            break;
-
-            case "Alpha9":
-            keyControls[controlId] = KeyCode.Alpha9;
-            break;
-
-            case "Alpha0":
-            keyControls[controlId] = KeyCode.Alpha0;
-            break;
-
-            case "Underscore":
-            keyControls[controlId] = KeyCode.Underscore;
-            break;
-
-            case "Equals":
-            keyControls[controlId] = KeyCode.Equals;
-            break;
-
-            case "Backspace":
-            keyControls[controlId] = KeyCode.Backspace;
-            break;
-
-            case "Tab":
-            keyControls[controlId] = KeyCode.Tab;
-            break;
-
-            case "Q":
-            keyControls[controlId] = KeyCode.Q;
-            break;
-
-            case "W":
-            keyControls[controlId] = KeyCode.W;
-            break;
-
-            case "E":
-            keyControls[controlId] = KeyCode.E;
-            break;
-
-            case "R":
-            keyControls[controlId] = KeyCode.R;
-            break;
-
-            case "T":
-            keyControls[controlId] = KeyCode.T;
-            break;
-
-            case "Y":
-            keyControls[controlId] = KeyCode.Y;
-            break;
-
-            case "U":
-            keyControls[controlId] = KeyCode.U;
-            break;
-
-            case "I":
-            keyControls[controlId] = KeyCode.I;
-            break;
-
-            case "O":
-            keyControls[controlId] = KeyCode.O;
-            break;
-
-            case "P":
-            keyControls[controlId] = KeyCode.P;
-            break;
-
-            case "BackQuote":
-            keyControls[controlId] = KeyCode.BackQuote;
-            break;
-
-            case "LeftBracket":
-            keyControls[controlId] = KeyCode.LeftBracket;
-            break;
-
-            case "CapsLock":
-            keyControls[controlId] = KeyCode.CapsLock;
-            break;
-
-            case "A":
-            keyControls[controlId] = KeyCode.A;
-            break;
-
-            case "S":
-            keyControls[controlId] = KeyCode.S;
-            break;
-
-            case "D":
-            keyControls[controlId] = KeyCode.D;
-            break;
-
-            case "F":
-            keyControls[controlId] = KeyCode.F;
-            break;
-
-            case "G":
-            keyControls[controlId] = KeyCode.G;
-            break;
-
-            case "H":
-            keyControls[controlId] = KeyCode.H;
-            break;
-
-            case "J":
-            keyControls[controlId] = KeyCode.J;
-            break;
-
-            case "K":
-            keyControls[controlId] = KeyCode.K;
-            break;
-
-            case "L":
-            keyControls[controlId] = KeyCode.L;
-            break;
-
-            case "Tilde":
-            keyControls[controlId] = KeyCode.Tilde;
-            break;
-
-            case "RightBracket":
-            keyControls[controlId] = KeyCode.RightBracket;
-            break;
-
-            case "LeftShift":
-            keyControls[controlId] = KeyCode.LeftShift;
-            break;
-
-            case "Pipe":
-            keyControls[controlId] = KeyCode.Pipe;
-            break;
-
-            case "Z":
-            keyControls[controlId] = KeyCode.Z;
-            break;
-            
-            case "X":
-            keyControls[controlId] = KeyCode.X;
-            break;
-
-            case "C":
-            keyControls[controlId] = KeyCode.C;
-            break;
-
-            case "V":
-            keyControls[controlId] = KeyCode.V;
-            break;
-
-            case "B":
-            keyControls[controlId] = KeyCode.B;
-            break;
-
-            case "N":
-            keyControls[controlId] = KeyCode.N;
-            break;
-
-            case "M":
-            keyControls[controlId] = KeyCode.M;
-            break;
-
-            case "Comma":
-            keyControls[controlId] = KeyCode.Comma;
-            break;
-
-            case "Period":
-            keyControls[controlId] = KeyCode.Period;
-            break;
-
-            case "Colon":
-            keyControls[controlId] = KeyCode.Colon;
-            break;
-
-            case "Semicolon":
-            keyControls[controlId] = KeyCode.Semicolon;
-            break;
-
-            case "Slash":
-            keyControls[controlId] = KeyCode.Slash;
-            break;
-
-            case "RightShift":
-            keyControls[controlId] = KeyCode.RightShift;
-            break;
-
-            case "LeftControl":
-            keyControls[controlId] = KeyCode.LeftControl;
-            break;
-
-            case "leftAlt":
-            keyControls[controlId] = KeyCode.LeftAlt;
-            break;
-            
-            case "Space":
-            keyControls[controlId] = KeyCode.Space;
-            break;
-
-            case "AltGr":
-            keyControls[controlId] = KeyCode.AltGr;
-            break;
-
-            case "RightControl":
-            keyControls[controlId] = KeyCode.RightControl;
-            break;
-        }
-    }
-
-    public void LoadControls(int controlId, string key)
-    {
-        playerControls[controlId] = PlayerPrefs.GetString(controlId.ToString());
-    }*/
-    
+    }    
 }
