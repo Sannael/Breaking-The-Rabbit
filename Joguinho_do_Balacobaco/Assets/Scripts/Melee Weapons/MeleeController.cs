@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MeleeController : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference meleeAtk;
     private bool canAtk;
     public float atkSpeed;
     private float currentAtkSpeed;
@@ -29,7 +32,7 @@ public class MeleeController : MonoBehaviour
         {
             canAtk = true;
         }
-        if(Input.GetMouseButtonDown(0) && canAtk == true && gameControllerScript.isPaused == false)
+        if(meleeAtk.action.IsPressed() && canAtk == true && gameControllerScript.isPaused == false)
         {
             currentAtkSpeed = atkSpeed;
             weapon.SetActive(true);

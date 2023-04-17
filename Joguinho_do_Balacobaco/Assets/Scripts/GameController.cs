@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
     private bool roomState;
+    [SerializeField]
+    private InputActionReference pause; //Puxa o botão de pausar levando em conta o action q for 
     public GameObject roots;
     public int numberOfEnemies;
     public  bool isPaused; //Pause do game
     public GameObject pnlPause; //Painel de pause
     public Manager sceneManager;
+    private bool canScape;
     private void Awake()
     {
         numberOfEnemies = 0;
@@ -19,22 +23,33 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        canScape = true;
         sceneManager = GameObject.Find("SceneManager").GetComponent<Manager>();
         isPaused = false;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(pause.action.IsPressed() && canScape == true)
         {
+            canScape = false;
             if(isPaused == true)
             {
-                Resume();
+                if(pnlPause.activeInHierarchy)
+                {
+                    Resume();
+                }
+                
             }
             else
             {
                 Pause();
             }
+        }
+
+        if(pause.action.IsPressed() == false) //Precisa soltar o esc pra poder pausar/despausar denovo (depois de ter feito uma vez)
+        { //Sem isso caso o imbecil segurar o esc a tela tem um ataque epilético
+            canScape = true;
         }
         if (numberOfEnemies <= 0)
         {
@@ -46,7 +61,6 @@ public class GameController : MonoBehaviour
             catch { Debug.Log("cath"); }
         }
     }
-
     public void RoomChange()
     {
         Debug.Log(numberOfEnemies);

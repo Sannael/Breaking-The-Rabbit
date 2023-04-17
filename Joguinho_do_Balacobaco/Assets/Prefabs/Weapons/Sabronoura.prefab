@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3948151176358817652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: -0.014, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -433,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3948151177192863136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.114, z: 0}
+  m_LocalPosition: {x: 0, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -453,7 +453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9668fa86bf5cfca43a2ab83ee0780e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousePosition: {fileID: -2813664996149534026, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   gun: {fileID: 3948151176358817652}
+  direita: 1
   zValueToMirror: 0.65
 --- !u!114 &8152913516469186972
 MonoBehaviour:
@@ -467,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d36c99c21b46b4d8a38d5655fe0cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeAtk: {fileID: 5210054213889351693, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   atkSpeed: 1
   weapon: {fileID: 3948151176358817652}
   gunCase: {fileID: 0}

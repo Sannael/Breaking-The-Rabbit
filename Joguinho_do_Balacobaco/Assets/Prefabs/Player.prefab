@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142031773990134896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.065, y: 0.079, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -154,13 +154,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bb4e60c6ac5f54fa367f9bb9c9cb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  mousePosition: {fileID: 0}
+  meleeAtk: {fileID: 0}
+  rangeAtk: {fileID: 0}
+  reload: {fileID: 0}
+  dash: {fileID: 0}
+  pause: {fileID: 0}
+  openInventary: {fileID: 0}
+  skipDialogue: {fileID: 0}
+  starFruitAction: {fileID: 0}
+  interaction: {fileID: 0}
+  hotbar:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerInput: {fileID: 0}
   speed: 4
   playerAnim: {fileID: 2142031774450265614}
+  direita: 0
   rollCdr: 0.5
   rb: {fileID: 2142031774450265612}
   canRoll: 0
   canMove: 0
   health: 10
+  maxHealth: 10
   rbVelocity: {x: 0, y: 0}
   gunCase: {fileID: 2142031773990134896}
   melee: {fileID: 7059088866902653647}
@@ -178,7 +199,6 @@ MonoBehaviour:
   magnumAmmo: 7
   starFruit: {fileID: 2960570674585553945, guid: 96a5c81b0a85e9948bbfd3f3a0a6ca07, type: 3}
   starFruitCount: 1
-  maxHealth: 10
 --- !u!50 &2142031774450265612
 Rigidbody2D:
   serializedVersion: 4
@@ -213,11 +233,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: 0.2}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.44, y: 0.76}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -239,11 +259,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: 0.2}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.44, y: 0.76}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -276,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7059088866902653647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.065, y: 0.079, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

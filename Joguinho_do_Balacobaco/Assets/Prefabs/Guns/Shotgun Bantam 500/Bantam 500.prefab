@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719279755149934701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0053, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9668fa86bf5cfca43a2ab83ee0780e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousePosition: {fileID: -2813664996149534026, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   gun: {fileID: 8719279756266551089}
   direita: 1
   zValueToMirror: 0.7
@@ -199,6 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db722f4bb897f604ebf07e20c8e59e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: -6548114629162841949, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
+  reload: {fileID: -1669152286963000121, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
+  starFruitAction: {fileID: -8129099634493032246, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   barrelTip: {fileID: 8719279756396618171}
   capsuleLocate: {fileID: 1580322601713810187}
   bullet: {fileID: 3347364893829552097, guid: b3a4c2063add067408bee3d5266faca4, type: 3}

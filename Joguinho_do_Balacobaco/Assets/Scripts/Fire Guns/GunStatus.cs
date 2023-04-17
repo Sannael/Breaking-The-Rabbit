@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunStatus : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil
      public Transform capsuleLocate; //Saida da capsula, pra armas que a capsula precisa sair de um lugar diferente do cano da arma
     public GameObject bullet, capsule; //Projétil e capsula da arma
@@ -65,7 +68,7 @@ public class GunStatus : MonoBehaviour
                 canShoot = true;
             }
 
-            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0 && automatic == false) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
+            if(shoot.action.IsPressed() && canShoot == true && ammo > 0 && automatic == false) //Se clicar com o direito enquanto recarrega e tem bala; o player atira e para de recarregar (Só funciona cpom arma de reload manual)
             {
                 
                 if(reloading == true) //Checa se ta recarregando
@@ -79,7 +82,7 @@ public class GunStatus : MonoBehaviour
                 }
             }
             
-            if(Input.GetMouseButtonDown(1) && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
+            if(shoot.action.IsPressed() && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
             {
                 if(reloading == true)
                 {
@@ -89,7 +92,7 @@ public class GunStatus : MonoBehaviour
                 gunAnimator.SetBool("AutoShooting", true);
             }
 
-            if(Input.GetMouseButtonUp(1) && automatic == true || automatic == true && ammo <= 0) //Parar de atirar com arma que é automatica
+            if(shoot.action.IsPressed() == false && automatic == true || automatic == true && ammo <= 0) //Parar de atirar com arma que é automatica
             {
                 gunAnimator.SetBool("AutoShooting", false);
             }
@@ -107,7 +110,7 @@ public class GunStatus : MonoBehaviour
                 }
                 
             }
-            if(Input.GetKeyDown(KeyCode.R) && ammo < totalAmmo && playerAmmo >0 && reloading == false) //Usar R pra reload
+            if(reload.action.IsPressed() && ammo < totalAmmo && playerAmmo >0 && reloading == false) //Usar R pra reload
             {
                 reloading = true;
                 if(gunManualReload == true)
@@ -120,7 +123,7 @@ public class GunStatus : MonoBehaviour
                 }
             }   
 
-            if(Input.GetKeyDown(KeyCode.Space) && ps.starFruitCount >0)
+            if(starFruitAction.action.IsPressed() && ps.starFruitCount >0)
             {
                 GameObject starFruitTrhow = Instantiate(starFruit, barrelTip.position, barrelTip.rotation);
                 ps.starFruitCount --;

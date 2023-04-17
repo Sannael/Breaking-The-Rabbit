@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BarrelGunScript : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference mousePosition;
     private Vector2 lookDirection; //Direção do mouse em relação a arma
     private float lookAngle; //Angulo do mouse em relação a arma
     public GameObject gun; //Gameobject da arma
@@ -17,7 +20,7 @@ public class BarrelGunScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position; //Armazena a direção do mouse 
+        lookDirection = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>()) - transform.position; //Armazena a direção do mouse
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * (Mathf.Rad2Deg); //Calculo maluco de angulo, não faço ideia de como funciona, só aceito
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle); //Rotaciona o braço pra mirar na direção do mouse  
         
