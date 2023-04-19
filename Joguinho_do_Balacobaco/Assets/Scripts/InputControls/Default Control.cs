@@ -251,6 +251,42 @@ public partial class @Default : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExepLeftArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""12e7d1b1-0204-4522-8564-ee19ac0455b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExepUpArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f01c0d9-5b1f-4353-8574-2156668d549d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExepDownArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c2b2174-a5d6-408d-b88c-f3889aa888b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExepRightArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""391ba933-8114-49db-83a9-904a150e04cc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -594,6 +630,50 @@ public partial class @Default : IInputActionCollection2, IDisposable
                     ""action"": ""ExepLeftButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a26ef4f4-9232-447f-a4c5-9f6e8fe21dd6"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExepLeftArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6aa253f4-419f-4d00-a3ae-f3cce99bb11a"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExepUpArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""056858c8-8a75-461b-8453-44e58778bc26"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExepDownArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f87f7c99-a3eb-4a2d-9858-7b3eae9b529b"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExepRightArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -775,6 +855,10 @@ public partial class @Default : IInputActionCollection2, IDisposable
         m_PlayerInput_ExepEnter = m_PlayerInput.FindAction("ExepEnter", throwIfNotFound: true);
         m_PlayerInput_ExepRightButton = m_PlayerInput.FindAction("ExepRightButton", throwIfNotFound: true);
         m_PlayerInput_ExepLeftButton = m_PlayerInput.FindAction("ExepLeftButton", throwIfNotFound: true);
+        m_PlayerInput_ExepLeftArrow = m_PlayerInput.FindAction("ExepLeftArrow", throwIfNotFound: true);
+        m_PlayerInput_ExepUpArrow = m_PlayerInput.FindAction("ExepUpArrow", throwIfNotFound: true);
+        m_PlayerInput_ExepDownArrow = m_PlayerInput.FindAction("ExepDownArrow", throwIfNotFound: true);
+        m_PlayerInput_ExepRightArrow = m_PlayerInput.FindAction("ExepRightArrow", throwIfNotFound: true);
         // PlayerExeptions
         m_PlayerExeptions = asset.FindActionMap("PlayerExeptions", throwIfNotFound: true);
         m_PlayerExeptions_Esc = m_PlayerExeptions.FindAction("Esc", throwIfNotFound: true);
@@ -868,6 +952,10 @@ public partial class @Default : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_ExepEnter;
     private readonly InputAction m_PlayerInput_ExepRightButton;
     private readonly InputAction m_PlayerInput_ExepLeftButton;
+    private readonly InputAction m_PlayerInput_ExepLeftArrow;
+    private readonly InputAction m_PlayerInput_ExepUpArrow;
+    private readonly InputAction m_PlayerInput_ExepDownArrow;
+    private readonly InputAction m_PlayerInput_ExepRightArrow;
     public struct PlayerInputActions
     {
         private @Default m_Wrapper;
@@ -897,6 +985,10 @@ public partial class @Default : IInputActionCollection2, IDisposable
         public InputAction @ExepEnter => m_Wrapper.m_PlayerInput_ExepEnter;
         public InputAction @ExepRightButton => m_Wrapper.m_PlayerInput_ExepRightButton;
         public InputAction @ExepLeftButton => m_Wrapper.m_PlayerInput_ExepLeftButton;
+        public InputAction @ExepLeftArrow => m_Wrapper.m_PlayerInput_ExepLeftArrow;
+        public InputAction @ExepUpArrow => m_Wrapper.m_PlayerInput_ExepUpArrow;
+        public InputAction @ExepDownArrow => m_Wrapper.m_PlayerInput_ExepDownArrow;
+        public InputAction @ExepRightArrow => m_Wrapper.m_PlayerInput_ExepRightArrow;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -981,6 +1073,18 @@ public partial class @Default : IInputActionCollection2, IDisposable
                 @ExepLeftButton.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftButton;
                 @ExepLeftButton.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftButton;
                 @ExepLeftButton.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftButton;
+                @ExepLeftArrow.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftArrow;
+                @ExepLeftArrow.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftArrow;
+                @ExepLeftArrow.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepLeftArrow;
+                @ExepUpArrow.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepUpArrow;
+                @ExepUpArrow.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepUpArrow;
+                @ExepUpArrow.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepUpArrow;
+                @ExepDownArrow.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepDownArrow;
+                @ExepDownArrow.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepDownArrow;
+                @ExepDownArrow.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepDownArrow;
+                @ExepRightArrow.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
+                @ExepRightArrow.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
+                @ExepRightArrow.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -1060,6 +1164,18 @@ public partial class @Default : IInputActionCollection2, IDisposable
                 @ExepLeftButton.started += instance.OnExepLeftButton;
                 @ExepLeftButton.performed += instance.OnExepLeftButton;
                 @ExepLeftButton.canceled += instance.OnExepLeftButton;
+                @ExepLeftArrow.started += instance.OnExepLeftArrow;
+                @ExepLeftArrow.performed += instance.OnExepLeftArrow;
+                @ExepLeftArrow.canceled += instance.OnExepLeftArrow;
+                @ExepUpArrow.started += instance.OnExepUpArrow;
+                @ExepUpArrow.performed += instance.OnExepUpArrow;
+                @ExepUpArrow.canceled += instance.OnExepUpArrow;
+                @ExepDownArrow.started += instance.OnExepDownArrow;
+                @ExepDownArrow.performed += instance.OnExepDownArrow;
+                @ExepDownArrow.canceled += instance.OnExepDownArrow;
+                @ExepRightArrow.started += instance.OnExepRightArrow;
+                @ExepRightArrow.performed += instance.OnExepRightArrow;
+                @ExepRightArrow.canceled += instance.OnExepRightArrow;
             }
         }
     }
@@ -1172,6 +1288,10 @@ public partial class @Default : IInputActionCollection2, IDisposable
         void OnExepEnter(InputAction.CallbackContext context);
         void OnExepRightButton(InputAction.CallbackContext context);
         void OnExepLeftButton(InputAction.CallbackContext context);
+        void OnExepLeftArrow(InputAction.CallbackContext context);
+        void OnExepUpArrow(InputAction.CallbackContext context);
+        void OnExepDownArrow(InputAction.CallbackContext context);
+        void OnExepRightArrow(InputAction.CallbackContext context);
     }
     public interface IPlayerExeptionsActions
     {

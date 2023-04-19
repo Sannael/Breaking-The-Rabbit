@@ -42,15 +42,17 @@ public class GunStatus : MonoBehaviour
     public int bulletSpread; //Pra armas que o tiro precisa ter uma dispersão
     [Tooltip("Distancia minima e maxima da dispersao, se n houver deixa 0")]
     public int bulletSpreadMin, bulletSpreadMax; //Distancia minima e maxima da dispersão
+    [Tooltip("Aqui coloca o prefab da arma so que dropada, meio q é quase um clone da arma mas sem a capacidade de atirar e com um custo outra arte e tal")]
+    public GameObject thisGunChange; //Prefab da arma que fica dropada (pra poder trocar a arma de boa)
     void Start()
     {
         playerAmmo = 0;
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
         player = GameObject.Find("Player");
-        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         ps = player.GetComponent<PlayerScript>();
         starFruit = ps.starFruit;
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         reloading = false;
     }
     void Update()

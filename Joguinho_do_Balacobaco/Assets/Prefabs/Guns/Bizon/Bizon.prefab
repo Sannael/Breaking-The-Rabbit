@@ -242,7 +242,7 @@ MonoBehaviour:
   gunRateCurrent: 0
   bulletSpeed: 9
   capsuleSpeed: 2.5
-  ammo: 64
+  ammo: 0
   totalAmmo: 64
   playerAmmo: 0
   canShoot: 0
@@ -256,3 +256,4 @@ MonoBehaviour:
   bulletSpread: 1
   bulletSpreadMin: -3
   bulletSpreadMax: 5
+  thisGunChange: {fileID: 694414982672409352, guid: 691762c0731fb57489d50ccec0514336, type: 3}

@@ -37,14 +37,17 @@ public class PlayerScript : MonoBehaviour
     public int revolverAmmo, shotgunAmmo, pistolAmmo, assaultRifleAmmo, smgAmmo, magnumAmmo; //Tipos de munição que o player tem
     public GameObject starFruit;
     public int starFruitCount; //Contagem de carambolas
-    private GameController gameControllerScript;
-    public GameObject pnlControls;
+    private GameController gameControllerScript; //script que controla quais teclas o player vai usar
+    public GameObject pnlControls; //telinha de controles
+    private bool canChangeGun = false; //Só é true quando tiver perto de uma arma no chão/loja/bau. Ao se afastar volta a ser false
+    public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
     void Awake()
     {
-        pnlControls.GetComponent<ControlSettings>().Awake();
+        pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
     }
     void Start()
     {
+        canChangeGun = false;
         stuned = false;
         sceneManager = GameObject.Find("SceneManager");
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
@@ -105,15 +108,15 @@ public class PlayerScript : MonoBehaviour
                     StartCoroutine(Roll());
                 }
 
-                UpdateAmmo();
+                if(canChangeGun == true && interaction.action.IsPressed()) //puxa o evento de trocar de arma
+                {
+                    canChangeGun = false;
+                    newGun.GetComponent<ChangeGun>().changeGun();
+                }
             }
         }
     }
 
-    private void UpdateAmmo()
-    {
-        
-    }
 
     public void Animations(string animation) //Chama a animação que é passsada como parametro
     {
@@ -231,9 +234,25 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.tag == "Coin")
         {
             coinCount += other.gameObject.GetComponent<CoinScript>().value; //Pega o valor da moeda
-            Destroy(other.gameObject); //Destroy as moeda padrão
+            Destroy(other.gameObject); //Destroi as moedas que estão no chao
+        }
+
+        if(other.gameObject.tag == "ChangeGun") //Quando entrar na area de troca de arma 
+        {
+            canChangeGun = true;   
+            newGun = other.gameObject;
+            other.GetComponent<ChangeGun>().canChange = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "ChangeGun") //Quando sair na area de troca de arma 
+        {
+            other.GetComponent<ChangeGun>().canChange = false;
+            canChangeGun = false;
+        }
+    }
+
 
     public IEnumerator CanTakeDamage(int damageTaken, int trueDamage) //Função de invencibilidade 
     {
@@ -276,7 +295,7 @@ public class PlayerScript : MonoBehaviour
         gunCase.SetActive(true); //Ativa a arma
         stuned = false;
     }
-     public void TakeAmmo(string ammoType, int ammoCount)
+    public void TakeAmmo(string ammoType, int ammoCount) //recupera a munição que esta na arma (pega o tipo da arma e a quantia de munição, qnd trocar de arma por exemplo)
     {
         switch(ammoType)
         {
