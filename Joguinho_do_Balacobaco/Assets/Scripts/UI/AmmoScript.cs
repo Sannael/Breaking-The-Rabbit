@@ -12,12 +12,18 @@ public class AmmoScript : MonoBehaviour
 
     void Start()
     {
-        gunStatus = GameObject.Find("Player").GetComponentInChildren<GunStatus>();
+        
     }
 
     void Update()
     {
-        ammoGunTxt.text = gunStatus.ammo.ToString() + " / " + gunStatus.totalAmmo.ToString();
-        playerAmmoTxt.text = gunStatus.playerAmmo.ToString();
+        try
+        {
+            gunStatus = GameObject.Find("Player").GetComponentInChildren<GunStatus>();
+            ammoGunTxt.text = gunStatus.ammo.ToString() + " / " + gunStatus.totalAmmo.ToString();
+            playerAmmoTxt.text = gunStatus.playerAmmo.ToString();
+        }
+        catch{}
+        
     }
 }

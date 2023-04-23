@@ -16,6 +16,8 @@ TagManager:
   - BossStage
   - BossStageAtk
   - StarFruit
+  - ChangeGun
+  - BulletMultiDamage
   layers:
   - Default
   - TransparentFX

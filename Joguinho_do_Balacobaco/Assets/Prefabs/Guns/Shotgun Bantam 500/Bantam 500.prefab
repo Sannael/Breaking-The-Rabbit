@@ -211,7 +211,7 @@ MonoBehaviour:
   gunRateCurrent: 0
   bulletSpeed: 15
   capsuleSpeed: 2.5
-  ammo: 8
+  ammo: 0
   totalAmmo: 8
   playerAmmo: 0
   canShoot: 0
@@ -219,12 +219,14 @@ MonoBehaviour:
   gunManualReload: 1
   ammoType: Shotgun
   automatic: 0
-  gunMag: {fileID: 0}
-  magRotation: {x: 0, y: 0, z: 0}
   cockingGun: 1
   bulletSpread: 12
-  bulletSpreadMin: -10
-  bulletSpreadMax: 10
+  bulletSpreadMin: -15
+  bulletSpreadMax: 15
+  thisGunChange: {fileID: 3526405294897869957, guid: 8ce6265506375e74b8eddb64405e86ce, type: 3}
+  magazine: {fileID: 0}
+  magLocate: {fileID: 0}
+  magForce: {x: 0, y: 0}
 --- !u!1 &8719279756396618168
 GameObject:
   m_ObjectHideFlags: 0

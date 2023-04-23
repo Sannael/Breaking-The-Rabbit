@@ -229,6 +229,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExepLeftArrow",
+                    "type": "Button",
+                    "id": "12e7d1b1-0204-4522-8564-ee19ac0455b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExepUpArrow",
+                    "type": "Button",
+                    "id": "2f01c0d9-5b1f-4353-8574-2156668d549d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExepDownArrow",
+                    "type": "Button",
+                    "id": "0c2b2174-a5d6-408d-b88c-f3889aa888b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExepRightArrow",
+                    "type": "Button",
+                    "id": "391ba933-8114-49db-83a9-904a150e04cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -570,6 +606,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExepLeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a26ef4f4-9232-447f-a4c5-9f6e8fe21dd6",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExepLeftArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aa253f4-419f-4d00-a3ae-f3cce99bb11a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExepUpArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "056858c8-8a75-461b-8453-44e58778bc26",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExepDownArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f87f7c99-a3eb-4a2d-9858-7b3eae9b529b",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExepRightArrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

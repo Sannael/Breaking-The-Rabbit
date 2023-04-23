@@ -30,6 +30,8 @@ public class ControlSettings : MonoBehaviour
     public GameObject pnlSureRestoring, pnlBackNoSaving;
     public Button btnSalvar;
     public InputActionReference esc, tab, leftShift, leftAlt, enter, rightButton, leftButton;
+    public InputActionReference leftArrow, upArrow, downArrow, rightArrow;
+    public GameObject uiChangeGun;
 
     public void Awake() 
     {
@@ -67,6 +69,7 @@ public class ControlSettings : MonoBehaviour
         SaveChanges(); //Salva mudanças
         ChangeAllImages(); //Troca todas as imagens das teclas pra novas teclas, toda vez q mudar de scene isso tem q acontecer
         LoadBindings(); //Carrega as mudanças (garantias)
+        SendActions();
     }
 
     private void ControlInitialValues()
@@ -131,7 +134,7 @@ public class ControlSettings : MonoBehaviour
         }
         else
         {
-            btnSalvar.interactable = true; //Abilita o botao de salvar controles
+            btnSalvar.interactable = true; //Habilita o botao de salvar controles
         }
 
         if(keyId != playerActions.Length) //Trata exceção (teclas especiais e Mouse) qnd for trocar as teclas
@@ -164,6 +167,22 @@ public class ControlSettings : MonoBehaviour
             {
                 SelectKey("leftButton");
             }
+            if(leftArrow.action.IsPressed())
+            {
+                SelectKey("leftArrow");
+            }
+            if(upArrow.action.IsPressed())
+            {
+                SelectKey("upArrow");
+            }
+            if(downArrow.action.IsPressed())
+            {
+                SelectKey("downArrow");
+            }
+            if(rightArrow.action.IsPressed())
+            {
+                SelectKey("rightArrow");
+            }
         }
     }
 
@@ -181,7 +200,7 @@ public class ControlSettings : MonoBehaviour
         }
     } 
     
-    public void SureRestoringKeys() //Promp de certeza que vai resetar as teclas
+    public void SureRestoringKeys() //Prompt de certeza que vai resetar as teclas
     {
         pnlSureRestoring.SetActive(true);
     } 
@@ -194,6 +213,7 @@ public class ControlSettings : MonoBehaviour
         if(savedControl == true) //Se tiver salvado as teclas, fecha a tela de botoes
         {
             this.GetComponent<Pause>().ClosePanelControls();
+            SendActions();
         }
         else //se n vem o prompt de certeza que n quer salvar
         {
@@ -207,10 +227,22 @@ public class ControlSettings : MonoBehaviour
         savedControl = true;
         pnlBackNoSaving.SetActive(false);
         this.GetComponent<Pause>().ClosePanelControls();
+        SendActions();
     }
     public void BackNoSavingNo() //Não sair sem salvar (não sai praticamente)
     {
         pnlBackNoSaving.SetActive(false);
+    }
+    public void SendActions()
+    {
+        uiChangeGun.GetComponent<ChangeGunUI>().interactionIdle = keys[12].sprite;
+        for(int i =0; i < allPressedKeys.Length; i ++)
+        {
+            if(allPressedKeys[i].name == keys[12].sprite.name + "p")
+            {
+                uiChangeGun.GetComponent<ChangeGunUI>().interactionPressed = allPressedKeys[i];
+            }
+        }
     }
     
     public void ChooseKey(int keyCode) //Quando clickar em alguma tecla pra ser alterada, muda arte dela pra ela soq pressionada

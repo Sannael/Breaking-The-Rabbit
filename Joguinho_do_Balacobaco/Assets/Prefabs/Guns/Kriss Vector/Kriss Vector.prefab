@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1271367111232735854}
+  - {fileID: 3637655406134100390}
   m_Father: {fileID: 1271367110160288023}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,7 +131,7 @@ MonoBehaviour:
   gunRateCurrent: 0
   bulletSpeed: 10
   capsuleSpeed: 2.5
-  ammo: 30
+  ammo: 0
   totalAmmo: 30
   playerAmmo: 0
   canShoot: 0
@@ -138,12 +139,14 @@ MonoBehaviour:
   gunManualReload: 0
   ammoType: SMG
   automatic: 1
-  gunMag: {fileID: 4095369101110649043, guid: 29160cf721f60f14f86ac2866b17b72d, type: 3}
-  magRotation: {x: 0, y: 0, z: 90}
   cockingGun: 0
   bulletSpread: 1
   bulletSpreadMin: -3
   bulletSpreadMax: 5
+  thisGunChange: {fileID: 8597783261823082880, guid: 074cfed023ebc33478fc1c7e62f0e77e, type: 3}
+  magazine: {fileID: 2373574407471531750, guid: ffee60142b5fb3a4187d5e84fb377a09, type: 3}
+  magLocate: {fileID: 3637655406134100390}
+  magForce: {x: -1, y: 0}
 --- !u!1 &1271367110160288022
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,4 +258,35 @@ Transform:
   - {fileID: 1271367110160288023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9009599051913973635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3637655406134100390}
+  m_Layer: 0
+  m_Name: Magazine Locate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3637655406134100390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9009599051913973635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.124, y: -0.182, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1271367109892451278}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

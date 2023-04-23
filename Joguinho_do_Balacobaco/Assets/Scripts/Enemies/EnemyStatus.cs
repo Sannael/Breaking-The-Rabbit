@@ -46,9 +46,18 @@ public class EnemyStatus : MonoBehaviour
         }
         if(other.gameObject.tag == "PlayerBullet" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
         {
+            canTakeDmg = false;
             int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
             int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
-            float dmgCooldown = 0;
+            float dmgCooldown = 0f;
+            TakeDamage(damageTaken, trueDamage, dmgCooldown);
+            Destroy(other.gameObject);
+        }
+         if(other.gameObject.tag == "BulletMultiDamage" && canTakeDmg == true) //checa a tag doq trombou com ele, e se ta fora do tempo de invencibilidade
+        {
+            int damageTaken = other.gameObject.GetComponent<DamageScript>().damage; //Dano normal; armaruda e vida
+            int trueDamage = other.gameObject.GetComponent<DamageScript>().trueDamage; //Dano verdadeiro; direto na vida ignora toda e qualquer armadura
+            float dmgCooldown = 0f;
             TakeDamage(damageTaken, trueDamage, dmgCooldown);
             Destroy(other.gameObject);
         }
@@ -72,7 +81,6 @@ public class EnemyStatus : MonoBehaviour
         }
         health =  health - trueDamage;
         StartCoroutine(Blink());
-
         StartCoroutine(ResetTakeDmg(dmgCooldown));
     }
 
