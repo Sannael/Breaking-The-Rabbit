@@ -33,10 +33,6 @@ public class GunStatus : MonoBehaviour
     private GameObject player;
     [Tooltip("A cadencia da arma é automatica?")]
     public bool automatic; //Cadencia automatica?
-    public ParticleSystem gunMag; //pente da arma; caso tiver
-    [Tooltip("Rotação do pente da arma (se houver), isso é pra animação de reload poder jogar o ponte fora de maneira mais natural possivel")]
-    public Vector3 magRotation; //Rotaçãpo do pente da arma (Animação de reload) pra armas que dropam o pente todo
-    [Tooltip("Isso aqui usa pra armas que tem o engatilhar fora da animação de recarregar")] 
     public bool cockingGun; //pra armas que tem o engatilhar fora da animação de recarregar 
     [Tooltip("Usdo somente para armas que precisam ter uma dispersão no tiro(exemplo uma shotgun), se precisar é só colocar aqui a quantidade de balas que não fazer essa dispersão, se não precisar deixa 0")]
     public int bulletSpread; //Pra armas que o tiro precisa ter uma dispersão
@@ -44,6 +40,9 @@ public class GunStatus : MonoBehaviour
     public int bulletSpreadMin, bulletSpreadMax; //Distancia minima e maxima da dispersão
     [Tooltip("Aqui coloca o prefab da arma so que dropada, meio q é quase um clone da arma mas sem a capacidade de atirar e com um custo outra arte e tal")]
     public GameObject thisGunChange; //Prefab da arma que fica dropada (pra poder trocar a arma de boa)
+    public GameObject magazine; //Pente de arma; Se houver
+    public Transform magLocate;
+    public Vector2 magForce;
     void Start()
     {
         playerAmmo = 0;
@@ -282,11 +281,14 @@ public class GunStatus : MonoBehaviour
 
     public void DropMag() //Efeito de joagr o pente fora, pra armas que troca o pente
     {
-        ParticleSystem magazine = Instantiate (gunMag, transform.position,Quaternion.identity); //Instancia o pente de munição
-        if(GetComponentInParent<BarrelGunScript>().direita == false) //Espelhar o pente caso necessario
+        Vector2 magForceF = magForce;
+        GameObject mag = Instantiate(magazine, magLocate.position, Quaternion.identity);
+        if(gameObject.GetComponentInParent<BarrelGunScript>().direita == false)
         {
-            magazine.transform.Rotate(magRotation); //Espelha 100% pra n caga o efeitinho
+            mag.transform.Rotate(0, 180, 0);
+            magForceF = - (magForce);
         }
+        mag.GetComponent<Rigidbody2D>().velocity = magForceF;
     }
 }
 

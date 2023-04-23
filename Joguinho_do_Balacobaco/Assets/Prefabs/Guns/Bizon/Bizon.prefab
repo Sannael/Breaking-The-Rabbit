@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1450728264477506801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8969637700288673176}
+  m_Layer: 7
+  m_Name: Mag Locate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8969637700288673176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450728264477506801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.178, y: -0.058, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8961874730306400351}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8961874729061808498
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8961874730187154829}
+  - {fileID: 8969637700288673176}
   m_Father: {fileID: 8961874729154439915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -250,10 +282,11 @@ MonoBehaviour:
   gunManualReload: 0
   ammoType: SMG
   automatic: 1
-  gunMag: {fileID: 7921775812720913529, guid: bcce1d6844cb3e94384e8c3ce3ccdaa6, type: 3}
-  magRotation: {x: 0, y: 0, z: -140}
   cockingGun: 0
   bulletSpread: 1
   bulletSpreadMin: -3
   bulletSpreadMax: 5
   thisGunChange: {fileID: 694414982672409352, guid: 691762c0731fb57489d50ccec0514336, type: 3}
+  magazine: {fileID: 1783004360513999162, guid: f14ae44005a3c0d46ae42569d492fd88, type: 3}
+  magLocate: {fileID: 8969637700288673176}
+  magForce: {x: 2, y: 0}

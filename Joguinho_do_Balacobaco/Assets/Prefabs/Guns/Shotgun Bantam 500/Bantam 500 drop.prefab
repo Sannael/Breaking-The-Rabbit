@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 2117157071
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -764668578, guid: 08be2d07886932c449df51a09d9a7caf, type: 3}
+  m_Sprite: {fileID: -1088314606, guid: b929d1bc327836d46b6d1578e7000074, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   time: 1
   canChange: 0
   uiChange: {fileID: 7832420789963596437, guid: 80b6fc59c367ebb42b0942c8e7d2978e, type: 3}
+  chest: 0
+  shop: 0
+  droped: 0
 --- !u!50 &-8005250023965703686
 Rigidbody2D:
   serializedVersion: 4
