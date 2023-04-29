@@ -8,7 +8,7 @@ public class GunStatus : MonoBehaviour
     [SerializeField]
     private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil
-     public Transform capsuleLocate; //Saida da capsula, pra armas que a capsula precisa sair de um lugar diferente do cano da arma
+    public Transform capsuleLocate; //Saida da capsula, pra armas que a capsula precisa sair de um lugar diferente do cano da arma
     public GameObject bullet, capsule; //Projétil e capsula da arma
     private Animator gunAnimator; //Animator da arma 
     public float gunRate; //cadencia da arma 
@@ -193,8 +193,9 @@ public class GunStatus : MonoBehaviour
     }
     public void Animations(string animation) //animações da arma, recebe o trigger da animação como parametro 
     {
-        if(gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting") && animation == "FirstReload") //N bugar animação de quando ta atirando e vai reccarregar(ele cancelava uma e só fazia a outra)
+        if(gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting")) //N bugar animação de quando ta atirando e vai reccarregar(ele cancelava uma e só fazia a outra)
         {
+            if(animation == "FirstReload" || animation == "AutoReload")
             StartCoroutine(WaitAnimation(animation));
         }
         else
@@ -234,13 +235,21 @@ public class GunStatus : MonoBehaviour
     {
         if(capsuleLocate != null) //Verifica se tem um lugar diferente pra capsula sair 
         {
-            GameObject firedCapsule = Instantiate(capsule, capsuleLocate.position, capsuleLocate.rotation); //"Cria" um clone da capsula no cano da arma
+            try
+            {
+                GameObject firedCapsule = Instantiate(capsule, capsuleLocate.position, capsuleLocate.rotation); //"Cria" um clone da capsula no cano da arma
             firedCapsule.GetComponent<Rigidbody2D>().velocity = capsuleLocate.up * capsuleSpeed; //Calculo da velocidade da capsula
+            }
+            catch{}
         }
         else
         {
+            try
+            {
             GameObject firedCapsule = Instantiate(capsule, barrelTip.position, barrelTip.rotation); //"Cria" um clone da bala no cano da arma
             firedCapsule.GetComponent<Rigidbody2D>().velocity = barrelTip.up * capsuleSpeed; //Calculo da velocidade da capsula
+            }
+            catch{}
         }
     }
 

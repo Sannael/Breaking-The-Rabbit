@@ -37,6 +37,7 @@ public class MeleeController : MonoBehaviour
             currentAtkSpeed = atkSpeed;
             weapon.SetActive(true);
             gunCase.SetActive(false);
+            gunCase.GetComponentInChildren<GunStatus>().reloading = false; //Evita bugar o reloading (tlvz dps pense algo melhor kk)
         }
     }
 }
