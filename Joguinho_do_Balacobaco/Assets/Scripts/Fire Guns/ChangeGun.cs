@@ -8,14 +8,14 @@ public class ChangeGun : MonoBehaviour
     public GameObject gun; //Gameobject da arma
     private GameObject playerGun; //Puxa qual a arma que o player ta usando agora
     private int drops; //Variavel pra barrar duplicação de troca de arma (acaba duplicandop as armas)
-    public float time;  //Tempo de quando a arma ta no chão pra poder trocar (um delayzinho pra n bugar a poha toda :v)
+    private float time = 0.8f;  //Tempo de quando a arma ta no chão pra poder trocar (um delayzinho pra n bugar a poha toda :v)
     public bool canChange; //Checa se o player poder trocar (basicamente checa se o player ta dentro do campo de troca)
     public GameObject uiChange; //Gameobejct de troca de arma
     private int ui = 1; //Mais uma variavel que evita bugar 
     public bool chest, shop, droped; //Checa se a arma vemd e bau, loja ou ta sendo dropada no chão
     void Start()
     {
-        time = 1;
+        time = 0.8f;
         drops =-1;
 
         if(droped == true) //se for dropada chama a parabola de drop no chão
@@ -63,11 +63,11 @@ public class ChangeGun : MonoBehaviour
     public void changeGun() //Evento de troca de arma
     {
         drops --;
-        if(drops >=0) //Evita duplicar
+        if(drops ==0) //Evita duplicar
         {
             int ammo = GameObject.Find("GunCase").GetComponentInChildren<GunStatus>().ammo + GameObject.Find("GunCase").GetComponentInChildren<GunStatus>().playerAmmo; //pega toda a munição restante e devolve pro player
             string ammoType = GameObject.Find("GunCase").GetComponentInChildren<GunStatus>().ammoType; //Pega o tipo de munição que a arma usa pra saber qual tipo de munição precisa ser devolvida :v 
-            string[] gunName = playerGun.ToString().Split(" drop");//Separa o nome pelo drop, vai sempre pegar o nome normal da arma
+            string[] gunName = playerGun.ToString().Split(" Drop");//Separa o nome pelo drop, vai sempre pegar o nome normal da arma
             try
             {
                 Destroy(GameObject.Find(gunName[0])); //Destroi a arma que ta com o player

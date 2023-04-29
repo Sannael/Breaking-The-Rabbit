@@ -6,6 +6,7 @@ public class MagazineGun : MonoBehaviour
 {
     public float duration;
     public bool magRotate;
+    public int maxRotation, rotationProgression;
     void Start()
     {
         Destroy(gameObject, duration);
@@ -15,7 +16,7 @@ public class MagazineGun : MonoBehaviour
     {
         if(magRotate == true)
         {
-            for(int i =0; i < 400; i += 3)
+            for(int i =0; i < maxRotation; i += rotationProgression)
             {
                 transform.Rotate(0, 0, i);
                 Debug.Log(i);
