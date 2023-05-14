@@ -7,15 +7,16 @@ using UnityEngine.InputSystem;
 public class GameController : MonoBehaviour
 {
     private bool roomState;
+     
     [SerializeField]
-    private InputActionReference pause; //Puxa o botão de pausar levando em conta o action q for
+    private InputActionReference pause, openInventory; //Puxa o botão de pausar levando em conta o action q for
     public string cantos;
-    public GameObject[] roots;
     public int numberOfEnemies;
     public  bool isPaused; //Pause do game
     public GameObject pnlPause; //Painel de pause
+    public GameObject inventoryWindow;
     public Manager sceneManager;
-    private bool canScape;
+    private bool canPause, canInventory, inventory;
     private void Awake()
     {
         numberOfEnemies = 0;
@@ -24,23 +25,24 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        canScape = true;
+        canPause = true;
+        inventory = true;
+        canInventory = true;
         sceneManager = GameObject.Find("SceneManager").GetComponent<Manager>();
         isPaused = false;
     }
 
     void Update()
     {
-        if(pause.action.IsPressed() && canScape == true)
+        if(pause.action.IsPressed() && canPause == true)
         {
-            canScape = false;
+            canPause = false;
             if(isPaused == true)
             {
                 if(pnlPause.activeInHierarchy)
                 {
                     Resume();
                 }
-                
             }
             else
             {
@@ -50,7 +52,25 @@ public class GameController : MonoBehaviour
 
         if(pause.action.IsPressed() == false) //Precisa soltar o esc pra poder pausar/despausar denovo (depois de ter feito uma vez)
         { //Sem isso caso o imbecil segurar o esc a tela tem um ataque epilético
-            canScape = true;
+            canPause = true;
+        }
+
+        if(openInventory.action.IsPressed() && inventory == true && canInventory == true)
+        {
+            inventory = false;
+            if(isPaused == true)
+            {
+                OpenCloseInventory(false);
+            }
+            else
+            {
+                OpenCloseInventory(true);
+            }
+
+        }
+        if(openInventory.action.IsPressed() == false)
+        {
+            inventory = true;
         }
         if (numberOfEnemies <= 0)
         {
@@ -134,13 +154,31 @@ public class GameController : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = 0f;
+        canInventory = false;
         pnlPause.SetActive(true);
     }
     public void Resume()
     {
         isPaused = !isPaused;
         Time.timeScale = 1f;
+        canInventory = true;
         pnlPause.SetActive(false);
+    }
+
+    public void OpenCloseInventory(bool open)
+    {
+        isPaused = !isPaused;
+        if(open == true)
+        {
+            Time.timeScale = 0f;
+            inventoryWindow.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            inventoryWindow.SetActive(false);
+        }
+        
     }
     
     public void BackToMainMenu()

@@ -18,6 +18,7 @@ TagManager:
   - StarFruit
   - ChangeGun
   - BulletMultiDamage
+  - Item
   layers:
   - Default
   - TransparentFX
