@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private InputActionReference pause, openInventory; //Puxa o botão de pausar levando em conta o action q for
     public string cantos;
+    public GameObject[] roots;
     public int numberOfEnemies;
     public  bool isPaused; //Pause do game
     public GameObject pnlPause; //Painel de pause
