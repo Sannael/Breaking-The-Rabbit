@@ -9,11 +9,13 @@ public class EnemyStatus : MonoBehaviour
     public bool isAlive; //Checa se ta vivo; ajuda pra ajeitar animação
     private Animator slimeAnimator;
     public int armor; //armadura do inimigo
+    public Collider2D triggerCol;
     void Start()
     {
         canTakeDmg = true;
         isAlive = true;
         slimeAnimator = this.gameObject.GetComponent<Animator>();
+        
     }
     void Update()
     {

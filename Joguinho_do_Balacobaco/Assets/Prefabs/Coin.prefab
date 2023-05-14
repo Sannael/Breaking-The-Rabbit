@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2356305342048718811}
   - component: {fileID: -8916328209917740547}
   - component: {fileID: 2508300557537381694}
+  - component: {fileID: 2383584721978085843}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Coin
@@ -99,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
@@ -136,4 +137,20 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.07276337, y: 0}
   m_Size: {x: 2.8000014, y: 3.2896044}
+  m_Direction: 0
+--- !u!70 &2383584721978085843
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996042053298280333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 4.5, y: 4.5}
   m_Direction: 0

@@ -39,11 +39,14 @@ public class PlayerScript : MonoBehaviour
     public int starFruitCount; //Contagem de carambolas
     private GameController gameControllerScript; //script que controla quais teclas o player vai usar
     public GameObject pnlControls; //telinha de controles
+    public GameObject pnlInventory;
     private bool canChangeGun = false; //Só é true quando tiver perto de uma arma no chão/loja/bau. Ao se afastar volta a ser false
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
     void Awake()
     {
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
+        pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
+        pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação do 
     }
     void Start()
     {
@@ -142,7 +145,7 @@ public class PlayerScript : MonoBehaviour
         Vector2 dirMouse = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>());
         direcao = dirMouse[0] - transform.position[0];
 
-        transform.position = transform.position + speed * move * Time.deltaTime; //Movimentação com mais fluidez do deltatime
+        rb.velocity = move * speed;
 
         if(move[0] != 0 || move[1] !=0) //checa se o cueio ta em movimento
         {
@@ -231,12 +234,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if(other.gameObject.tag == "Coin")
-        {
-            coinCount += other.gameObject.GetComponent<CoinScript>().value; //Pega o valor da moeda
-            Destroy(other.gameObject); //Destroi as moedas que estão no chao
-        }
-
         if(other.gameObject.tag == "ChangeGun") //Quando entrar na area de troca de arma 
         {
             canChangeGun = true;   
@@ -251,6 +248,11 @@ public class PlayerScript : MonoBehaviour
             other.GetComponent<ChangeGun>().canChange = false;
             canChangeGun = false;
         }
+    }
+
+    public void TakeCoin(int value)
+    {
+        coinCount += value;
     }
 
 
