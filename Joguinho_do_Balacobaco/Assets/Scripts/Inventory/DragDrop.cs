@@ -12,6 +12,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDr
     public Image itemDrag;
     public bool isDrag;
     public int language;
+    public bool canMove;
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
@@ -25,16 +26,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDr
             itemDrag = null;
             CoreInventory._instance.inventory.slotDrag = null;
         }
+        canMove = this.GetComponent<InventorySlot>().canMove;
     }
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        /*if(CoreInventory._instance.inventoryDescs.move == true)
-        {
-            CoreInventory._instance.inventory.slotDrag.item = CoreInventory._instance.inventoryDescs.item;
-            return;
-        }*/
         if(slot.item.isEmpty == true)
         {
             return;
@@ -47,6 +44,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDr
             SlotType sTypes = this.gameObject.GetComponent<InventorySlot>().slotType;
             CoreInventory._instance.inventory.SelectItem(ids, sTypes);
             CoreInventory._instance.inventoryDescs.DisableAllButtons();
+            return;
+        }
+        if(canMove == false)
+        {
+            CoreInventory._instance.inventory.ChangeDescPanel(slot.item, language);
+
+            int ids = this.gameObject.GetComponent<InventorySlot>().idSlot; //dando ruim
+            SlotType sTypes = this.gameObject.GetComponent<InventorySlot>().slotType;
+            CoreInventory._instance.inventory.SelectItem(ids, sTypes);
             return;
         }
         itemDrag = CoreInventory._instance.inventory.itemDrag;

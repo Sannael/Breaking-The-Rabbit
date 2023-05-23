@@ -59,19 +59,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void EnableButtons()
     {
-        CoreInventory._instance.inventoryDescs.EnableButtons(consumible, canMove, canDestroy);
-        if(canMove == true)
-        {
-            CoreInventory._instance.inventoryDescs.item = item;
-        }
-        else
-        {
-            CoreInventory._instance.inventoryDescs.item = null;
-        }
+        CoreInventory._instance.inventoryDescs.EnableButtons(consumible, canDestroy);
+
+        CoreInventory._instance.inventoryDescs.item = item;
+        CoreInventory._instance.inventoryDescs.idSlot = idSlot;
+        CoreInventory._instance.inventoryDescs.slotType = slotType;
+
     }
     public void OnDrop(PointerEventData eventData)
     {
-        CoreInventory._instance.inventory.OnDropDone(this);
-        CoreInventory._instance.inventory.SelectItem(idSlot, slotType);
+        
+        CoreInventory._instance.inventory.OnDropDone(this, idSlot, slotType);
     }
 }

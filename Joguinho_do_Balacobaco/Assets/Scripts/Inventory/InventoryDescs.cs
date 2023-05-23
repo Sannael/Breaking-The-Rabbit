@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class InventoryDescs : MonoBehaviour
 {
     public TMP_Text itemName, ItemDesc;
+    public GameObject descPanel;
     public Image itemImage;
     [Header("Buttons")]
     public Button btnConsume;
-    public Button btnMove;
     public Button btnDestroy;
+    [Header("Selected item Informations")]
     public Item item;
-    public bool move;
+    public int idSlot;
+    public SlotType slotType;
 
     void Start()
     {
@@ -21,10 +23,6 @@ public class InventoryDescs : MonoBehaviour
     }
     void Update()
     {
-        if(btnMove.interactable == true || item == null)
-        {
-            move = false;
-        }
     }
     public void ChangeDesc(string name, string desc, Sprite itemImg)
     {
@@ -34,30 +32,40 @@ public class InventoryDescs : MonoBehaviour
         itemImage.enabled = true;
     }
 
-    public void EnableButtons(bool consume, bool move, bool destroy)
+    public void EnableButtons(bool consume, bool destroy)
     {
-        print(consume + " " + move + " " + destroy);
         btnConsume.interactable = consume;
-        btnMove.interactable = move;
         btnDestroy.interactable = destroy;
-    }
-    public void MoveClick()
-    {
-        move = true;
     }
     
     public void DisableAllButtons()
     {
         btnConsume.interactable = false;
-        btnMove.interactable = false;
         btnDestroy.interactable = false;
+    }
+    private void OnEnable() 
+    {
+        DisableInfos();
+        DisableAllButtons();
     }
 
     private void OnDisable() 
     {
+        DisableInfos();
+        DisableAllButtons();
+    }
+
+    public void DisableInfos()
+    {
         ChangeDesc("","",null);
         itemImage.enabled = false;
         CoreInventory._instance.inventory.SelectItem(-1, SlotType.WEAPON);
+        item = CoreInventory._instance.inventory.itemEmpty;
+    }
+
+    public void ClickDestroy()
+    {
+        CoreInventory._instance.inventory.DestroyItem(idSlot, slotType);
         DisableAllButtons();
     }
 }

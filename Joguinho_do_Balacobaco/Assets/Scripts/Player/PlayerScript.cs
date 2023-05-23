@@ -44,6 +44,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
     void Awake()
     {
+        playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
         pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação do 

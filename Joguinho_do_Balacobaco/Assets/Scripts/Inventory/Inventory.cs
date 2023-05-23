@@ -14,21 +14,23 @@ public class Inventory : MonoBehaviour
     [Header("Inventory Itens")]
     public RectTransform itensPanel;
     public GameObject inventorySlot;
-    public int inventoryAmount =10;
+    public int inventoryAmount = 10;
 
     [Header("Inventory Weapons")]
     public RectTransform weaponsPanel;
     public GameObject weaponSlot;
-    public int weaponsAmount =3;
+    public int weaponsAmount = 3;
 
     [Header("Inventory Hotbar")]
     public RectTransform hotbarPanel;
+    public RectTransform playerHotbar;
     public GameObject hotbarSlot;
-    public int hotbarAmount =6;
+    public int hotbarAmount = 6;
 
     public Dictionary<int, InventorySlot> inventory = new Dictionary<int, InventorySlot>();
     public Dictionary<Item, int> itemAmount = new Dictionary<Item, int>();
     public Dictionary<int, InventorySlot> hotbar = new Dictionary<int, InventorySlot>();
+    public Dictionary<int, InventorySlot> hotbarPlayer = new Dictionary<int, InventorySlot>();
     public Dictionary<int, InventorySlot> weapons = new Dictionary<int, InventorySlot>();
     private bool isInventoryCreate;
 
@@ -72,10 +74,16 @@ public class Inventory : MonoBehaviour
             InventorySlot slot = s.GetComponent<InventorySlot>();
             slot.CreateSlot(i, itemEmpty);
             hotbar.Add(i, slot);
+
+            GameObject s2 = Instantiate(hotbarSlot, playerHotbar);
+            InventorySlot slot2 = s2.GetComponent<InventorySlot>();
+            slot2.CreateSlot(i, itemEmpty);
+            hotbarPlayer.Add(i, slot2);
         }
         UpdateInventorySlots();
         UpdateHotbarSlots();
         UpdateWeaponsSlots();
+        UpdateHotbarPlayer();
         isInventoryCreate = true; 
     }
 
@@ -128,7 +136,6 @@ public class Inventory : MonoBehaviour
 
         else if(itemAmount.ContainsKey(item) && unique == true && stakeable == false)
         {
-            print("Meia Noite eu te conto");
             //Meia noite eu te conto
         }
         else
@@ -185,6 +192,19 @@ public class Inventory : MonoBehaviour
         {
             slot.Value.UpdateSlot();
         }
+        UpdateHotbarPlayer();
+    }
+    public void UpdateHotbarPlayer()
+    {
+        for(int i =0; i <hotbarAmount; i ++)
+        {
+            hotbarPlayer[i].item = hotbar[i].item;
+        }    
+        foreach(var slot2 in hotbarPlayer)
+        {
+            slot2.Value.UpdateSlot();
+        }
+
     }
     public void UpdateWeaponsSlots()
     {
@@ -194,7 +214,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void OnDropDone(InventorySlot drop)
+    public void OnDropDone(InventorySlot drop, int idSlot, SlotType stype)
     {
         slotDrop = drop;
 
@@ -208,9 +228,10 @@ public class Inventory : MonoBehaviour
         {
             slotDrag.item = iDrop;
             slotDrop.item = iDrag;
+            UpdateInventorySlots();
+            UpdateHotbarSlots();
+            SelectItem(idSlot, stype);
         }
-        UpdateInventorySlots();
-        UpdateHotbarSlots();
         }
         catch{}
         slotDrag = null;
@@ -222,14 +243,34 @@ public class Inventory : MonoBehaviour
         inventoryDesc.ChangeDesc(item.itemName[language], item.itemDesc[language], item.itemSprite);
     }
 
+    public void DestroyItem(int idSlot, SlotType stype)
+    {
+        if(stype == SlotType.HOTBAR)
+        {
+            hotbar[idSlot].item = itemEmpty;
+            UpdateHotbarSlots();
+        }
+        if(stype == SlotType.INVENTORY)
+        {
+            inventory[idSlot].item = itemEmpty;
+            UpdateInventorySlots();
+        }
+        ChangeDescPanel(itemEmpty, 0);
+    }
+
     public void SelectItem(int slotId, SlotType sType) 
     {
         if(sType == SlotType.HOTBAR)
         {
+            if(hotbar[slotId].item == itemEmpty)
+            {
+                return;
+            }
             for(int i = 0; i < hotbarAmount; i ++)
             {
                 if(i == slotId)
                 {
+                    print(i);
                     hotbar[i].itemSelected = true;
                     hotbar[i].EnableButtons();
                 }

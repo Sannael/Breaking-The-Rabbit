@@ -35,6 +35,7 @@ public class ControlSettings : MonoBehaviour
 
     public void Awake() 
     {
+        playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         savedControl = true;
         keyId = playerActions.Length;
         playerActions[0] = "MoveUP"; //Armazena todos os nomes de ações do game
