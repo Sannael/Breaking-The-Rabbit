@@ -80,10 +80,10 @@ public class Inventory : MonoBehaviour
             slot2.CreateSlot(i, itemEmpty);
             hotbarPlayer.Add(i, slot2);
         }
-        UpdateInventorySlots();
-        UpdateHotbarSlots();
-        UpdateWeaponsSlots();
-        UpdateHotbarPlayer();
+        UpdateInventorySlots(false, true); //tem q ser false true
+        UpdateHotbarSlots(false, true);
+        UpdateWeaponsSlots(false, true);
+        UpdateHotbarPlayer(false, true);
         isInventoryCreate = true; 
     }
 
@@ -118,15 +118,15 @@ public class Inventory : MonoBehaviour
         return isFull;
     }
 
-    public void GetItem(Item item, int amount, bool unique, bool stakeable)
+    public void GetItem(Item item, int amount, bool unique, bool pileable)
     {
-        if(itemAmount.ContainsKey(item) && stakeable == true && unique == false)
+        if(itemAmount.ContainsKey(item) && pileable == true && unique == false)
         {
             if(itemAmount[item] < item.maxItens)
             {
                 itemAmount[item] += amount;
-                UpdateHotbarSlots();
-                UpdateInventorySlots();
+                UpdateHotbarSlots(true, false);
+                UpdateInventorySlots(true, false);
             }
             else
             {
@@ -134,7 +134,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        else if(itemAmount.ContainsKey(item) && unique == true && stakeable == false)
+        else if(itemAmount.ContainsKey(item) && unique == true && pileable == false)
         {
             //Meia noite eu te conto
         }
@@ -144,25 +144,72 @@ public class Inventory : MonoBehaviour
             {
                 int i = hotbar.First(x => x.Value.item == itemEmpty).Key;
                 hotbar[i].item = item;
-                if(stakeable == true && unique == false)
+                if(pileable == true && unique == false)
                 {
                     itemAmount.Add(item, amount);
                 }
-                else if(unique == true && stakeable == false)
+                else if(unique == true && pileable == false)
                 {
                     itemAmount.Add(item, amount);
                 }
-                UpdateHotbarSlots();
+                UpdateHotbarSlots(true, false);
             }
             else if(InventoryFull() == false)
             {
                 int i = inventory.First(x => x.Value.item == itemEmpty).Key;
                 inventory[i].item = item;
-                if(stakeable == true && unique == false)
+                if(pileable == true && unique == false)
                 {
                     itemAmount.Add(item, amount);
                 }
-                UpdateInventorySlots();
+                else if(unique == true && pileable == false)
+                {
+                    itemAmount.Add(item, amount);
+                }
+                UpdateInventorySlots(true, false);
+            }
+        }
+    }
+
+    public void ReGetItem(Item item, int amount, bool unique, bool pileable)
+    {
+        if(itemAmount.ContainsKey(item) && pileable == true && unique == false)
+        {
+            if(itemAmount[item] < item.maxItens)
+            {
+                itemAmount[item] += amount;
+            }
+            else
+            {
+            }
+        }
+
+        else if(itemAmount.ContainsKey(item) && unique == true && pileable == false)
+        {
+        }
+        else
+        {
+            if(HotbarFull() == false)
+            {
+                int i = hotbar.First(x => x.Value.item == itemEmpty).Key;
+                hotbar[i].item = item;
+                if(pileable == true && unique == false)
+                {
+                    itemAmount.Add(item, amount);
+                }
+                else if(unique == true && pileable == false)
+                {
+                    itemAmount.Add(item, amount);
+                }
+            }
+            else if(InventoryFull() == false)
+            {
+                int i = inventory.First(x => x.Value.item == itemEmpty).Key;
+                inventory[i].item = item;
+                if(pileable == true && unique == false)
+                {
+                    itemAmount.Add(item, amount);
+                }
             }
         }
     }
@@ -178,23 +225,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UpdateInventorySlots()
+    public void UpdateInventorySlots(bool insertValues, bool resetValues)
     {
         foreach(KeyValuePair<int, InventorySlot> slot in inventory)
         {
-            slot.Value.UpdateSlot();
+            slot.Value.UpdateSlot(insertValues, resetValues);
         }
     }
 
-    public void UpdateHotbarSlots()
+    public void UpdateHotbarSlots(bool insertValues, bool resetValues)
     {
         foreach(var slot in hotbar)
         {
-            slot.Value.UpdateSlot();
+            slot.Value.UpdateSlot(insertValues, resetValues);
         }
-        UpdateHotbarPlayer();
+        UpdateHotbarPlayer(insertValues, resetValues);
     }
-    public void UpdateHotbarPlayer()
+    public void UpdateHotbarPlayer(bool insertValues, bool resetValues)
     {
         for(int i =0; i <hotbarAmount; i ++)
         {
@@ -202,15 +249,15 @@ public class Inventory : MonoBehaviour
         }    
         foreach(var slot2 in hotbarPlayer)
         {
-            slot2.Value.UpdateSlot();
+            slot2.Value.UpdateSlot(insertValues, resetValues);
         }
 
     }
-    public void UpdateWeaponsSlots()
+    public void UpdateWeaponsSlots(bool insertValues, bool resetValues)
     {
         foreach(var slot in weapons)
         {
-            slot.Value.UpdateSlot();
+            slot.Value.UpdateSlot(insertValues, resetValues);
         }
     }
 
@@ -228,8 +275,8 @@ public class Inventory : MonoBehaviour
         {
             slotDrag.item = iDrop;
             slotDrop.item = iDrag;
-            UpdateInventorySlots();
-            UpdateHotbarSlots();
+            UpdateInventorySlots(true, false);
+            UpdateHotbarSlots(true, false);
             SelectItem(idSlot, stype);
         }
         }
@@ -248,12 +295,12 @@ public class Inventory : MonoBehaviour
         if(stype == SlotType.HOTBAR)
         {
             hotbar[idSlot].item = itemEmpty;
-            UpdateHotbarSlots();
+            UpdateHotbarSlots(true, false);
         }
         if(stype == SlotType.INVENTORY)
         {
             inventory[idSlot].item = itemEmpty;
-            UpdateInventorySlots();
+            UpdateInventorySlots(true, false);
         }
         ChangeDescPanel(itemEmpty, 0);
     }
@@ -315,6 +362,6 @@ public class Inventory : MonoBehaviour
             }
             CoreInventory._instance.inventoryDescs.DisableAllButtons();
         }
-        UpdateWeaponsSlots();
+        UpdateWeaponsSlots(false, true);
     }
 }

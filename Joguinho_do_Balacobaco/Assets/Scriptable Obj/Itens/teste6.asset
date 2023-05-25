@@ -10,29 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1d94bd9b50aad4286bf7df822766f9, type: 3}
-  m_Name: Teste4
+  m_Name: teste6
   m_EditorClassIdentifier: 
-  itemId: 4
+  itemId: 6
   isEmpty: 0
   itemName:
-  - no Move
-  itemSprite: {fileID: -1284308974, guid: c6f2d2de3ce85e74289bdc26d480d5b0, type: 3}
-  itemAmount: 0
+  - Stakable Unique
+  itemSprite: {fileID: -1304642523, guid: c6f2d2de3ce85e74289bdc26d480d5b0, type: 3}
+  itemAmount: 1
   itemStak: 0
-  maxItens: 0
+  maxItens: 1
   maxStak: 0
   chest: 0
   shop: 0
   consumible: 0
-  canMove: 0
+  canMove: 1
   canDestroy: 1
   unique: 1
   pileable: 0
   stakable: 0
   itemDesc:
-  - 'afsdddaaaaaaaaaaaaaaa
-
-    aaaaaaaaaaaaaa
-
-
-    aaaaaaaaaaaaaaaaa'
+  - 

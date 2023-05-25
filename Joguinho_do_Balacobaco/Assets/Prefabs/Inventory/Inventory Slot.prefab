@@ -168,15 +168,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590953608de9c6749b472f02837649ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorySave: {fileID: 11400000, guid: acac3a4b581640747bda97fe05d8fc43, type: 2}
   slotType: 0
   idSlot: 0
   item: {fileID: 0}
+  itemId: 0
   itemImage: {fileID: 339423342386435315}
   itemAmount: 0
+  itemPile: 0
   unique: 0
-  stakeable: 0
+  pileable: 0
+  stakable: 0
   itemDesc: 
   itemCount: {fileID: 339423342961402713}
+  itemSelected: 0
+  consumible: 0
+  canMove: 0
+  canDestroy: 0
 --- !u!114 &-5760296534876351458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +200,10 @@ MonoBehaviour:
   canvas: {fileID: 0}
   slot: {fileID: 2064939517947256026}
   _transform: {fileID: 339423342781219554}
+  itemDrag: {fileID: 0}
+  isDrag: 0
+  language: 0
+  canMove: 0
 --- !u!1 &339423342961402715
 GameObject:
   m_ObjectHideFlags: 0

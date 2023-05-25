@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class InventoryDescs : MonoBehaviour
 {
     public TMP_Text itemName, ItemDesc;
-    public GameObject descPanel;
     public Image itemImage;
     [Header("Buttons")]
     public Button btnConsume;
@@ -16,13 +15,11 @@ public class InventoryDescs : MonoBehaviour
     public Item item;
     public int idSlot;
     public SlotType slotType;
-
+    public GameObject destroyPnl;
+    
     void Start()
     {
         DisableAllButtons();
-    }
-    void Update()
-    {
     }
     public void ChangeDesc(string name, string desc, Sprite itemImg)
     {
@@ -30,6 +27,7 @@ public class InventoryDescs : MonoBehaviour
         ItemDesc.text = desc;
         itemImage.sprite = itemImg;
         itemImage.enabled = true;
+        destroyPnl.GetComponent<PnlDestroy>().itemname = name;
     }
 
     public void EnableButtons(bool consume, bool destroy)
@@ -53,6 +51,7 @@ public class InventoryDescs : MonoBehaviour
     {
         DisableInfos();
         DisableAllButtons();
+        EnableDisableDestPnl(false);
     }
 
     public void DisableInfos()
@@ -61,6 +60,11 @@ public class InventoryDescs : MonoBehaviour
         itemImage.enabled = false;
         CoreInventory._instance.inventory.SelectItem(-1, SlotType.WEAPON);
         item = CoreInventory._instance.inventory.itemEmpty;
+    }
+
+    public void EnableDisableDestPnl(bool enable)
+    {
+        destroyPnl.SetActive(enable);
     }
 
     public void ClickDestroy()

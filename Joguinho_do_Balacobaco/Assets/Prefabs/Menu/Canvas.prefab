@@ -1429,14 +1429,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481265070047335653, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6401781645834558102}
-    - target: {fileID: 3481265070047335653, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickDestroy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3481265070047335653, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: InventoryDescs, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1451,14 +1443,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3481265068196589309, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
   m_PrefabInstance: {fileID: 7536846954672040642}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6401781645834558102 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3481265068788920404, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
-  m_PrefabInstance: {fileID: 7536846954672040642}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5a370ef4365a146a6e2c80ca11ed1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
