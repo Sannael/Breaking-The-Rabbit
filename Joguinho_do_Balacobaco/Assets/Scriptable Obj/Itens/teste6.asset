@@ -23,6 +23,7 @@ MonoBehaviour:
   maxStak: 0
   chest: 0
   shop: 0
+  value: 0
   consumible: 0
   canMove: 1
   canDestroy: 1
@@ -31,3 +32,5 @@ MonoBehaviour:
   stakable: 0
   itemDesc:
   - 
+  weapon: 0
+  thisPrefabDrop: {fileID: 0}

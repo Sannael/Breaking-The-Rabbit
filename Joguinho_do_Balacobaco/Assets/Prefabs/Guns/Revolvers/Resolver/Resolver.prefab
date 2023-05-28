@@ -262,6 +262,7 @@ MonoBehaviour:
   magazine: {fileID: 0}
   magLocate: {fileID: 0}
   magForce: {x: 0, y: 0}
+  item: {fileID: 11400000, guid: b5a599c994ee35046bf86c5a303ca2ba, type: 2}
 --- !u!1 &1223213083134857073
 GameObject:
   m_ObjectHideFlags: 0

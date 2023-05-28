@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class InventoryDescs : MonoBehaviour
 {
-    public TMP_Text itemName, ItemDesc;
-    public Image itemImage;
+    public TMP_Text itemName, ItemDesc; //Nome e descrição do item
+    public Image itemImage; //Imagem do item
     [Header("Buttons")]
-    public Button btnConsume;
-    public Button btnDestroy;
+    public Button btnConsume; //Botão de consumir
+    public Button btnDestroy; //Botão de destruir
     [Header("Selected item Informations")]
-    public Item item;
-    public int idSlot;
-    public SlotType slotType;
-    public GameObject destroyPnl;
+    public Item item; //Item selecionado
+    public int idSlot; //id do slot do item selecionado
+    public SlotType slotType; //Tipo de slot do item selecionado
+    public GameObject destroyPnl; //Painel de tem certeza que deseja destruir
     
     void Start()
     {
-        DisableAllButtons();
+        DisableAllButtons(); //Desabilita a innteração com os botões
     }
-    public void ChangeDesc(string name, string desc, Sprite itemImg)
+    public void ChangeDesc(string name, string desc, Sprite itemImg) //Muda tudo da desc do item
     {
         itemName.text = name;
         ItemDesc.text = desc;
@@ -30,7 +30,7 @@ public class InventoryDescs : MonoBehaviour
         destroyPnl.GetComponent<PnlDestroy>().itemname = name;
     }
 
-    public void EnableButtons(bool consume, bool destroy)
+    public void EnableButtons(bool consume, bool destroy) //Habilita os botões permitidos
     {
         btnConsume.interactable = consume;
         btnDestroy.interactable = destroy;
@@ -54,7 +54,7 @@ public class InventoryDescs : MonoBehaviour
         EnableDisableDestPnl(false);
     }
 
-    public void DisableInfos()
+    public void DisableInfos() //Tira a info do painel, qnd fechar o painel
     {
         ChangeDesc("","",null);
         itemImage.enabled = false;
@@ -64,12 +64,12 @@ public class InventoryDescs : MonoBehaviour
 
     public void EnableDisableDestPnl(bool enable)
     {
-        destroyPnl.SetActive(enable);
+        destroyPnl.SetActive(enable); //Ativa o painel de tem certeza que deseja deletar
     }
 
     public void ClickDestroy()
     {
-        CoreInventory._instance.inventory.DestroyItem(idSlot, slotType);
+        CoreInventory._instance.inventory.DestroyItem(idSlot, slotType); //Deleta o item
         DisableAllButtons();
     }
 }

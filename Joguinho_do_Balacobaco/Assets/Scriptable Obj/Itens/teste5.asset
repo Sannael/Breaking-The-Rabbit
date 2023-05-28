@@ -17,17 +17,20 @@ MonoBehaviour:
   itemName:
   - Stakable
   itemSprite: {fileID: -1711460285, guid: c6f2d2de3ce85e74289bdc26d480d5b0, type: 3}
-  itemAmount: 0
+  itemAmount: 1
   itemStak: 0
-  maxItens: 0
+  maxItens: 1
   maxStak: 999
   chest: 0
   shop: 0
+  value: 0
   consumible: 0
   canMove: 0
   canDestroy: 1
-  unique: 0
+  unique: 1
   pileable: 0
   stakable: 1
   itemDesc:
   - 
+  weapon: 0
+  thisPrefabDrop: {fileID: 0}

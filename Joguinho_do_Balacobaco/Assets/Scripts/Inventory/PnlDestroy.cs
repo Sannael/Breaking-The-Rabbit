@@ -5,13 +5,13 @@ using TMPro;
 
 public class PnlDestroy : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    public int lang;
+    public TextMeshProUGUI text; //Lugar onde aparece o texto de tem certeza
+    public int lang; //Idioma
     [TextArea(10,7)]
-    public string[] part1;
+    public string[] part1; //começo do texto
     public string itemname;
     private void OnEnable() 
     {
-        text.text =   part1[lang] + itemname + " ?"; 
+        text.text = part1[lang] + itemname + " ?"; //O texto que aparece pro player
     }
 }

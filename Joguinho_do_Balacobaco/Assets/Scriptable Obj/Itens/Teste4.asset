@@ -17,12 +17,13 @@ MonoBehaviour:
   itemName:
   - no Move
   itemSprite: {fileID: -1284308974, guid: c6f2d2de3ce85e74289bdc26d480d5b0, type: 3}
-  itemAmount: 0
+  itemAmount: 1
   itemStak: 0
-  maxItens: 0
+  maxItens: 1
   maxStak: 0
   chest: 0
   shop: 0
+  value: 0
   consumible: 0
   canMove: 0
   canDestroy: 1
@@ -36,3 +37,5 @@ MonoBehaviour:
 
 
     aaaaaaaaaaaaaaaaa'
+  weapon: 0
+  thisPrefabDrop: {fileID: 0}

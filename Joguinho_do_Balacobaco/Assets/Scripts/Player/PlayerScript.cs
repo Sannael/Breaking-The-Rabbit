@@ -44,13 +44,15 @@ public class PlayerScript : MonoBehaviour
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
     void Awake()
     {
+        
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
-        pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação do 
+        pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação da instancia do inventario
     }
     void Start()
     {
+        CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
         stuned = false;
         sceneManager = GameObject.Find("SceneManager");
@@ -67,7 +69,7 @@ public class PlayerScript : MonoBehaviour
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
             {
-                DisbleAll(); //Função de desativar todos os itenbs do player
+                DisbleAll(); //Função de desativar todos os itens do player
                 isAlive = false; //Murreu :(
                 Animations("Death"); //Animação de Death
             }

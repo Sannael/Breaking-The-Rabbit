@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f96e345975d8f4aa2dd8d5eb44a4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 7d511686d947381408c051da5f69e6be, type: 2}
   speed: 9
   travel: 1
   ammo: {fileID: 804907040599786485, guid: 62ee9422b81937f41abb61118df2bf7a, type: 3}

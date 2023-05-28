@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1d94bd9b50aad4286bf7df822766f9, type: 3}
+  m_Name: Sabronoura
+  m_EditorClassIdentifier: 
+  itemId: 801
+  isEmpty: 0
+  itemName:
+  - Sabronoura
+  itemSprite: {fileID: 21300000, guid: 92266bd01cb4d364c9321b88a1037451, type: 3}
+  itemAmount: 0
+  itemStak: 0
+  maxItens: 0
+  maxStak: 0
+  chest: 0
+  shop: 0
+  value: 0
+  consumible: 0
+  canMove: 0
+  canDestroy: 0
+  unique: 1
+  pileable: 0
+  stakable: 0
+  itemDesc:
+  - "Um dos \xFAltimos presentes de Dimitri para o Bunny, ele disse que combina com
+    o coelho\nA arma corpo-a-corpo inicial;\nDano: 10;\nSeus ataques destroem proj\xE9teis"
+  weapon: 2

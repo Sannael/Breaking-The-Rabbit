@@ -7,38 +7,39 @@ using UnityEngine.EventSystems;
 using System.Linq;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
-{
-    public InventorySave inventorySave;
+{//Todos os nomes de variaveis que tem aqui, ja expliquei em outro script (maioria delas no mesmo alias), nome são bem objetivos tbm, mucho texto explicar de novo
+    public InventorySave inventorySave; 
     public SlotType slotType;
     public int idSlot;
     public Item item;
     public int itemId;
     public Image itemImage;
     public int itemAmount;
-    public int itemPile;
+    public int itemStak;
     public bool unique, pileable, stakable;
     public string itemDesc;
-    public TMP_Text itemCount;
+    public TMP_Text itemCount, itemStaktxt;
     public bool itemSelected;
     public bool consumible, canMove, canDestroy;
     
-    public void CreateSlot(int id, Item i)
+    public void CreateSlot(int id, Item i) //Cria o slot e adiciona o item a ele (inicialmente Empty)
     {
         idSlot = id;
         item = i;
     }
-    public void UpdateSlot(bool insert, bool resetValues)
+
+    public void E()
     {
-        if(resetValues == true)
-        {
-            try{ResetItensInfo();}catch{}
-            return;
-        }
-        if(item.isEmpty == true)
+        Debug.Log(item + " " + itemAmount);
+    }
+    public void UpdateSlot(bool insert) //Atualiza o slot, cehcando se inseri valor novo ou se puxa valores ja existentes sobre itens que o player tem
+    {
+        if(item.isEmpty == true) //Se for empty deixa todas as infos nulas
         {
             itemImage.sprite = null;
             itemImage.enabled = false;
             itemCount.enabled = false;
+            itemStak = 0;
             itemAmount = 0;
             unique = item.unique;
             pileable = item.pileable;
@@ -47,7 +48,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             canMove = item.canMove;
             canDestroy = item.canDestroy;
         }
-        else
+        else //Se n for vazio, basicamente puxa todas as informações do item
         {
             itemId = item.itemId;
             itemImage.sprite = item.itemSprite;
@@ -58,31 +59,41 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             consumible = item.consumible;
             canMove = item.canMove;
             canDestroy = item.canDestroy;
-            if(unique == false)
+            itemAmount = 1;
+            if(unique == false) 
             {
-                itemCount.enabled = true;
-                bool parse = int.TryParse(CoreInventory._instance.inventory.GetItemAmount(item), out itemAmount);
-                itemCount.text = itemAmount.ToString();            
+                itemCount.enabled = true; //Habilita o texto que armazena a quantidade que o player tem desse item
+                bool parse = int.TryParse(CoreInventory._instance.inventory.GetItemAmount(item), out itemAmount); //tenta converter pra int
+                itemCount.text = itemAmount.ToString(); //e depois converte pra string; parece meio sem nexo, eu sei, mas se eu n fizer essa etapa assim, 
+                //pode dar algum erro na horas de passar pra int, pra quando for salvar a quantidade que o player tem do item         
             }
             else
             {
-                itemAmount = 0;
                 itemCount.text = "";
             }
-            if(itemAmount == 0)
+            if(stakable == true)
             {
-                itemCount.text = "";
+                itemStaktxt.enabled = true;
+                itemStaktxt.text = itemStak.ToString();
+            }
+            if(itemStak == 0)
+            {
+                itemStaktxt.text = "";
             }
         }
 
-        if(insert == true)
+        if(insert == true) //Armazena as informações
         {
-            inventorySave.InsertItemInfos(idSlot, item.itemId, itemAmount, itemPile, item);
+            inventorySave.InsertItemInfos(idSlot, item.itemId, itemAmount, itemStak, item);
         }
 
     }
-    public void ReUpdateSlot()
-    {
+    public void ReUpdateSlot() //Aqui é basicamente a função de cima, só que uso sem inserir nem puxar infos salvas, e depois armazeno o item no dicionario
+    { //Uso outra função pra basicamente n ter problema de bugar os itens no dicionario. Só uso quando puxo informações de qual item o player tem
+        if(item.isEmpty == true)
+        {
+            return;
+        }
         itemId = item.itemId;
         itemImage.sprite = item.itemSprite;
         itemImage.enabled = true;
@@ -101,24 +112,31 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             itemCount.text = "";
         }
-        if(itemAmount == 0)
+        if(stakable == true)
         {
-            itemCount.text = "";
+            itemStaktxt.enabled = true;
+            itemStaktxt.text = itemStak.ToString();
         }
-        CoreInventory._instance.inventory.ReGetItem(item, itemAmount, unique, pileable);
+        if(itemStak == 0)
+        {
+            itemStaktxt.text = "";
+        }
+        
+        CoreInventory._instance.inventory.ReGetItem(slotType, idSlot, item, itemAmount, unique, pileable, item.weapon);
+        
     }
-    public void ResetItensInfo()
+    public void ResetItensInfo() //Aqui puxa as informações dos itens que o player tinha (quase um Backup)
     {
-        int[] values = inventorySave.GiveItemInfos(idSlot);
-        itemAmount = values[0];
-        itemPile = values[1];
-        item = inventorySave.TakeValues(idSlot);
-        ReUpdateSlot();
-
-        Debug.Log("Reset");
-        Debug.Log("Slot_Id = " + idSlot +  "Item_Id = " + itemId + " / " + values[0] + " ItemAmount = " + itemAmount+ " / " +values[1]);
+        if(slotType != SlotType.PLAYERHOTBAR)
+        {
+            int[] values = inventorySave.GiveItemInfos(idSlot);
+            itemAmount = values[0];
+            itemStak = values[1];
+            item = inventorySave.TakeValues(idSlot);
+            ReUpdateSlot();
+        }
     }
-    public void EnableButtons()
+    public void EnableButtons() //Habilita os botões e passa algumas informações pro painel de descrições
     {
         CoreInventory._instance.inventoryDescs.EnableButtons(consumible, canDestroy);
 
@@ -127,9 +145,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         CoreInventory._instance.inventoryDescs.slotType = slotType;
 
     }
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData) //Faz parte do Drag & Drop, quando terminar de arrastar o item
     {
         
-        CoreInventory._instance.inventory.OnDropDone(this, idSlot, slotType);
+        CoreInventory._instance.inventory.OnDropDone(this, idSlot, slotType); //Puxa esse item e passa pro inventario, pra ver se vai rolar de trocar os itens de lugar 
     }
 }

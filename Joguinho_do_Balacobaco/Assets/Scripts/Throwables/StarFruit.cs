@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StarFruit : MonoBehaviour
 {
+    public Item item;
     public float speed; //Velocidade da carambola
     public bool travel;
     private Animator anim;

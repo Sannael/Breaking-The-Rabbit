@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Weapon
   m_EditorClassIdentifier: 
   slotAmount: 3
-  itemId: 000000000000000000000000
+  itemId: 0000000000000000c9000000
   itemAmount: 000000000000000000000000
-  itemPile: 000000000000000000000000
+  itemStak: 000000000000000000000000
   item:
   - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
   - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
-  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: 7d511686d947381408c051da5f69e6be, type: 2}

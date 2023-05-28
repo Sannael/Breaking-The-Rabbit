@@ -43,8 +43,10 @@ public class GunStatus : MonoBehaviour
     public GameObject magazine; //Pente de arma; Se houver
     public Transform magLocate;
     public Vector2 magForce;
+    public Item item;
     void Start()
     {
+        CoreInventory._instance.inventory.GetItem(item, 0, true, false, 1);
         playerAmmo = 0;
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
