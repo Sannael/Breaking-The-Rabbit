@@ -16,6 +16,7 @@ public class AmmoDrop : MonoBehaviour
     private int ammoId; //ID do tipo de munição; mesma ordem dos sprites
     public bool hitDrop, hitKill; //Caso for pego atraves da StarFruit; hitdrop: acertou mas não matou; hitKill: Matou
     private int count; //Evita bug de pegar duas vezes a munição
+    public bool isVisible;
     
     void Start()
     {   
@@ -122,7 +123,7 @@ public class AmmoDrop : MonoBehaviour
         Vector2 pos = transform.position; //Valor random, pra n bugar samerda
         pos[0] = 0;
         pos[1] = 0;
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.7f); 
         this.GetComponent<Rigidbody2D>().velocity = pos; //Parar a quada da caixa de munição
         this.GetComponent<Rigidbody2D>().gravityScale = 0; //Tirar a gravidade da moeda
         
@@ -130,5 +131,14 @@ public class AmmoDrop : MonoBehaviour
         Vector3 lastPos = transform.position;
         lastPos[0] = lastPos[0] + range;
         transform.position = Vector2.MoveTowards(transform.position, lastPos, 1);
+    }
+
+    private void OnBecameVisible() 
+    {
+        isVisible = true;
+    }
+    private void OnBecameInvisible() 
+    {
+        isVisible = false;
     }
 }

@@ -15,9 +15,14 @@ public class StarFruit : MonoBehaviour
     private DamageScript dmgScript;
     private GameObject player;
     public CircleCollider2D rigidCol;
-    private bool isVisible;
+    public bool isVisible;
+    [Header("Id das layers para funcionalidade do imã")]
+    public int starfuitLayerId;
+    public int coinLayerId;
     void Start()
     {
+        gameObject.layer = starfuitLayerId;
+        gameObject.tag = "StarFruit";
         isVisible = true;
         count = 1;
         ammoDropCount = 1;
@@ -39,6 +44,8 @@ public class StarFruit : MonoBehaviour
         {
             anim.SetBool("Throw", false);
             this.GetComponent<DamageScript>().enabled = false; //Desabilita o script de dano
+            gameObject.layer = coinLayerId;
+            gameObject.tag = "Coin";
         }
         if(isVisible == false)
         {

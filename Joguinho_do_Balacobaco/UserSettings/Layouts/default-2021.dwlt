@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 331
     height: 543
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 860
     height: 543
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
@@ -244,8 +244,8 @@ MonoBehaviour:
     y: 0
     width: 409
     height: 543
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -708,9 +708,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.610557, y: 1.9907937, z: 941525}
+    m_Target: {x: -0.9479343, y: -0.907489, z: 1000412.06}
     speed: 2
-    m_Value: {x: 4.610557, y: 1.9907937, z: 941525}
+    m_Value: {x: -0.9479343, y: -0.907489, z: 1000412.06}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -761,9 +761,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.166961
+    m_Target: 11.864587
     speed: 2
-    m_Value: 11.166961
+    m_Value: 11.864587
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1109,9 +1109,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 34bddea06b1c82749826cd7d9abe1366, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 6f1f2f9d5f19e80418936e1fb5b87fa7, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 4801111694328223607, guid: 34bddea06b1c82749826cd7d9abe1366, type: 2}
+  - m_Target: {fileID: 4943149825936083743, guid: 6f1f2f9d5f19e80418936e1fb5b87fa7, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1737,12 +1737,12 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -3220
+  m_LastInspectedObjectInstanceID: 7984
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
-    m_IsLocked: 1
+    m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
 --- !u!114 &19
 MonoBehaviour:
@@ -1785,22 +1785,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Guns/Pistols
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Guns/Pistols
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Breaking-The-Rabbit\Joguinho_do_Balacobaco
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 223}
-    m_SelectedIDs: 48a20000
-    m_LastClickedID: 41544
-    m_ExpandedIDs: 00000000e2a10000e4a10000e6a10000e8a10000eaa10000eca10000eea10000f0a10000f2a10000f4a10000f6a10000f8a10000faa10000fca10000fea1000000a200000ea2000000ca9a3b
+    scrollPos: {x: 0, y: 841}
+    m_SelectedIDs: 9ca10000
+    m_LastClickedID: 41372
+    m_ExpandedIDs: 0000000080a1000082a1000084a1000086a1000088a100008aa100008ca100008ea1000090a1000092a1000094a1000096a1000098a100009aa100009ca100009ea10000a4a10000aca1000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1828,7 +1828,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2a10000e4a10000e6a10000e8a10000eaa10000eca10000eea10000f0a10000f2a10000f4a10000f6a10000f8a10000faa10000fca10000fea1000000a20000
+    m_ExpandedIDs: 0000000080a1000082a1000084a1000086a1000088a100008aa100008ca100008ea1000090a1000092a1000094a1000096a1000098a100009aa100009ca100009ea10000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000921d02006083000066820000b0a00000d0800000ba81000012620100348f00001e8200005a7c0000f2940100e882000056a70000a87e000090810000e48200000a8400004a810000d09c0000eead00002e8e0100328e0100368e01002a8e0100268e0100188e0100128e0100c4860000f6d6000072cd0000da4002009ed1000002e1000088970000e08800009a89000000000000249b0000f88b0000828e00003a8b0000968b0000988e0000228c00002a8d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
