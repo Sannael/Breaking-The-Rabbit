@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GunStatus : MonoBehaviour
-{
+{ 
     [SerializeField]
     private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil

@@ -24,6 +24,7 @@ public class SlimeDash : MonoBehaviour
     public float distaceInSquares; //Distancia dpo dash em quadrados (metade da scale) 
     private StunScript stunScript; //Script de Stun
     public CapsuleCollider2D capColl; //Colisor de stun; ativa só no dash se n pode bugar, colisor sempre da dor de cabeça ;-;
+    public float dashCoefficient; //Variavel que divide a força do dash, caso o player tiver mt longe, n fca um dash mt forte
     void Start()
     {
         if(this.GetComponent<StunScript>() != null) //Se o Slime tiver script de stun armazena ele 
@@ -126,35 +127,17 @@ public class SlimeDash : MonoBehaviour
             stunScript.enabled = true; //Habilita o stun  durante o dash
         }
         capColl.enabled = true;
-        playerAtkDistance = player.transform.position; //Armazena a posição do player antes do dash
-        float distanceX = transform.position[0] - playerAtkDistance[0]; //Calcula a distancia (eixo X) do slime até o player; entre -0,35 e 0,35 player bem em cima ou baixo
-        float distanceY = transform.position[1] - playerAtkDistance[1]; //Calcula a distancia (eixo Y) do slime até o player; <0.4 player acima; >0.4 player abaixo
-        Vector2 vel = transform.position; //Valor random, se n taca algo buga ent ignoraaaaaaaa
+        Vector3 mov = transform.position - player.transform.position; //Pego a distancia do player até o inimigo
+        Vector2 tmov = new Vector2(mov[0], mov[1]); //puxo ela em um vector2, pra n dar merda e n usamos o Z
+        tmov *= force;
+        if(tmov[1] > 11 || tmov[1] < -11) // se for mt longe pra cima ele fica torto, ent faço esse role ai q da bom
+        {
+            tmov[1] /= (dashCoefficient * 0.9f);
+        }
         
-        if((distanceX > -0.35 && distanceX < 0.35)) //Eixo X dentro dessa distancia quer dizer que o player e o slime estão na mesma reta na horizontal
-        {
-            force += 1; //Aplica mais força pra cima/baixo caso tiver em linha reta
-            vel[0] = 0f; //Sem força pra direita  
-        }
-        else
-        {
-            vel[0] = transform.right[0] * force; //Em qualquer outra dsitancia, a força do dash é normal
-        }
-
-        if(distanceY <-0.4f) //se etrar aqui o Player ta acima do slime, logo dash pra diagonal-cima 
-        {
-            vel[1] = transform.up[1] * (force -2); //Calculo de impulso pra cima
-        }
-        else if(distanceY >0.4f) //se etrar aqui o Player ta abaixo do slime, logo dash pra diagonal-baixo
-        {
-            vel[1] = transform.up[1] * (- (force -2)); //Mesmo calculo de impulso, sóq pra baixo :v
-        }
-        else 
-        {
-            vel[1] = 0f; //Se a distancia do eixo Y for proxima de 0 ele da dash pra frente e n diagonal
-        }
-        rb.velocity = vel; //Aqui que o impulso acontece, ai rola o dash
+        rb.velocity = - (tmov); //Dashzin
         atkSpeedCurrent = 0; //Reseta o tempo de ataque
+        rb.mass = 500;
 
     }
 

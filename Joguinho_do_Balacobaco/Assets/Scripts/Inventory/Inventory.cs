@@ -44,8 +44,6 @@ public class Inventory : MonoBehaviour
     [Header("Item Description")]
     public InventoryDescs inventoryDesc;
 
-    public InputActionReference t;
-    public Item[] a;
     public void Awake()
     {
         if(isInventoryCreate == false)
@@ -55,18 +53,6 @@ public class Inventory : MonoBehaviour
     }
     void Update()
     {
-        if(t.action.IsPressed())
-        {
-            for(int i = 0; i <a.Length; i ++)
-            {
-                if(itemAmount.ContainsKey(a[i]))
-                {
-                    Debug.Log(i + " = " + a[i]);
-                }
-                
-            }
-            Debug.Log(itemAmount.Count);
-        }
     }
     public void ReTakeItensInfo()
     {
@@ -282,6 +268,7 @@ public class Inventory : MonoBehaviour
         {
             slot.Value.UpdateSlot(insertValues);
         }
+        UpdateHotbarPlayer();
         
         //UpdateHotbarPlayer(false);
     }

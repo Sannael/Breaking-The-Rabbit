@@ -460,6 +460,7 @@ RectTransform:
   - {fileID: 3481265068477404533}
   - {fileID: 3481265068788920403}
   - {fileID: 3481265068007432336}
+  - {fileID: 3481265068254288784}
   - {fileID: 4600347010946591598}
   m_Father: {fileID: 3481265068196589309}
   m_RootOrder: 0
@@ -535,8 +536,6 @@ MonoBehaviour:
   slotDrag: {fileID: 0}
   slotDrop: {fileID: 0}
   inventoryDesc: {fileID: 3481265068788920404}
-  t: {fileID: 0}
-  a: []
 --- !u!114 &3481265068050580429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,19 +729,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3481265068254288785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3481265069117243586}
   - {fileID: 3481265069982182233}
-  m_Father: {fileID: 3481265068788920403}
-  m_RootOrder: 4
+  m_Father: {fileID: 3481265068050580425}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
+  m_AnchoredPosition: {x: 462.5, y: -187.5}
   m_SizeDelta: {x: 764, y: 354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3481265068254288786
@@ -1032,7 +1031,6 @@ RectTransform:
   - {fileID: 3481265068009002535}
   - {fileID: 3481265070047335650}
   - {fileID: 3481265069224582927}
-  - {fileID: 3481265068254288784}
   m_Father: {fileID: 3481265068050580425}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2051,7 +2049,7 @@ RectTransform:
   m_Children:
   - {fileID: 4715817155547392544}
   m_Father: {fileID: 3481265068050580425}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2188,8 +2186,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2749,8 +2747,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

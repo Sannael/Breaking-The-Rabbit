@@ -140,6 +140,7 @@ MonoBehaviour:
   canTakeDmg: 1
   isAlive: 0
   armor: 5
+  triggerCol: {fileID: 0}
 --- !u!95 &2517614260861070053
 Animator:
   serializedVersion: 5
@@ -199,7 +200,8 @@ MonoBehaviour:
   isAlive: 0
   dmgScript: {fileID: 0}
   atkSpeed: 3
-  force: 6
+  force: 2.35
+  dashCoefficient: 1.7
   distaceInSquares: 4
   projectile: {fileID: 161734191588054998, guid: e6f452348d69f534783afc7c94c850b6, type: 3}
   projectilePos: {fileID: 2517614260861070054}

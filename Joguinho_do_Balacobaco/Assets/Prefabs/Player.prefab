@@ -199,6 +199,7 @@ MonoBehaviour:
   magnumAmmo: 15
   starFruit: {fileID: 2960570674585553945, guid: 96a5c81b0a85e9948bbfd3f3a0a6ca07, type: 3}
   starFruitCount: 1
+  starFruitMax: 1
   pnlControls: {fileID: 0}
   pnlInventory: {fileID: 0}
   newGun: {fileID: 0}

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ChangeGunUI : MonoBehaviour
 {
     public SpriteRenderer interaction;
-    public GameObject pnlControls;
     public Sprite interactionIdle, interactionPressed;
     
     void Start()

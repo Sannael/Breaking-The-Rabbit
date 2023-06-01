@@ -9,8 +9,7 @@ public class BulletScript : MonoBehaviour
 
     void Start()
     {   
-        Destroy(gameObject, duration);
-            
+        Destroy(gameObject, duration);      
     }
 
     void Update()

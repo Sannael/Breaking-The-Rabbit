@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public int revolverAmmo, shotgunAmmo, pistolAmmo, assaultRifleAmmo, smgAmmo, magnumAmmo; //Tipos de munição que o player tem
     public GameObject starFruit;
     public int starFruitCount; //Contagem de carambolas
+    public int starFruitMax;
     private GameController gameControllerScript; //script que controla quais teclas o player vai usar
     public GameObject pnlControls; //telinha de controles
     public GameObject pnlInventory;

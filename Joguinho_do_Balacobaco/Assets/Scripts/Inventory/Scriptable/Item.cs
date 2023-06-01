@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="item", menuName ="Scriptable/Item", order =1)]
+[CreateAssetMenu(fileName ="item", menuName ="Scriptable/Item")]
 public class Item : ScriptableObject
 {
     public int itemId; //Id do item (não pode se repetir)
@@ -27,6 +27,10 @@ public class Item : ScriptableObject
     public bool unique; //Item é unico? (Somente um por inventario)
     public bool pileable; //Item é pilhavel? (Varios no mesmo slot)
     public bool stakable; ////Item é Stakavel? (tem uma passiva que é buffada dps de algum feito/tempo?)
+  
+    [Header("Equipped in")]
+    public bool inventory;
+    public bool hotbar;
 
     [Header("Description")]
     [TextArea(10,7)]
@@ -34,4 +38,12 @@ public class Item : ScriptableObject
     [Header("Weapons")]
     public int weapon; //Se for uma arma ou carambola (arma de fogo = 1, corpo a corpo = 2, carambola = 3)
     public GameObject thisPrefabDrop; //Drop dp item, caso seja dropado pelo bau, e ou comprado na loja
+    public virtual void Use()
+    {
+    }
+
+    public void ApplyUse()
+    {
+        Use();
+    }
 }
