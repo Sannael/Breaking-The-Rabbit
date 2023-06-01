@@ -287,6 +287,7 @@ MonoBehaviour:
   - {fileID: 3691461438093454334}
   meleeAnim: {fileID: 3948151176358817608}
   gunCase: {fileID: 0}
+  item: {fileID: 11400000, guid: b4c110a7c42881847a655115e72c54b4, type: 2}
 --- !u!114 &3948151176358817613
 MonoBehaviour:
   m_ObjectHideFlags: 0

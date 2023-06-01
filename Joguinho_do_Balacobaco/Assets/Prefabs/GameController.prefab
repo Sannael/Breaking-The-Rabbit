@@ -66,6 +66,6 @@ MonoBehaviour:
   - {fileID: 3772917972143692246, guid: b2651e987a9fd7d418f2fff9985d8e19, type: 3}
   numberOfEnemies: 0
   isPaused: 0
-  pnlPause: {fileID: 6294884706845574130, guid: d16663c2b050db649814c53af80a8206, type: 3}
-  inventoryWindow: {fileID: 3481265068196589306, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
+  pnlPause: {fileID: 0}
+  inventoryWindow: {fileID: 0}
   sceneManager: {fileID: 1600927414306657563, guid: e824374ec0bb8604695d8df87dd48994, type: 3}

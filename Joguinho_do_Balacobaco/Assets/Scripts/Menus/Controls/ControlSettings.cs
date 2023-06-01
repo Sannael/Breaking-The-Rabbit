@@ -31,10 +31,12 @@ public class ControlSettings : MonoBehaviour
     public Button btnSalvar;
     public InputActionReference esc, tab, leftShift, leftAlt, enter, rightButton, leftButton;
     public InputActionReference leftArrow, upArrow, downArrow, rightArrow;
-    public GameObject uiChangeGun;
+    public GameObject uiChangeGun, uiTakeItem;
+
 
     public void Awake() 
     {
+        playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         savedControl = true;
         keyId = playerActions.Length;
         playerActions[0] = "MoveUP"; //Armazena todos os nomes de ações do game
@@ -236,11 +238,13 @@ public class ControlSettings : MonoBehaviour
     public void SendActions()
     {
         uiChangeGun.GetComponent<ChangeGunUI>().interactionIdle = keys[12].sprite;
+        uiTakeItem.GetComponent<TakeItemUI>().interactionIdle = keys[12].sprite;
         for(int i =0; i < allPressedKeys.Length; i ++)
         {
             if(allPressedKeys[i].name == keys[12].sprite.name + "p")
             {
                 uiChangeGun.GetComponent<ChangeGunUI>().interactionPressed = allPressedKeys[i];
+                uiTakeItem.GetComponent<TakeItemUI>().interactionPressed = allPressedKeys[i];
             }
         }
     }

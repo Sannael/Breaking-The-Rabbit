@@ -150,9 +150,10 @@ MonoBehaviour:
   isAlive: 0
   dmgScript: {fileID: 0}
   atkSpeed: 4
-  force: 5
+  force: 2
   distaceInSquares: 3
   capColl: {fileID: 4456085485986702284}
+  dashCoefficient: 1.7
 --- !u!114 &4456085485986702275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   canTakeDmg: 1
   isAlive: 0
   armor: 0
+  triggerCol: {fileID: 0}
 --- !u!114 &4456085485986702272
 MonoBehaviour:
   m_ObjectHideFlags: 0

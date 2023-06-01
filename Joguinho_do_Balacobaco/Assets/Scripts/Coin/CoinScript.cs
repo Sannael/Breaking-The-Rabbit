@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinScript : MonoBehaviour
 {
     public int value; //Valor de cada "coin"
+    public bool isVisible;
     void Start()
     {
         StartCoroutine(StopFalling());
@@ -32,5 +33,14 @@ public class CoinScript : MonoBehaviour
             other.GetComponent<PlayerScript>().TakeCoin(value);
             Destroy(this.gameObject);
         }   
+    }
+
+    private void OnBecameVisible() 
+    {
+        isVisible = true;
+    }
+    private void OnBecameInvisible() 
+    {
+        isVisible = false;
     }
 }

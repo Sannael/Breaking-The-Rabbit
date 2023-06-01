@@ -122,10 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f96e345975d8f4aa2dd8d5eb44a4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 7d511686d947381408c051da5f69e6be, type: 2}
   speed: 9
   travel: 1
   ammo: {fileID: 804907040599786485, guid: 62ee9422b81937f41abb61118df2bf7a, type: 3}
   rigidCol: {fileID: 6967078028092675366}
+  isVisible: 0
+  starfuitLayerId: 11
+  coinLayerId: 9
 --- !u!50 &2339553412760600330
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +143,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

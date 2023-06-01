@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GunStatus : MonoBehaviour
-{
+{ 
     [SerializeField]
     private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil
@@ -43,8 +43,10 @@ public class GunStatus : MonoBehaviour
     public GameObject magazine; //Pente de arma; Se houver
     public Transform magLocate;
     public Vector2 magForce;
+    public Item item;
     void Start()
     {
+        CoreInventory._instance.inventory.GetItem(item, 0, true, false, 1);
         playerAmmo = 0;
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;

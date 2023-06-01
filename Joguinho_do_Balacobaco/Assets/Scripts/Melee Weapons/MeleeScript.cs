@@ -7,6 +7,12 @@ public class MeleeScript : MonoBehaviour
     public PolygonCollider2D[] polCollider; //1 ou mais colisores da arma
     public Animator meleeAnim; 
     public GameObject gunCase;
+    public Item item;
+
+    void Awake()
+    {
+        CoreInventory._instance.inventory.GetItem(item, 0, true, false, 2);
+    }
     void Start()
     {
         gunCase = gameObject.GetComponentInParent<MeleeController>().gunCase;

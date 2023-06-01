@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1d94bd9b50aad4286bf7df822766f9, type: 3}
+  m_Name: "Furac\xE3o de Balas"
+  m_EditorClassIdentifier: 
+  itemId: 753
+  isEmpty: 0
+  itemName:
+  - "Furac\xE3o de Balas"
+  itemSprite: {fileID: 1345935323, guid: bf987fdd652eff14dbcf1ca377feabbe, type: 3}
+  itemAmount: 0
+  itemStak: 0
+  maxItens: 0
+  maxStak: 0
+  chest: 1
+  shop: 1
+  value: 0
+  consumible: 0
+  canMove: 0
+  canDestroy: 0
+  unique: 1
+  pileable: 0
+  stakable: 0
+  itemDesc:
+  - "64 balas no pente;\nDano: 7 por disparo;\nTipo da muni\xE7\xE3o: SMG;"
+  weapon: 1
+  thisPrefabDrop: {fileID: 694414982672409352, guid: 691762c0731fb57489d50ccec0514336, type: 3}

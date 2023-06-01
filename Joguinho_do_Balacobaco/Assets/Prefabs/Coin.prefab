@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996042053298280333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 0.87, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 2117157071
   m_SortingLayer: 2
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: 6c1e6ce46354c0e42b32394a6b0e437a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c594c11ae1667e14fa7d22a20e960834, type: 3}
   m_Color: {r: 1, g: 0.80423534, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,10 +100,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
+  m_Mass: 1
+  m_LinearDrag: 5
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  isVisible: 0
 --- !u!70 &2508300557537381694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,8 +136,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07276337, y: 0}
-  m_Size: {x: 2.8000014, y: 3.2896044}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
 --- !u!70 &2383584721978085843
 CapsuleCollider2D:
@@ -152,5 +153,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4.5, y: 4.5}
+  m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0

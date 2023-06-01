@@ -9,6 +9,7 @@ public class LifeController : MonoBehaviour
     public int playerCurrentHealth; //Vida atual do player
     public int playerHealth; //Vida anterior (Pré mudança)
     public int count; //Contagem de quantas cenouras tem ingame
+    public int distanceBetweenCarrots;
     
     void Start()
     {
@@ -38,7 +39,7 @@ public class LifeController : MonoBehaviour
         {
             RectTransform rTransform = hearts[i -2].GetComponent<RectTransform>(); //Pega o Rect Transform
             Vector3 pos = rTransform.localPosition; //Armazena a posição da ultima cenoura em tela (direita pra esquerda)
-            pos[0] += 40; //Seta o X da nva cenoura pra ficar 40 pro lado
+            pos[0] += distanceBetweenCarrots; //Seta o X da nva cenoura pra ficar 40 pro lado
             hearts[i-1] = Instantiate(img, rTransform.localPosition, Quaternion.identity, this.gameObject.transform); //Istancia e armazena a cenourinha
             hearts[i-1].GetComponent<RectTransform>().localPosition = pos; //Muda a posição da cenoura; se n mudar manual aqui da ruim, ele vai pra 3k e pouco em X
             count = i; //Aumenta o contador de cenourinha
@@ -48,7 +49,7 @@ public class LifeController : MonoBehaviour
         {
             RectTransform rTransform = hearts[count -1].GetComponent<RectTransform>();
             Vector3 pos = rTransform.localPosition;
-            pos[0] += 40;
+            pos[0] += distanceBetweenCarrots;
             hearts[count] = Instantiate(img, rTransform.localPosition, Quaternion.identity, this.gameObject.transform);
             hearts[count].GetComponent<RectTransform>().localPosition = pos;
             count ++;

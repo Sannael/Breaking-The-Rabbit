@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoreInventory : MonoBehaviour
 {
-    public static CoreInventory _instance;
+    public static CoreInventory _instance; 
     public Inventory inventory;
     public InventoryDescs inventoryDescs;
 

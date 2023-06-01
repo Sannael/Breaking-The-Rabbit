@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     {
         numberOfEnemies = 0;
         roomState = true;
+        OpenCloseInventory(true);
+        OpenCloseInventory(false);
+        CoreInventory._instance.inventory.ReTakeItensInfo();
     }
 
     void Start()
