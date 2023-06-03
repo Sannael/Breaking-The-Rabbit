@@ -38,6 +38,7 @@ public class Item : ScriptableObject
     [Header("Weapons")]
     public int weapon; //Se for uma arma ou carambola (arma de fogo = 1, corpo a corpo = 2, carambola = 3)
     public GameObject thisPrefabDrop; //Drop dp item, caso seja dropado pelo bau, e ou comprado na loja
+    public bool used;
     public virtual void Use()
     {
     }
@@ -45,5 +46,15 @@ public class Item : ScriptableObject
     public void ApplyUse()
     {
         Use();
+    }
+
+    public virtual void DestroyItem()
+    {
+
+    }
+
+    public void ApplyDestroy()
+    {
+        DestroyItem();
     }
 }

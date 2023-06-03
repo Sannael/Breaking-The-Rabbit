@@ -173,7 +173,7 @@ MonoBehaviour:
   - {fileID: 818652231981723184, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   - {fileID: -4899804091928852060, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   playerInput: {fileID: 2306139284738157046, guid: f16a04b722e15b444bdb9827e418e6ce, type: 3}
-  speed: 4
+  speed: 0
   playerAnim: {fileID: 7206816808103367136}
   direita: 0
   rollCdr: 0.5
@@ -203,6 +203,13 @@ MonoBehaviour:
   pnlControls: {fileID: 0}
   pnlInventory: {fileID: 0}
   newGun: {fileID: 0}
+  confusion: 0
+  extraLife: 0
+  playerInitialStatus: {fileID: 11400000, guid: 9eb8e36fd52aafc47aa96f46c876bf74, type: 2}
+  hot1: {fileID: 0}
+  hot2: {fileID: 0}
+  save: 0
+  load: 0
 --- !u!50 &7206816808103367138
 Rigidbody2D:
   serializedVersion: 4

@@ -21,21 +21,36 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public TMP_Text itemCount, itemStaktxt;
     public bool itemSelected;
     public bool consumible, canMove, canDestroy;
-    
+   void Update()
+    {
+        if(slotType == SlotType.PLAYERHOTBAR)
+        {
+            GameObject playerHotbarPanel = GameObject.Find("Player Hotbar Panel");
+            UpdateColor(playerHotbarPanel.GetComponentInParent<Image>().color);
+        }
+        else if(itemSelected == true)
+        {
+            UpdateColor(new Color32(130, 130, 130, 225));
+        }
+        else
+        {
+            UpdateColor(new Color32(255, 255, 255, 255));
+        }
+    }
+    public void UpdateColor(Color32 color)
+    {
+        this.GetComponent<Image>().color = color;
+    }
     public void CreateSlot(int id, Item i) //Cria o slot e adiciona o item a ele (inicialmente Empty)
     {
         idSlot = id;
         item = i;
     }
-
-    public void E()
-    {
-        Debug.Log(item + " " + itemAmount);
-    }
     public void UpdateSlot(bool insert) //Atualiza o slot, cehcando se inseri valor novo ou se puxa valores ja existentes sobre itens que o player tem
     {
         if(item.isEmpty == true) //Se for empty deixa todas as infos nulas
         {
+            itemId = 0;
             itemImage.sprite = null;
             itemImage.enabled = false;
             itemCount.enabled = false;

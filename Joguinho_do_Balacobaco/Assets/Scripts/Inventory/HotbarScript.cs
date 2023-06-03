@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HotbarScript : MonoBehaviour
 {    //Vou usar isso pra controlar os itens que tem na hotbar (ACHO) criei mas deixei pra mexer dps
@@ -17,5 +18,5 @@ public class HotbarScript : MonoBehaviour
                 i.Value.item.ApplyUse();
             }
         }        
-    }
+    } 
 }

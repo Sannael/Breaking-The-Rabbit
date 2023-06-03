@@ -44,6 +44,7 @@ public class GunStatus : MonoBehaviour
     public Transform magLocate;
     public Vector2 magForce;
     public Item item;
+    private bool canThrowStarFruit = true;
     void Start()
     {
         CoreInventory._instance.inventory.GetItem(item, 0, true, false, 1);
@@ -126,11 +127,16 @@ public class GunStatus : MonoBehaviour
                 }
             }   
 
-            if(starFruitAction.action.IsPressed() && ps.starFruitCount >0)
+            if(starFruitAction.action.IsPressed() && ps.starFruitCount >0 && canThrowStarFruit == true)
             {
+                canThrowStarFruit = false;
                 GameObject starFruitTrhow = Instantiate(starFruit, barrelTip.position, barrelTip.rotation);
                 ps.starFruitCount --;
             } 
+            if(starFruitAction.action.IsPressed() == false && canThrowStarFruit == false)
+            {
+                canThrowStarFruit = true;
+            }
             SetAmmo();    
         }
     }

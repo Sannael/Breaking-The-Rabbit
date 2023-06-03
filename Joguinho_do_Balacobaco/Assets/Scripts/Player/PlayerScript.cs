@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,13 +44,24 @@ public class PlayerScript : MonoBehaviour
     public GameObject pnlInventory;
     private bool canChangeGun = false; //Só é true quando tiver perto de uma arma no chão/loja/bau. Ao se afastar volta a ser false
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
+    public bool confusion;
+    public int extraLife;
+    public PlayerStatus playerInitialStatus;
+    public int shopDiscount;
+    //apagar dps
+    public InputActionReference hot1, hot2;
+    public bool save, load;
+     
     void Awake()
     {
-        
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
         pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação da instancia do inventario
+
+        //Precisa de um if e else pra checar se é a primeira fase
+        TakeAllInitialStatus();
+    
     }
     void Start()
     {
@@ -64,8 +76,28 @@ public class PlayerScript : MonoBehaviour
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
     }
 
+    public void TakeAllInitialStatus()
+    {
+        playerInitialStatus.FillList();
+        foreach(var status in playerInitialStatus.status)
+        {
+            ChangeVarValues(status.Key, status.Value, true);
+        }
+    }
+
     void Update()
     {
+        if(hot1.action.IsInProgress() && save == false)
+        {
+            save = true;
+            CoreInventory._instance.inventory.SaveItens();
+        }
+        if(hot2.action.IsPressed() && load == false)
+        {
+            load = true;
+            CoreInventory._instance.inventory.ReTakeItensInfo();
+        }
+
         if(gameControllerScript.isPaused == false)
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
@@ -149,7 +181,15 @@ public class PlayerScript : MonoBehaviour
         Vector2 dirMouse = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>());
         direcao = dirMouse[0] - transform.position[0];
 
-        rb.velocity = move * speed;
+        if(confusion == true)
+        {
+            rb.velocity = - move * speed;
+        }
+        else
+        {
+            rb.velocity = move * speed;
+        }
+        
 
         if(move[0] != 0 || move[1] !=0) //checa se o cueio ta em movimento
         {
@@ -160,6 +200,236 @@ public class PlayerScript : MonoBehaviour
         {
             playerAnim.SetBool("Walking", false);
             playerAnim.SetBool("Idle", true);
+        }
+    }
+
+    public void ChangeVarValues<value>(string statusName, value newValue, bool initialValues)
+    {
+        switch (statusName)
+        {
+            case "speed":
+            if(initialValues == true)
+            {
+                speed = System.Convert.ToSingle(newValue);
+            }
+            else
+            {
+                speed += System.Convert.ToSingle(newValue);
+            }
+            
+            break;
+            
+            case "rollCrd":
+            if(initialValues == true)
+            {
+                rollCdr = System.Convert.ToSingle(newValue);
+            }
+            else
+            {
+                rollCdr += System.Convert.ToSingle(newValue);
+            }
+            
+            break;
+
+            case "health":
+            if(initialValues == true)
+            {
+                health = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                health += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "maxHealth":
+            if(initialValues == true)
+            {
+                maxHealth = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                maxHealth += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "isAlive":
+            if(initialValues == true)
+            {
+                isAlive = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                isAlive = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "canTakeDamage":
+            if(initialValues == true)
+            {
+                canTakeDamage = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                canTakeDamage = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "armor":
+            if(initialValues == true)
+            {
+                armor = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                armor += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "coinCount":
+            if(initialValues == true)
+            {
+                coinCount = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                coinCount += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "revolverAmmo":
+            if(initialValues == true)
+            {
+                revolverAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                revolverAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "shotgunAmmo":
+            if(initialValues == true)
+            {
+                shotgunAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                shotgunAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "pistolAmmo":
+            if(initialValues == true)
+            {
+                pistolAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                pistolAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "assaulRifleAmmo":
+            if(initialValues == true)
+            {
+                assaultRifleAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                assaultRifleAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "smgAmmo":
+            if(initialValues == true)
+            {
+                smgAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                smgAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "magnumAmmo":
+            if(initialValues == true)
+            {
+                magnumAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                magnumAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "starFruitCount":
+            if(initialValues == true)
+            {
+                starFruitCount = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                starFruitCount += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "starFruitMax":
+            if(initialValues == true)
+            {
+                starFruitMax = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                starFruitMax += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "confusion":
+            if(initialValues == true)
+            {
+                confusion = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                confusion = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "extraLife":
+            if(initialValues == true)
+            {
+                extraLife = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                extraLife += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "stunTime":
+            Stun(System.Convert.ToSingle(newValue));
+            break;
+
+            case "shopDiscount":
+            shopDiscount = System.Convert.ToInt32(newValue);
+            break;
         }
     }
 
@@ -279,19 +549,26 @@ public class PlayerScript : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255); // ^^^^^^^até aqui ^^^^^^^^
             canTakeDamage = true; //Fim do tempo de Invulnerabilidade
         }
-        
     }
 
     public void TakeDamage(int damageTaken, int trueDamage)
     {
-        if((damageTaken - armor) > 0)
+        int armorDefend = Random.Range(0, 21);
+        if(armorDefend <= armor)
         {
-            health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+            if((damageTaken - armor) > 0)
+            {
+                health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+            }
+        }
+        else
+        {
+            health = health - damageTaken;
         }
         health =  health - trueDamage;
     }
 
-    private IEnumerator Stun(float stunTime)
+    public IEnumerator Stun(float stunTime)
     {
         stuned = true;
         gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
