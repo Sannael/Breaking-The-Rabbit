@@ -360,6 +360,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5553983904683525190, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
     - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: isAlive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: rollCdr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: smgAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: coinCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: maxHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: magnumAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: pistolAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 2141612887}
@@ -368,9 +400,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 791786589}
     - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: shotgunAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
       propertyPath: pnlInventory
       value: 
       objectReference: {fileID: 759220514}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: revolverAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: starFruitMax
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: canTakeDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: starFruitCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206816808103367139, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
+      propertyPath: assaultRifleAmmo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7206816808103367140, guid: 0cd90267519a75b4589abf4c22f27399, type: 3}
       propertyPath: m_Name
       value: Player

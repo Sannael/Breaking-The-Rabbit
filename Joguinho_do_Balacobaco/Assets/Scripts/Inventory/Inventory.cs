@@ -76,14 +76,14 @@ public class Inventory : MonoBehaviour
         foreach(var s in hotbar)
         {
             s.Value.item.used = false;
-            DestroyItem(s.Key , s.Value.slotType);
+            //DestroyItem(s.Key , s.Value.slotType);
         }
         UpdateInventorySlots(true);
 
         foreach(var s in inventory)
         {
             s.Value.item.used = false;
-            DestroyItem(s.Key , s.Value.slotType);
+            //DestroyItem(s.Key , s.Value.slotType);
         }
 
         UpdateWeaponsSlots(true);
@@ -278,7 +278,7 @@ public class Inventory : MonoBehaviour
         foreach(var slot in hotbar) //Mesma coisa do de cima soq de um jeitinho diferente, pra ficar anotado
         {
             slot.Value.UpdateSlot(insertValues);
-            slot.Value.item.ApplyDestroy();
+            slot.Value.item.ApllyDisUse();
         }
         UpdateHotbarPlayer();
         
@@ -342,7 +342,7 @@ public class Inventory : MonoBehaviour
                 hotbar[idSlot].itemSelected = false;
                 itemAmount.Remove(hotbar[idSlot].item);
             }
-            hotbar[idSlot].item.ApplyDestroy();
+            hotbar[idSlot].item.ApllyDisUse();
             hotbar[idSlot].item = itemEmpty;
             UpdateHotbarSlots(false);
         }
@@ -353,7 +353,7 @@ public class Inventory : MonoBehaviour
                 inventory[idSlot].itemSelected = false;
                 itemAmount.Remove(inventory[idSlot].item);
             }
-            inventory[idSlot].item.ApplyDestroy();
+            inventory[idSlot].item.ApllyDisUse();
             inventory[idSlot].item = itemEmpty;
             UpdateInventorySlots(false);
         }

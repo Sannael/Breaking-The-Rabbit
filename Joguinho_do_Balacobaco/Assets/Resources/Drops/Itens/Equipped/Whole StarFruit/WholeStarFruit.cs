@@ -20,12 +20,12 @@ public class WholeStarFruit : Item
         }
     }
 
-    public override void DestroyItem()
+    public override void DisUseItem()
     {
         if(used == true)
         {
             used = false;
-            base.DestroyItem();
+            base.DisUseItem();
             GameObject.Find("Player").GetComponent<PlayerScript>().ChangeVarValues("starFruitMax", - starFruitMaxAdd, false);
             GameObject.Find("Player").GetComponent<PlayerScript>().ChangeVarValues("starFruitCount", - starFruitCountAdd, false);
         } 

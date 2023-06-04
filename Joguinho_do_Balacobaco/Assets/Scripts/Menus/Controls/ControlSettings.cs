@@ -269,7 +269,7 @@ public class ControlSettings : MonoBehaviour
     {
         if(excep != "null") //Trata casos especiais (tab, esc, space, etc)
         {
-            Debug.Log(excep);
+            //Debug.Log(excep);
             for(int i = 0; i < allKeys.Length; i ++)
             {
                 string[] key = allKeys[i].ToString().Split(char.Parse(" "));
@@ -408,7 +408,7 @@ public class ControlSettings : MonoBehaviour
     }
     public void ChangingCompositeBinding(string device, string[] newKeys, string action) //Muda actions que usam mais de umas tecla (basicamente só a movimentação até agora)
     {
-        Debug.Log(newKeys[0] + " " + newKeys[1] + " " + newKeys[2] + " " + newKeys[3] + " " );
+        //Debug.Log(newKeys[0] + " " + newKeys[1] + " " + newKeys[2] + " " + newKeys[3] + " " );
         playerInput.actions[action].ChangeBinding(0).Erase();
 
         playerInput.actions[action]
@@ -443,13 +443,13 @@ public class ControlSettings : MonoBehaviour
     {
         PlayerPrefs.SetString(keyCode.ToString(), key);
         PlayerPrefs.Save();
-        Debug.Log("Saving Keys: " + keyCode + "  " + key);
+        //Debug.Log("Saving Keys: " + keyCode + "  " + key);
     }
     public string LoadKeys(int keyCode)
     {
         string ret;
         ret = PlayerPrefs.GetString(keyCode.ToString());
-        Debug.Log("Loading Keys: " + keyCode + "  " + ret);
+        //Debug.Log("Loading Keys: " + keyCode + "  " + ret);
         return ret;
     }    
 }

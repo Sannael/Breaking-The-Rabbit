@@ -20,9 +20,9 @@ public class Fertilizer : Item
         }
     }
 
-    public override void DestroyItem()
+    public override void DisUseItem()
     {
-        base.DestroyItem();
+        base.DisUseItem();
         GameObject.Find("Player").GetComponent<PlayerScript>().ChangeVarValues("shopDiscount", 0, false);
     }
 }

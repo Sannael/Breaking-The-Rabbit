@@ -30,9 +30,12 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
   - "20 balas no pente;\nDano: 11 por proj\xE9til;\nO proj\xE9til dessa arma causam
     + 3 de dano verdadeiro;\nDano verdadeiro: Ignora a armadura dos inimigos;\nTipo
-    da muni\xE7\xE3o: Pistol"
+    da muni\xE7\xE3o: Pistola"
   weapon: 1
   thisPrefabDrop: {fileID: 4035444131470333423, guid: 8c8573641e872cd4b91a7271481c88b6, type: 3}
+  used: 0

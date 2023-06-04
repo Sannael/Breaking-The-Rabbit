@@ -30,7 +30,10 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
-  - "22 balas no pente;\nDano: 12 por proj\xE9til;\nTipo da muni\xE7\xE3o: Pistol"
+  - "22 balas no pente;\nDano: 12 por proj\xE9til;\nTipo da muni\xE7\xE3o: Pistola"
   weapon: 1
   thisPrefabDrop: {fileID: 3896315594538519714, guid: 91b33fb80b5c5d948876d7ebdf11b22c, type: 3}
+  used: 0

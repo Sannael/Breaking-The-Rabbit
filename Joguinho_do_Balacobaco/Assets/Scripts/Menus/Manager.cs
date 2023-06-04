@@ -56,6 +56,10 @@ public class Manager : MonoBehaviour
             }
         }
     }
+    public string ReturnActivedSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
 
     public void LoadScene(int scene)
     {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28575a4455c032046aa618b0e68f89a0, type: 3}
+  m_Name: GunSave
+  m_EditorClassIdentifier: 
+  gunType: 4
+  gunRate: 0.7
+  damage: 0
+  trueDamage: 0
+  ammo: 1
+  totalAmmo: 1
+  playerAmmo: 15
+  bulletSpread: 24
+  bulletSpreadMin: -15
+  bulletSpreadMax: 15
+  gun: {fileID: 4575307323604015178, guid: e884268d10d7cee488cb353b2f74306a, type: 3}

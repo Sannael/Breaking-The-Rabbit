@@ -30,8 +30,11 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
   - "1 bala no pente;\nDano verdadeiro: 1 por proj\xE9til;\nDano verdadeiro: Ignora
-    a armadura dos inimigos;\nTipo da muni\xE7\xE3o: Shotgun"
+    a armadura dos inimigos;\nTipo da muni\xE7\xE3o: Escopeta"
   weapon: 1
   thisPrefabDrop: {fileID: 1826133096685932984, guid: 5c3aee9a5da38fc4f9eb10d688a2e9c1, type: 3}
+  used: 0

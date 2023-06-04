@@ -9,7 +9,7 @@ public class MeleeScript : MonoBehaviour
     public GameObject gunCase;
     public Item item;
 
-    void Awake()
+    public void Awake()
     {
         CoreInventory._instance.inventory.GetItem(item, 0, true, false, 2);
     }

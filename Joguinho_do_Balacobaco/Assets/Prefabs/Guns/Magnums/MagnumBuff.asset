@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28575a4455c032046aa618b0e68f89a0, type: 3}
+  m_Name: MagnumBuff
+  m_EditorClassIdentifier: 
+  gunType: 1
+  gunRate: 0
+  damage: 0
+  trueDamage: 0
+  ammo: 0
+  totalAmmo: 0
+  playerAmmo: 0
+  bulletSpread: 0
+  bulletSpreadMin: 0
+  bulletSpreadMax: 0
+  gun: {fileID: 0}

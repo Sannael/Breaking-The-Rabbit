@@ -30,7 +30,10 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
-  - "8 balas no pente;\nDano: 8 por proj\xE9til;\nTipo da muni\xE7\xE3o: Shotgun"
+  - "8 balas no pente;\nDano: 8 por proj\xE9til;\nTipo da muni\xE7\xE3o: Escopeta"
   weapon: 1
   thisPrefabDrop: {fileID: 3526405294897869957, guid: 8ce6265506375e74b8eddb64405e86ce, type: 3}
+  used: 0

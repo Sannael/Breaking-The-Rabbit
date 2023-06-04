@@ -48,13 +48,13 @@ public class Item : ScriptableObject
         Use();
     }
 
-    public virtual void DestroyItem()
+    public virtual void DisUseItem()
     {
 
     }
 
-    public void ApplyDestroy()
+    public void ApllyDisUse()
     {
-        DestroyItem();
+        DisUseItem();
     }
 }

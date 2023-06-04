@@ -19,6 +19,7 @@ TagManager:
   - ChangeGun
   - BulletMultiDamage
   - Item
+  - GunCase
   layers:
   - Default
   - TransparentFX

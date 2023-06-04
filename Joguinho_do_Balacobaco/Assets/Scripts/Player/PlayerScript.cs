@@ -1,8 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using System.Reflection;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private InputActionReference[] hotbar = new InputActionReference[6];
     public PlayerInput playerInput;
     private GameObject sceneManager; 
+    private Manager sceneManagerScript;
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
     [SerializeField]
@@ -47,29 +49,49 @@ public class PlayerScript : MonoBehaviour
     public bool confusion;
     public int extraLife;
     public PlayerStatus playerInitialStatus;
+    public PlayerStatus playerStatusSave;
     public int shopDiscount;
     //apagar dps
     public InputActionReference hot1, hot2;
     public bool save, load;
-     
-    void Awake()
+    private int room;
+    void Awake() 
     {
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
         pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação da instancia do inventario
+        sceneManager = GameObject.Find("SceneManager");
+        sceneManagerScript = sceneManager.GetComponent<Manager>();
+        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
 
         //Precisa de um if e else pra checar se é a primeira fase
-        TakeAllInitialStatus();
-    
+        room = gameControllerScript.room;
+        if(room == 1)
+        {
+            TakeAllInitialStatus();
+            ResetAllItensUsed();
+        }   
+        else
+        {
+            ReTakeStatus();
+            CoreInventory._instance.inventory.ReTakeItensInfo();
+        }
+    }
+
+    private void ResetAllItensUsed()
+    {
+        Item[] allItens = Resources.LoadAll("Drops", typeof(Item)).Cast<Item>().ToArray();
+        foreach(var item in allItens)
+        {
+            item.used = false;
+        }
     }
     void Start()
     {
         CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
         stuned = false;
-        sceneManager = GameObject.Find("SceneManager");
-        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
         armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
@@ -83,11 +105,52 @@ public class PlayerScript : MonoBehaviour
         {
             ChangeVarValues(status.Key, status.Value, true);
         }
+    } 
+    public void ReTakeStatus()
+    {
+        playerStatusSave.FillList();
+        foreach(var status in playerStatusSave.status)
+        {
+            ChangeVarValues(status.Key, status.Value, true);
+        }
+        GunSaveStatus gunsave = Resources.LoadAll("", typeof(GunSaveStatus)).Cast<GunSaveStatus>().First();
+        gunsave.SetGun();
+        //gunsave.FillList(); 
     }
+
+    public void ChangeDungeonFloor()
+    {
+        gunCase.GetComponentInChildren<GunStatus>().SaveGun();
+        FieldInfo[] scriptVars = typeof(PlayerScript).GetFields(BindingFlags.Public | BindingFlags.Instance);
+        playerStatusSave.FillList();
+        foreach(FieldInfo variable in scriptVars)
+        {
+            object varValue = variable.GetValue(this);
+            string name = variable.Name;
+            playerStatusSave.SaveList(name, varValue);
+        }
+        sceneManagerScript.LoadScene(5);
+    } 
 
     void Update()
     {
-        if(hot1.action.IsInProgress() && save == false)
+        if(hot1.action.IsPressed())
+        {
+            if(sceneManagerScript.ReturnActivedSceneName() == "CenaBruno")
+            {
+                ChangeDungeonFloor();
+                CoreInventory._instance.inventory.SaveItens();
+                //sceneManagerScript.LoadScene(5);
+            }
+        }
+        if(hot2.action.IsPressed())
+        {
+            if(sceneManagerScript.ReturnActivedSceneName() == "SceneTeste")
+            {
+                sceneManagerScript.LoadScene(4);
+            }
+        }
+        /*if(hot1.action.IsInProgress() && save == false)
         {
             save = true;
             CoreInventory._instance.inventory.SaveItens();
@@ -96,15 +159,23 @@ public class PlayerScript : MonoBehaviour
         {
             load = true;
             CoreInventory._instance.inventory.ReTakeItensInfo();
-        }
+        }*/
 
         if(gameControllerScript.isPaused == false)
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
             {
-                DisbleAll(); //Função de desativar todos os itens do player
-                isAlive = false; //Murreu :(
-                Animations("Death"); //Animação de Death
+                if(extraLife <=0)
+                {
+                    DisbleAll(); //Função de desativar todos os itens do player
+                    isAlive = false; //Murreu :(
+                    Animations("Death"); //Animação de Death
+                }
+                else
+                {
+                    extraLife --;
+                    //B.O pra resolver quando implementar item
+                }
             }
             else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
             {
@@ -219,7 +290,7 @@ public class PlayerScript : MonoBehaviour
             
             break;
             
-            case "rollCrd":
+            case "rollCdr":
             if(initialValues == true)
             {
                 rollCdr = System.Convert.ToSingle(newValue);
@@ -339,7 +410,7 @@ public class PlayerScript : MonoBehaviour
             
             break;
 
-            case "assaulRifleAmmo":
+            case "assaultRifleAmmo":
             if(initialValues == true)
             {
                 assaultRifleAmmo = System.Convert.ToInt32(newValue);
@@ -594,7 +665,7 @@ public class PlayerScript : MonoBehaviour
             shotgunAmmo += ammoCount;
             break;
 
-            case "Assault Rifle":
+            case "AssaultRifle":
             assaultRifleAmmo += ammoCount;
             break;
 

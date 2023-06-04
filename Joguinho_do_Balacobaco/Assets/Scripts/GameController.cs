@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameController : MonoBehaviour
 {
     private bool roomState;
-     
+    public int room;
     [SerializeField]
     private InputActionReference pause, openInventory; //Puxa o botão de pausar levando em conta o action q for
     public string cantos;
