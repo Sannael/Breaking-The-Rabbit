@@ -11,10 +11,14 @@ public class InventoryItensActive : MonoBehaviour
         inventory = CoreInventory._instance.inventory.inventory;
         foreach(var i in inventory)
         {
-            if(i.Value.item.inventory == true)
+            if(i.Value.item.inventory == true && i.Value.item.used == false)
             {
                 i.Value.item.ApplyUse();
             }
-        }        
+            if(i.Value.item.inventory == false && i.Value.item.used == true)
+            {
+                i.Value.item.DisUseItem();
+            }
+        }  
     }
 }

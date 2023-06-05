@@ -10,9 +10,6 @@ using static GunSaveStatus;
 public class GunStatus : MonoBehaviour
 { 
     public GunSaveStatus.GunType gunType; 
-    //enum GunType{AssaultRifle, Magnum, Pistol, Revolver, Shotgun, SMG};
-    //public GunType gunType;
-    //public string gunType;
     [SerializeField]
     private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil

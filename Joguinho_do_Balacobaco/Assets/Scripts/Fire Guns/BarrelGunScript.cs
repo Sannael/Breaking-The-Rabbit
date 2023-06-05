@@ -23,7 +23,6 @@ public class BarrelGunScript : MonoBehaviour
         lookDirection = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>()) - transform.position; //Armazena a direção do mouse
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * (Mathf.Rad2Deg); //Calculo maluco de angulo, não faço ideia de como funciona, só aceito
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle); //Rotaciona o braço pra mirar na direção do mouse  
-        
         if(transform.rotation[2] > -zValueToMirror && transform.rotation[2] < zValueToMirror && direita == false) //Checa a necessidade de espelhar a arma (Mirando pra esquerda do Player)
         {
             direita = !direita; //Inverte o valor da direção

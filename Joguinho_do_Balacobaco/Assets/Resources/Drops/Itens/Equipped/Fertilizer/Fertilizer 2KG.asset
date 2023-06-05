@@ -16,7 +16,7 @@ MonoBehaviour:
   isEmpty: 0
   itemName:
   - Adubo Fertilizado 2Kg
-  itemSprite: {fileID: 495590471, guid: a179140817064df4a88492ff9168b376, type: 3}
+  itemSprite: {fileID: 1168546866, guid: db4126d51b0720842b68a4464dcd821c, type: 3}
   itemAmount: 1
   itemStak: 0
   maxItens: 1

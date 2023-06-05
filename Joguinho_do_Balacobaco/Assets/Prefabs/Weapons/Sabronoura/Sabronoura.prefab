@@ -286,8 +286,12 @@ MonoBehaviour:
   - {fileID: 6661405054822773461}
   - {fileID: 3691461438093454334}
   meleeAnim: {fileID: 3948151176358817608}
+  damage: 10
+  trueDamage: 0
   gunCase: {fileID: 0}
+  thisMeleeChange: {fileID: 1996475818499806441, guid: 2cc10ef6d38ec834b8a41f077a64ee52, type: 3}
   item: {fileID: 11400000, guid: b4c110a7c42881847a655115e72c54b4, type: 2}
+  melee: {fileID: 0}
 --- !u!114 &3948151176358817613
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -278,7 +278,6 @@ public class Inventory : MonoBehaviour
         foreach(var slot in hotbar) //Mesma coisa do de cima soq de um jeitinho diferente, pra ficar anotado
         {
             slot.Value.UpdateSlot(insertValues);
-            slot.Value.item.ApllyDisUse();
         }
         UpdateHotbarPlayer();
         
@@ -382,11 +381,11 @@ public class Inventory : MonoBehaviour
             }
             for(int i =0; i < inventoryAmount; i ++)
             {
-                inventory[0].itemSelected = false;
+                inventory[i].itemSelected = false;
             }
             for(int i =0; i < weaponsAmount; i ++)
             {
-                weapons	[i].itemSelected = false;
+                weapons[i].itemSelected = false;
             }
         }
         else if(sType == SlotType.INVENTORY)

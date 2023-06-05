@@ -132,3 +132,4 @@ MonoBehaviour:
   interaction: {fileID: 7832420789460135185}
   interactionIdle: {fileID: 0}
   interactionPressed: {fileID: 0}
+  uiChange: {fileID: 7832420789963596437}

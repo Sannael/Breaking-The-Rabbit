@@ -30,7 +30,11 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
   - "Um dos \xFAltimos presentes de Dimitri para o Bunny, ele disse que combina com
     o coelho\nA arma corpo-a-corpo inicial;\nDano: 10;\nSeus ataques destroem proj\xE9teis"
   weapon: 2
+  thisPrefabDrop: {fileID: 1996475818499806441, guid: 2cc10ef6d38ec834b8a41f077a64ee52, type: 3}
+  used: 0

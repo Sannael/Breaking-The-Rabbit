@@ -236,9 +236,10 @@ public class ControlSettings : MonoBehaviour
         pnlBackNoSaving.SetActive(false);
     }
     public void SendActions()
-    {
-        uiChangeGun.GetComponent<ChangeGunUI>().interactionIdle = keys[12].sprite;
+    {   
         uiTakeItem.GetComponent<TakeItemUI>().interactionIdle = keys[12].sprite;
+        uiChangeGun.GetComponent<ChangeGunUI>().interactionIdle = keys[12].sprite;
+
         for(int i =0; i < allPressedKeys.Length; i ++)
         {
             if(allPressedKeys[i].name == keys[12].sprite.name + "p")
@@ -247,8 +248,37 @@ public class ControlSettings : MonoBehaviour
                 uiTakeItem.GetComponent<TakeItemUI>().interactionPressed = allPressedKeys[i];
             }
         }
+
+        try
+        {
+            GameObject a = GameObject.Find("UI TakeItem(Clone)");
+            a.GetComponent<TakeItemUI>().interactionIdle = keys[12].sprite;
+            
+            for(int i =0; i < allPressedKeys.Length; i ++)
+            {
+                if(allPressedKeys[i].name == keys[12].sprite.name + "p")
+                {
+                    a.GetComponent<TakeItemUI>().interactionPressed = allPressedKeys[i];
+                }
+            }
+        }
+        catch{}
+
+        try
+        {
+            GameObject b = GameObject.Find("UI ChangeGuns(Clone)");
+            b.GetComponent<ChangeGunUI>().interactionIdle = keys[12].sprite;
+
+            for(int i =0; i < allPressedKeys.Length; i ++)
+            {
+                if(allPressedKeys[i].name == keys[12].sprite.name + "p")
+                {
+                    b.GetComponent<ChangeGunUI>().interactionPressed = allPressedKeys[i];
+                }
+            } 
+        }
+        catch{}
     }
-    
     public void ChooseKey(int keyCode) //Quando clickar em alguma tecla pra ser alterada, muda arte dela pra ela soq pressionada
     {
         for(int i = 0; i < allPressedKeys.Length; i ++)

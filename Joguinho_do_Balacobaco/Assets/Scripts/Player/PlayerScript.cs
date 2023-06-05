@@ -46,11 +46,17 @@ public class PlayerScript : MonoBehaviour
     public GameObject pnlInventory;
     private bool canChangeGun = false; //Só é true quando tiver perto de uma arma no chão/loja/bau. Ao se afastar volta a ser false
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
+    private bool canChangeMelee;
+    public GameObject newMelee;
     public bool confusion;
     public int extraLife;
     public PlayerStatus playerInitialStatus;
     public PlayerStatus playerStatusSave;
     public int shopDiscount;
+    public GunSaveStatus initialGun;
+    public MeleeSaveStatus initialMelee;
+
+
     //apagar dps
     public InputActionReference hot1, hot2;
     public bool save, load;
@@ -69,6 +75,8 @@ public class PlayerScript : MonoBehaviour
         room = gameControllerScript.room;
         if(room == 1)
         {
+            initialGun.SetFirstGun();
+            initialMelee.SetFirstMelee();
             TakeAllInitialStatus();
             ResetAllItensUsed();
         }   
@@ -77,7 +85,7 @@ public class PlayerScript : MonoBehaviour
             ReTakeStatus();
             CoreInventory._instance.inventory.ReTakeItensInfo();
         }
-    }
+    }   
 
     private void ResetAllItensUsed()
     {
@@ -91,6 +99,7 @@ public class PlayerScript : MonoBehaviour
     {
         CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
+        canChangeMelee = false;
         stuned = false;
         armor = 0; 
         canMove = true;
@@ -115,12 +124,14 @@ public class PlayerScript : MonoBehaviour
         }
         GunSaveStatus gunsave = Resources.LoadAll("", typeof(GunSaveStatus)).Cast<GunSaveStatus>().First();
         gunsave.SetGun();
-        //gunsave.FillList(); 
+        MeleeSaveStatus meleeSave = Resources.LoadAll("", typeof(MeleeSaveStatus)).Cast<MeleeSaveStatus>().First();
+        meleeSave.SetMelee();
     }
 
     public void ChangeDungeonFloor()
     {
         gunCase.GetComponentInChildren<GunStatus>().SaveGun();
+        melee.GetComponentInChildren<MeleeController>().weapon.GetComponent<MeleeScript>().SaveMelee();
         FieldInfo[] scriptVars = typeof(PlayerScript).GetFields(BindingFlags.Public | BindingFlags.Instance);
         playerStatusSave.FillList();
         foreach(FieldInfo variable in scriptVars)
@@ -221,8 +232,14 @@ public class PlayerScript : MonoBehaviour
                 if(canChangeGun == true && interaction.action.IsPressed()) //puxa o evento de trocar de arma
                 {
                     canChangeGun = false;
-                    newGun.GetComponent<ChangeGun>().changeGun();
+                    newGun.GetComponent<ChangeGun>().ChangePlayerGun();
                 }
+                if(canChangeMelee == true && interaction.action.IsPressed())
+                {
+                    canChangeMelee = false;
+                    newMelee.GetComponent<ChangeMelee>().changeMelee();
+                }
+
             }
         }
     }
@@ -585,6 +602,12 @@ public class PlayerScript : MonoBehaviour
             newGun = other.gameObject;
             other.GetComponent<ChangeGun>().canChange = true;
         }
+        if(other.gameObject.tag == "ChangeMelee")
+        {
+            canChangeMelee = true;
+            newMelee = other.gameObject;
+            other.GetComponent<ChangeMelee>().canChange = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -592,6 +615,11 @@ public class PlayerScript : MonoBehaviour
         {
             other.GetComponent<ChangeGun>().canChange = false;
             canChangeGun = false;
+        }
+        if(other.gameObject.tag == "ChangeMelee")
+        {
+            other.GetComponent<ChangeMelee>().canChange = false;
+            canChangeMelee = false;
         }
     }
 

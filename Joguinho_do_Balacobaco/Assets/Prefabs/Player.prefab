@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4837908412421449566}
+  - component: {fileID: 30248132550148805}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: MeleeCase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 7206816808103367150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30248132550148805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751668071669450017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5fa367522978b4d9b0525f549e6c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7206816808103367140
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,11 +216,14 @@ MonoBehaviour:
   pnlControls: {fileID: 0}
   pnlInventory: {fileID: 0}
   newGun: {fileID: 0}
+  newMelee: {fileID: 0}
   confusion: 0
   extraLife: 0
   playerInitialStatus: {fileID: 11400000, guid: 9eb8e36fd52aafc47aa96f46c876bf74, type: 2}
   playerStatusSave: {fileID: 11400000, guid: 12636d499bc24a742a6747c505719549, type: 2}
   shopDiscount: 0
+  initialGun: {fileID: 11400000, guid: c53c86181084ac04092e4229c9379c45, type: 2}
+  initialMelee: {fileID: 11400000, guid: 791b651c8530f0f4bb2fa501d003d4f8, type: 2}
   hot1: {fileID: 0}
   hot2: {fileID: 0}
   save: 0

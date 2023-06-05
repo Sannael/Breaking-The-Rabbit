@@ -1973,6 +1973,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4754271029478261623}
     m_Modifications:
+    - target: {fileID: 3579667887945771319, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640381692397201471, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640381692397201471, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3640381692444874081, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

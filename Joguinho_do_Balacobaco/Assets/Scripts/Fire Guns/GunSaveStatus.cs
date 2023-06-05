@@ -79,7 +79,6 @@ public class GunSaveStatus : ScriptableObject
             break;
 
             case "gun":
-            Debug.Log(value);
             gun = (GameObject)value; 
             break;
         }
@@ -89,7 +88,12 @@ public class GunSaveStatus : ScriptableObject
     {
         GameObject oldGun = Instantiate(gun);
         oldGun.transform.SetParent(GameObject.FindGameObjectWithTag("GunCase").transform, false);
-        oldGun.GetComponentInChildren<GunStatus>().TakeGun(this);
-                
+        oldGun.GetComponentInChildren<GunStatus>().TakeGun(this);       
+    }
+
+    public void SetFirstGun()
+    {
+        GameObject oldGun = Instantiate(gun);
+        oldGun.transform.SetParent(GameObject.FindGameObjectWithTag("GunCase").transform, false);
     }
 }

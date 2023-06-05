@@ -12,7 +12,7 @@ public class ChangeGun : MonoBehaviour
     public bool canChange; //Checa se o player poder trocar (basicamente checa se o player ta dentro do campo de troca)
     public GameObject uiChange; //Gameobejct de troca de arma
     private int ui = 1; //Mais uma variavel que evita bugar 
-    public bool chest, shop, droped; //Checa se a arma vemd e bau, loja ou ta sendo dropada no chão
+    public bool droped; //Checa se a arma vemd e bau, loja ou ta sendo dropada no chão
     void Start()
     {
         time = 0.8f;
@@ -60,7 +60,7 @@ public class ChangeGun : MonoBehaviour
         }
     }
 
-    public void changeGun() //Evento de troca de arma
+    public void ChangePlayerGun() //Evento de troca de arma
     {
         drops --;
         if(drops ==0) //Evita duplicar

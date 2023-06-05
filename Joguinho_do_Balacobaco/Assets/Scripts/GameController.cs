@@ -180,6 +180,7 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1f;
             inventoryWindow.SetActive(false);
+            CoreInventory._instance.inventory.itemDrag.enabled = false;
         }
         
     }
