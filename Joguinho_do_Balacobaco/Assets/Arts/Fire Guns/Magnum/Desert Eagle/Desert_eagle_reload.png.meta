@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c063f374fe07b23498a8f3c7e6106dc6
+guid: 1fd77a9568e137c438880ea6fed573aa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 530
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,127 +117,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Assault Rifle
+      name: Desert_eagle_reload_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 143
-        width: 27
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 800
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36174faf907d3e4ab8d601b59df4b3b
-      internalID: 2097953794
+      spriteID: 0beda659e7ad75d46b59cf8f7a1265e7
+      internalID: 1869147687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pistol
+      name: Desert_eagle_reload_1
       rect:
         serializedVersion: 2
-        x: 92
-        y: 146
-        width: 30
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 400
+        y: 800
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1716bcb1287a0d14b8033a362dbdadb1
-      internalID: 707007370
+      spriteID: 916174a6c777ee84f93808ab742d6c91
+      internalID: 355674485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magnum
+      name: Desert_eagle_reload_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 147
-        width: 29
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 800
+        y: 800
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56a5a52c79a104146995d931a6039161
-      internalID: 1216619618
+      spriteID: 3833b051f31b1c246b0bf3634f58eb89
+      internalID: 693820866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shotgun
+      name: Desert_eagle_reload_3
       rect:
         serializedVersion: 2
-        x: 213
-        y: 145
-        width: 29
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 400
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 821e87854589a1b40b7f0583996f526f
-      internalID: 188687349
+      spriteID: ee15316ad96855a47894a1644adc114d
+      internalID: -1209251892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SMG
+      name: Desert_eagle_reload_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 76
-        width: 23
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 400
+        y: 400
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.3025548, y: 0.14651954}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3175e9e80e98a094380dded8301372be
-      internalID: -409710965
+      spriteID: 019ac81f38401a44eaf5cd447ea17808
+      internalID: 821490210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolver
+      name: Desert_eagle_reload_5
       rect:
         serializedVersion: 2
-        x: 161
-        y: 207
-        width: 9
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 800
+        y: 400
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 669b90322122a7b4e8887ba194fbd8cf
-      internalID: 533257427
+      spriteID: 1da50a3ca4817de46ad58b0cd095bc12
+      internalID: -1203536540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_eagle_reload_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e4abfe637487f4ba178c343312be5f
+      internalID: -649266635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_eagle_reload_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6f50d34db8f354681f4731717b19ca
+      internalID: -372488506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_eagle_reload_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.68, y: 0.61}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f6b077187d5fb4794dde3c112102d1
+      internalID: 1001301669
       vertices: []
       indices: 
       edges: []
@@ -253,31 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ammo_cases_4: -1094348301
-      Ammo_cases_10: 222694859
-      Ammo_cases_13: 836629987
-      Ammo_cases_14: 1812259000
-      Ammo_cases_15: -564040123
-      Ammo_cases_1: -287715020
-      Ammo_cases_12: -1930446641
-      Ammo_cases_20: -1994895048
-      Ammo_cases_23: -782249831
-      Ammo_cases_17: 1128263087
-      Ammo_cases_22: -634085548
-      Ammo_cases_16: -897076583
-      Ammo_cases_9: -1261475677
-      Ammo_cases_11: 82856003
-      Ammo_cases_21: -1955178911
-      Ammo_cases_2: 495939479
-      SMG: -409710965
-      Magnum: 1216619618
-      Ammo_cases_3: 1199254382
-      Shotgun: 188687349
-      Assault Rifle: 2097953794
-      Pistol: 707007370
-      Ammo_cases_18: -619600587
-      Revolver: 533257427
-      Ammo_cases_19: 1036972715
+      Desert_eagle_reload_8: 1001301669
+      Desert_eagle_reload_1: 355674485
+      Desert_eagle_reload_6: -649266635
+      Desert_eagle_reload_7: -372488506
+      Desert_eagle_reload_0: 1869147687
+      Desert_eagle_reload_3: -1209251892
+      Desert_eagle_reload_2: 693820866
+      Desert_eagle_reload_4: 821490210
+      Desert_eagle_reload_5: -1203536540
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -99,7 +99,7 @@ public class GunStatus : MonoBehaviour
                 }
             }
             
-            if(shoot.action.IsPressed() && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
+            if(shoot.action.IsPressed() && canShoot == true && ammo >= 1 && automatic == true) //Tiro de arma automatica
             {
                 if(reloading == true)
                 {
@@ -307,6 +307,7 @@ public class GunStatus : MonoBehaviour
                 firedBullet.transform.Rotate(0, 0, Random.Range(bulletSpreadMin, bulletSpreadMax)); //Cria o efeito de dispersão
                 firedBullet.GetComponent<DamageScript>().damage = damage;
                 firedBullet.GetComponent<DamageScript>().trueDamage = trueDamage;
+                firedBullet.GetComponent<BulletScript>().bulletSpeed = bulletSpeed;
             }
         }
         else
@@ -314,6 +315,7 @@ public class GunStatus : MonoBehaviour
             GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
             firedBullet.GetComponent<DamageScript>().damage = damage;
             firedBullet.GetComponent<DamageScript>().trueDamage = trueDamage;
+            firedBullet.GetComponent<BulletScript>().bulletSpeed = bulletSpeed;
         }
         
         canShoot = false;

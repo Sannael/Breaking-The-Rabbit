@@ -33,7 +33,8 @@ MonoBehaviour:
   inventory: 0
   hotbar: 1
   itemDesc:
-  - "Aumenta a quantidade de carambolas possu\xEDdas em 2"
+  - "\"Um grande homem uma vez me disse que parece um xuxu\"\n\nAumenta a quantidade
+    de carambolas possu\xEDdas em 2"
   weapon: 0
   thisPrefabDrop: {fileID: 866699275537502024, guid: 360f3a6f45c17af42947b0dbe968d1d2, type: 3}
   used: 1

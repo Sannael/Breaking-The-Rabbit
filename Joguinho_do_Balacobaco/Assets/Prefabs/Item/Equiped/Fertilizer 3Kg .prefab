@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8378461461650337629}
   - component: {fileID: 7530955658236406319}
   - component: {fileID: 8814793357941795531}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 'Fertilizer 3Kg '
   m_TagString: Item
   m_Icon: {fileID: 0}

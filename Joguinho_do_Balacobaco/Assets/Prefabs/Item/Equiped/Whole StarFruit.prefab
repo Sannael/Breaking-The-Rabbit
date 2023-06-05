@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 866699275537502027}
   - component: {fileID: 866699275537502026}
   - component: {fileID: 4293442786510223434}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Whole StarFruit
   m_TagString: Item
   m_Icon: {fileID: 0}
