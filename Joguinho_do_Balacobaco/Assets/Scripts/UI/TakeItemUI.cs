@@ -6,6 +6,7 @@ public class TakeItemUI : MonoBehaviour
 {
     public SpriteRenderer interaction;
     public Sprite interactionIdle, interactionPressed;
+    public GameObject uiChange;
     void Start()
     {
         ChangeImage(); //Checa se teve alteração na tecla

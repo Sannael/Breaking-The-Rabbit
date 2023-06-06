@@ -8,13 +8,11 @@ public class MainMenu : MonoBehaviour
     public GameObject settings; //Painel de config
     
     void Start()
-    {
-        
+    {   
     }
 
     void Update()
     {
-        
     }
 
     public void ClickExit()

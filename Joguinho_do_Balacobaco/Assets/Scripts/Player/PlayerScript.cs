@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using System.Reflection;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private InputActionReference[] hotbar = new InputActionReference[6];
     public PlayerInput playerInput;
     private GameObject sceneManager; 
+    private Manager sceneManagerScript;
     public float speed; //Move Speed do cueio
     public Animator playerAnim;
     [SerializeField]
@@ -43,36 +46,147 @@ public class PlayerScript : MonoBehaviour
     public GameObject pnlInventory;
     private bool canChangeGun = false; //Só é true quando tiver perto de uma arma no chão/loja/bau. Ao se afastar volta a ser false
     public GameObject newGun; //Arma que o player pode pegar, ficaria no chão/loja/bau
-    void Awake()
+    private bool canChangeMelee;
+    public GameObject newMelee;
+    public bool confusion;
+    public int extraLife;
+    public PlayerStatus playerInitialStatus;
+    public PlayerStatus playerStatusSave;
+    public int shopDiscount;
+    public GunSaveStatus initialGun;
+    public MeleeSaveStatus initialMelee;
+
+
+    //apagar dps
+    public InputActionReference hot1, hot2;
+    public bool save, load;
+    private int room;
+    void Awake() 
     {
-        
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
         pnlInventory.GetComponentInChildren<CoreInventory>().Awake(); //Força a criação da instancia do inventario
+        sceneManager = GameObject.Find("SceneManager");
+        sceneManagerScript = sceneManager.GetComponent<Manager>();
+        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+
+        //Precisa de um if e else pra checar se é a primeira fase
+        room = gameControllerScript.room;
+        if(room == 1)
+        {
+            initialGun.SetFirstGun();
+            initialMelee.SetFirstMelee();
+            TakeAllInitialStatus();
+            ResetAllItensUsed();
+        }   
+        else
+        {
+            ReTakeStatus();
+            CoreInventory._instance.inventory.ReTakeItensInfo();
+        }
+    }   
+
+    private void ResetAllItensUsed()
+    {
+        Item[] allItens = Resources.LoadAll("Drops", typeof(Item)).Cast<Item>().ToArray();
+        foreach(var item in allItens)
+        {
+            item.used = false;
+        }
     }
     void Start()
     {
         CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
+        canChangeMelee = false;
         stuned = false;
-        sceneManager = GameObject.Find("SceneManager");
-        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
         armor = 0; 
         canMove = true;
         rollCdrInitial = rollCdr; //armazena o valor inicial da variavel de cdr do roll (reset do valor de maneira pratica)
         rbVelocity = rb.velocity; //armazena a velocidade inical do rigidbody2D  
     }
 
+    public void TakeAllInitialStatus()
+    {
+        playerInitialStatus.FillList();
+        foreach(var status in playerInitialStatus.status)
+        {
+            ChangeVarValues(status.Key, status.Value, true);
+        }
+    } 
+    public void ReTakeStatus()
+    {
+        playerStatusSave.FillList();
+        foreach(var status in playerStatusSave.status)
+        {
+            ChangeVarValues(status.Key, status.Value, true);
+        }
+        GunSaveStatus gunsave = Resources.LoadAll("", typeof(GunSaveStatus)).Cast<GunSaveStatus>().First();
+        gunsave.SetGun();
+        MeleeSaveStatus meleeSave = Resources.LoadAll("", typeof(MeleeSaveStatus)).Cast<MeleeSaveStatus>().First();
+        meleeSave.SetMelee();
+    }
+
+    public void ChangeDungeonFloor()
+    {
+        gunCase.GetComponentInChildren<GunStatus>().SaveGun();
+        melee.GetComponentInChildren<MeleeController>().weapon.GetComponent<MeleeScript>().SaveMelee();
+        FieldInfo[] scriptVars = typeof(PlayerScript).GetFields(BindingFlags.Public | BindingFlags.Instance);
+        playerStatusSave.FillList();
+        foreach(FieldInfo variable in scriptVars)
+        {
+            object varValue = variable.GetValue(this);
+            string name = variable.Name;
+            playerStatusSave.SaveList(name, varValue);
+        }
+        sceneManagerScript.LoadScene(5);
+    } 
+
     void Update()
     {
+        if(hot1.action.IsPressed())
+        {
+            if(sceneManagerScript.ReturnActivedSceneName() == "CenaBruno")
+            {
+                ChangeDungeonFloor();
+                CoreInventory._instance.inventory.SaveItens();
+                //sceneManagerScript.LoadScene(5);
+            }
+        }
+        if(hot2.action.IsPressed())
+        {
+            if(sceneManagerScript.ReturnActivedSceneName() == "SceneTeste")
+            {
+                sceneManagerScript.LoadScene(4);
+            }
+        }
+        /*if(hot1.action.IsInProgress() && save == false)
+        {
+            save = true;
+            CoreInventory._instance.inventory.SaveItens();
+        }
+        if(hot2.action.IsPressed() && load == false)
+        {
+            load = true;
+            CoreInventory._instance.inventory.ReTakeItensInfo();
+        }*/
+
         if(gameControllerScript.isPaused == false)
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
             {
-                DisbleAll(); //Função de desativar todos os itens do player
-                isAlive = false; //Murreu :(
-                Animations("Death"); //Animação de Death
+                if(extraLife <=0)
+                {
+                    DisbleAll(); //Função de desativar todos os itens do player
+                    isAlive = false; //Murreu :(
+                    Animations("Death"); //Animação de Death
+                }
+                else
+                {
+                    extraLife --;
+                    //B.O pra resolver quando implementar item
+                }
             }
             else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
             {
@@ -118,8 +232,14 @@ public class PlayerScript : MonoBehaviour
                 if(canChangeGun == true && interaction.action.IsPressed()) //puxa o evento de trocar de arma
                 {
                     canChangeGun = false;
-                    newGun.GetComponent<ChangeGun>().changeGun();
+                    newGun.GetComponent<ChangeGun>().ChangePlayerGun();
                 }
+                if(canChangeMelee == true && interaction.action.IsPressed())
+                {
+                    canChangeMelee = false;
+                    newMelee.GetComponent<ChangeMelee>().changeMelee();
+                }
+
             }
         }
     }
@@ -149,7 +269,15 @@ public class PlayerScript : MonoBehaviour
         Vector2 dirMouse = Camera.main.ScreenToWorldPoint(mousePosition.action.ReadValue<Vector2>());
         direcao = dirMouse[0] - transform.position[0];
 
-        rb.velocity = move * speed;
+        if(confusion == true)
+        {
+            rb.velocity = - move * speed;
+        }
+        else
+        {
+            rb.velocity = move * speed;
+        }
+        
 
         if(move[0] != 0 || move[1] !=0) //checa se o cueio ta em movimento
         {
@@ -160,6 +288,236 @@ public class PlayerScript : MonoBehaviour
         {
             playerAnim.SetBool("Walking", false);
             playerAnim.SetBool("Idle", true);
+        }
+    }
+
+    public void ChangeVarValues<value>(string statusName, value newValue, bool initialValues)
+    {
+        switch (statusName)
+        {
+            case "speed":
+            if(initialValues == true)
+            {
+                speed = System.Convert.ToSingle(newValue);
+            }
+            else
+            {
+                speed += System.Convert.ToSingle(newValue);
+            }
+            
+            break;
+            
+            case "rollCdr":
+            if(initialValues == true)
+            {
+                rollCdr = System.Convert.ToSingle(newValue);
+            }
+            else
+            {
+                rollCdr += System.Convert.ToSingle(newValue);
+            }
+            
+            break;
+
+            case "health":
+            if(initialValues == true)
+            {
+                health = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                health += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "maxHealth":
+            if(initialValues == true)
+            {
+                maxHealth = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                maxHealth += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "isAlive":
+            if(initialValues == true)
+            {
+                isAlive = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                isAlive = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "canTakeDamage":
+            if(initialValues == true)
+            {
+                canTakeDamage = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                canTakeDamage = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "armor":
+            if(initialValues == true)
+            {
+                armor = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                armor += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "coinCount":
+            if(initialValues == true)
+            {
+                coinCount = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                coinCount += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "revolverAmmo":
+            if(initialValues == true)
+            {
+                revolverAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                revolverAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "shotgunAmmo":
+            if(initialValues == true)
+            {
+                shotgunAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                shotgunAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "pistolAmmo":
+            if(initialValues == true)
+            {
+                pistolAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                pistolAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "assaultRifleAmmo":
+            if(initialValues == true)
+            {
+                assaultRifleAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                assaultRifleAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "smgAmmo":
+            if(initialValues == true)
+            {
+                smgAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                smgAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "magnumAmmo":
+            if(initialValues == true)
+            {
+                magnumAmmo = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                magnumAmmo += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "starFruitCount":
+            if(initialValues == true)
+            {
+                starFruitCount = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                starFruitCount += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "starFruitMax":
+            if(initialValues == true)
+            {
+                starFruitMax = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                starFruitMax += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "confusion":
+            if(initialValues == true)
+            {
+                confusion = System.Convert.ToBoolean(newValue);
+            }
+            else
+            {
+                confusion = System.Convert.ToBoolean(newValue);
+            }
+            
+            break;
+
+            case "extraLife":
+            if(initialValues == true)
+            {
+                extraLife = System.Convert.ToInt32(newValue);
+            }
+            else
+            {
+                extraLife += System.Convert.ToInt32(newValue);
+            }
+            
+            break;
+
+            case "stunTime":
+            Stun(System.Convert.ToSingle(newValue));
+            break;
+
+            case "shopDiscount":
+            shopDiscount = System.Convert.ToInt32(newValue);
+            break;
         }
     }
 
@@ -244,6 +602,12 @@ public class PlayerScript : MonoBehaviour
             newGun = other.gameObject;
             other.GetComponent<ChangeGun>().canChange = true;
         }
+        if(other.gameObject.tag == "ChangeMelee")
+        {
+            canChangeMelee = true;
+            newMelee = other.gameObject;
+            other.GetComponent<ChangeMelee>().canChange = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -251,6 +615,11 @@ public class PlayerScript : MonoBehaviour
         {
             other.GetComponent<ChangeGun>().canChange = false;
             canChangeGun = false;
+        }
+        if(other.gameObject.tag == "ChangeMelee")
+        {
+            other.GetComponent<ChangeMelee>().canChange = false;
+            canChangeMelee = false;
         }
     }
 
@@ -279,19 +648,26 @@ public class PlayerScript : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255); // ^^^^^^^até aqui ^^^^^^^^
             canTakeDamage = true; //Fim do tempo de Invulnerabilidade
         }
-        
     }
 
     public void TakeDamage(int damageTaken, int trueDamage)
     {
-        if((damageTaken - armor) > 0)
+        int armorDefend = Random.Range(0, 21);
+        if(armorDefend <= armor)
         {
-            health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+            if((damageTaken - armor) > 0)
+            {
+                health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
+            }
+        }
+        else
+        {
+            health = health - damageTaken;
         }
         health =  health - trueDamage;
     }
 
-    private IEnumerator Stun(float stunTime)
+    public IEnumerator Stun(float stunTime)
     {
         stuned = true;
         gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
@@ -317,7 +693,7 @@ public class PlayerScript : MonoBehaviour
             shotgunAmmo += ammoCount;
             break;
 
-            case "Assault Rifle":
+            case "AssaultRifle":
             assaultRifleAmmo += ammoCount;
             break;
 

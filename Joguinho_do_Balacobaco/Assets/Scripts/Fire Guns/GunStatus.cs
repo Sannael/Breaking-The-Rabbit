@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using System.Reflection;
+
+using static GunSaveStatus;
 
 public class GunStatus : MonoBehaviour
 { 
+    public GunSaveStatus.GunType gunType; 
     [SerializeField]
     private InputActionReference shoot, reload, starFruitAction; //Armazena os comandos de cada action que o script usa
     public Transform barrelTip; //Cano da arma, pra sair o projetil
@@ -12,6 +17,8 @@ public class GunStatus : MonoBehaviour
     public GameObject bullet, capsule; //Projétil e capsula da arma
     private Animator gunAnimator; //Animator da arma 
     public float gunRate; //cadencia da arma 
+    public int damage;
+    public int trueDamage;
     public float gunRateCurrent; //cadencia da arma atual
     public float bulletSpeed, capsuleSpeed; //velocidade do projétil / capsula 
     [Tooltip("Munição atual no pente/tambor/cano da arma")]
@@ -26,7 +33,7 @@ public class GunStatus : MonoBehaviour
     public bool gunManualReload; //Armas que carregam de maneira manual
     private GameController gameController;
     private bool isPaused;
-    [Tooltip("Tipo de munição da arma, seguindo o padrão: Pistol, Revolver, Shotgun, SMG, Assault Rifle, Magnum")]
+    [Tooltip("Tipo de munição da arma, seguindo o padrão: Pistol, Revolver, Shotgun, SMG, AssaultRifle, Magnum")]
     public string ammoType; //Tipo de munição 
     private PlayerScript ps;
     private GameObject starFruit; //Carambola arremessavel
@@ -34,7 +41,7 @@ public class GunStatus : MonoBehaviour
     [Tooltip("A cadencia da arma é automatica?")]
     public bool automatic; //Cadencia automatica?
     public bool cockingGun; //pra armas que tem o engatilhar fora da animação de recarregar 
-    [Tooltip("Usdo somente para armas que precisam ter uma dispersão no tiro(exemplo uma shotgun), se precisar é só colocar aqui a quantidade de balas que não fazer essa dispersão, se não precisar deixa 0")]
+    [Tooltip("Usdo somente para armas que precisam ter uma dispersão no tiro(exemplo uma shotgun), se precisar é só colocar aqui a quantidade de balas que vão fazer essa dispersão, se não precisar deixa 0")]
     public int bulletSpread; //Pra armas que o tiro precisa ter uma dispersão
     [Tooltip("Distancia minima e maxima da dispersao, se n houver deixa 0")]
     public int bulletSpreadMin, bulletSpreadMax; //Distancia minima e maxima da dispersão
@@ -44,10 +51,17 @@ public class GunStatus : MonoBehaviour
     public Transform magLocate;
     public Vector2 magForce;
     public Item item;
+    private bool canThrowStarFruit = true;
+   [HideInInspector]
+    public GameObject gun;
     void Start()
     {
+        if(System.Enum.TryParse(ammoType, out GunType a))
+        {
+            gunType = a;
+        }
+        gun = item.thisPrefabDrop.GetComponent<ChangeGun>().gun;
         CoreInventory._instance.inventory.GetItem(item, 0, true, false, 1);
-        playerAmmo = 0;
         gunAnimator = this.GetComponent<Animator>(); //Pega o Animator do objeto
         reloading = false;
         player = GameObject.Find("Player");
@@ -85,7 +99,7 @@ public class GunStatus : MonoBehaviour
                 }
             }
             
-            if(shoot.action.IsPressed() && canShoot == true && ammo > 0 && automatic == true) //Tiro de arma automatica
+            if(shoot.action.IsPressed() && canShoot == true && ammo >= 1 && automatic == true) //Tiro de arma automatica
             {
                 if(reloading == true)
                 {
@@ -126,11 +140,16 @@ public class GunStatus : MonoBehaviour
                 }
             }   
 
-            if(starFruitAction.action.IsPressed() && ps.starFruitCount >0)
+            if(starFruitAction.action.IsPressed() && ps.starFruitCount >0 && canThrowStarFruit == true)
             {
+                canThrowStarFruit = false;
                 GameObject starFruitTrhow = Instantiate(starFruit, barrelTip.position, barrelTip.rotation);
                 ps.starFruitCount --;
             } 
+            if(starFruitAction.action.IsPressed() == false && canThrowStarFruit == false)
+            {
+                canThrowStarFruit = true;
+            }
             SetAmmo();    
         }
     }
@@ -163,7 +182,7 @@ public class GunStatus : MonoBehaviour
             }
             break;
 
-            case "Assault Rifle":
+            case "AssaultRifle":
             if(ps.assaultRifleAmmo >0)
             {
                 playerAmmo += ps.assaultRifleAmmo;
@@ -185,6 +204,70 @@ public class GunStatus : MonoBehaviour
                 playerAmmo += ps.magnumAmmo;
                 ps.magnumAmmo = 0;
             }
+            break;
+        }
+    }
+
+    public void SaveGun()
+    {
+        GunSaveStatus gunsave = Resources.LoadAll("", typeof(GunSaveStatus)).Cast<GunSaveStatus>().First();
+        FieldInfo[] scriptVars = typeof(GunStatus).GetFields(BindingFlags.Public | BindingFlags.Instance);
+        gunsave.FillList();
+        foreach(FieldInfo variable in scriptVars)
+        {
+            object varValue = variable.GetValue(this);
+            string name = variable.Name;
+            gunsave.SaveList(name, varValue);
+        }
+    }
+
+    public void TakeGun(GunSaveStatus gunSave)
+    {
+        //GunSaveStatus gunsave = Resources.LoadAll("", typeof(GunSaveStatus)).Cast<GunSaveStatus>().First();
+        gunSave.FillList();
+        foreach(var save in gunSave.save)
+        {
+            TakeGunInfo(save.Key, save.Value);
+        }
+    }
+    public void TakeGunInfo(string statusName, object value)
+    {
+        switch (statusName)
+        {
+            case "gunRate":
+            gunRate = System.Convert.ToSingle(value);
+            break;
+
+            case "damage":
+            damage = System.Convert.ToInt32(value);
+            break;
+
+            case "trueDamage":
+            trueDamage = System.Convert.ToInt32(value);
+            break;
+
+            case "ammo":
+            ammo = System.Convert.ToInt32(value);
+            break;
+
+            case "totalAmmo":
+            totalAmmo = System.Convert.ToInt32(value);
+            break;
+
+            case "playerAmmo": 
+            playerAmmo = System.Convert.ToInt32(value);
+            break;            
+
+            case "bulletSpread":
+            bulletSpread = System.Convert.ToInt32(value);
+            break;
+
+            case "bulletSpreadMin":
+            bulletSpreadMin = System.Convert.ToInt32(value);
+            break;
+
+            case "bulletSpreadMax":
+            bulletSpreadMax = System.Convert.ToInt32(value);
             break;
         }
     }
@@ -222,11 +305,17 @@ public class GunStatus : MonoBehaviour
             {
                 GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
                 firedBullet.transform.Rotate(0, 0, Random.Range(bulletSpreadMin, bulletSpreadMax)); //Cria o efeito de dispersão
+                firedBullet.GetComponent<DamageScript>().damage = damage;
+                firedBullet.GetComponent<DamageScript>().trueDamage = trueDamage;
+                firedBullet.GetComponent<BulletScript>().bulletSpeed = bulletSpeed;
             }
         }
         else
         {
             GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
+            firedBullet.GetComponent<DamageScript>().damage = damage;
+            firedBullet.GetComponent<DamageScript>().trueDamage = trueDamage;
+            firedBullet.GetComponent<BulletScript>().bulletSpeed = bulletSpeed;
         }
         
         canShoot = false;

@@ -30,6 +30,12 @@ public class TakeItem : MonoBehaviour
             take = true;
             canDestroy(CoreInventory._instance.inventory.GetItem(item, item.itemAmount, item.unique, item.pileable, item.weapon));
         }
+
+        if(interaction.action.IsPressed() == false && take == true)
+        {
+            take = false;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -55,8 +61,7 @@ public class TakeItem : MonoBehaviour
         }
         else
         {
-            take = false;
-            Debug.Log("Pegou n fi");
+            GameObject.Find("Player Hotbar Panel").GetComponent<Animator>().SetTrigger("Shake");
         }
     }
 }

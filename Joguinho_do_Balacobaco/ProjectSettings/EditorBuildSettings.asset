@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CenaBruno.unity
     guid: 3e4e876a7504c9146afb772a43e0f8a1
+  - enabled: 1
+    path: Assets/Scenes/SceneTeste.unity
+    guid: 7cf3d8aab737ebf44a7025434bb10bc8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 39d5a74568f31ea41a2bfae42395a63c, type: 2}

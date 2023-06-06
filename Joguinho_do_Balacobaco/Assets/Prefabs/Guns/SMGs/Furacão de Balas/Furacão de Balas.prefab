@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db722f4bb897f604ebf07e20c8e59e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunType: 0
   shoot: {fileID: -6548114629162841949, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   reload: {fileID: -1669152286963000121, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   starFruitAction: {fileID: -8129099634493032246, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
@@ -271,6 +272,8 @@ MonoBehaviour:
   bullet: {fileID: 7490904481001720310, guid: d799ca2b43470f043901351836f3a541, type: 3}
   capsule: {fileID: 453664152917583119, guid: cc04ae96eded80043b474c009385c5d2, type: 3}
   gunRate: 0.1
+  damage: 7
+  trueDamage: 0
   gunRateCurrent: 0
   bulletSpeed: 9
   capsuleSpeed: 2.5
@@ -291,3 +294,4 @@ MonoBehaviour:
   magLocate: {fileID: 8969637700288673176}
   magForce: {x: 2, y: 0}
   item: {fileID: 11400000, guid: 56b142f09bac1e94abf06b7b9fb39e8f, type: 2}
+  gun: {fileID: 0}

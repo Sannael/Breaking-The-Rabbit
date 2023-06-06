@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameController : MonoBehaviour
 {
     private bool roomState;
-     
+    public int room;
     [SerializeField]
     private InputActionReference pause, openInventory; //Puxa o botão de pausar levando em conta o action q for
     public string cantos;
@@ -24,7 +24,6 @@ public class GameController : MonoBehaviour
         roomState = true;
         OpenCloseInventory(true);
         OpenCloseInventory(false);
-        CoreInventory._instance.inventory.ReTakeItensInfo();
     }
 
     void Start()
@@ -181,6 +180,7 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1f;
             inventoryWindow.SetActive(false);
+            CoreInventory._instance.inventory.itemDrag.enabled = false;
         }
         
     }

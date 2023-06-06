@@ -28,7 +28,6 @@ public class Manager : MonoBehaviour
 
         }
     }
-
     // Update is called once per frame
     void Update()
     {    
@@ -55,6 +54,10 @@ public class Manager : MonoBehaviour
                 ChangeCursor(0);
             }
         }
+    }
+    public string ReturnActivedSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 
     public void LoadScene(int scene)

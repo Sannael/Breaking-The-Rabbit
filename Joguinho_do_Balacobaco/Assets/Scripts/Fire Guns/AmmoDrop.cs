@@ -43,7 +43,7 @@ public class AmmoDrop : MonoBehaviour
             dropMaxKill = 5;
             break;
 
-            case "Assault Rifle":
+            case "AssaultRifle":
             ammoId = 2;
             dropMinHit = 1;
             dropMaxHit = 3; 

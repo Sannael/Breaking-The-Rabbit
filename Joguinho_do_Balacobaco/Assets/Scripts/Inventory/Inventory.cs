@@ -43,7 +43,6 @@ public class Inventory : MonoBehaviour
 
     [Header("Item Description")]
     public InventoryDescs inventoryDesc;
-
     public void Awake()
     {
         if(isInventoryCreate == false)
@@ -74,8 +73,20 @@ public class Inventory : MonoBehaviour
     public void SaveItens()
     {
         UpdateHotbarSlots(true);
+        foreach(var s in hotbar)
+        {
+            s.Value.item.used = false;
+            //DestroyItem(s.Key , s.Value.slotType);
+        }
         UpdateInventorySlots(true);
-        UpdateInventorySlots(true);
+
+        foreach(var s in inventory)
+        {
+            s.Value.item.used = false;
+            //DestroyItem(s.Key , s.Value.slotType);
+        }
+
+        UpdateWeaponsSlots(true);
     }
 
     public void CreateItensSlot()
@@ -173,7 +184,7 @@ public class Inventory : MonoBehaviour
         else if(itemAmount.ContainsKey(item) && unique == true && pileable == false) //Se tiver o item e ele n poder ser empilhado
         {
             destroy = false;
-            //Meia noite eu te conto
+           
         }
         else //Se n tiver o item, ou o item for semi-unico
         {
@@ -325,11 +336,23 @@ public class Inventory : MonoBehaviour
     {
         if(stype == SlotType.HOTBAR) //se for da hotbar destroi o item da hotbar
         {
+            if(itemAmount.ContainsKey(hotbar[idSlot].item))
+            {
+                hotbar[idSlot].itemSelected = false;
+                itemAmount.Remove(hotbar[idSlot].item);
+            }
+            hotbar[idSlot].item.ApllyDisUse();
             hotbar[idSlot].item = itemEmpty;
             UpdateHotbarSlots(false);
         }
         if(stype == SlotType.INVENTORY) //se for do inventario destroi o item do inventario
         {
+            if(itemAmount.ContainsKey(inventory[idSlot].item))
+            {
+                inventory[idSlot].itemSelected = false;
+                itemAmount.Remove(inventory[idSlot].item);
+            }
+            inventory[idSlot].item.ApllyDisUse();
             inventory[idSlot].item = itemEmpty;
             UpdateInventorySlots(false);
         }
@@ -358,7 +381,11 @@ public class Inventory : MonoBehaviour
             }
             for(int i =0; i < inventoryAmount; i ++)
             {
-                inventory[0].itemSelected = false;
+                inventory[i].itemSelected = false;
+            }
+            for(int i =0; i < weaponsAmount; i ++)
+            {
+                weapons[i].itemSelected = false;
             }
         }
         else if(sType == SlotType.INVENTORY)
@@ -379,6 +406,10 @@ public class Inventory : MonoBehaviour
             {
                 hotbar[i].itemSelected = false;
             }
+            for(int i =0; i < weaponsAmount; i ++)
+            {
+                weapons	[i].itemSelected = false;
+            }
         }
         else
         {
@@ -389,6 +420,18 @@ public class Inventory : MonoBehaviour
             for(int i =0; i < hotbarAmount; i ++)
             {
                 hotbar[i].itemSelected = false;
+            }
+            for(int i =0; i < weaponsAmount; i ++)
+            {
+                if(i == slotId)
+                {
+                    weapons[i].itemSelected = true;
+                }
+                else
+                {
+                    weapons[i].itemSelected = false;//
+                }
+                
             }
             CoreInventory._instance.inventoryDescs.DisableAllButtons();
         }

@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 5876132799484878167}
   - component: {fileID: 5716698465030328173}
   - component: {fileID: 6836150469781190455}
+  - component: {fileID: 5310095213413965538}
   m_Layer: 5
   m_Name: Player Hotbar Panel
   m_TagString: Untagged
@@ -234,14 +235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 01e9864ea9086064ab99c825a62cd0f0, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -300,6 +301,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c01713fb005144aa8f3f04ff87370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5310095213413965538
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783209701332719818}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd970e3af5a9e91449b4b2e1f9922164, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3919453222958912289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1973,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4754271029478261623}
     m_Modifications:
+    - target: {fileID: 3579667887945771319, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640381692397201471, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640381692397201471, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3640381692444874081, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

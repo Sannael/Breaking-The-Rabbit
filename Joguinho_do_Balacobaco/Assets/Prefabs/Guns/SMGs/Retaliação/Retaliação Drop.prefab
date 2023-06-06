@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8597783261823083004}
   - component: {fileID: 8597783261823083002}
   - component: {fileID: 8597783261823083003}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: "Retalia\xE7\xE3o Drop"
   m_TagString: ChangeGun
   m_Icon: {fileID: 0}
@@ -118,8 +118,6 @@ MonoBehaviour:
   gun: {fileID: 1271367111442328699, guid: 147630e5292684e4580bc277b69b0319, type: 3}
   canChange: 0
   uiChange: {fileID: 7832420789963596437, guid: 80b6fc59c367ebb42b0942c8e7d2978e, type: 3}
-  chest: 0
-  shop: 0
   droped: 0
 --- !u!50 &8597783261823083003
 Rigidbody2D:

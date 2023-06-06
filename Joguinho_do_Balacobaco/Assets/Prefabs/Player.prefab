@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4837908412421449566}
+  - component: {fileID: 30248132550148805}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: MeleeCase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 7206816808103367150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30248132550148805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751668071669450017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5fa367522978b4d9b0525f549e6c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7206816808103367140
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,36 +186,48 @@ MonoBehaviour:
   - {fileID: 818652231981723184, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   - {fileID: -4899804091928852060, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   playerInput: {fileID: 2306139284738157046, guid: f16a04b722e15b444bdb9827e418e6ce, type: 3}
-  speed: 4
+  speed: 0
   playerAnim: {fileID: 7206816808103367136}
   direita: 0
   rollCdr: 0.5
   rb: {fileID: 7206816808103367138}
   canRoll: 0
   canMove: 0
-  health: 10
-  maxHealth: 10
+  health: 0
+  maxHealth: 0
   rbVelocity: {x: 0, y: 0}
   gunCase: {fileID: 7206816808897993630}
   melee: {fileID: 1751668071669450017}
-  canTakeDamage: 1
-  isAlive: 1
+  canTakeDamage: 0
+  isAlive: 0
   armor: 0
   dmgCollider: {fileID: 7206816808103367151}
   force: 8
-  coinCount: 50
-  revolverAmmo: 27
-  shotgunAmmo: 20
-  pistolAmmo: 40
-  assaultRifleAmmo: 50
-  smgAmmo: 85
-  magnumAmmo: 15
+  coinCount: 0
+  revolverAmmo: 0
+  shotgunAmmo: 0
+  pistolAmmo: 0
+  assaultRifleAmmo: 0
+  smgAmmo: 0
+  magnumAmmo: 0
   starFruit: {fileID: 2960570674585553945, guid: 96a5c81b0a85e9948bbfd3f3a0a6ca07, type: 3}
-  starFruitCount: 1
-  starFruitMax: 1
+  starFruitCount: 0
+  starFruitMax: 0
   pnlControls: {fileID: 0}
   pnlInventory: {fileID: 0}
   newGun: {fileID: 0}
+  newMelee: {fileID: 0}
+  confusion: 0
+  extraLife: 0
+  playerInitialStatus: {fileID: 11400000, guid: 9eb8e36fd52aafc47aa96f46c876bf74, type: 2}
+  playerStatusSave: {fileID: 11400000, guid: 12636d499bc24a742a6747c505719549, type: 2}
+  shopDiscount: 0
+  initialGun: {fileID: 11400000, guid: c53c86181084ac04092e4229c9379c45, type: 2}
+  initialMelee: {fileID: 11400000, guid: 791b651c8530f0f4bb2fa501d003d4f8, type: 2}
+  hot1: {fileID: 0}
+  hot2: {fileID: 0}
+  save: 0
+  load: 0
 --- !u!50 &7206816808103367138
 Rigidbody2D:
   serializedVersion: 4
@@ -288,7 +313,7 @@ GameObject:
   - component: {fileID: 7119502678625008354}
   m_Layer: 7
   m_Name: GunCase
-  m_TagString: Untagged
+  m_TagString: GunCase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

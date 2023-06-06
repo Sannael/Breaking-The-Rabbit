@@ -18,6 +18,7 @@ public class MeleeController : MonoBehaviour
         currentAtkSpeed = 0f;
         gunCase = GameObject.Find("Player/GunCase");
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+        weapon.GetComponent<MeleeScript>().Awake();
     }
 
     // Update is called once per frame
