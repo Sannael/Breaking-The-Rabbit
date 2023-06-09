@@ -55,12 +55,11 @@ public class PlayerScript : MonoBehaviour
     public int shopDiscount;
     public GunSaveStatus initialGun;
     public MeleeSaveStatus initialMelee;
-
-
-    //apagar dps
-    public InputActionReference hot1, hot2;
-    public bool save, load;
     private int room;
+
+    [Header("Sounds")]
+    public AudioClip rollSound;
+    public AudioClip takingDamageSound;
     void Awake() 
     {
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
@@ -145,33 +144,6 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        if(hot1.action.IsPressed())
-        {
-            if(sceneManagerScript.ReturnActivedSceneName() == "CenaBruno")
-            {
-                ChangeDungeonFloor();
-                CoreInventory._instance.inventory.SaveItens();
-                //sceneManagerScript.LoadScene(5);
-            }
-        }
-        if(hot2.action.IsPressed())
-        {
-            if(sceneManagerScript.ReturnActivedSceneName() == "SceneTeste")
-            {
-                sceneManagerScript.LoadScene(4);
-            }
-        }
-        /*if(hot1.action.IsInProgress() && save == false)
-        {
-            save = true;
-            CoreInventory._instance.inventory.SaveItens();
-        }
-        if(hot2.action.IsPressed() && load == false)
-        {
-            load = true;
-            CoreInventory._instance.inventory.ReTakeItensInfo();
-        }*/
-
         if(gameControllerScript.isPaused == false)
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
@@ -255,6 +227,11 @@ public class PlayerScript : MonoBehaviour
     {
         gunCase.SetActive(false); //Desativa o coldre de arma, logo a arma
         melee.SetActive(false);
+    }
+
+    public void playSoundEffect(AudioClip sound)
+    {
+        GameSounds.instance.PlaySingle(sound);
     }
 
     public void Death()
@@ -562,8 +539,10 @@ public class PlayerScript : MonoBehaviour
         {
             vel[1] = 0f; //Sem empurrão pra cima ou baixo; empurrão reto na horizontal
         }
+        //GameSounds.instance.PlaySingle(rollSound);
+        GameSounds.instance.CreateNewSound(rollSound);
         rb.velocity = vel; //Altera o valor da velocity do rigidibody (tipo a força do empurro) aqui que a mágica acontece
-
+    
         yield return new WaitForSeconds(0.6f); //espera o final da animação pra poder voltar ao normal
         playerAnim.SetBool("Roll", false);  
         rb.velocity = rbVelocity; //Reseta o valor da velocity do rigidibody
@@ -652,6 +631,8 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damageTaken, int trueDamage)
     {
+        //GameSounds.instance.PlaySingle(takingDamageSound);
+        GameSounds.instance.CreateNewSound(takingDamageSound);
         int armorDefend = Random.Range(0, 21);
         if(armorDefend <= armor)
         {

@@ -75,6 +75,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.5
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ac4892c499c39434a87caf24f9436b89, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.6666667
     functionName: ManualReload
     data: 

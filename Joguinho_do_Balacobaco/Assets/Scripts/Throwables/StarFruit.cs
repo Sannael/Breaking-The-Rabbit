@@ -19,8 +19,15 @@ public class StarFruit : MonoBehaviour
     [Header("Id das layers para funcionalidade do imã")]
     public int starfuitLayerId;
     public int coinLayerId;
+    
+    [Header("Sounds")]
+    public AudioClip travelSound;
+    private bool sound;
+    [HideInInspector]
+    public GameObject soundObj;
     void Start()
     {
+        sound = true;
         gameObject.layer = starfuitLayerId;
         gameObject.tag = "StarFruit";
         isVisible = true;
@@ -35,10 +42,20 @@ public class StarFruit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && sound == true)
+        {
+            soundObj = GameSounds.instance.CreateNewSoundLoop(travelSound);
+            sound = false;
+        }
+        else if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            Destroy(soundObj);
+        }
         if(travel == true)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             anim.SetBool("Throw", true);
+            
         }
         else
         {

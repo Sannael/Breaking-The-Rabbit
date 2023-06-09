@@ -186,6 +186,7 @@ MonoBehaviour:
   distaceInSquares: 3.5
   capColl: {fileID: 7778413110290529773}
   dashCoefficient: 1.7
+  dashSound: {fileID: 8300000, guid: ea81143308c40a24faefe006c8e571f7, type: 3}
 --- !u!114 &7778413110290529769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,8 @@ MonoBehaviour:
   isAlive: 0
   armor: 0
   triggerCol: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7ecf67af169400647b5002860fde9c49, type: 3}
+  takingDamageSound: {fileID: 8300000, guid: 4a8b9e6b5111733478624933c81a186e, type: 3}
 --- !u!114 &7778413110290529782
 MonoBehaviour:
   m_ObjectHideFlags: 0

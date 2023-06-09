@@ -25,6 +25,8 @@ public class SlimeDash : MonoBehaviour
     private StunScript stunScript; //Script de Stun
     public CapsuleCollider2D capColl; //Colisor de stun; ativa só no dash se n pode bugar, colisor sempre da dor de cabeça ;-;
     public float dashCoefficient; //Variavel que divide a força do dash, caso o player tiver mt longe, n fca um dash mt forte
+    [Header("Sounds")]
+    public AudioClip dashSound;
     void Start()
     {
         if(this.GetComponent<StunScript>() != null) //Se o Slime tiver script de stun armazena ele 
@@ -134,6 +136,7 @@ public class SlimeDash : MonoBehaviour
         {
             tmov[1] /= (dashCoefficient * 0.9f);
         }
+        GameSounds.instance.CreateNewSound(dashSound);
         
         rb.velocity = - (tmov); //Dashzin
         atkSpeedCurrent = 0; //Reseta o tempo de ataque

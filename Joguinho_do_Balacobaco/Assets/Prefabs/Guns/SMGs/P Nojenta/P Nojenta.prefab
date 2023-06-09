@@ -115,7 +115,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.08, y: 0.4}
+  m_Size: {x: 0.59534883, y: 0.59534883}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -185,6 +185,7 @@ MonoBehaviour:
   magForce: {x: -3, y: 1}
   item: {fileID: 11400000, guid: a30bb2f494857d74ab94351b10add869, type: 2}
   gun: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 614b07fb83697374bb8c18852bc18f07, type: 3}
 --- !u!1 &1402352266070844193
 GameObject:
   m_ObjectHideFlags: 0

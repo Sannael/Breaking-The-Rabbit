@@ -183,6 +183,7 @@ MonoBehaviour:
   magForce: {x: 0, y: 0}
   item: {fileID: 11400000, guid: 19a7d67bf8f5d7340890111534f439ea, type: 2}
   gun: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: c12a268cc4c3d2d4d82765a45932e842, type: 3}
 --- !u!1 &4450111057152504531
 GameObject:
   m_ObjectHideFlags: 0

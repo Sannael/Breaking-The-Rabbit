@@ -15,7 +15,8 @@ public class MeleeScript : MonoBehaviour
     public Item item;
     [HideInInspector]
     public GameObject melee;
-
+    [Header("Sounds")]
+    public AudioClip atkSound;
     public void Awake()
     {
         CoreInventory._instance.inventory.GetItem(item, 0, true, false, 2);
@@ -27,6 +28,11 @@ public class MeleeScript : MonoBehaviour
         this.GetComponent<DamageScript>().damage = damage;
         this.GetComponent<DamageScript>().trueDamage = trueDamage;
         meleeAnim.SetTrigger("Attack");
+    }
+
+    public void setAtkSound()
+    {
+        GameSounds.instance.CreateNewSound(atkSound);
     }
 
     public void SaveMelee()

@@ -87,10 +87,31 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.18333334
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 9e2648d201cdb024092eaa48f150f565, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.56666666
     functionName: DropMag
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.15
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ca46b08f680286f439218315fab8e0ab, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.2
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 5e658f504f5302847b8ecc1f55633723, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

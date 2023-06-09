@@ -19,7 +19,6 @@ public class MagazineGun : MonoBehaviour
             for(int i =0; i < maxRotation; i += rotationProgression)
             {
                 transform.Rotate(0, 0, i);
-                Debug.Log(i);
             }
         }
     }

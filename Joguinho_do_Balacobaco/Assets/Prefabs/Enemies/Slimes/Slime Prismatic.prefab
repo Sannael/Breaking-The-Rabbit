@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2517614260861070055}
   - component: {fileID: 2517614260861070072}
   - component: {fileID: 2517614260861070073}
+  - component: {fileID: 2517614260861070052}
   - component: {fileID: 2517614260861070074}
   - component: {fileID: 2517614260861070053}
   - component: {fileID: 2517614260861070051}
-  - component: {fileID: 2517614260861070052}
   - component: {fileID: 4655877326597296218}
   - component: {fileID: -660264292096875025}
   m_Layer: 8
@@ -124,6 +124,41 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.64, y: 0.56}
   m_Direction: 1
+--- !u!114 &2517614260861070052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517614260861070075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4661e39f5f8d069419783fa3c1ac3ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  isVisible: 0
+  enemyStastus: {fileID: 0}
+  isAlive: 0
+  dmgScript: {fileID: 0}
+  atkSpeed: 3
+  force: 2.35
+  dashCoefficient: 1.7
+  distaceInSquares: 4
+  projectile: {fileID: 161734191588054998, guid: e6f452348d69f534783afc7c94c850b6, type: 3}
+  projectilePos: {fileID: 2517614260861070054}
+  atkSpeedMin: 1.8
+  atkSpeedMax: 2.5
+  slimes:
+  - {fileID: 7737822459803715730, guid: 037524b0ab8648c44b76c1bebfe8b301, type: 3}
+  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
+  - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
+  - {fileID: 4456085485986702330, guid: bf752b9054a025b499b0dbfdf7179f3c, type: 3}
+  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+  - {fileID: 1212614059620878466, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
+  slimeGold: {fileID: 5685213849442540915, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
+  shootingSound: {fileID: 8300000, guid: cbf0d041ed09676438a3a243dae81177, type: 3}
+  dashSound: {fileID: 8300000, guid: ea81143308c40a24faefe006c8e571f7, type: 3}
 --- !u!114 &2517614260861070074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +176,8 @@ MonoBehaviour:
   isAlive: 0
   armor: 5
   triggerCol: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7ecf67af169400647b5002860fde9c49, type: 3}
+  takingDamageSound: {fileID: 8300000, guid: 4a8b9e6b5111733478624933c81a186e, type: 3}
 --- !u!95 &2517614260861070053
 Animator:
   serializedVersion: 5
@@ -182,39 +219,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2517614260861070052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2517614260861070075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4661e39f5f8d069419783fa3c1ac3ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  isVisible: 0
-  enemyStastus: {fileID: 0}
-  isAlive: 0
-  dmgScript: {fileID: 0}
-  atkSpeed: 3
-  force: 2.35
-  dashCoefficient: 1.7
-  distaceInSquares: 4
-  projectile: {fileID: 161734191588054998, guid: e6f452348d69f534783afc7c94c850b6, type: 3}
-  projectilePos: {fileID: 2517614260861070054}
-  atkSpeedMin: 1.8
-  atkSpeedMax: 2.5
-  slimes:
-  - {fileID: 7737822459803715730, guid: 037524b0ab8648c44b76c1bebfe8b301, type: 3}
-  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
-  - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
-  - {fileID: 4456085485986702330, guid: bf752b9054a025b499b0dbfdf7179f3c, type: 3}
-  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
-  - {fileID: 1212614059620878466, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
-  slimeGold: {fileID: 5685213849442540915, guid: 47f9a1f8908bf50448c30a8569a41bb9, type: 3}
 --- !u!114 &4655877326597296218
 MonoBehaviour:
   m_ObjectHideFlags: 0

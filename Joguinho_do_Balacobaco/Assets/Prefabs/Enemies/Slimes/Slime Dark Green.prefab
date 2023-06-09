@@ -127,6 +127,8 @@ MonoBehaviour:
   isAlive: 0
   armor: 0
   triggerCol: {fileID: 1147386148231664759}
+  deathSound: {fileID: 8300000, guid: 7ecf67af169400647b5002860fde9c49, type: 3}
+  takingDamageSound: {fileID: 8300000, guid: 4a8b9e6b5111733478624933c81a186e, type: 3}
 --- !u!114 &7737822459803715743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +146,7 @@ MonoBehaviour:
   atkSpeedMin: 2.8
   atkSpeedMax: 3.5
   isAlive: 0
+  shootingSound: {fileID: 0}
 --- !u!50 &-1451519154837009466
 Rigidbody2D:
   serializedVersion: 4
