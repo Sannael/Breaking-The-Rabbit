@@ -128,6 +128,10 @@ public class SlimeDash : MonoBehaviour
         {
             stunScript.enabled = true; //Habilita o stun  durante o dash
         }
+        if(dmgScript != null)
+        {
+            dmgScript.enabled = true;
+        }
         capColl.enabled = true;
         Vector3 mov = transform.position - player.transform.position; //Pego a distancia do player até o inimigo
         Vector2 tmov = new Vector2(mov[0], mov[1]); //puxo ela em um vector2, pra n dar merda e n usamos o Z
@@ -160,6 +164,10 @@ public class SlimeDash : MonoBehaviour
         {
             stunScript.enabled = false; //Desabilita o stun quando acabar o dash
         }   
+        if(dmgScript != null)
+        {
+            dmgScript.enabled = false;
+        }
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
         rb.mass = 500;
         capColl.enabled = false;

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameController : MonoBehaviour
 {
     private bool roomState;
-    public int room;
+    public int dungeon;
     [SerializeField]
     private InputActionReference pause, openInventory; //Puxa o botão de pausar levando em conta o action q for
     public string cantos;
@@ -18,11 +18,15 @@ public class GameController : MonoBehaviour
     public GameObject inventoryWindow;
     public Manager sceneManager;
     private bool canPause, canInventory, inventory;
+    public DungeonsInfo dungeonsInfo;
+    public GameObject moneyChest;
+    private bool inCombat;
     [Header("Sounds")]
     public AudioClip openInventorySound;
     public AudioClip closeInventorySound;
     private void Awake()
     {
+        dungeon = dungeonsInfo.dungeon;
         numberOfEnemies = 0;
         roomState = true;
         OpenCloseInventory(true);
@@ -84,16 +88,28 @@ public class GameController : MonoBehaviour
             {
                 Destroy(GameObject.FindGameObjectWithTag("Roots"));
             }
-
             catch { Debug.Log("cath"); }
+            if(inCombat == true)
+            {
+                inCombat = false;
+                DropCoinChest();
+            }
         }
+    }
+    public void DropCoinChest()
+    {
+        GameObject chest = Instantiate(moneyChest);
+        chest.GetComponent<MoneyChestFall>().dungeon = dungeon;
     }
     public void RoomChange()
     {
-        Debug.Log(numberOfEnemies);
         if (numberOfEnemies >= 1)
         {
             roomState = true;
+            if(inCombat == false)
+            {
+                inCombat = true;
+            }
         }
         else
         {

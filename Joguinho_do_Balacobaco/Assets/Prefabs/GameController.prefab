@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3282a799949f9c47b10ecf2b08c1514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: 1
+  dungeon: 1
   pause: {fileID: -390097106020468567, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   openInventory: {fileID: 279059516281589475, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   cantos: 
@@ -70,5 +70,7 @@ MonoBehaviour:
   pnlPause: {fileID: 0}
   inventoryWindow: {fileID: 0}
   sceneManager: {fileID: 1600927414306657563, guid: e824374ec0bb8604695d8df87dd48994, type: 3}
+  dungeonsInfo: {fileID: 11400000, guid: 629748a5c8c12dd44a9b9a24bbab6c69, type: 2}
+  moneyChest: {fileID: 5197707666258876499, guid: e3e3a72591b298f4fb802d05597c7e3b, type: 3}
   openInventorySound: {fileID: 8300000, guid: a06ff967febac3f489978f390c747dfc, type: 3}
   closeInventorySound: {fileID: 8300000, guid: 777ef9b239f9f1f40bb507db380574f6, type: 3}

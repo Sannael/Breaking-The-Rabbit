@@ -21,8 +21,8 @@ MonoBehaviour:
   itemStak: 0
   maxItens: 0
   maxStak: 0
-  chest: 1
-  shop: 1
+  chest: 0
+  shop: 0
   value: 0
   consumible: 0
   canMove: 0
@@ -30,7 +30,10 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
   - "6 balas no tambor;\nDano: 9;\nTipo da muni\xE7\xE3o: Revolver"
   weapon: 1
   thisPrefabDrop: {fileID: 5801234530438645776, guid: b510fd166c01f1b4fa00a8846b1b39c0, type: 3}
+  used: 0

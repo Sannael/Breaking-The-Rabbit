@@ -24,6 +24,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if(health <= 0 && isAlive == true) //Se a vida chegar a 0 é chamada a função de morte
         {
+            triggerCol.enabled = false;
             Animations("Death");
             isAlive = false;  
         }
