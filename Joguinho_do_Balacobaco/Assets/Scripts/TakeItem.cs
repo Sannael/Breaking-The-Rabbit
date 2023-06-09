@@ -11,18 +11,20 @@ public class TakeItem : MonoBehaviour
     public bool canTake = false;
     private bool seeUi = false;
     private bool take = false;
+    private GameObject uiTake;
     void Update()
     {
+        
         if(canTake == true && seeUi == false)
         {
             seeUi = true;
-            GameObject uiTake = Instantiate(uiTakeItem, transform.position, Quaternion.identity); //Aparece a UI de troca de arma
+            uiTake = Instantiate(uiTakeItem, transform.position, Quaternion.identity); //Aparece a UI de troca de arma
             uiTake.transform.parent = transform;
         }
         if(canTake == false && seeUi == true)
         {
             seeUi = false;
-            Destroy(GameObject.Find("UI TakeItem(Clone)"));
+            Destroy(uiTake);
         }
 
         if(interaction.action.IsPressed() && take == false && canTake == true)

@@ -7,10 +7,8 @@ using System.Reflection;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField]
-    private InputActionReference movement, mousePosition, meleeAtk, shoot, reload, dash, pause, openInventary, skipDialogue, starFruitAction, interaction;
-    [SerializeField]
-    private InputActionReference[] hotbar = new InputActionReference[6];
+    public InputActionReference movement, mousePosition, meleeAtk, shoot, reload, dash, pause, openInventary, skipDialogue, starFruitAction, interaction;
+    public InputActionReference[] hotbar = new InputActionReference[6];
     public PlayerInput playerInput;
     private GameObject sceneManager; 
     private Manager sceneManagerScript;
@@ -71,7 +69,7 @@ public class PlayerScript : MonoBehaviour
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
 
         //Precisa de um if e else pra checar se é a primeira fase
-        room = gameControllerScript.room;
+        room = gameControllerScript.dungeon;
         if(room == 1)
         {
             initialGun.SetFirstGun();

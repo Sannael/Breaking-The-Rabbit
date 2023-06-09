@@ -12,6 +12,6 @@ public class PnlDestroy : MonoBehaviour
     public string itemname;
     private void OnEnable() 
     {
-        text.text = part1[lang] + itemname + " ?"; //O texto que aparece pro player
+        text.text = part1[lang] + itemname.ToUpper() + " ?"; //O texto que aparece pro player
     }
 }

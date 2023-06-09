@@ -45,7 +45,7 @@ public class SoundController : MonoBehaviour
         {
             soundButtons[id].GetComponent<Image>().sprite = soundSprite[2];
         }
-        else if(soundSlider[id].value < 0 && soundSlider[id].value > -25)
+        else if(soundSlider[id].value < 5 && soundSlider[id].value > -25)
         {
             soundButtons[id].GetComponent<Image>().sprite = soundSprite[3];
         }

@@ -7,25 +7,24 @@ using System.Linq;
 
 public class ChestScript : MonoBehaviour
 {
-    public Item item;
-    public InputActionReference hotbar0;
     public bool take = false;
     public bool candrop;
     public Item[] bau;
     private Item[] playerItens = new Item[6];
     public int price;
     private PlayerScript ps;
+    private bool itensChecked = false;
     private void Start() 
-    {  
+    {
+        ps = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
     void Update()
     {
-        
-        if(hotbar0.action.IsPressed() && candrop == true && take == false)
+        if(ps.interaction.action.IsPressed() && candrop == true && take == false)
         {
-            take= true;
+            take = true;
             ps = GameObject.Find("Player").GetComponent<PlayerScript>();
-            TryBuyChest();
+            RandomizeDrop();
         }
     }
 
@@ -42,15 +41,13 @@ public class ChestScript : MonoBehaviour
         {
             ps.coinCount -= (int)finalPrice;
             bau = Resources.LoadAll("Drops", typeof(Item)).Cast<Item>().ToArray();
-            Rand();
+            RandomizeDrop();
         }
         else
         {
-            Debug.Log("Te fudeu");
         }
-        
     }
-    private void Rand()
+    private void RandomizeDrop()
     {
         bool equals = false;
         int id = Random.Range(0, bau.Length);
@@ -79,7 +76,7 @@ public class ChestScript : MonoBehaviour
         }
         else
         {
-            Rand();
+            RandomizeDrop();
         }
         
     }

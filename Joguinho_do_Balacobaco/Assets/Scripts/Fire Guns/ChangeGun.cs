@@ -13,6 +13,7 @@ public class ChangeGun : MonoBehaviour
     public GameObject uiChange; //Gameobejct de troca de arma
     private int ui = 1; //Mais uma variavel que evita bugar 
     public bool droped; //Checa se a arma vemd e bau, loja ou ta sendo dropada no chão
+    private GameObject uiGunChange;
     void Start()
     {
         time = 0.8f;
@@ -50,13 +51,13 @@ public class ChangeGun : MonoBehaviour
         if(canChange == true && ui>0 && drops ==1) //Se tiver dentro do campo de trocar de arma
         {
             ui --;
-            GameObject uiGunChange = Instantiate(uiChange, transform.position, Quaternion.identity); //Aparece a UI de troca de arma
+            uiGunChange = Instantiate(uiChange, transform.position, Quaternion.identity); //Aparece a UI de troca de arma
             uiGunChange.transform.parent = transform;
         }
         if(canChange == false && ui <1) 
         {
             ui ++;
-            Destroy(GameObject.Find("UI ChangeGuns(Clone)")); //DEsabilita a UI de troca de arma
+            Destroy(uiGunChange); //DEsabilita a UI de troca de arma
         }
     }
 

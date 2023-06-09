@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1af7977039364344da9274a2c06e34c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8eded9d2c6604fc45b7d2556b9f8a150, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2048,6 +2048,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4754271029478261623}
     m_Modifications:
+    - target: {fileID: 3579667887905060078, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 3579667887905060079, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2087,6 +2091,10 @@ PrefabInstance:
     - target: {fileID: 3579667887905060079, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579667888073267848, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 3579667888073267849, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2344,6 +2352,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3640381692936956462, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_fontStyle
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3640381693125647986, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2414,7 +2426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693162330743, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontStyle
-      value: 2
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693162330743, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontColor.b
@@ -2430,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693306042754, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontStyle
-      value: 2
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693306042754, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontColor.b
@@ -2446,7 +2458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693422508810, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontStyle
-      value: 2
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3640381693422508810, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_fontColor.b
@@ -2575,6 +2587,10 @@ PrefabInstance:
     - target: {fileID: 3640381693801717893, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640381693840155432, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
+      propertyPath: m_fontStyle
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dade986249e25746a6f41a7de92fd44, type: 3}
@@ -5363,6 +5379,10 @@ PrefabInstance:
     - target: {fileID: 3481265068196589306, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_Name
       value: Inventory Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481265068196589306, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068196589309, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_Pivot.x
