@@ -54,6 +54,8 @@ public class GunStatus : MonoBehaviour
     private bool canThrowStarFruit = true;
    [HideInInspector]
     public GameObject gun;
+    [Header("Sounds")]
+    public AudioClip shootSound;
     void Start()
     {
         if(System.Enum.TryParse(ammoType, out GunType a))
@@ -230,6 +232,11 @@ public class GunStatus : MonoBehaviour
             TakeGunInfo(save.Key, save.Value);
         }
     }
+
+    public void SetSounds(AudioClip sound)
+    {
+        GameSounds.instance.CreateNewSound(sound);
+    }
     public void TakeGunInfo(string statusName, object value)
     {
         switch (statusName)
@@ -303,6 +310,7 @@ public class GunStatus : MonoBehaviour
         {
             for(int i = bulletSpread; i >0; i --)
             {
+                GameSounds.instance.CreateNewSound(shootSound);
                 GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
                 firedBullet.transform.Rotate(0, 0, Random.Range(bulletSpreadMin, bulletSpreadMax)); //Cria o efeito de dispersão
                 firedBullet.GetComponent<DamageScript>().damage = damage;
@@ -312,6 +320,7 @@ public class GunStatus : MonoBehaviour
         }
         else
         {
+            GameSounds.instance.CreateNewSound(shootSound);
             GameObject firedBullet = Instantiate(bullet, barrelTip.position, barrelTip.rotation); //Cria cum clone da bala no cano da arma
             firedBullet.GetComponent<DamageScript>().damage = damage;
             firedBullet.GetComponent<DamageScript>().trueDamage = trueDamage;

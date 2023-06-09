@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     public GameObject inventoryWindow;
     public Manager sceneManager;
     private bool canPause, canInventory, inventory;
+    [Header("Sounds")]
+    public AudioClip openInventorySound;
+    public AudioClip closeInventorySound;
     private void Awake()
     {
         numberOfEnemies = 0;
@@ -175,12 +178,14 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 0f;
             inventoryWindow.SetActive(true);
+            try{GameSounds.instance.CreateNewSoundNoScale(openInventorySound);}catch{}
         }
         else
         {
             Time.timeScale = 1f;
             inventoryWindow.SetActive(false);
             CoreInventory._instance.inventory.itemDrag.enabled = false;
+            try{GameSounds.instance.CreateNewSoundNoScale(closeInventorySound);}catch{}
         }
         
     }

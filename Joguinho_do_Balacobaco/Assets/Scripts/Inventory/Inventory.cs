@@ -43,6 +43,10 @@ public class Inventory : MonoBehaviour
 
     [Header("Item Description")]
     public InventoryDescs inventoryDesc;
+
+    [Header("Sounds")]
+    public AudioClip destroyItemSound;
+    public AudioClip moveItemSound;
     public void Awake()
     {
         if(isInventoryCreate == false)
@@ -320,6 +324,7 @@ public class Inventory : MonoBehaviour
             UpdateInventorySlots(false);
             UpdateHotbarSlots(false);
             SelectItem(idSlot, stype);
+            GameSounds.instance.CreateNewSoundNoScale(moveItemSound);
         }
         }
         catch{}
@@ -357,6 +362,7 @@ public class Inventory : MonoBehaviour
             UpdateInventorySlots(false);
         }
         ChangeDescPanel(itemEmpty, 0); //Reseta as infos do painel de descrição para nulas
+        GameSounds.instance.CreateNewSoundNoScale(destroyItemSound);
     }
 
     public void SelectItem(int slotId, SlotType sType) //Marca o slot que o player clickou como selecionado  

@@ -535,6 +535,8 @@ MonoBehaviour:
   slotDrag: {fileID: 0}
   slotDrop: {fileID: 0}
   inventoryDesc: {fileID: 3481265068788920404}
+  destroyItemSound: {fileID: 8300000, guid: 7590c917255762841969c0a02e4c2444, type: 3}
+  moveItemSound: {fileID: 8300000, guid: 0ad920b0a228a284e91ab46b8c177159, type: 3}
 --- !u!114 &3481265068050580429
 MonoBehaviour:
   m_ObjectHideFlags: 0

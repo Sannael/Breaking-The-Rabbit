@@ -165,6 +165,9 @@ MonoBehaviour:
   canTakeDmg: 0
   isAlive: 1
   armor: 0
+  triggerCol: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7ecf67af169400647b5002860fde9c49, type: 3}
+  takingDamageSound: {fileID: 8300000, guid: 4a8b9e6b5111733478624933c81a186e, type: 3}
 --- !u!114 &-4528805683270723413
 MonoBehaviour:
   m_ObjectHideFlags: 0

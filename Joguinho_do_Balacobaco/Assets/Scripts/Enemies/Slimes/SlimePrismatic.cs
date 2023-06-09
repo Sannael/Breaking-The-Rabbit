@@ -33,6 +33,9 @@ public class SlimePrismatic : MonoBehaviour
     public GameObject[] slimes; //Todos os slimes que o prismatico pode spawnar após morrer
     public GameObject slimeGold;
     private int health;
+    [Header("Sounds")]
+    public AudioClip shootingSound;
+    public AudioClip dashSound;
     void Start()
     {
         stunScript = this.GetComponent<StunScript>();
@@ -154,6 +157,7 @@ public class SlimePrismatic : MonoBehaviour
     }
     public void Shoot()
     {
+        GameSounds.instance.CreateNewSound(shootingSound);
         Instantiate(projectile, projectilePos.position, Quaternion.identity); //Cria um projétil, conforme seu prefab
         atkSpeedCurrent = 0; //Reseta o Timer
         atkSpeed = Random.Range(atkSpeedMin, atkSpeedMax); //"Aleatoriza" a valocidade de ataque após cada tiro
@@ -169,6 +173,7 @@ public class SlimePrismatic : MonoBehaviour
         {
             tmov[1] /= (dashCoefficient * 0.9f);
         }
+        GameSounds.instance.CreateNewSound(dashSound);
         
         rb.velocity = - (tmov); //Dashzin
         atkSpeedCurrent = 0; //Reseta o tempo de ataque

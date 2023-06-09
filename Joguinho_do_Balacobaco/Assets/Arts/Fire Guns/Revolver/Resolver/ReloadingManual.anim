@@ -82,6 +82,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.26666668
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 60e21d8df31fade45bf20060d1b53993, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: StayReload
     data: 

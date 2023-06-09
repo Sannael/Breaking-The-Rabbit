@@ -287,6 +287,15 @@ public partial class @Default : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExepSpace"",
+                    ""type"": ""Button"",
+                    ""id"": ""029cdc49-1013-4f73-9696-f542e3f43101"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -674,6 +683,17 @@ public partial class @Default : IInputActionCollection2, IDisposable
                     ""action"": ""ExepRightArrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7f629a9-84ea-46d7-851a-c717a260b837"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExepSpace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -859,6 +879,7 @@ public partial class @Default : IInputActionCollection2, IDisposable
         m_PlayerInput_ExepUpArrow = m_PlayerInput.FindAction("ExepUpArrow", throwIfNotFound: true);
         m_PlayerInput_ExepDownArrow = m_PlayerInput.FindAction("ExepDownArrow", throwIfNotFound: true);
         m_PlayerInput_ExepRightArrow = m_PlayerInput.FindAction("ExepRightArrow", throwIfNotFound: true);
+        m_PlayerInput_ExepSpace = m_PlayerInput.FindAction("ExepSpace", throwIfNotFound: true);
         // PlayerExeptions
         m_PlayerExeptions = asset.FindActionMap("PlayerExeptions", throwIfNotFound: true);
         m_PlayerExeptions_Esc = m_PlayerExeptions.FindAction("Esc", throwIfNotFound: true);
@@ -956,6 +977,7 @@ public partial class @Default : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_ExepUpArrow;
     private readonly InputAction m_PlayerInput_ExepDownArrow;
     private readonly InputAction m_PlayerInput_ExepRightArrow;
+    private readonly InputAction m_PlayerInput_ExepSpace;
     public struct PlayerInputActions
     {
         private @Default m_Wrapper;
@@ -989,6 +1011,7 @@ public partial class @Default : IInputActionCollection2, IDisposable
         public InputAction @ExepUpArrow => m_Wrapper.m_PlayerInput_ExepUpArrow;
         public InputAction @ExepDownArrow => m_Wrapper.m_PlayerInput_ExepDownArrow;
         public InputAction @ExepRightArrow => m_Wrapper.m_PlayerInput_ExepRightArrow;
+        public InputAction @ExepSpace => m_Wrapper.m_PlayerInput_ExepSpace;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1085,6 +1108,9 @@ public partial class @Default : IInputActionCollection2, IDisposable
                 @ExepRightArrow.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
                 @ExepRightArrow.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
                 @ExepRightArrow.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepRightArrow;
+                @ExepSpace.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepSpace;
+                @ExepSpace.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepSpace;
+                @ExepSpace.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnExepSpace;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -1176,6 +1202,9 @@ public partial class @Default : IInputActionCollection2, IDisposable
                 @ExepRightArrow.started += instance.OnExepRightArrow;
                 @ExepRightArrow.performed += instance.OnExepRightArrow;
                 @ExepRightArrow.canceled += instance.OnExepRightArrow;
+                @ExepSpace.started += instance.OnExepSpace;
+                @ExepSpace.performed += instance.OnExepSpace;
+                @ExepSpace.canceled += instance.OnExepSpace;
             }
         }
     }
@@ -1292,6 +1321,7 @@ public partial class @Default : IInputActionCollection2, IDisposable
         void OnExepUpArrow(InputAction.CallbackContext context);
         void OnExepDownArrow(InputAction.CallbackContext context);
         void OnExepRightArrow(InputAction.CallbackContext context);
+        void OnExepSpace(InputAction.CallbackContext context);
     }
     public interface IPlayerExeptionsActions
     {

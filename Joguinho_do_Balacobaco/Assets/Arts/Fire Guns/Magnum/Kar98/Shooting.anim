@@ -91,6 +91,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.65
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 6f93cd9dace2ef64d91c60546db7e8d7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.93333334
     functionName: Capsule
     data: 

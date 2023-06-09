@@ -82,6 +82,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5833333
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: a219593d13cbb2a40acbc99cae757519, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
     functionName: ManualReload
     data: 
     objectReferenceParameter: {fileID: 0}

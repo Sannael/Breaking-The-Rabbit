@@ -224,10 +224,9 @@ MonoBehaviour:
   shopDiscount: 0
   initialGun: {fileID: 11400000, guid: c53c86181084ac04092e4229c9379c45, type: 2}
   initialMelee: {fileID: 11400000, guid: 791b651c8530f0f4bb2fa501d003d4f8, type: 2}
-  hot1: {fileID: 0}
-  hot2: {fileID: 0}
-  save: 0
-  load: 0
+  rollSound: {fileID: 8300000, guid: efd811a7aba5ad2479cb25d2d69da5ff, type: 3}
+  deathSound: {fileID: 8300000, guid: d96946f908a90124bba1fc8ddb4196e8, type: 3}
+  takingDamageSound: {fileID: 8300000, guid: 0b8487a146b6d5c45a494b2bac5bcc02, type: 3}
 --- !u!50 &7206816808103367138
 Rigidbody2D:
   serializedVersion: 4

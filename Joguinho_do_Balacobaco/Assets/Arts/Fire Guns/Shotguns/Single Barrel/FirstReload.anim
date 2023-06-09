@@ -85,10 +85,31 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.25
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ab9e452a7f067a54a98d377696683aaf, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.48333332
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 610cd1785b4a54941bfc0828abd38b46, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.75
     functionName: ManualReload
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: SetSounds
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ab9e452a7f067a54a98d377696683aaf, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

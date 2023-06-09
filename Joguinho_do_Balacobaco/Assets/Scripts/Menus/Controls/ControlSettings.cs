@@ -29,7 +29,7 @@ public class ControlSettings : MonoBehaviour
     private bool sameKey = false;
     public GameObject pnlSureRestoring, pnlBackNoSaving;
     public Button btnSalvar;
-    public InputActionReference esc, tab, leftShift, leftAlt, enter, rightButton, leftButton;
+    public InputActionReference esc, tab, leftShift, leftAlt, enter, rightButton, leftButton, space;
     public InputActionReference leftArrow, upArrow, downArrow, rightArrow;
     public GameObject uiChangeGun, uiTakeItem;
 
@@ -184,6 +184,10 @@ public class ControlSettings : MonoBehaviour
             if(rightArrow.action.IsPressed())
             {
                 SelectKey("rightArrow");
+            }
+            if(space.action.IsPressed())
+            {
+                SelectKey("space");
             }
         }
     }
@@ -366,7 +370,6 @@ public class ControlSettings : MonoBehaviour
         keyId = playerActions.Length;
         OpenClosePnlChangeKey();
     }
-
     private void ChangeAllImages()
     {
         for(int i = 0; i < keys.Length; i ++)

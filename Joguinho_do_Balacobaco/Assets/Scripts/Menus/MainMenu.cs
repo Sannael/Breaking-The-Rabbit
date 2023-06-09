@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public Animator sureAnim; //animator do prompt "Are You Sure?"
     public GameObject settings; //Painel de config
-    
-    void Start()
-    {   
-    }
-
-    void Update()
+    public SoundSave soundSave;
+    private void Start() 
     {
+        soundSave.RecoverSounds();
     }
 
     public void ClickExit()
@@ -23,7 +21,6 @@ public class MainMenu : MonoBehaviour
             sureAnim.SetTrigger("Up"); //gatilho para inicio de uma animação (Up do Sure) 
             sureAnim.SetBool("Visible", true); //define como visivel
         }
-        
     }
 
     public void No()
@@ -31,6 +28,13 @@ public class MainMenu : MonoBehaviour
         sureAnim.ResetTrigger("Up");
         sureAnim.SetTrigger("Down"); //gatilho para inicio de uma animação (Down do Sure)
         sureAnim.SetBool("Visible", false); //define como invisivel
+    }
+    public void CheckAnim()
+    {
+        if(sureAnim.GetCurrentAnimatorStateInfo(0).IsName("Up"))
+        {
+            No();
+        }
     }
 
     public void BackToMenu()

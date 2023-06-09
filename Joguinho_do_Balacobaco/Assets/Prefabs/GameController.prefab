@@ -70,3 +70,5 @@ MonoBehaviour:
   pnlPause: {fileID: 0}
   inventoryWindow: {fileID: 0}
   sceneManager: {fileID: 1600927414306657563, guid: e824374ec0bb8604695d8df87dd48994, type: 3}
+  openInventorySound: {fileID: 8300000, guid: a06ff967febac3f489978f390c747dfc, type: 3}
+  closeInventorySound: {fileID: 8300000, guid: 777ef9b239f9f1f40bb507db380574f6, type: 3}

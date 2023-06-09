@@ -4,20 +4,9 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-    public AudioSource aud;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public AudioSource buttonSource;
     public void Onclick()
     {
-        aud.Play();
+        buttonSource.Play();
     }
 }

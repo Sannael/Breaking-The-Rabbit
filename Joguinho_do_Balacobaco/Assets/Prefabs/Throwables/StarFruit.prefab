@@ -130,6 +130,7 @@ MonoBehaviour:
   isVisible: 0
   starfuitLayerId: 11
   coinLayerId: 9
+  travelSound: {fileID: 8300000, guid: bc530f2a393c976478a2a973faac71c3, type: 3}
 --- !u!50 &2339553412760600330
 Rigidbody2D:
   serializedVersion: 4

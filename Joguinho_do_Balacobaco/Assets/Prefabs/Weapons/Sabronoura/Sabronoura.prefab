@@ -292,6 +292,7 @@ MonoBehaviour:
   thisMeleeChange: {fileID: 1996475818499806441, guid: 2cc10ef6d38ec834b8a41f077a64ee52, type: 3}
   item: {fileID: 11400000, guid: b4c110a7c42881847a655115e72c54b4, type: 2}
   melee: {fileID: 0}
+  atkSound: {fileID: 8300000, guid: 5fca5d8998b0e4443b2be36c36e44cb1, type: 3}
 --- !u!114 &3948151176358817613
 MonoBehaviour:
   m_ObjectHideFlags: 0

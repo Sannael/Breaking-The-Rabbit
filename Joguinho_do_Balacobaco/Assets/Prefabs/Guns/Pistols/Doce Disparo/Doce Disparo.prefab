@@ -327,3 +327,4 @@ MonoBehaviour:
   magForce: {x: 0, y: 0}
   item: {fileID: 11400000, guid: 96fb4afa0d7a0bc47a4905abc9922226, type: 2}
   gun: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 0c25cbef999be934eabf35a0e120f7a9, type: 3}

@@ -10,6 +10,9 @@ public class EnemyStatus : MonoBehaviour
     private Animator slimeAnimator;
     public int armor; //armadura do inimigo
     public Collider2D triggerCol;
+    [Header("Sounds")]
+    public AudioClip deathSound;
+    public AudioClip takingDamageSound;
     void Start()
     {
         canTakeDmg = true;
@@ -30,6 +33,10 @@ public class EnemyStatus : MonoBehaviour
     {
         slimeAnimator.Rebind();
         slimeAnimator.SetTrigger(animation);
+    }
+    public void SetDeathSound()
+    {
+        GameSounds.instance.CreateNewSound(deathSound);
     }
     public void Death()
     {
@@ -82,6 +89,7 @@ public class EnemyStatus : MonoBehaviour
             health =  health - (damageTaken - armor); //Calculo de dano, contando com a armadura
         }
         health =  health - trueDamage;
+        GameSounds.instance.CreateNewSound(takingDamageSound);
         StartCoroutine(Blink());
         StartCoroutine(ResetTakeDmg(dmgCooldown));
     }

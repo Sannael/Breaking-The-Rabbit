@@ -14,7 +14,8 @@ public class SlimeRanged : MonoBehaviour
     private float atkSpeed; //Velocidade de ataque do slime 
     public bool isAlive; //Checa se o slime ta vivo
     private bool direita; //Checa se ta a direita do alvo
-    
+    [Header("Sounds")]
+    public AudioClip shootingSound;
     
     void Start()
     {
@@ -72,6 +73,7 @@ public class SlimeRanged : MonoBehaviour
 
     public void shoot()
     {
+        GameSounds.instance.CreateNewSound(shootingSound);
         Instantiate(projectile, projectilePos.position, Quaternion.identity); //Cria um projétil, conforme seu prefab
         timer = 0; //Reseta o Timer
         atkSpeed = Random.Range(atkSpeedMin, atkSpeedMax); //"Aleatoriza" a valocidade de ataque após cada tiro         
