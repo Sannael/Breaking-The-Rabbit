@@ -44,12 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397e8dcfb2ac7fa4c934ea859db6a830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maybeEnemy: 1
   objects:
   - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
-  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
-  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
   - {fileID: 7737822459803715730, guid: 037524b0ab8648c44b76c1bebfe8b301, type: 3}
+  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
   - {fileID: 1212614059620878466, guid: edc1035d8bcf4104e8a6d408c331f159, type: 3}
   - {fileID: 4456085485986702330, guid: bf752b9054a025b499b0dbfdf7179f3c, type: 3}
+  isEnemy: 1
+  enemysTypes: 030000000400000006000000
+  maybeEnemy: 1
   enemyChance: 35
+  dungeon: 1
