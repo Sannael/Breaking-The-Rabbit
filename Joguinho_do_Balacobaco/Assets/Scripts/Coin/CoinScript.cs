@@ -6,10 +6,18 @@ public class CoinScript : MonoBehaviour
 {
     public int value; //Valor de cada "coin"
     public bool isVisible;
+    private bool wall;
     void Start()
     {
         StartCoroutine(StopFalling());
     }
+    void Update()
+    {
+        if(wall == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, GameObject.Find("Player").transform.position, Time.deltaTime);
+        }    
+    }    
     public IEnumerator StopFalling()
     {
         Vector2 pos = transform.position; //Valor random, pra n bugar samerda
@@ -32,8 +40,18 @@ public class CoinScript : MonoBehaviour
             other.GetComponent<PlayerScript>().TakeCoin(value);
             Destroy(this.gameObject);
         }   
+        if(other.tag == "Wall")
+        {
+            wall = true;
+        }
     }
-
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Wall")
+        {
+            wall = false;
+        }
+    }
     private void OnBecameVisible() 
     {
         isVisible = true;

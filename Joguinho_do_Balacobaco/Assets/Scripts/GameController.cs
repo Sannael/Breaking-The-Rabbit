@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
             }
 
         }
-        if(openInventory.action.IsPressed() == false)
+        if(openInventory.action.IsPressed() == false) 
         {
             inventory = true;
         }
@@ -86,9 +86,9 @@ public class GameController : MonoBehaviour
         {
             try
             {
-                Destroy(GameObject.FindGameObjectWithTag("Roots"));
+                GameObject.FindGameObjectWithTag("Roots").GetComponent<Animator>().SetTrigger("Death");
             }
-            catch { Debug.Log("cath"); }
+            catch {}
             if(inCombat == true)
             {
                 inCombat = false;

@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite:
-  - {fileID: 21300000, guid: b7849f49510a2bd49be622bde4bf07e8, type: 3}
+  - {fileID: 21300000, guid: ba1867d863041764fb012c2216b90bf2, type: 3}
   - {fileID: 21300000, guid: 7448758e5a486334b9b5185a64af76d7, type: 3}
   spriteChange: 0
   carrotId: 1
@@ -2617,6 +2617,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4754271029478261623}
     m_Modifications:
+    - target: {fileID: 4263328797429127936, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
+      propertyPath: m_Value
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 7014728514574613291, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
