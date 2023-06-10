@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    public bool maybeEnemy;
     public GameObject[] objects;
+    [Header("Enemys")]
+    public bool isEnemy;
+    public int[] enemysTypes;
+    public bool maybeEnemy;
     public int enemyChance;
+    public int dungeon;
     void Start()
     {
-        if(maybeEnemy == true)
+        if(isEnemy == true)
         {
-            float may = Random.Range(0, 100);
-            if(may > enemyChance)
+            if(maybeEnemy == true)
             {
-                int rand = Random.Range(0, objects.Length);
+                float may = Random.Range(0, 100);
+                if(may > enemyChance)
+                {
+                    int rand = Random.Range(0, enemysTypes[dungeon-1]);
+                    Instantiate(objects[rand], transform.position, Quaternion.identity);
+                }
+            }
+            else
+            {
+                int rand = Random.Range(0, enemysTypes[dungeon-1]);
                 Instantiate(objects[rand], transform.position, Quaternion.identity);
             }
         }
