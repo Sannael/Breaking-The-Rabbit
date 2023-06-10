@@ -14,15 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
-  - {fileID: 13}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 30
     width: 1600
     height: 767
-  m_MinSize: {x: 300, y: 200}
-  m_MaxSize: {x: 24288, y: 16192}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 16192, y: 16192}
   vertical: 0
   controlID: 86
 --- !u!114 &2
@@ -45,9 +44,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 297
+    x: 394
     y: 73
-    width: 908
+    width: 1205
     height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -95,23 +94,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 908
+      width: 1205
       height: 502
-    m_Scale: {x: 0.4648148, y: 0.4648148}
-    m_Translation: {x: 454, y: 251}
+    m_Scale: {x: 0.46481484, y: 0.4648148}
+    m_Translation: {x: 602.5, y: 251}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -976.7331
+      x: -1296.2151
       y: -540
-      width: 1953.4662
+      width: 2592.4302
       height: 1080
     m_MinimalGUI: 1
   m_defaultScale: 0.4648148
-  m_LastWindowPixelSize: {x: 908, y: 523}
+  m_LastWindowPixelSize: {x: 1205, y: 523}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -136,7 +135,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1207
+    width: 1600
     height: 767
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
@@ -161,7 +160,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1207
+    width: 1600
     height: 544
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
@@ -184,7 +183,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 297
+    width: 394
     height: 544
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -215,7 +214,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 296
+    width: 393
     height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -265,12 +264,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 297
+    x: 394
     y: 0
-    width: 910
+    width: 1206
     height: 544
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 8}
@@ -298,9 +297,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 297
+    x: 394
     y: 73
-    width: 908
+    width: 1205
     height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -671,6 +670,7 @@ MonoBehaviour:
     - {fileID: -7102146674547447910, guid: 9975ac6693876504e9ff028c98290a90, type: 2}
     - {fileID: 2290750151954497318, guid: 43e3b4cb38e9d694d927601e55baf3c4, type: 2}
     - {fileID: 6115966679552486213, guid: 310c739d2daf4bc4fba351435ae9b45e, type: 2}
+    - {fileID: 4943149825936083743, guid: 6f1f2f9d5f19e80418936e1fb5b87fa7, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.66842103
       e01: 0
@@ -753,10 +753,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 544
-    width: 1207
+    width: 1600
     height: 223
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
+  m_MinSize: {x: 230, y: 271}
+  m_MaxSize: {x: 10000, y: 10021}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -785,7 +785,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 617
-    width: 1206
+    width: 1600
     height: 202
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -812,7 +812,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs/Guns/Pistols/Forty-Seven
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Breaking-The-Rabbit\Joguinho_do_Balacobaco
+  m_LastProjectPath: D:\BTR\Breaking-The-Rabbit\Joguinho_do_Balacobaco
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
