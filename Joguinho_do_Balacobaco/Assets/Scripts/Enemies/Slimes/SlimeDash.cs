@@ -59,8 +59,8 @@ public class SlimeDash : MonoBehaviour
 
                 if(player.transform.position[0] < transform.position[0] && direita == true) //Checa se precisa espelhar o Slime
                 {
-                direita = !direita; //Inverte a direção
-                transform.Rotate(0, 180, 0); //Espelha o Slime 
+                    direita = !direita; //Inverte a direção
+                    transform.Rotate(0, 180, 0); //Espelha o Slime 
                 } 
                 if(player.transform.position[0] > transform.position[0] && direita == false) //Checa se precisa espelhar o Slime
                 {
@@ -123,7 +123,7 @@ public class SlimeDash : MonoBehaviour
     }
     public void Dash()
     {
-        rb.mass = 100;
+        rb.mass = 200;
         if(stunScript != null) 
         {
             stunScript.enabled = true; //Habilita o stun  durante o dash
@@ -154,6 +154,7 @@ public class SlimeDash : MonoBehaviour
     }
     private void StopMove() //Função pra parar de mover
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
         canMove = false;
         transform.position = transform.position;
     }
@@ -169,6 +170,7 @@ public class SlimeDash : MonoBehaviour
             dmgScript.enabled = false;
         }
         rb.velocity = rbVelocity; //Em resumo, quando acaba o dash, acaba o impulso
+        rb.bodyType = RigidbodyType2D.Static;
         rb.mass = 500;
         capColl.enabled = false;
     }

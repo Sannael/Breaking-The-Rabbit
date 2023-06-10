@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) //Checa se a collisão foi com o player
+        if(other.gameObject.CompareTag("Enemy")) //Checa se a collisão foi com o player
         {
             Destroy(gameObject); //Destroy o projétil
         }

@@ -31,7 +31,6 @@ public class PlayerScript : MonoBehaviour
     public bool canTakeDamage; //Checa se o player pode tomar dano
     public bool isAlive; //Checa se ta vivo ou n //Evitar bugs
     public int armor; //Armadura do Cuelho
-    public BoxCollider2D dmgCollider; //Box collider de gatilho pra tomar dano
     public float force; //Força gravitacional que é aplicada no momento do rolamento
     private bool stuned; //Checa se o player ta stunado
     public int coinCount; //Quantia de monys
@@ -54,6 +53,7 @@ public class PlayerScript : MonoBehaviour
     public GunSaveStatus initialGun;
     public MeleeSaveStatus initialMelee;
     private int room;
+    private bool isRolling;
 
     [Header("Sounds")]
     public AudioClip rollSound;
@@ -94,6 +94,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Start()
     {
+        isRolling = false;
         CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
         canChangeMelee = false;
@@ -142,13 +143,17 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if(stuned == true)
+        {
+            EnableDisableAll(false,false);
+        }
         if(gameControllerScript.isPaused == false)
         {
             if(health <= 0 && isAlive == true) //se a vida zerar ele merre
             {
                 if(extraLife <=0)
                 {
-                    DisbleAll(); //Função de desativar todos os itens do player
+                    EnableDisableAll(false, false); //Função de desativar todos os itens do player
                     isAlive = false; //Murreu :(
                     Animations("Death"); //Animação de Death
                 }
@@ -160,15 +165,6 @@ public class PlayerScript : MonoBehaviour
             }
             else if(isAlive == true && stuned == false) //Se n tiver zerada pode fazer a farra
             {
-                if(canTakeDamage == true) //Se o playerpoder tomar dano
-                {
-                    dmgCollider.enabled = true; //ativa o collider de dano
-                }
-                else
-                {
-                    dmgCollider.enabled = false; //desativa o collider de dano
-                }
-            
                 if((direcao >0 && direita == true) || (direcao <0 && direita == false)) //Checa se a necessidade de espelhar(Coelho olhar pra um lado e andar pro outro)
                 {
                     direita = !direita; //inverte o valor da direita (true pra false / false pra true)
@@ -221,10 +217,10 @@ public class PlayerScript : MonoBehaviour
         playerAnim.SetTrigger(animation);
     }
     
-    public void DisbleAll() //Desativa todos os itens do player
+    public void EnableDisableAll(bool gun, bool meleecase) //Desativa todos os itens do player
     {
-        gunCase.SetActive(false); //Desativa o coldre de arma, logo a arma
-        melee.SetActive(false);
+        gunCase.SetActive(gun); //Desativa o coldre de arma, logo a arma
+        melee.SetActive(meleecase);
     }
 
     public void playSoundEffect(AudioClip sound)
@@ -499,7 +495,7 @@ public class PlayerScript : MonoBehaviour
     public IEnumerator Roll()
     {
         canTakeDamage = false;
-        gunCase.SetActive(false);
+        EnableDisableAll(false,false);
         rollCdr = 10; //Cdrzin aleatorio, só ignora (pra n correr risco de duplicar animação)
         canRoll = false;
         canMove = false;
@@ -537,7 +533,7 @@ public class PlayerScript : MonoBehaviour
         {
             vel[1] = 0f; //Sem empurrão pra cima ou baixo; empurrão reto na horizontal
         }
-        //GameSounds.instance.PlaySingle(rollSound);
+        isRolling = true;
         GameSounds.instance.CreateNewSound(rollSound);
         rb.velocity = vel; //Altera o valor da velocity do rigidibody (tipo a força do empurro) aqui que a mágica acontece
     
@@ -547,8 +543,9 @@ public class PlayerScript : MonoBehaviour
         canMove = true;
         rollCdr = rollCdrInitial; //Reseta o valor de Cdr do Roll
         gunCase.GetComponentInChildren<GunStatus>().reloading = false; //Se n fizer isso, caso usar o rolamento recarregando da pau
-        gunCase.SetActive(true);
+        EnableDisableAll(true,true);
         canTakeDamage = true;
+        isRolling = false;
         
         if(rotate == true) //Se espelhou quando acabar o roll tem q espelhar dnovo pra voltar ao normal
         {
@@ -648,13 +645,18 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator Stun(float stunTime)
     {
-        stuned = true;
-        gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
-        playerAnim.SetBool("Stun", true);
-        yield return new WaitForSeconds(stunTime); //Stuna durante o tempo certin
-        playerAnim.SetBool("Stun", false);
-        gunCase.SetActive(true); //Ativa a arma
-        stuned = false;
+        if(isRolling == false)
+        {
+            stuned = true;
+            //gunCase.SetActive(false); //Desativa a arma, pra quando tiver stunado n atira 
+            EnableDisableAll(false, false);
+            playerAnim.SetBool("Stun", true);
+            yield return new WaitForSeconds(stunTime); //Stuna durante o tempo certin
+            playerAnim.SetBool("Stun", false);
+            EnableDisableAll(true, true);
+            //gunCase.SetActive(true); //Ativa a arma
+            stuned = false;
+        }
     }
     public void TakeAmmo(string ammoType, int ammoCount) //recupera a munição que esta na arma (pega o tipo da arma e a quantia de munição, qnd trocar de arma por exemplo)
     {
