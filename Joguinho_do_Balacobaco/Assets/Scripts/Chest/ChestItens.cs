@@ -36,16 +36,17 @@ public class ChestItens : ScriptableObject
             {
                 haveItem = DropGunOrMelee(allItens[itemDrop]);
             }
-            else if(dropType == 3)
-            {
-                haveItem = (DropAll(allItens[itemDrop]));
-            }
-            if(haveItem == false)
-            {
-                itemReturn = allItens[itemDrop];
-            }
         }
-        if(haveItem == true)
+        else if(dropType == 3)
+        {
+            haveItem = (DropAll(allItens[itemDrop]));
+        }
+
+        if(haveItem == false)
+        {
+            itemReturn = allItens[itemDrop];
+        }
+        else
         {
             itemReturn = null;
         }

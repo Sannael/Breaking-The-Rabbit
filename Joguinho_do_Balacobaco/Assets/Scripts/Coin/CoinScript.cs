@@ -10,7 +10,6 @@ public class CoinScript : MonoBehaviour
     {
         StartCoroutine(StopFalling());
     }
-
     public IEnumerator StopFalling()
     {
         Vector2 pos = transform.position; //Valor random, pra n bugar samerda

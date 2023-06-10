@@ -63,10 +63,37 @@ public class ItensChestDrop : MonoBehaviour
     private void DropItem(Item drop)
     {
         GameObject obj = Instantiate(drop.thisPrefabDrop);
-        Vector3 v = transform.position;
-        v[0] += 3;
-        obj.transform.position = v;
+        obj.transform.position = transform.position;
+        StartCoroutine(ItemDropAnim(obj));
+        //Vector3 v = transform.position;
+        //v[0] += 3;
+        //obj.transform.position = v;
         alreadyDrop = true;
+    }
+
+    private IEnumerator ItemDropAnim(GameObject itemdrop)
+    {
+        Vector2 pos = new Vector2(0,0);
+        int rand = Random.Range(0, 10);
+        if(rand< 5)
+        {
+            pos = new Vector2(5,2);
+        }
+        else
+        {
+            pos = new Vector2(-5,2);
+        }
+        if(itemdrop.GetComponent<Rigidbody2D>() == false)
+        {
+            itemdrop.AddComponent<Rigidbody2D>();
+        }
+        itemdrop.GetComponent<Rigidbody2D>().velocity = pos;
+        yield return new WaitForSeconds(0.1f); 
+        pos[1] = 0;
+        itemdrop.GetComponent<Rigidbody2D>().velocity = pos;
+        yield return new WaitForSeconds(0.2f); 
+        itemdrop.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0); 
+        itemdrop.GetComponent<Rigidbody2D>().gravityScale = 0; 
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

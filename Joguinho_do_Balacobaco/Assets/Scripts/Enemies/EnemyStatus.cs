@@ -9,12 +9,13 @@ public class EnemyStatus : MonoBehaviour
     public bool isAlive; //Checa se ta vivo; ajuda pra ajeitar animação
     private Animator slimeAnimator;
     public int armor; //armadura do inimigo
-    public Collider2D triggerCol;
+    public Collider2D[] allColliders;
     [Header("Sounds")]
     public AudioClip deathSound;
     public AudioClip takingDamageSound;
     void Start()
     {
+        allColliders = this.GetComponents<Collider2D>();
         canTakeDmg = true;
         isAlive = true;
         slimeAnimator = this.gameObject.GetComponent<Animator>();
@@ -24,7 +25,10 @@ public class EnemyStatus : MonoBehaviour
     {
         if(health <= 0 && isAlive == true) //Se a vida chegar a 0 é chamada a função de morte
         {
-            triggerCol.enabled = false;
+            foreach(var c in allColliders)
+            {
+                c.enabled = false;
+            }
             Animations("Death");
             isAlive = false;  
         }

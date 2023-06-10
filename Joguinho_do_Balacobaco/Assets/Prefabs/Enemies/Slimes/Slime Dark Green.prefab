@@ -146,7 +146,7 @@ MonoBehaviour:
   atkSpeedMin: 2.8
   atkSpeedMax: 3.5
   isAlive: 0
-  shootingSound: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: cbf0d041ed09676438a3a243dae81177, type: 3}
 --- !u!50 &-1451519154837009466
 Rigidbody2D:
   serializedVersion: 4
