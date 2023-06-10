@@ -3849,10 +3849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2042909416}
     m_Modifications:
-    - target: {fileID: 5553108114889678616, guid: 7e8867e784cc4c445a84e10d06a70f88, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -108
-      objectReference: {fileID: 0}
     - target: {fileID: 5553108114889678617, guid: 7e8867e784cc4c445a84e10d06a70f88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -3892,10 +3888,6 @@ PrefabInstance:
     - target: {fileID: 5553108114889678617, guid: 7e8867e784cc4c445a84e10d06a70f88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Buttons, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553108114990461310, guid: 7e8867e784cc4c445a84e10d06a70f88, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -108.000015
       objectReference: {fileID: 0}
     - target: {fileID: 5553108114990461311, guid: 7e8867e784cc4c445a84e10d06a70f88, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -25,6 +25,7 @@ public class StarFruit : MonoBehaviour
     private bool sound;
     [HideInInspector]
     public GameObject soundObj;
+    private bool wall;
     void Start()
     {
         sound = true;
@@ -42,12 +43,16 @@ public class StarFruit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(wall == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
+        }
         if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && sound == true)
         {
             soundObj = GameSounds.instance.CreateNewSoundLoop(travelSound);
             sound = false;
         }
-        else if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        else if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Throw") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Throw2"))
         {
             Destroy(soundObj);
         }
@@ -81,6 +86,18 @@ public class StarFruit : MonoBehaviour
         if(other.tag == "Player" && travel == false && count >0) //Se tiver parado para o arremesso
         {
             PlayerTakeStarFruit();
+        }
+        if(other.tag == "Wall")
+        {
+            wall = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.tag == "Wall")
+        {
+            wall = false;
         }
     }
 

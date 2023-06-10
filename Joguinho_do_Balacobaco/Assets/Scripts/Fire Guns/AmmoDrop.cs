@@ -29,50 +29,50 @@ public class AmmoDrop : MonoBehaviour
         {
             case "Revolver":
             ammoId = 0;
-            dropMinHit = 2; //Drop minimo da munição de revolver por hit da StarFruit 
-            dropMaxHit = 4; //Drop maximo da munição de revolver por hit da StarFruit
-            dropMinKill = 5; //Drop minimo da munição de revolver por kill da StarFruit
-            dropMaxKill = 7; //Drop maximo da munição de revolver por kill da StarFruit
+            dropMinHit = 5; //Drop minimo da munição de revolver por hit da StarFruit 
+            dropMaxHit = 8; //Drop maximo da munição de revolver por hit da StarFruit
+            dropMinKill = 8; //Drop minimo da munição de revolver por kill da StarFruit
+            dropMaxKill = 10; //Drop maximo da munição de revolver por kill da StarFruit
             break;
 
             case "Shotgun":
             ammoId = 1;
-            dropMinHit = 2;
-            dropMaxHit = 3;
-            dropMinKill = 3;
-            dropMaxKill = 5;
+            dropMinHit = 3;
+            dropMaxHit = 5;
+            dropMinKill = 4;
+            dropMaxKill = 6;
             break;
 
             case "AssaultRifle":
             ammoId = 2;
-            dropMinHit = 1;
-            dropMaxHit = 3; 
-            dropMinKill = 3;
-            dropMaxKill = 4;      
+            dropMinHit = 8;
+            dropMaxHit = 10; 
+            dropMinKill = 9;
+            dropMaxKill = 13;      
             break;
 
             case "Magnum":
             ammoId = 3;
-            dropMinHit = 0;
-            dropMaxHit = 1;
-            dropMinKill = 1;
-            dropMaxKill = 2;
+            dropMinHit = 4;
+            dropMaxHit = 6;
+            dropMinKill = 6;
+            dropMaxKill = 8;
             break;
 
             case "SMG":
             ammoId = 4;
-            dropMinHit = 1;
-            dropMaxHit = 4;
-            dropMinKill = 3;
-            dropMaxKill = 6;
+            dropMinHit = 10;
+            dropMaxHit = 14;
+            dropMinKill = 14;
+            dropMaxKill = 16;
             break;
 
             case "Pistol":
             ammoId = 5;
-            dropMinHit = 1;
-            dropMaxHit = 5;
-            dropMinKill = 4;
-            dropMaxKill = 6;
+            dropMinHit = 5;
+            dropMaxHit = 8;
+            dropMinKill = 8;
+            dropMaxKill = 10;
             break;
         }
         ChangeSprite(ammoId);

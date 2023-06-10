@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8415376789490883832}
   - component: {fileID: 8415376789490883839}
   - component: {fileID: 8415376789490883833}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: WallsForest_1.11
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

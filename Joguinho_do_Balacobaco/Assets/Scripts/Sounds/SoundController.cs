@@ -9,7 +9,7 @@ public class SoundController : MonoBehaviour
     public GameObject soundPnl;
     public Slider[] soundSlider;
     public SoundSave soundSave;
-    public Button[] soundButtons = new Button[3];
+    public Image[] soundButtons = new Image[3];
     public Sprite[] soundSprite = new Sprite[4];
     
     public void OpenCloseSoundPnl(bool open)
@@ -58,12 +58,12 @@ public class SoundController : MonoBehaviour
             {
                 soundSave.volumesBeforeMute[mute] = soundSlider[mute].value;
                 soundSlider[mute].value = soundSlider[mute].minValue;
-                SetMasterVolue(soundSlider[mute].value);
+                SetMasterVolume(soundSlider[mute].value);
             }   
             else
             {
                 soundSlider[mute].value = soundSave.volumesBeforeMute[mute];
-                SetMasterVolue(soundSlider[mute].value);
+                SetMasterVolume(soundSlider[mute].value);
             }
             soundSave.isMute[mute] = !soundSave.isMute[mute];
             
@@ -102,7 +102,7 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    public void SetMasterVolue(float sliderValue)
+    public void SetMasterVolume(float sliderValue)
     {
         soundSave.master.SetFloat("MasterVolume", sliderValue);
         soundSave.soundVolumes[0] = sliderValue;

@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {    
+    {   
         if(esc.action.IsPressed()) //pressionando a tecla ESC
         {
             if(SceneManager.GetActiveScene().name == "Credits") //checa se ta na tela de credits,

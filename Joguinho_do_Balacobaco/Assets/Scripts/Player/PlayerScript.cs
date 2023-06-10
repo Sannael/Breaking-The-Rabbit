@@ -156,6 +156,11 @@ public class PlayerScript : MonoBehaviour
                     EnableDisableAll(false, false); //Função de desativar todos os itens do player
                     isAlive = false; //Murreu :(
                     Animations("Death"); //Animação de Death
+                    Collider2D[] allColliders = this.GetComponents<Collider2D>();
+                    foreach(var c in allColliders)
+                    {
+                        c.enabled = false;
+                    }
                 }
                 else
                 {

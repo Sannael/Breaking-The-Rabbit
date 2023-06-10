@@ -364,14 +364,19 @@ public class GunStatus : MonoBehaviour
         {
             Animations("ManualReload"); //Colocar bala por bala até atingir munição maxima/ cancelar a animação
         }
+        else
+        {
+            reloading = false;
+        }
         if(cockingGun == true)
         {
             if(ammo == totalAmmo || playerAmmo == 0) //pra armas que precisam engatilhar em uma animação separada 
             {
+                reloading = false;
                 Animations("CockingGun");
             }
         }
-        reloading = false;
+        
     }
 
     public void AutoReload() //Reload de armas com reload automatico
