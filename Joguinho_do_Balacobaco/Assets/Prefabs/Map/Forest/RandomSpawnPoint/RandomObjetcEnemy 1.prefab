@@ -53,9 +53,10 @@ MonoBehaviour:
   - {fileID: 8314247252587903585, guid: 04340e37400d0a748859ef2d609300c4, type: 3}
   - {fileID: 7363713800811845022, guid: 44e0fde4d24b16648a067c68c5e9ef6f, type: 3}
   - {fileID: 6148787149054863050, guid: c6a46918c14015b469ac5b5342654282, type: 3}
-  - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
-  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
-  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
-  - {fileID: 1067208371684784848, guid: 599e0c0ad3463c84fa56e7b0894f1ebc, type: 3}
-  - {fileID: 7778413110290529780, guid: bd95d768a9d828b4c98b842ae825092a, type: 3}
-  - {fileID: 775959212935607860, guid: 5b295857ae4fb6e499d56aa67ead2845, type: 3}
+  isMap: 0
+  mapAmount: 0
+  isEnemy: 0
+  enemysTypes: 
+  maybeEnemy: 0
+  enemyChance: 0
+  dungeonFloor: 0

@@ -7,7 +7,7 @@ public class HotbarScript : MonoBehaviour
 {   //Vou usar isso pra controlar os itens que tem na hotbar (ACHO) criei mas deixei pra mexer dps
     public int[] hotbarSlots = new int[6];
     public Dictionary<int, InventorySlot> hotbar = new Dictionary<int, InventorySlot>();
-
+    public AudioClip inventoryFullSound;
     private void FixedUpdate() 
     {
         hotbar = CoreInventory._instance.inventory.hotbar;
@@ -19,4 +19,9 @@ public class HotbarScript : MonoBehaviour
             }
         }        
     } 
+
+    public void SetInventoryFullSound()
+    {
+        GameSounds.instance.CreateNewSound(inventoryFullSound);
+    }
 }

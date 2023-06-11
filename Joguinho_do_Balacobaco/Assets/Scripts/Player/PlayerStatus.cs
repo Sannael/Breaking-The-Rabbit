@@ -20,7 +20,6 @@ public class PlayerStatus : ScriptableObject
     public int assaultRifleAmmo;
     public int smgAmmo;
     public int magnumAmmo;
-    public int starFruitCount;
     public int starFruitMax;
     public bool confusion;
     public int extraLife;
@@ -42,7 +41,6 @@ public class PlayerStatus : ScriptableObject
             status.Add(name, varValue);
         }
     }
-
     public void SaveList(string statusName, object newValue)
     {
         switch (statusName)
@@ -101,10 +99,6 @@ public class PlayerStatus : ScriptableObject
 
             case "magnumAmmo":
             magnumAmmo = System.Convert.ToInt32(newValue);
-            break;
-
-            case "starFruitCount":
-            starFruitCount = System.Convert.ToInt32(newValue);
             break;
 
             case "starFruitMax":

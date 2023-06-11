@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "MeleeSaveStatus", menuName = "Scriptable/MeleeSaveStatus")]
 public class MeleeSaveStatus : ScriptableObject
-{
+{ 
     public int damage;
     public int trueDamage;
     public GameObject melee;

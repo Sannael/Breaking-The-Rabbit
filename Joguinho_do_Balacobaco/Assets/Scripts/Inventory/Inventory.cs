@@ -72,22 +72,21 @@ public class Inventory : MonoBehaviour
             slot.Value.ResetItensInfo();
         }
         UpdateHotbarPlayer();
-    }
-
+    } 
     public void SaveItens()
     {
         UpdateHotbarSlots(true);
         foreach(var s in hotbar)
         {
-            s.Value.item.used = false;
-            //DestroyItem(s.Key , s.Value.slotType);
+            //s.Value.item.used = false;
+            DestroyItem(s.Key , s.Value.slotType);
         }
         UpdateInventorySlots(true);
 
         foreach(var s in inventory)
         {
-            s.Value.item.used = false;
-            //DestroyItem(s.Key , s.Value.slotType);
+            //s.Value.item.used = false;
+            DestroyItem(s.Key , s.Value.slotType);
         }
 
         UpdateWeaponsSlots(true);
@@ -129,7 +128,6 @@ public class Inventory : MonoBehaviour
         UpdateHotbarPlayer(); //Atualiza o hotbar do player
         isInventoryCreate = true; 
     }
-
     public bool HotbarFull() //Checa se a hotbar ta cheia
     {
         bool isFull = true;

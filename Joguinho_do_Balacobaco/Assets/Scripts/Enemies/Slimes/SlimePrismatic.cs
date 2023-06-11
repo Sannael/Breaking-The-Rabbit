@@ -57,7 +57,6 @@ public class SlimePrismatic : MonoBehaviour
 
         SetColor(); //Função que atribui as cores ao Vetor das cores k
     }
-    
     void Update()
     {
         isAlive = enemyStastus.isAlive;
@@ -141,12 +140,12 @@ public class SlimePrismatic : MonoBehaviour
         for(int i =0; i <5; i ++) //Quando morre spawna slimes
         {
             int randSpawn = Random.Range(0, slimes.Length);
-            Instantiate(slimes[randSpawn], transform.position, Quaternion.identity);
+            GameObject slime = Instantiate(slimes[randSpawn], transform.position, Quaternion.identity);
         }
         float goldChance = Random.Range(0,10); //Chance de spawnar 1 slime gold
         if(goldChance <= 1.5f)
         {
-            Instantiate(slimeGold, transform.position, Quaternion.identity);
+            //Instantiate(slimeGold, transform.position, Quaternion.identity);
         }
     }
 

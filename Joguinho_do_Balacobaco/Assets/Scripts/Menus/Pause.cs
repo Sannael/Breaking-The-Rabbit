@@ -17,11 +17,11 @@ public class Pause : MonoBehaviour
     public void OpenPanelControls()
     {
         pnlControler.SetActive(true);
-        pnlPause.SetActive(false);
+        try{pnlPause.SetActive(false);}catch{}
     }
     public void ClosePanelControls()
     {
         pnlControler.SetActive(false);
-        pnlPause.SetActive(true);
+        try{ pnlPause.SetActive(true);}catch{}
     }
 }

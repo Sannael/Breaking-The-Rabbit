@@ -293,6 +293,6 @@ MonoBehaviour:
   magazine: {fileID: 1783004360513999162, guid: f14ae44005a3c0d46ae42569d492fd88, type: 3}
   magLocate: {fileID: 8969637700288673176}
   magForce: {x: 2, y: 0}
-  item: {fileID: 11400000, guid: 56b142f09bac1e94abf06b7b9fb39e8f, type: 2}
+  item: {fileID: 11400000, guid: 5cb1f2a650a5f21439030412d0489be4, type: 2}
   gun: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 614b07fb83697374bb8c18852bc18f07, type: 3}

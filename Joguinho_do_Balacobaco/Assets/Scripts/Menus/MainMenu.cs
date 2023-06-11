@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject pnlControler;
     public Animator sureAnim; //animator do prompt "Are You Sure?"
     public GameObject settings; //Painel de config
     public SoundSave soundSave;
@@ -44,5 +45,14 @@ public class MainMenu : MonoBehaviour
     public void OpenSettings()
     {
         settings.SetActive(true); //ativa o painel de settings
+    }
+
+    public void OpenPanelControls()
+    {
+        pnlControler.SetActive(true);
+    }
+    public void ClosePanelControls()
+    {
+        pnlControler.SetActive(false);
     }
 }

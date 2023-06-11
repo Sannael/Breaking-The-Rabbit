@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class PlayerScript : MonoBehaviour
     [Header("Sounds")]
     public AudioClip rollSound;
     public AudioClip takingDamageSound;
+    public AudioClip playerDeathSound;
+    public AudioClip hittingTheFloorSound;
     void Awake() 
     {
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
@@ -69,8 +72,7 @@ public class PlayerScript : MonoBehaviour
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
 
         //Precisa de um if e else pra checar se é a primeira fase
-        room = gameControllerScript.dungeon;
-        if(room == 1)
+        if(SceneManager.GetActiveScene().buildIndex == 4)
         {
             initialGun.SetFirstGun();
             initialMelee.SetFirstMelee();
@@ -82,6 +84,7 @@ public class PlayerScript : MonoBehaviour
             ReTakeStatus();
             CoreInventory._instance.inventory.ReTakeItensInfo();
         }
+
     }   
 
     private void ResetAllItensUsed()
@@ -124,10 +127,12 @@ public class PlayerScript : MonoBehaviour
         gunsave.SetGun();
         MeleeSaveStatus meleeSave = Resources.LoadAll("", typeof(MeleeSaveStatus)).Cast<MeleeSaveStatus>().First();
         meleeSave.SetMelee();
+
     }
 
     public void ChangeDungeonFloor()
     {
+        CoreInventory._instance.inventory.SaveItens();
         gunCase.GetComponentInChildren<GunStatus>().SaveGun();
         melee.GetComponentInChildren<MeleeController>().weapon.GetComponent<MeleeScript>().SaveMelee();
         FieldInfo[] scriptVars = typeof(PlayerScript).GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -138,11 +143,22 @@ public class PlayerScript : MonoBehaviour
             string name = variable.Name;
             playerStatusSave.SaveList(name, varValue);
         }
-        sceneManagerScript.LoadScene(5);
+        //GameObject.Find("Portal").GetComponent<Portal>().exitFloor = true;
+        //sceneManagerScript.LoadScene(5);
     } 
 
     void Update()
     {
+        /*if(hotbar[0].action.IsPressed())
+        {
+            try{
+                GameObject[] s = (GameObject.FindGameObjectsWithTag("Enemy"));
+                foreach(var e in s)
+                {
+                    Destroy(e);
+                }
+                }  catch{}
+        }*/
         if(stuned == true)
         {
             EnableDisableAll(false,false);
@@ -439,26 +455,16 @@ public class PlayerScript : MonoBehaviour
             
             break;
 
-            case "starFruitCount":
-            if(initialValues == true)
-            {
-                starFruitCount = System.Convert.ToInt32(newValue);
-            }
-            else
-            {
-                starFruitCount += System.Convert.ToInt32(newValue);
-            }
-            
-            break;
-
             case "starFruitMax":
             if(initialValues == true)
             {
                 starFruitMax = System.Convert.ToInt32(newValue);
+                starFruitCount = System.Convert.ToInt32(newValue);
             }
             else
             {
                 starFruitMax += System.Convert.ToInt32(newValue);
+                starFruitCount += System.Convert.ToInt32(newValue);
             }
             
             break;
