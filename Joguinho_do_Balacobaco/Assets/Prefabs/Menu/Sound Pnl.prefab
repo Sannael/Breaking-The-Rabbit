@@ -1873,10 +1873,10 @@ MonoBehaviour:
   - {fileID: 8454152651900353550}
   - {fileID: 825182602545045685}
   soundSprite:
-  - {fileID: -1052139299, guid: 3b3f0335958e2d84092dccb9087f0542, type: 3}
-  - {fileID: 1669041197, guid: 3b3f0335958e2d84092dccb9087f0542, type: 3}
-  - {fileID: 1569165305, guid: 3b3f0335958e2d84092dccb9087f0542, type: 3}
-  - {fileID: 1107044159, guid: 3b3f0335958e2d84092dccb9087f0542, type: 3}
+  - {fileID: 21300000, guid: 2bc008c0323fba64c81fe03e3011df81, type: 3}
+  - {fileID: 21300000, guid: 0314a41d05fbd5c4e9873c07d0ab2f4b, type: 3}
+  - {fileID: 21300000, guid: 623c04dfaa7f9864997f61d58bcf39f3, type: 3}
+  - {fileID: 21300000, guid: 1d2f1b01a64df044f9172df544f2afd1, type: 3}
 --- !u!1 &7014728515736777798
 GameObject:
   m_ObjectHideFlags: 0

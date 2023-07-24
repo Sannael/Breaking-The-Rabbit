@@ -290,6 +290,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hotbarSlots: 000000000000000000000000000000000000000000000000
   inventoryFullSound: {fileID: 8300000, guid: 0531f989fa47c6e48a34cc63d2099698, type: 3}
+  hotbarInput:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tryConsume: 0
 --- !u!114 &6836150469781190455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7448758e5a486334b9b5185a64af76d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01e9864ea9086064ab99c825a62cd0f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5563,7 +5571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -5580,7 +5588,7 @@ PrefabInstance:
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 6366196645943137256}
+      objectReference: {fileID: 6401781645834558102}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -5595,7 +5603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Onclick
+      value: ClickConsume
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -5603,7 +5611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Buttons, Assembly-CSharp
+      value: InventoryDescs, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3481265068009002534, guid: e471d1e63c38f5d4e811f4e6c612bfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

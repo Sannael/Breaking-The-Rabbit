@@ -26,14 +26,19 @@ public class Portal : MonoBehaviour
     {
         if(exitFloor == true)
         {
-            
+            if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().exitTriggers >= 5)
+            {
+                SceneManager.LoadScene(scene +1);
+            }
         }
         if(ps.interaction.action.IsPressed() && canExit == true)
         {  
             if(goToCredits == false)
             {
                 ps.ChangeDungeonFloor();
-                SceneManager.LoadScene(scene +1);
+                exitFloor = true;
+                //ChangeScene();
+                //SceneManager.LoadScene(scene +1);
             } 
             else
             {  
@@ -53,6 +58,17 @@ public class Portal : MonoBehaviour
             seeUI = false;
             Destroy(ui);
         }
+    }
+
+    private void ChangeScene()
+    {
+        float wait = FadeInOut.instance.FadeIn();
+        StartCoroutine(FadeTime(wait));
+    }
+    private IEnumerator FadeTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(scene +1);
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {

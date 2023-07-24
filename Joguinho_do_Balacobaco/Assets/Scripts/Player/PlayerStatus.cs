@@ -25,6 +25,7 @@ public class PlayerStatus : ScriptableObject
     public int extraLife;
     public float stunTime;
     public int shopDiscount;
+    public int killsCount;
     public Dictionary<string, object> status = new Dictionary<string, object>();
     FieldInfo[] scriptVars = typeof(PlayerStatus).GetFields(BindingFlags.Public | BindingFlags.Instance);
     
@@ -115,6 +116,10 @@ public class PlayerStatus : ScriptableObject
 
             case "shopDiscount":
             shopDiscount = System.Convert.ToInt32(newValue);
+            break;
+
+            case "killsCount":
+            killsCount = System.Convert.ToInt32(newValue);
             break;
         }
     }

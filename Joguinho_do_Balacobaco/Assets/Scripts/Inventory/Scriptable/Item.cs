@@ -39,15 +39,14 @@ public class Item : ScriptableObject
     public int weapon; //Se for uma arma ou carambola (arma de fogo = 1, corpo a corpo = 2, carambola = 3)
     public GameObject thisPrefabDrop; //Drop dp item, caso seja dropado pelo bau, e ou comprado na loja
     public bool used;
+    public bool consumed;
     public virtual void Use()
     {
     }
-
     public void ApplyUse()
     {
         Use();
     }
-
     public virtual void DisUseItem()
     {
 
@@ -57,4 +56,14 @@ public class Item : ScriptableObject
     {
         DisUseItem();
     }
+    public virtual bool Consume() 
+    {
+        return consumed;
+    }
+    public bool ApllyConsume()
+    {
+        //Consume();
+        return Consume();
+    }
+
 }

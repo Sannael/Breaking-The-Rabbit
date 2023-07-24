@@ -39,11 +39,12 @@ public class Manager : MonoBehaviour
             }
         }
 
-        if(SceneManager.GetActiveScene().name == "Credits" || SceneManager.GetActiveScene().name == "Main Menu")
+        if(SceneManager.GetActiveScene().name == "Credits" && SceneManager.GetActiveScene().name == "Main Menu")
         {
             ChangeCursor(1);
         }
-        if(SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().name != "Credits")
+        
+        if(SceneManager.GetActiveScene().name != "Main Menu" && SceneManager.GetActiveScene().name != "Credits")
         {
             if(gameControllerScript.isPaused == true)
             {

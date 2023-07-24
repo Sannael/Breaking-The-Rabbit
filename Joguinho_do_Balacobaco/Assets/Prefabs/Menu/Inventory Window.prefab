@@ -424,7 +424,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3481265068009002553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3481265068788920404}
+        m_TargetAssemblyTypeName: InventoryDescs, Assembly-CSharp
+        m_MethodName: ClickConsume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3481265068050580022
 GameObject:
   m_ObjectHideFlags: 0

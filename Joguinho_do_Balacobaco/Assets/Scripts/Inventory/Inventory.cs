@@ -76,6 +76,9 @@ public class Inventory : MonoBehaviour
     public void SaveItens()
     {
         UpdateHotbarSlots(true);
+        UpdateInventorySlots(true);
+        UpdateWeaponsSlots(true);
+       /* UpdateHotbarSlots(true);
         foreach(var s in hotbar)
         {
             //s.Value.item.used = false;
@@ -88,8 +91,8 @@ public class Inventory : MonoBehaviour
             //s.Value.item.used = false;
             DestroyItem(s.Key , s.Value.slotType);
         }
-
-        UpdateWeaponsSlots(true);
+        UpdateWeaponsSlots(true);*/
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().exitTriggers ++;
     }
 
     public void CreateItensSlot()
@@ -440,5 +443,53 @@ public class Inventory : MonoBehaviour
             CoreInventory._instance.inventoryDescs.DisableAllButtons();
         }
         UpdateWeaponsSlots(false);
+    }
+
+    public void Consume(SlotType slotType, int itemSlot)
+    {
+        bool consumed = false;
+
+        if(slotType == SlotType.HOTBAR)
+        {
+            if(hotbar[itemSlot].consumible)
+            {
+                consumed = hotbar[itemSlot].item.ApllyConsume();
+            }
+        }
+        else
+        {
+            if(inventory[itemSlot].consumible)
+            {
+                consumed = inventory[itemSlot].item.ApllyConsume();
+            }
+        }
+
+        if(consumed)
+        {
+            if(slotType == SlotType.HOTBAR)
+            {
+                Item a = hotbar[itemSlot].item;
+                itemAmount[a] --;
+                hotbar[itemSlot].itemAmount --;
+                if(hotbar[itemSlot].itemAmount <1)
+                {
+                    DestroyItem(itemSlot, SlotType.HOTBAR);
+                    inventoryDesc.DisableAllButtons();
+                }
+                UpdateHotbarSlots(false);
+            }
+            else
+            {
+                Item a = inventory[itemSlot].item;
+                itemAmount[a] --;
+                inventory[itemSlot].itemAmount --;
+                if(inventory[itemSlot].itemAmount <1)
+                {
+                    DestroyItem(itemSlot, SlotType.HOTBAR);
+                    inventoryDesc.DisableAllButtons();
+                }
+                UpdateInventorySlots(false);
+            }
+        }
     }
 }

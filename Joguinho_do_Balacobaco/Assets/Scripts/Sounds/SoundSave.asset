@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   master: {fileID: 24100000, guid: 169698458ed0bf946b3b3889eef7383f, type: 2}
   soundVolumes:
-  - -4.1195946
-  - -8.579976
-  - -56
+  - 0
+  - -25
+  - -9
   volumesBeforeMute:
-  - -0.62182236
-  - -8.579976
-  - -27.455902
+  - 0
+  - -25
+  - -9
   isMute: 000000

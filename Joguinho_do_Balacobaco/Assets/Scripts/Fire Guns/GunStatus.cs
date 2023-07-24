@@ -221,6 +221,7 @@ public class GunStatus : MonoBehaviour
             string name = variable.Name;
             gunsave.SaveList(name, varValue);
         }
+        ps.exitTriggers ++;
     }
 
     public void TakeGun(GunSaveStatus gunSave)

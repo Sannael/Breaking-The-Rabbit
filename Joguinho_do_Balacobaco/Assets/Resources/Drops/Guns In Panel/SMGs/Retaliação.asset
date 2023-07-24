@@ -16,7 +16,7 @@ MonoBehaviour:
   isEmpty: 0
   itemName:
   - "Retalia\xE7\xE3o"
-  itemSprite: {fileID: -824707315, guid: 07898de694085b74bbd63cd98bdd3d67, type: 3}
+  itemSprite: {fileID: 1345935323, guid: bf987fdd652eff14dbcf1ca377feabbe, type: 3}
   itemAmount: 0
   itemStak: 0
   maxItens: 0
@@ -30,7 +30,11 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
   - "40 balas no pente;\nDano: 7 por disparo;\nTipo da muni\xE7\xE3o: SMG"
   weapon: 1
   thisPrefabDrop: {fileID: 8597783261823082880, guid: 074cfed023ebc33478fc1c7e62f0e77e, type: 3}
+  used: 0
+  consumed: 0
