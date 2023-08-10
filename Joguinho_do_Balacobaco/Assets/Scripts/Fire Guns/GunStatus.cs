@@ -58,6 +58,7 @@ public class GunStatus : MonoBehaviour
     public AudioClip shootSound;
     void Start()
     {
+        reloading = false;
         if(System.Enum.TryParse(ammoType, out GunType a))
         {
             gunType = a;
@@ -71,6 +72,11 @@ public class GunStatus : MonoBehaviour
         starFruit = ps.starFruit;
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         reloading = false;
+    }
+    private void OnEnable() 
+    {
+        gunAnimator.Rebind();
+        reloading = false;   
     }
     void Update()
     {
@@ -152,7 +158,7 @@ public class GunStatus : MonoBehaviour
             {
                 canThrowStarFruit = true;
             }
-            SetAmmo();    
+            SetAmmo();              
         }
     }
 

@@ -33,7 +33,9 @@ MonoBehaviour:
   inventory: 0
   hotbar: 0
   itemDesc:
-  - "2 balas no pente;\nDano: 8 por proj\xE9til;\nTipo da muni\xE7\xE3o: Escopeta"
+  - "2 cartuchos no cano;\nDano verdadeiro: 2 por proj\xE9til;\nDano verdadeiro:
+    Ignora a armadura dos inimigos;\nTipo da muni\xE7\xE3o: Escopeta"
   weapon: 1
   thisPrefabDrop: {fileID: 8747019897214505144, guid: 496b50d25548c5e4ba420456475b05e7, type: 3}
   used: 0
+  consumed: 0

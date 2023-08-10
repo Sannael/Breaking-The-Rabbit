@@ -287,7 +287,7 @@ public class Inventory : MonoBehaviour
         UpdateHotbarPlayer();
         
         //UpdateHotbarPlayer(false);
-    }
+    } 
     public void UpdateHotbarPlayer() //Atualiza os slots, checando se quer armazenar os valores pra ficarem salvos e/ou puxar os valores salvos dos itens que o player tem 
     {
         for(int i =0; i <hotbarAmount; i ++)
@@ -347,7 +347,7 @@ public class Inventory : MonoBehaviour
                 hotbar[idSlot].itemSelected = false;
                 itemAmount.Remove(hotbar[idSlot].item);
             }
-            hotbar[idSlot].item.ApllyDisUse();
+            hotbar[idSlot].item.ApplyDisUse();
             hotbar[idSlot].item = itemEmpty;
             UpdateHotbarSlots(false);
         }
@@ -358,7 +358,7 @@ public class Inventory : MonoBehaviour
                 inventory[idSlot].itemSelected = false;
                 itemAmount.Remove(inventory[idSlot].item);
             }
-            inventory[idSlot].item.ApllyDisUse();
+            inventory[idSlot].item.ApplyDisUse();
             inventory[idSlot].item = itemEmpty;
             UpdateInventorySlots(false);
         }
@@ -453,14 +453,14 @@ public class Inventory : MonoBehaviour
         {
             if(hotbar[itemSlot].consumible)
             {
-                consumed = hotbar[itemSlot].item.ApllyConsume();
+                consumed = hotbar[itemSlot].item.ApplyConsume();
             }
         }
         else
         {
             if(inventory[itemSlot].consumible)
             {
-                consumed = inventory[itemSlot].item.ApllyConsume();
+                consumed = inventory[itemSlot].item.ApplyConsume();
             }
         }
 

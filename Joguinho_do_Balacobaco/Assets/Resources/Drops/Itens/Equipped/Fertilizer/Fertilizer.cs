@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Fertilizer", menuName = "Scriptable/Fertilizer")]
+[CreateAssetMenu(fileName = "Fertilizer", menuName = "ScriptableItem/Fertilizer")]
 public class Fertilizer : Item
 {
     [Header("Fertilizer")]

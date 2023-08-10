@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class HotbarScript : MonoBehaviour
 {   //Vou usar isso pra controlar os itens que tem na hotbar (ACHO) criei mas deixei pra mexer dps
-    public int[] hotbarSlots = new int[6];
+    public int[] hotbarSlots = new int[6]; 
     public Dictionary<int, InventorySlot> hotbar = new Dictionary<int, InventorySlot>();
     public AudioClip inventoryFullSound;
     public InputActionReference[] hotbarInput = new InputActionReference[6];
@@ -33,8 +33,6 @@ public class HotbarScript : MonoBehaviour
                 i.Value.item.ApplyUse();
             }
         } 
-
-
         if(hotbarInput[0].action.IsPressed() && tryConsume !=0 && consuming == false)
         {
             tryConsume = 0;
@@ -110,7 +108,7 @@ public class HotbarScript : MonoBehaviour
         bool consumed = false;
         if(hotbar[hotbarSlot].consumible)
         {
-            consumed = hotbar[hotbarSlot].item.ApllyConsume();
+            consumed = hotbar[hotbarSlot].item.ApplyConsume();
         }
 
         if(consumed)

@@ -41,7 +41,7 @@ public class Item : ScriptableObject
     public bool used;
     public bool consumed;
     public virtual void Use()
-    {
+    { 
     }
     public void ApplyUse()
     {
@@ -49,18 +49,21 @@ public class Item : ScriptableObject
     }
     public virtual void DisUseItem()
     {
-
     }
 
-    public void ApllyDisUse()
+    public void ApplyDisUse()
     {
-        DisUseItem();
+        if(used == true)
+        {
+            DisUseItem(); 
+        }
+        
     }
     public virtual bool Consume() 
     {
         return consumed;
     }
-    public bool ApllyConsume()
+    public bool ApplyConsume()
     {
         //Consume();
         return Consume();

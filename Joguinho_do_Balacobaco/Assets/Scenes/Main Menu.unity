@@ -4764,10 +4764,14 @@ PrefabInstance:
     - target: {fileID: 7014728514574613291, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6461166413717809201, guid: 96246524fa6a8ad4f97bf02f57207527, type: 3}
     - target: {fileID: 7014728514574613291, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenCloseSoundPnl
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014728514574613291, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Onclick
       objectReference: {fileID: 0}
     - target: {fileID: 7014728514574613291, guid: 17c28ee68c8b7624ba20a26e2b238d35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

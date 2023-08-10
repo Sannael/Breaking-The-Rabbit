@@ -33,9 +33,11 @@ MonoBehaviour:
   inventory: 1
   hotbar: 1
   itemDesc:
-  - "Caso esteja com mais de 1 adubo equipado, o buff de desconto n\xE3o \xE9 pilhado,
-    conta somente o desconto mais alto;\r\nFunciona sem estar equipado"
+  - "Recebe 15% de desconto na loja;\nCaso esteja com mais de 1 adubo equipado, o
+    buff de desconto n\xE3o \xE9 pilhado, conta somente o desconto mais alto;\r\nFunciona
+    sem estar equipado"
   weapon: 0
   thisPrefabDrop: {fileID: 3351198169813537544, guid: d8b73dc24eca82f498d212b2f21d9b0f, type: 3}
   used: 0
+  consumed: 0
   shopDiscount: 15

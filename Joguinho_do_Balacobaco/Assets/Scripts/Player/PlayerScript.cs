@@ -55,7 +55,7 @@ public class PlayerScript : MonoBehaviour
     public GunSaveStatus initialGun;
     public MeleeSaveStatus initialMelee;
     private int room;
-    private bool isRolling;
+    public bool isRolling;
     [Header("Enemy Itens drop")]
     public ItemEnemyDrop itemEnemyDrop;
     public int killsCount;
