@@ -60,7 +60,6 @@ public class StarFruit : MonoBehaviour
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             anim.SetBool("Throw", true);
-            
         }
         else
         {
@@ -77,7 +76,7 @@ public class StarFruit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.tag != "Player" && other.tag != "PlayerBullet") //Se colidir com outro objeto, para o arremesso
+        if(other.tag != "Player" && other.tag != "PlayerBullet" && other.tag != "Bush") //Se colidir com outro objeto, para o arremesso
         {
             travel = false;
             rigidCol.enabled = false;
@@ -85,12 +84,14 @@ public class StarFruit : MonoBehaviour
         }
         if(other.tag == "Player" && travel == false && count >0) //Se tiver parado para o arremesso
         {
+            try{Destroy(soundObj);}catch{}
             PlayerTakeStarFruit();
         }
         if(other.tag == "Wall")
         {
             wall = true;
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other) 

@@ -209,8 +209,8 @@ MonoBehaviour:
   bullet: {fileID: 3347364893829552097, guid: b3a4c2063add067408bee3d5266faca4, type: 3}
   capsule: {fileID: 8409088803866482812, guid: 44fdc35daaa30694ebb97b1a0363a999, type: 3}
   gunRate: 0.7
-  damage: 8
-  trueDamage: 0
+  damage: 0
+  trueDamage: 2
   gunRateCurrent: 0
   bulletSpeed: 15
   capsuleSpeed: 2.5
@@ -223,7 +223,7 @@ MonoBehaviour:
   ammoType: Shotgun
   automatic: 0
   cockingGun: 1
-  bulletSpread: 12
+  bulletSpread: 9
   bulletSpreadMin: -15
   bulletSpreadMax: 15
   thisGunChange: {fileID: 3526405294897869957, guid: 8ce6265506375e74b8eddb64405e86ce, type: 3}

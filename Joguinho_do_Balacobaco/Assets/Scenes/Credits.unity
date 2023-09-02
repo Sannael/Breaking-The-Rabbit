@@ -257,9 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press "ESC" to go to Main Menu
-
-'
+  m_text: PRESSIONE "ESC" PARA VOLTAR AO MENU PRINCIPAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
   m_sharedMaterial: {fileID: 8597151271422008035, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
@@ -286,8 +284,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -603,6 +601,161 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &541654694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541654696}
+  - component: {fileID: 541654695}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &541654695
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541654694}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5597979096745985668, guid: 169698458ed0bf946b3b3889eef7383f, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 122706885d27d304bb4ce0b1f3ef345a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.009352005
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.028758302
+      value: 1.006274
+      inSlope: -2.0438137
+      outSlope: -2.0438137
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19341683
+      value: 0.7688637
+      inSlope: -1.6551541
+      outSlope: -1.6551541
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.855132
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7782533
+      value: 0.25964975
+      inSlope: 1.3594004
+      outSlope: 1.3594004
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10178706
+      outWeight: 0.21492337
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.0005002
+      outSlope: -1.0005002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.04426384
+      value: 0.5548789
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &541654696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541654694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 369.9737, y: 51.693245, z: -11.10117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109009376
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -776, y: 360}
+  m_AnchoredPosition: {x: -776, y: 390}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109009378
@@ -661,9 +814,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game Design\r\n\r\nGustavo Vasconcelos\r\n\r\n\r\nProgrammers\r\n\r\nBruno
-    Donatoni\r\nGabriel Guimar\xE3es\r\n\r\n\r\nArtists\r\n\r\nGuilherme Pereira\r\nPaula
-    Fran\xE7a"
+  m_text: "GAME DESIGNER\nGustavo Vasconcelos\r\n\r\n\r\nPROGRAMADORES\nBruno Donatoni\r\nGabriel
+    Guimar\xE3es\r\n\r\n\r\nARTISTAS\nGuilherme Pereira\r\nPaula Fran\xE7a\n\nGAME
+    TESTER (FQA)\nNatan Mafra Torres"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
   m_sharedMaterial: {fileID: 8597151271422008035, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
@@ -798,9 +951,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thanks for Playing !
-
-'
+  m_text: S2 OBRIGADO POR JOGAR! <3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
   m_sharedMaterial: {fileID: 8597151271422008035, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
@@ -833,7 +984,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -912,7 +1063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 686, y: 387}
+  m_AnchoredPosition: {x: 686, y: 390}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595757352
@@ -935,29 +1086,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Soundtrack
-
-
-    demon slayer - Music by TommyMutiu from Pixabay
-
-    metal
-    gear - Music by Muzaproduction from Pixabay
-
-
-    Sound effects
-
-
-    interface
-    - Sound effect bay Universfield from Pixabay
-
-    Computer Processing Sound-Effects
-    - short click select 03 - Sound effect by SamuelFrancisJohnson from Pixabay
-
-
-    Font
-
-    Pulang
-    by Syafrizal a.k.a Khurasan'
+  m_text: "TRILHA SONORA\nAs trilhas do menu principal e da fase \"Floresta\" foram
+    geradas usando a IA \"AIVA\"\r\nA trilha dos cr\xE9ditos do jogo foi gerada usando
+    a IA \"Mubert\"\n\nEFEITOS SONOROS\nEfeitos sonoros obtidos atravez do site pixabay\n\nFONTES\n\"Silky
+    Queen\" de Faqih Fawaji\n\"Pulang\" DE Syafrizal a.k.a Khurasan"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}
   m_sharedMaterial: {fileID: 8597151271422008035, guid: c47b9ab5b2519684aa0c45d123006173, type: 2}

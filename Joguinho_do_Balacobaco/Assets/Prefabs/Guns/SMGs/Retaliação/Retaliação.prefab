@@ -150,7 +150,7 @@ MonoBehaviour:
   magazine: {fileID: 2373574407471531750, guid: ffee60142b5fb3a4187d5e84fb377a09, type: 3}
   magLocate: {fileID: 3637655406134100390}
   magForce: {x: -1, y: 0}
-  item: {fileID: 11400000, guid: 5cb1f2a650a5f21439030412d0489be4, type: 2}
+  item: {fileID: 11400000, guid: 56b142f09bac1e94abf06b7b9fb39e8f, type: 2}
   gun: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 8ec3deef5f31cbf46aeb1294580f508c, type: 3}
 --- !u!1 &1271367110160288022

@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class BarrelGunScript : MonoBehaviour
 {
-    [SerializeField]
-    private InputActionReference mousePosition;
+    [HideInInspector]
+    public GameObject barrel;
+    public InputActionReference mousePosition;
     private Vector2 lookDirection; //Direção do mouse em relação a arma
     private float lookAngle; //Angulo do mouse em relação a arma
     public GameObject gun; //Gameobject da arma
@@ -15,6 +16,7 @@ public class BarrelGunScript : MonoBehaviour
     public float zValueToMirror; //Valor que o eixo de rotação Z tem q ta pra não espelhar de maneira bugada
     void Start()
     {
+        barrel = this.gameObject;
         direita = true;
     }
 

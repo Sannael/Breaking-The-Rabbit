@@ -72,25 +72,27 @@ public class Inventory : MonoBehaviour
             slot.Value.ResetItensInfo();
         }
         UpdateHotbarPlayer();
-    }
-
+    } 
     public void SaveItens()
     {
         UpdateHotbarSlots(true);
+        UpdateInventorySlots(true);
+        UpdateWeaponsSlots(true);
+       /* UpdateHotbarSlots(true);
         foreach(var s in hotbar)
         {
-            s.Value.item.used = false;
-            //DestroyItem(s.Key , s.Value.slotType);
+            //s.Value.item.used = false;
+            DestroyItem(s.Key , s.Value.slotType);
         }
         UpdateInventorySlots(true);
 
         foreach(var s in inventory)
         {
-            s.Value.item.used = false;
-            //DestroyItem(s.Key , s.Value.slotType);
+            //s.Value.item.used = false;
+            DestroyItem(s.Key , s.Value.slotType);
         }
-
-        UpdateWeaponsSlots(true);
+        UpdateWeaponsSlots(true);*/
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().exitTriggers ++;
     }
 
     public void CreateItensSlot()
@@ -129,7 +131,6 @@ public class Inventory : MonoBehaviour
         UpdateHotbarPlayer(); //Atualiza o hotbar do player
         isInventoryCreate = true; 
     }
-
     public bool HotbarFull() //Checa se a hotbar ta cheia
     {
         bool isFull = true;
@@ -286,7 +287,7 @@ public class Inventory : MonoBehaviour
         UpdateHotbarPlayer();
         
         //UpdateHotbarPlayer(false);
-    }
+    } 
     public void UpdateHotbarPlayer() //Atualiza os slots, checando se quer armazenar os valores pra ficarem salvos e/ou puxar os valores salvos dos itens que o player tem 
     {
         for(int i =0; i <hotbarAmount; i ++)
@@ -346,7 +347,7 @@ public class Inventory : MonoBehaviour
                 hotbar[idSlot].itemSelected = false;
                 itemAmount.Remove(hotbar[idSlot].item);
             }
-            hotbar[idSlot].item.ApllyDisUse();
+            hotbar[idSlot].item.ApplyDisUse();
             hotbar[idSlot].item = itemEmpty;
             UpdateHotbarSlots(false);
         }
@@ -357,7 +358,7 @@ public class Inventory : MonoBehaviour
                 inventory[idSlot].itemSelected = false;
                 itemAmount.Remove(inventory[idSlot].item);
             }
-            inventory[idSlot].item.ApllyDisUse();
+            inventory[idSlot].item.ApplyDisUse();
             inventory[idSlot].item = itemEmpty;
             UpdateInventorySlots(false);
         }
@@ -442,5 +443,53 @@ public class Inventory : MonoBehaviour
             CoreInventory._instance.inventoryDescs.DisableAllButtons();
         }
         UpdateWeaponsSlots(false);
+    }
+
+    public void Consume(SlotType slotType, int itemSlot)
+    {
+        bool consumed = false;
+
+        if(slotType == SlotType.HOTBAR)
+        {
+            if(hotbar[itemSlot].consumible)
+            {
+                consumed = hotbar[itemSlot].item.ApplyConsume();
+            }
+        }
+        else
+        {
+            if(inventory[itemSlot].consumible)
+            {
+                consumed = inventory[itemSlot].item.ApplyConsume();
+            }
+        }
+
+        if(consumed)
+        {
+            if(slotType == SlotType.HOTBAR)
+            {
+                Item a = hotbar[itemSlot].item;
+                itemAmount[a] --;
+                hotbar[itemSlot].itemAmount --;
+                if(hotbar[itemSlot].itemAmount <1)
+                {
+                    DestroyItem(itemSlot, SlotType.HOTBAR);
+                    inventoryDesc.DisableAllButtons();
+                }
+                UpdateHotbarSlots(false);
+            }
+            else
+            {
+                Item a = inventory[itemSlot].item;
+                itemAmount[a] --;
+                inventory[itemSlot].itemAmount --;
+                if(inventory[itemSlot].itemAmount <1)
+                {
+                    DestroyItem(itemSlot, SlotType.HOTBAR);
+                    inventoryDesc.DisableAllButtons();
+                }
+                UpdateInventorySlots(false);
+            }
+        }
     }
 }

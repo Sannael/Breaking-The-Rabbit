@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     public InputActionReference movement, mousePosition, meleeAtk, shoot, reload, dash, pause, openInventary, skipDialogue, starFruitAction, interaction;
     public InputActionReference[] hotbar = new InputActionReference[6];
+    public HotbarScript hotbarScript;
     public PlayerInput playerInput;
     private GameObject sceneManager; 
     private Manager sceneManagerScript;
@@ -53,13 +55,22 @@ public class PlayerScript : MonoBehaviour
     public GunSaveStatus initialGun;
     public MeleeSaveStatus initialMelee;
     private int room;
-    private bool isRolling;
-
+    public bool isRolling;
+    [Header("Enemy Itens drop")]
+    public ItemEnemyDrop itemEnemyDrop;
+    public int killsCount;
+    [HideInInspector]
+    public Transform lastEnemyKilledPos;
     [Header("Sounds")]
     public AudioClip rollSound;
     public AudioClip takingDamageSound;
+    public AudioClip playerDeathSound;
+    public AudioClip hittingTheFloorSound;
+    [Header("Gambiarra pro perifacon")]
+    public int exitTriggers;
     void Awake() 
     {
+        exitTriggers = 0;
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
         pnlControls.GetComponent<ControlSettings>().Awake(); //Forçar os controles serem atualizados (caso houver alteração)
         pnlInventory.GetComponentInChildren<Inventory>().Awake(); //Força o inventário ser criado
@@ -67,10 +78,10 @@ public class PlayerScript : MonoBehaviour
         sceneManager = GameObject.Find("SceneManager");
         sceneManagerScript = sceneManager.GetComponent<Manager>();
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+        
 
         //Precisa de um if e else pra checar se é a primeira fase
-        room = gameControllerScript.dungeon;
-        if(room == 1)
+        if(SceneManager.GetActiveScene().buildIndex == 4)
         {
             initialGun.SetFirstGun();
             initialMelee.SetFirstMelee();
@@ -81,19 +92,20 @@ public class PlayerScript : MonoBehaviour
         {
             ReTakeStatus();
             CoreInventory._instance.inventory.ReTakeItensInfo();
-        }
+            FadeInOut.instance.FadeOut();
+        } 
     }   
-
     private void ResetAllItensUsed()
     {
         Item[] allItens = Resources.LoadAll("Drops", typeof(Item)).Cast<Item>().ToArray();
         foreach(var item in allItens)
         {
             item.used = false;
-        }
+        } 
     }
     void Start()
     {
+        hotbarScript = GameObject.Find("Player Hotbar Panel").GetComponent<HotbarScript>();
         isRolling = false;
         CoreInventory._instance.inventory.GetItem(starFruit.GetComponent<StarFruit>().item, 0, true, false, 3);
         canChangeGun = false;
@@ -124,10 +136,12 @@ public class PlayerScript : MonoBehaviour
         gunsave.SetGun();
         MeleeSaveStatus meleeSave = Resources.LoadAll("", typeof(MeleeSaveStatus)).Cast<MeleeSaveStatus>().First();
         meleeSave.SetMelee();
+
     }
 
     public void ChangeDungeonFloor()
     {
+        CoreInventory._instance.inventory.SaveItens();
         gunCase.GetComponentInChildren<GunStatus>().SaveGun();
         melee.GetComponentInChildren<MeleeController>().weapon.GetComponent<MeleeScript>().SaveMelee();
         FieldInfo[] scriptVars = typeof(PlayerScript).GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -137,12 +151,20 @@ public class PlayerScript : MonoBehaviour
             object varValue = variable.GetValue(this);
             string name = variable.Name;
             playerStatusSave.SaveList(name, varValue);
-        }
-        sceneManagerScript.LoadScene(5);
+        } 
+        exitTriggers ++;
     } 
-
     void Update()
     {
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        if(killsCount >=25)
+        {
+            killsCount -= 25;
+            itemEnemyDrop.DropGoldenCarrot(lastEnemyKilledPos);
+        }
         if(stuned == true)
         {
             EnableDisableAll(false,false);
@@ -210,12 +232,9 @@ public class PlayerScript : MonoBehaviour
                     canChangeMelee = false;
                     newMelee.GetComponent<ChangeMelee>().changeMelee();
                 }
-
             }
         }
     }
-
-
     public void Animations(string animation) //Chama a animação que é passsada como parametro
     {
         playerAnim.Rebind();
@@ -439,26 +458,16 @@ public class PlayerScript : MonoBehaviour
             
             break;
 
-            case "starFruitCount":
-            if(initialValues == true)
-            {
-                starFruitCount = System.Convert.ToInt32(newValue);
-            }
-            else
-            {
-                starFruitCount += System.Convert.ToInt32(newValue);
-            }
-            
-            break;
-
             case "starFruitMax":
             if(initialValues == true)
             {
                 starFruitMax = System.Convert.ToInt32(newValue);
+                starFruitCount = System.Convert.ToInt32(newValue);
             }
             else
             {
                 starFruitMax += System.Convert.ToInt32(newValue);
+                starFruitCount += System.Convert.ToInt32(newValue);
             }
             
             break;
@@ -493,6 +502,10 @@ public class PlayerScript : MonoBehaviour
 
             case "shopDiscount":
             shopDiscount = System.Convert.ToInt32(newValue);
+            break;
+
+            case "killsCount":
+            killsCount = System.Convert.ToInt32(newValue);
             break;
         }
     }

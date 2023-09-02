@@ -50,6 +50,10 @@ public class ChestItens : ScriptableObject
         {
             itemReturn = null;
         }
+        if(allItens[itemDrop].itemId == 701)
+        {
+            itemReturn = null;
+        }
         return itemReturn;
     }
 

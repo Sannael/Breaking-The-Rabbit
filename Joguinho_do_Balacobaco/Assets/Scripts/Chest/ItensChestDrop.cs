@@ -12,7 +12,8 @@ public class ItensChestDrop : MonoBehaviour
     public GameObject uiOpenChest;
     private bool uiChest;
     private GameObject ui;
-    
+    [Header("Sounds")]
+    public AudioClip openSound;
     [Header("Chest Type")]
     [Tooltip("Tipo do baú é baseado, noq ele dropa: 0 = itens; 1 = armas de fogo; 2 = arma Melee 3 = tudo")]
     public int dropChestType;
@@ -24,11 +25,11 @@ public class ItensChestDrop : MonoBehaviour
 
     private void Update() 
     {
-        
         if(ps.interaction.action.IsPressed() && candrop == true && alreadyDrop == false)
         {
             candrop = false;
             chestAnim.SetTrigger("Open"); 
+            GameSounds.instance.CreateNewSound(openSound);
         }
         if(candrop == true && alreadyDrop == false && uiChest == false)
         {
@@ -44,8 +45,8 @@ public class ItensChestDrop : MonoBehaviour
                 Destroy(ui);
             }
         }
-
     }
+
 
     private void CanDrop()
     {
@@ -59,7 +60,6 @@ public class ItensChestDrop : MonoBehaviour
             CanDrop();
         }
     }
-
     private void DropItem(Item drop)
     {
         GameObject obj = Instantiate(drop.thisPrefabDrop);

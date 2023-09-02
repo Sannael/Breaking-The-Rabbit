@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     public DungeonsInfo dungeonsInfo;
     public GameObject moneyChest;
     private bool inCombat;
+    public GameObject[] r;
     [Header("Sounds")]
     public AudioClip openInventorySound;
     public AudioClip closeInventorySound;
@@ -65,7 +66,7 @@ public class GameController : MonoBehaviour
             canPause = true;
         }
 
-        if(openInventory.action.IsPressed() && inventory == true && canInventory == true)
+        if(openInventory.action.IsPressed() && inventory == true && canInventory == true && inCombat == false)
         {
             inventory = false;
             if(isPaused == true)
@@ -86,7 +87,14 @@ public class GameController : MonoBehaviour
         {
             try
             {
-                GameObject.FindGameObjectWithTag("Roots").GetComponent<Animator>().SetTrigger("Death");
+                r = GameObject.FindGameObjectsWithTag("Roots");
+                foreach(var i in r)
+                {
+                    if(i.GetComponent<Animator>())
+                    {
+                        i.GetComponent<Animator>().SetTrigger("Death");
+                    }
+                }
             }
             catch {}
             if(inCombat == true)
@@ -94,6 +102,13 @@ public class GameController : MonoBehaviour
                 inCombat = false;
                 DropCoinChest();
             }
+        }
+    }
+    public void ButtonCloseInventory()
+    {
+        if(isPaused == true)
+        {
+            OpenCloseInventory(false);
         }
     }
     public void DropCoinChest()

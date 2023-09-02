@@ -15,25 +15,24 @@ MonoBehaviour:
   isChecked: 0
   allItens: []
   playerHotbarItens:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
   playerInventoryItens:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
+  - {fileID: 11400000, guid: c1d2c760ceb8c1343a8d0b91200a3922, type: 2}
   playerWeapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  chestDropType: 0
+  - {fileID: 11400000, guid: b5a599c994ee35046bf86c5a303ca2ba, type: 2}
+  - {fileID: 11400000, guid: b4c110a7c42881847a655115e72c54b4, type: 2}
+  - {fileID: 11400000, guid: 7d511686d947381408c051da5f69e6be, type: 2}

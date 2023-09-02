@@ -20,6 +20,7 @@ public class SoundController : MonoBehaviour
             OnSoundPnlEnable();
         }
     }
+
     void Update()
     {
         for(int i =0; i < soundSlider.Length; i ++)

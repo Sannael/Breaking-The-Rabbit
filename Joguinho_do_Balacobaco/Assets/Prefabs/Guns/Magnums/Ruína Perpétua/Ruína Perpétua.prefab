@@ -240,8 +240,8 @@ MonoBehaviour:
   capsuleLocate: {fileID: 2211891310693941100}
   bullet: {fileID: 1716895120079092394, guid: ba97370dd82715249a03f8e8625d4fd2, type: 3}
   capsule: {fileID: 3792877762636676279, guid: cfe32765eae624743a4c7d774fffc2a3, type: 3}
-  gunRate: 0.7
-  damage: 30
+  gunRate: 0.85
+  damage: 18
   trueDamage: 5
   gunRateCurrent: 0
   bulletSpeed: 10

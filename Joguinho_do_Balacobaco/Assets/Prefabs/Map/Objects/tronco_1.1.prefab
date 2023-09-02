@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3974689628254349262}
   - component: {fileID: 3974689628254349260}
   - component: {fileID: 3974689628254349263}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: tronco_1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

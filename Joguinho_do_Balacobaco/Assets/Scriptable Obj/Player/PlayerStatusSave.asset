@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e336ff82bd4a7154cb06b254273025b3, type: 3}
   m_Name: PlayerStatusSave
   m_EditorClassIdentifier: 
-  speed: 0
-  rollCdr: 0
-  health: 0
-  maxHealth: 0
-  isAlive: 0
-  canTakeDamage: 0
+  speed: 4
+  rollCdr: -0.0004653586
+  health: 10
+  maxHealth: 10
+  isAlive: 1
+  canTakeDamage: 1
   armor: 0
-  coinCount: 0
+  coinCount: 95
   revolverAmmo: 0
-  shotgunAmmo: 0
-  pistolAmmo: 0
-  assaultRifleAmmo: 0
-  smgAmmo: 0
-  magnumAmmo: 0
-  starFruitCount: 0
-  starFruitMax: 0
+  shotgunAmmo: 20
+  pistolAmmo: 40
+  assaultRifleAmmo: 50
+  smgAmmo: 85
+  magnumAmmo: 15
+  starFruitMax: 1
   confusion: 0
   extraLife: 0
   stunTime: 0
+  shopDiscount: 0

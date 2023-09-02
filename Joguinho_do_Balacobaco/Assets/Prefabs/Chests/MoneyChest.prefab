@@ -115,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197707666258876499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -150,6 +150,8 @@ MonoBehaviour:
   chestMoney: {fileID: 11400000, guid: 732a76ac4fa77764d92c10d1446934cf, type: 2}
   dungeon: 0
   coin: {fileID: 1996042053298280333, guid: 9550c97b54762a04689810c79d4a954f, type: 3}
+  openSound: {fileID: 8300000, guid: cccf438307d8edd4f836f041fcd974c1, type: 3}
+  fallChest: {fileID: 8300000, guid: cc066e73d0618c043ac30007a50f53cb, type: 3}
 --- !u!50 &2943483573842950668
 Rigidbody2D:
   serializedVersion: 4

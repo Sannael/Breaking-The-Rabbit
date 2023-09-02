@@ -20,12 +20,12 @@ public class PlayerStatus : ScriptableObject
     public int assaultRifleAmmo;
     public int smgAmmo;
     public int magnumAmmo;
-    public int starFruitCount;
     public int starFruitMax;
     public bool confusion;
     public int extraLife;
     public float stunTime;
     public int shopDiscount;
+    public int killsCount;
     public Dictionary<string, object> status = new Dictionary<string, object>();
     FieldInfo[] scriptVars = typeof(PlayerStatus).GetFields(BindingFlags.Public | BindingFlags.Instance);
     
@@ -42,7 +42,6 @@ public class PlayerStatus : ScriptableObject
             status.Add(name, varValue);
         }
     }
-
     public void SaveList(string statusName, object newValue)
     {
         switch (statusName)
@@ -103,10 +102,6 @@ public class PlayerStatus : ScriptableObject
             magnumAmmo = System.Convert.ToInt32(newValue);
             break;
 
-            case "starFruitCount":
-            starFruitCount = System.Convert.ToInt32(newValue);
-            break;
-
             case "starFruitMax":
             starFruitMax = System.Convert.ToInt32(newValue);
             break;
@@ -121,6 +116,10 @@ public class PlayerStatus : ScriptableObject
 
             case "shopDiscount":
             shopDiscount = System.Convert.ToInt32(newValue);
+            break;
+
+            case "killsCount":
+            killsCount = System.Convert.ToInt32(newValue);
             break;
         }
     }

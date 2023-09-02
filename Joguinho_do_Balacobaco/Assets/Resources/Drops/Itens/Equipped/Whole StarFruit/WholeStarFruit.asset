@@ -37,6 +37,6 @@ MonoBehaviour:
     de carambolas possu\xEDdas em 2"
   weapon: 0
   thisPrefabDrop: {fileID: 866699275537502024, guid: 360f3a6f45c17af42947b0dbe968d1d2, type: 3}
-  used: 1
+  used: 0
   starFruitMaxAdd: 2
   starFruitCountAdd: 2

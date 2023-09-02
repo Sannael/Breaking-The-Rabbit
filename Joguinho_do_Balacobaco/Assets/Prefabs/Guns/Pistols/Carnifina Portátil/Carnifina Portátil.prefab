@@ -160,7 +160,7 @@ MonoBehaviour:
   bullet: {fileID: 4391943172080302168, guid: f50ac327a334a824a9648ea4c2d21694, type: 3}
   capsule: {fileID: 5547900203662522964, guid: 123d44a1668312745bdcb49c78647a18, type: 3}
   gunRate: 0.5
-  damage: 22
+  damage: 12
   trueDamage: 0
   gunRateCurrent: 0
   bulletSpeed: 10
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9668fa86bf5cfca43a2ab83ee0780e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barrel: {fileID: 0}
   mousePosition: {fileID: -2813664996149534026, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   gun: {fileID: 7147641419163769707}
   direita: 1

@@ -33,9 +33,10 @@ MonoBehaviour:
   inventory: 0
   hotbar: 0
   itemDesc:
-  - "7 balas no pente;\nDano: 37 por proj\xE9til;\nO proj\xE9til dessa arma causa
+  - "7 balas no pente;\nDano: 22 por proj\xE9til;\nO proj\xE9til dessa arma causa
     + 6 de dano verdadeiro;\nDano verdadeiro: Ignora a armadura dos inimigos;\nTipo
     da muni\xE7\xE3o: Magnum"
   weapon: 1
   thisPrefabDrop: {fileID: 2038527281679223445, guid: 7bc378406111e6c409efcdcbd96844d5, type: 3}
   used: 0
+  consumed: 0

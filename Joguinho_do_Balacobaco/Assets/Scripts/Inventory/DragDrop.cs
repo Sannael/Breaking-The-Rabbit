@@ -71,7 +71,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDr
         CoreInventory._instance.inventory.slotDrag = slot; //Marca o slot que foi selecionado
 
         CoreInventory._instance.inventory.ChangeDescPanel(slot.item, language); //Muda as descrições do painel
-        
+        itemDrag.preserveAspect = true;
     }
 
     public void OnPointerUp(PointerEventData eventData) //Quando botao do mouse "Subir"

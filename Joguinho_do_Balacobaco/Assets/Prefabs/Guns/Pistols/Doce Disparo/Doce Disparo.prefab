@@ -304,7 +304,7 @@ MonoBehaviour:
   bullet: {fileID: 2458541460023640946, guid: bad8fc3d8de741e47b47ab312fe8788b, type: 3}
   capsule: {fileID: 9020334029192511270, guid: 57a8e8c7972b51547bf2c3a353255447, type: 3}
   gunRate: 0.5
-  damage: 14
+  damage: 13
   trueDamage: 0
   gunRateCurrent: 0
   bulletSpeed: 9

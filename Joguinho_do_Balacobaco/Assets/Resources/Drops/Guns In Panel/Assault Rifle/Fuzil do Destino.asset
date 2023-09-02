@@ -33,8 +33,9 @@ MonoBehaviour:
   inventory: 0
   hotbar: 0
   itemDesc:
-  - "27 balas no pente;\nDano: 22 por proj\xE9til;\nTipo da muni\xE7\xE3o: Rifle
+  - "27 balas no pente;\nDano: 10 por proj\xE9til;\nTipo da muni\xE7\xE3o: Rifle
     de Assalto"
   weapon: 1
   thisPrefabDrop: {fileID: 2246361996216530976, guid: dcf31ee8db4efad449e3382999486d2f, type: 3}
   used: 0
+  consumed: 0

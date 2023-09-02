@@ -16,7 +16,7 @@ public class InventoryDescs : MonoBehaviour
     public int idSlot; //id do slot do item selecionado
     public SlotType slotType; //Tipo de slot do item selecionado
     public GameObject destroyPnl; //Painel de tem certeza que deseja destruir
-    
+
     void Start()
     {
         DisableAllButtons(); //Desabilita a innteração com os botões
@@ -71,5 +71,9 @@ public class InventoryDescs : MonoBehaviour
     {
         CoreInventory._instance.inventory.DestroyItem(idSlot, slotType); //Deleta o item
         DisableAllButtons();
+    }
+    public void ClickConsume()
+    {
+        CoreInventory._instance.inventory.Consume(slotType, idSlot);
     }
 }

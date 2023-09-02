@@ -23,6 +23,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public bool consumible, canMove, canDestroy;
    void Update()
     {
+        if(pileable == true && itemAmount <=0)
+        {
+            item = CoreInventory._instance.inventory.itemEmpty;
+            CoreInventory._instance.inventory.UpdateHotbarSlots(false);
+        }
         if(slotType == SlotType.PLAYERHOTBAR)
         {
             GameObject playerHotbarPanel = GameObject.Find("Player Hotbar Panel");
@@ -101,7 +106,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             inventorySave.InsertItemInfos(idSlot, item.itemId, itemAmount, itemStak, item);
         }
-
     }
     public void ReUpdateSlot() //Aqui é basicamente a função de cima, só que uso sem inserir nem puxar infos salvas, e depois armazeno o item no dicionario
     { //Uso outra função pra basicamente n ter problema de bugar os itens no dicionario. Só uso quando puxo informações de qual item o player tem

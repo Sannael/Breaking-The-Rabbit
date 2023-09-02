@@ -30,7 +30,11 @@ MonoBehaviour:
   unique: 1
   pileable: 0
   stakable: 0
+  inventory: 0
+  hotbar: 0
   itemDesc:
-  - "5 balas no tambor;\nDano: 16 por disparo;\nTipo da muni\xE7\xE3o: Revolver"
+  - "5 balas no tambor;\nDano: 14 por disparo;\nTipo da muni\xE7\xE3o: Revolver"
   weapon: 1
   thisPrefabDrop: {fileID: 6537739949064962904, guid: 61b9a83088d88a847b4c1ef4fbd71f95, type: 3}
+  used: 0
+  consumed: 0

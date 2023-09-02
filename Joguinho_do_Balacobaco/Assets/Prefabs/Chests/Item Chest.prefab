@@ -145,6 +145,7 @@ MonoBehaviour:
   chestAnim: {fileID: 8045117668108217197}
   chestItens: {fileID: 11400000, guid: f8109d5632b1b24428bf6cee7cd44cf2, type: 2}
   uiOpenChest: {fileID: 7832420789963596437, guid: 7acf562912dd20a4585770af77485d57, type: 3}
+  openSound: {fileID: 8300000, guid: cccf438307d8edd4f836f041fcd974c1, type: 3}
   dropChestType: 3
 --- !u!95 &8045117668108217197
 Animator:

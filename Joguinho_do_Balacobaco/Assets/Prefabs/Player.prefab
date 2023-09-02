@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 7206816808103367138}
   - component: {fileID: 7206816808103367141}
   - component: {fileID: 7206816808103367151}
+  - component: {fileID: 8417752529882413873}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -185,6 +186,7 @@ MonoBehaviour:
   - {fileID: 4519493387711536502, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   - {fileID: 818652231981723184, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
   - {fileID: -4899804091928852060, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
+  hotbarScript: {fileID: 0}
   playerInput: {fileID: 2306139284738157046, guid: f16a04b722e15b444bdb9827e418e6ce, type: 3}
   speed: 0
   playerAnim: {fileID: 7206816808103367136}
@@ -201,7 +203,6 @@ MonoBehaviour:
   canTakeDamage: 0
   isAlive: 0
   armor: 0
-  dmgCollider: {fileID: 7206816808103367151}
   force: 8
   coinCount: 0
   revolverAmmo: 0
@@ -224,9 +225,15 @@ MonoBehaviour:
   shopDiscount: 0
   initialGun: {fileID: 11400000, guid: c53c86181084ac04092e4229c9379c45, type: 2}
   initialMelee: {fileID: 11400000, guid: 791b651c8530f0f4bb2fa501d003d4f8, type: 2}
+  itemConsumeId: 0
+  itemConsume: 0
+  itemEnemyDrop: {fileID: 11400000, guid: c3ed5bbf3f6e91143b262e7646f75e70, type: 2}
+  killsCount: 0
+  lastEnemyKilledPos: {fileID: 0}
   rollSound: {fileID: 8300000, guid: efd811a7aba5ad2479cb25d2d69da5ff, type: 3}
-  deathSound: {fileID: 8300000, guid: d96946f908a90124bba1fc8ddb4196e8, type: 3}
   takingDamageSound: {fileID: 8300000, guid: 0b8487a146b6d5c45a494b2bac5bcc02, type: 3}
+  playerDeathSound: {fileID: 8300000, guid: 76cd0dbd007992a42983cfbf5f28c878, type: 3}
+  hittingTheFloorSound: {fileID: 8300000, guid: c09576873eac56141bd13a66fd0246af, type: 3}
 --- !u!50 &7206816808103367138
 Rigidbody2D:
   serializedVersion: 4
@@ -300,6 +307,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49, y: 0.74}
   m_EdgeRadius: 0
+--- !u!114 &8417752529882413873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206816808103367140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b53b035d89cd04c85cdc28b3913c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInOut: {fileID: 4122346599511987613, guid: 33c70e0acd1309945a34271379d0fe52, type: 3}
 --- !u!1 &7206816808897993630
 GameObject:
   m_ObjectHideFlags: 0

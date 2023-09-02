@@ -10,13 +10,17 @@ public class InventorySave : ScriptableObject
     public int[] itemAmount; //Quantidade que o player tem de cada item
     public int[] itemStak; //Quantidade de stacks que o player tem de cada item
     public Item[] item; //o item em si
-
+    
     public void InsertItemInfos(int id, int idItem, int amount, int stak, Item i) 
     { //Salva as informaçãos dos itens em suas posições 
         itemId[id] = idItem;
         itemAmount[id] = amount;
         itemStak[id] = stak;
         item[id] = i;
+        if(id == (slotAmount -1))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().exitTriggers ++;
+        }
     }
 
     public int[] GiveItemInfos(int id)

@@ -51,6 +51,6 @@ public class CarrotSpriteControl : MonoBehaviour
     {
         Destroy(this.gameObject);
         Destroy(lifeManager.GetComponent<LifeController>().hearts[carrotId]); //Destroy o objeto da cenoura armazenado no vetor (quando é criada)
-        lifeManager.GetComponent<LifeController>().count = carrotId -= 2; //Diminiu o contador de quantidade de cenouras
+        lifeManager.GetComponent<LifeController>().count = carrotId -1; //Diminiu o contador de quantidade de cenouras
     }
 }

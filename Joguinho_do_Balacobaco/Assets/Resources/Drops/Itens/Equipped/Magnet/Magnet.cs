@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Magnet", menuName = "Scriptable/Magnet")]
+[CreateAssetMenu(fileName = "Magnet", menuName = "ScriptableItem/Magnet")]
 public class Magnet : Item
 {
     [Header("Magnet")]

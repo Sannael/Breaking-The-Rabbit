@@ -25,9 +25,12 @@ public class EnemyStatus : MonoBehaviour
     {
         if(health <= 0 && isAlive == true) //Se a vida chegar a 0 é chamada a função de morte
         {
+            GameObject.Find("Player").GetComponent<PlayerScript>().killsCount ++;
+            GameObject.Find("Player").GetComponent<PlayerScript>().lastEnemyKilledPos = this.transform;
+            this.gameObject.layer = 11;
             foreach(var c in allColliders)
-            {
-                c.enabled = false;
+            { 
+                //c.enabled = false;
             }
             Animations("Death");
             isAlive = false;  

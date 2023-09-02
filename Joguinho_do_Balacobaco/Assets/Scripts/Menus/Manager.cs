@@ -39,11 +39,12 @@ public class Manager : MonoBehaviour
             }
         }
 
-        if(SceneManager.GetActiveScene().name == "Credits" || SceneManager.GetActiveScene().name == "Main Menu")
+        if(SceneManager.GetActiveScene().name == "Credits" && SceneManager.GetActiveScene().name == "Main Menu")
         {
             ChangeCursor(1);
         }
-        if(SceneManager.GetActiveScene().name == "CenaBruno" ||SceneManager.GetActiveScene().name == "CenaGuima" || SceneManager.GetActiveScene().name == "CenaPaula")
+        
+        if(SceneManager.GetActiveScene().name != "Main Menu" && SceneManager.GetActiveScene().name != "Credits")
         {
             if(gameControllerScript.isPaused == true)
             {
@@ -80,7 +81,7 @@ public class Manager : MonoBehaviour
     }
     public void ClickStart()
     {
-        LoadScene(2); 
+        LoadScene(4); 
     } 
     
     public void GoToCredits()

@@ -112,7 +112,7 @@ public class ControlSettings : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(ChangeColorKey()); //Chama a animação de engayzamento do texto de trocar as teclas
+       StartCoroutine(ChangeColorKey()); //Chama a animação de engayzamento do texto de trocar as teclas
     }
 
     // Update is called once per frame
@@ -331,7 +331,8 @@ public class ControlSettings : MonoBehaviour
             newKey.text = "";
         }
         KeyRepeat(); //Verifica se tem repetições
-    }
+    } 
+    
 
     public void KeyRepeat() //Verifica se alguma tecla se repete em duas ou mais ações (exceto pular dialogo);
     { //aproveitei a função pra resolver um B.O do pause não poder ser com o click, mais pratico :v

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5362944853235385114}
   - component: {fileID: 8138571272798576477}
   - component: {fileID: 8978936349776185747}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Bush_1
-  m_TagString: Untagged
+  m_TagString: Bush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
