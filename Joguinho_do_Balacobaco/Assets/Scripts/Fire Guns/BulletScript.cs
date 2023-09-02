@@ -6,12 +6,10 @@ public class BulletScript : MonoBehaviour
 {
     public float duration, bulletSpeed; //Duração da bala até ser destruida / Velocidade da bala
     private bool travel = true; //Pra checar se a bala ta em moviento
-    public int damage; //Dano da bala
 
     void Start()
     {   
-        Destroy(gameObject, duration);
-            
+        Destroy(gameObject, duration);      
     }
 
     void Update()
@@ -24,7 +22,7 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) //Checa se a collisão foi com o player
+        if(other.gameObject.CompareTag("Enemy")) //Checa se a collisão foi com o player
         {
             Destroy(gameObject); //Destroy o projétil
         }

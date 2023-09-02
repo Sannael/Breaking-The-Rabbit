@@ -9,6 +9,21 @@ TagManager:
   - PlayerCapsule
   - Enemy
   - EnemyAtk
+  - Roots
+  - Coin
+  - Wall
+  - PlayerWeapon
+  - BossStage
+  - BossStageAtk
+  - StarFruit
+  - ChangeGun
+  - BulletMultiDamage
+  - Item
+  - GunCase
+  - MeleeCase
+  - ChangeMelee
+  - MoneyChest
+  - Bush
   layers:
   - Default
   - TransparentFX
@@ -18,17 +33,17 @@ TagManager:
   - UI
   - Floor
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Coin
+  - EnemyCoin
+  - StarFruit
+  - EnemyAtk
+  - Ammo
+  - Drops
+  - Chest
+  - Root
+  - Wall
+  - Obstacles
   - 
   - 
   - 
@@ -51,4 +66,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2117157071
+    locked: 0
+  - name: Enemy
+    uniqueID: 2265398223
+    locked: 0
+  - name: UI
+    uniqueID: 2749305469
     locked: 0

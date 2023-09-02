@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9650c26897efa1546bd5cad834e187c3, type: 3}
+  m_Name: Fertilizer 4KG
+  m_EditorClassIdentifier: 
+  itemId: 4
+  isEmpty: 0
+  itemName:
+  - Adubo Fertilizado 4Kg
+  itemSprite: {fileID: 201288769, guid: db4126d51b0720842b68a4464dcd821c, type: 3}
+  itemAmount: 1
+  itemStak: 0
+  maxItens: 1
+  maxStak: 0
+  chest: 1
+  shop: 0
+  value: 0
+  consumible: 0
+  canMove: 1
+  canDestroy: 1
+  unique: 1
+  pileable: 0
+  stakable: 0
+  inventory: 1
+  hotbar: 1
+  itemDesc:
+  - "Recebe 25% de desconto na loja;\nCaso esteja com mais de 1 adubo equipado, o
+    buff de desconto n\xE3o \xE9 pilhado, conta somente o desconto mais alto;\r\nFunciona
+    sem estar equipado"
+  weapon: 0
+  thisPrefabDrop: {fileID: 3326906660590325345, guid: 087f4f2cfa1968f4da760194601dca6b, type: 3}
+  used: 0
+  consumed: 0
+  shopDiscount: 25

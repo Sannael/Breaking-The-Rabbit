@@ -7,13 +7,14 @@ public class CameraController : MonoBehaviour
     public bool cameraCanMove = false; //Determina se a c�mera pode se mover, para evitar bugs
     private float CamMoveSpeed = 5f; //Velocidade do movimento de c�mera
     private Vector3 currentCameraPos; //Armazena as coordenadas da c�mera antes da mudan�a de cen�rio
-    private Vector3 newCameraPos; //Armazena o valor da nova coordenada para onde a c�mera ir� se mover
+    public Vector3 newCameraPos; //Armazena o valor da nova coordenada para onde a c�mera ir� se mover
     
     private bool cameraIsMoving = false; //checa se a camera ta em movimento (Transição)
     
     void Start()
     {
         Camera.main.transform.position = new Vector3(0f, 0f, -10.0f); //No come�o da cena centraliza a c�mera no primeiro cen�rio
+        newCameraPos = Camera.main.transform.position;
     }
 
     void Update()
@@ -27,8 +28,9 @@ public class CameraController : MonoBehaviour
         if (Camera.main.transform.position == newCameraPos && cameraIsMoving == true) //Quando a c�mera chegar na posi��o final
         {
             cameraCanMove = false; //Impede a c�mera de continuar movendo 
-            CamMoveSpeed = 5f; //Reseta a velocidade de movimento para 5
+            CamMoveSpeed = 5f; //Reseta a velocidade de movimento para 5            
             GameObject.Find("Player").GetComponent<PlayerScript>().canMove = true; //Libera o jogador para se mover
+            GameObject.Find("GameController").GetComponent<GameController>().RoomChange();
             cameraIsMoving = false; //camera parada
         }
     }
@@ -60,7 +62,7 @@ public class CameraController : MonoBehaviour
         {
             GameObject.Find("Player").transform.position -= new Vector3(2.0f, 0.0f, 0.0f); //Transporta o player para o outro cen�rio
             currentCameraPos = Camera.main.transform.position; //Armazena a posi��o atual da c�mera
-            newCameraPos = currentCameraPos -= new Vector3(19.18f, 0.0f, 0.0f); //Calcula a posi��o final da c�mera
+            newCameraPos = currentCameraPos -= new Vector3(19.2f, 0.0f, 0.0f); //Calcula a posi��o final da c�mera
             cameraCanMove = true; //Permite que a c�mera possa se mover
         }
     }
@@ -71,7 +73,7 @@ public class CameraController : MonoBehaviour
         {
             GameObject.Find("Player").transform.position += new Vector3(2.0f, 0.0f, 0.0f); //Transporta o player para o outro cen�rio
             currentCameraPos = Camera.main.transform.position; //Armazena a posi��o atual da c�mera
-            newCameraPos = currentCameraPos += new Vector3(19.18f, 0.0f, 0.0f); //Calcula a posi��o final da c�mera
+            newCameraPos = currentCameraPos += new Vector3(19.2f, 0.0f, 0.0f); //Calcula a posi��o final da c�mera
             cameraCanMove = true; //Permite que a c�mera possa se mover
         }
     }

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15838ed8bf2c774bbc280f4808a360e, type: 3}
+  m_Name: ItemEnemyDrop
+  m_EditorClassIdentifier: 
+  goldenCarrotBitten: {fileID: 11400000, guid: ac81f9b56432d37499069d16fee12893, type: 2}
+  goldenCarrot: {fileID: 11400000, guid: 24cc455b77f546e4e9fe8d6dd89ad88b, type: 2}

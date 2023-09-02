@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1d94bd9b50aad4286bf7df822766f9, type: 3}
+  m_Name: Ecos do Infinito
+  m_EditorClassIdentifier: 
+  itemId: 653
+  isEmpty: 0
+  itemName:
+  - Ecos do Infinito
+  itemSprite: {fileID: 21300000, guid: c2873e3b533f2da4d9a67ca114dde9fe, type: 3}
+  itemAmount: 0
+  itemStak: 0
+  maxItens: 0
+  maxStak: 0
+  chest: 1
+  shop: 1
+  value: 0
+  consumible: 0
+  canMove: 0
+  canDestroy: 0
+  unique: 1
+  pileable: 0
+  stakable: 0
+  inventory: 0
+  hotbar: 0
+  itemDesc:
+  - "5 balas no pente;\nDano: 20 por proj\xE9til;\nO disparo dessa arma causa + 5
+    de dano verdadeiro;\nDano verdadeiro: Ignora a armadura dos inimigos;\nTipo da
+    muni\xE7\xE3o: Magnum"
+  weapon: 1
+  thisPrefabDrop: {fileID: 1798022954760778305, guid: 97f0c53b6d6ca264aa33fe47cdcd531c, type: 3}
+  used: 0
+  consumed: 0

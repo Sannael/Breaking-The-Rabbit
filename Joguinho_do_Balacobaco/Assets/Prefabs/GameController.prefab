@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4100136506719038625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4100136506719038687}
+  - component: {fileID: 4100136506719038686}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4100136506719038687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100136506719038625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.42326963, y: 1.0981193, z: -2.0331671}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4100136506719038686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100136506719038625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3282a799949f9c47b10ecf2b08c1514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeon: 1
+  pause: {fileID: -390097106020468567, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
+  openInventory: {fileID: 279059516281589475, guid: ac4f37594c86d954c9fafda7d3fe91d9, type: 3}
+  cantos: 
+  roots:
+  - {fileID: 3772917972143692246, guid: 343687cdeef1f994798e0b78e79f9b1c, type: 3}
+  - {fileID: 3772917972143692246, guid: d5d1a8ab931dcfc4eafb00dbb88db98c, type: 3}
+  - {fileID: 3772917972143692246, guid: 92fe084230b320a4f826d3547ac3d0b7, type: 3}
+  - {fileID: 3772917972143692246, guid: 6d67e9215333f51449af3c5d41983468, type: 3}
+  - {fileID: 3772917972143692246, guid: 7b1cb71c3af2a5845951ea4501bfcf4c, type: 3}
+  - {fileID: 3772917972143692246, guid: 4612d723d0b72b2449266f7ebc9b4978, type: 3}
+  - {fileID: 3772917972143692246, guid: efd6f8c0acb78cd49b08fe16f59955d1, type: 3}
+  - {fileID: 3772917972143692246, guid: 6494b3d25bef2084baf142783340b90c, type: 3}
+  - {fileID: 3772917972143692246, guid: 7a7eb1b2542c89b47bc9bcefb25d94f8, type: 3}
+  - {fileID: 3772917972143692246, guid: 0d651579b30f90843b2169597e68a273, type: 3}
+  - {fileID: 3772917972143692246, guid: e54b85fea8b37d9449beb9166a018c8e, type: 3}
+  - {fileID: 3772917972143692246, guid: 089712b0a305cca4cbc0e603596cb009, type: 3}
+  - {fileID: 3772917972143692246, guid: 152a7e356ba82134ea2b6a6c789aa8fd, type: 3}
+  - {fileID: 3772917972143692246, guid: 2b92217e4fbffbc499e2d2ecf2bdad05, type: 3}
+  - {fileID: 3772917972143692246, guid: 358d4744652d4184384a0d39e7ecfb2b, type: 3}
+  - {fileID: 3772917972143692246, guid: b2651e987a9fd7d418f2fff9985d8e19, type: 3}
+  numberOfEnemies: 0
+  isPaused: 0
+  pnlPause: {fileID: 0}
+  inventoryWindow: {fileID: 0}
+  sceneManager: {fileID: 1600927414306657563, guid: e824374ec0bb8604695d8df87dd48994, type: 3}
+  dungeonsInfo: {fileID: 11400000, guid: 629748a5c8c12dd44a9b9a24bbab6c69, type: 2}
+  moneyChest: {fileID: 5197707666258876499, guid: e3e3a72591b298f4fb802d05597c7e3b, type: 3}
+  openInventorySound: {fileID: 8300000, guid: a06ff967febac3f489978f390c747dfc, type: 3}
+  closeInventorySound: {fileID: 8300000, guid: 777ef9b239f9f1f40bb507db380574f6, type: 3}
